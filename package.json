@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "name": "tedxfrontend",
+=======
+  "name": "tedxfrontend-clean",
+>>>>>>> ebdccbc (Initialize project using Create React App)
   "version": "0.1.0",
   "private": true,
   "dependencies": {
