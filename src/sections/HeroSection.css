@@ -1,0 +1,101 @@
+.hero-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+}
+
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+.hero-text {
+  position: absolute;
+  top: 55%;          /* Push text lower */
+  left: 5%;
+  transform: translateY(-50%);
+  z-index: 1;
+  color: white;
+}
+
+.hero-text h1 {
+  margin: 0.2rem 0;     /* Reduce vertical spacing between lines */
+  line-height: 1.1;     /* Optional: adjust vertical alignment */
+}
+/*if want less gap then 
+margin: 0;
+line-height: 1;
+*/
+
+.typewriter {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  font-family: 'Inter', sans-serif;
+  font-size: 6rem;
+  font-weight: bold;
+  opacity: 0;
+  animation: typing 1s steps(10, end) forwards;
+}
+
+/* Remove blinking cursor */
+.typewriter::after {
+  content: "";
+  display: none;
+}
+
+.line-1 {
+  animation-delay: 0.3s;
+}
+
+.line-2 {
+  animation-delay: 1.4s;
+}
+
+.line-3 {
+  animation-delay: 2.6s;
+}
+
+@keyframes typing {
+  0% {
+    width: 0;
+    opacity: 1;
+  }
+  100% {
+    width: 100%;
+    opacity: 1;
+  }
+}
+
+.hero-sphere {
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
+  height: 70px;
+  z-index: 2;
+}
+
+@media (max-width: 768px) {
+  .typewriter {
+    font-size: 4.3rem;
+  }
+
+  .hero-sphere {
+    height: 40px;
+    bottom: 20px;
+    right: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .typewriter {
+    font-size: 4.3rem;
+
+  }
+}
