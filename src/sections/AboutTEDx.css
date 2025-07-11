@@ -254,3 +254,55 @@
   }
 }
 */
+@media (min-width: 769px) and (max-width: 1068px) {
+  .tedx-section1 {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 1rem;
+    text-align: left;
+  }
+
+  .tedx-text-wrapper1 {
+    width: 55%;
+    max-width: none;
+    margin-right: 2rem;
+  }
+
+  .tedx-x-image {
+    position: relative;
+    width: 35%;
+    height: 300px; /* Adjust height to fit Xs well */
+  }
+
+  .red-x1, .white-x1 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .red-x1 {
+    z-index: 0;
+  }
+
+  .white-x1 {
+    z-index: 1;
+    transform: translate(0, 0);
+  }
+
+  /* Slide white X out when .animate-x is applied */
+  .animate-x .white-x1 {
+    animation: slideOutRight 0.8s ease-in-out 0.3s forwards;
+  }
+
+  @keyframes slideOutRight {
+    from {
+      transform: translate(0, 0);
+    }
+    to {
+      transform: translateX(200%);
+    }
+  }
+}
+

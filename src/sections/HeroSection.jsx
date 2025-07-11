@@ -12,7 +12,7 @@ const HeroSection = () => {
       </video>
 
       <div className="hero-text">
-  <h1><span className="slide-in line-1">Idea’s</span></h1>
+  <h1><span className="slide-in line-1">Ideas</span></h1>
   <h1><span className="slide-in line-2">Worth</span></h1>
   <h1><span className="slide-in line-3">Spreading</span></h1>
 </div>

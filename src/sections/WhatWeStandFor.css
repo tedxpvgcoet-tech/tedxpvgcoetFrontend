@@ -258,3 +258,70 @@
   }
 }
 
+@media (min-width: 769px) and (max-width: 1068px) {
+  .tedx-section {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 1rem;
+    text-align: left;
+  }
+
+  .tedx-text-wrapper {
+    width: 55%;
+    margin-right: 2rem;
+    z-index: 2; /* Make sure text is above everything */
+  }
+
+  .tedx-x-image {
+    position: relative;
+    width: 40%;
+    height: 300px;
+    display: block;
+    z-index: 1; /* Keep Xs behind text */
+  }
+
+  .red-x,
+  .white-x {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .red-x {
+    z-index: 0;
+  }
+
+  /* ✅ Start the white X far off screen */
+  .white-x {
+    transform: translateX(-150vw); /* Start FAR left outside screen */
+    opacity: 0;
+    z-index: 1;
+  }
+
+  /* ✅ Animate it to land on top of red X */
+  .animate-x .white-x {
+    animation: slideInWhiteX 1s ease-out forwards;
+  }
+
+  @keyframes slideInWhiteX {
+    from {
+      transform: translateX(-150vw);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0); /* Align perfectly with red X */
+      opacity: 1;
+    }
+  }
+
+  /* Text size adjustments */
+  .tedx-box h2 {
+    font-size: 2rem;
+  }
+
+  .tedx-box p {
+    font-size: 1rem;
+  }
+}
