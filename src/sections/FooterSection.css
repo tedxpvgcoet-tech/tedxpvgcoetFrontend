@@ -263,6 +263,46 @@
   }
 }
 
+@media (min-width: 1500px) {
+  .footer-content {
+    max-width: 1600px;
+    padding: 7rem 4rem 5rem;
+    gap: 5rem;
+  }
+
+  .footer-links {
+    gap: 5rem;
+  }
+
+  .footer-links div {
+    min-width: 200px;
+  }
+
+  .footer-logo {
+    font-size: 2.5rem;
+  }
+
+  .footer-description,
+  .footer-links a,
+  .footer-links p,
+  .contact-card p {
+    font-size: 1.1rem;
+  }
+
+  .footer-icons a {
+    font-size: 1.7rem;
+  }
+
+  .footer-background-image {
+    background-size: 100% 100%; /* stretch more vertically */
+  }
+
+  .contact-card {
+    padding-right: 2.5rem;
+    margin-right: 2.5rem;
+  }
+}
+
 
 
 

@@ -183,3 +183,38 @@
 
 
 } 
+
+@media (min-width: 1500px) {
+  .navbar {
+    width: 98%;                /* Stretch nearly full width */
+    max-width: 1800px;         /* Allow more expansion */
+    padding: 0.75rem 2.5rem;   /* More breathing room */
+    font-size: 1.1rem;
+  }
+
+  .navbar-logo {
+    height: 60px;
+  }
+
+  .nav-item {
+    font-size: 22px;
+    margin: 0 1.5rem;
+  }
+
+  .nav-icon,
+  .nav-menu-icon {
+    font-size: 26px;
+  }
+
+  .nav-dropdown {
+    top: 80px;
+    right: 50px;
+    padding: 2.5rem 3rem;
+    min-width: 240px;
+  }
+
+  .nav-dropdown-item {
+    font-size: 20px;
+    margin: 20px 0;
+  }
+}
