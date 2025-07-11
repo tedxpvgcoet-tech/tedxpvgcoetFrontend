@@ -17,7 +17,6 @@ const SpeakerForm = () => {
     audience_impact: "",
   });
 
-  const [status, setStatus] = useState(null);
   const [submitting, setSubmitting] = useState(false);
 
   const handleChange = (e) => {
@@ -31,8 +30,7 @@ const SpeakerForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitting(true);
-    setStatus("Submitting...");
-  
+
     try {
       const res = await fetch("https://tedx-backend-tedz.onrender.com/speaker", {
         method: "POST",
@@ -41,15 +39,14 @@ const SpeakerForm = () => {
         },
         body: JSON.stringify(formData),
       });
-  
+
       const data = await res.json();
-  
+
       if (!res.ok) {
-        throw new Error(data.error || "Submission failed. Please try again.");
+        throw new Error(data.error || "Submission failed.");
       }
-  
-      setStatus("Submitted successfully!");
-  
+
+      // Reset form on success
       setFormData({
         name: "",
         email: "",
@@ -64,12 +61,11 @@ const SpeakerForm = () => {
       });
     } catch (error) {
       console.error("Submission error:", error);
-      setStatus(error.message || "Submission failed. Please try again.");
     } finally {
       setSubmitting(false);
     }
-  };  
-  
+  };
+
   return (
     <div className="hero-container1">
       <video autoPlay loop muted className="hero-video1">
@@ -181,11 +177,8 @@ const SpeakerForm = () => {
               <button type="submit" disabled={submitting}>
                 {submitting ? "Submitting..." : "Submit"}
               </button>
-
             </div>
           </form>
-
-          {status && <p className="form-status">{status}</p>}
         </div>
       </main>
       <FooterSection />
