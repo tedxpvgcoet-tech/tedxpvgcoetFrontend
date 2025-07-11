@@ -306,3 +306,59 @@
   }
 }
 
+@media (min-width: 1500px) {
+  .tedx-section1 {
+    padding: 4rem 5rem;
+    gap: 4rem;
+  }
+
+  .tedx-text-wrapper1 {
+    max-width: 800px;
+    width: 100%;
+  }
+
+  .tedx-box1 {
+    padding: 2.5rem 2.5rem 3rem 3rem;
+    border-radius: 24px;
+  }
+
+  .tedx-box1 h2 {
+    font-size: 3.5rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .tedx-box1 p {
+    font-size: 1.4rem;
+    line-height: 1.8;
+  }
+
+  .tedx-shadow1 {
+    top: 12px;
+    left: -12px;
+    border-radius: 24px;
+  }
+
+  .tedx-x-image {
+    max-width: 35%;
+    height: 100vh;
+  }
+
+  .red-x1,
+  .white-x1 {
+    width: 90%;
+    height: 90%;
+  }
+   .red-x1 {
+  bottom: -22px; /* Move down by 20px */
+}
+
+.white-x1 {
+  bottom: -20px; /* Slightly above red-x */
+}
+
+  .white-x1 {
+    transform: translate(5%, 5%);
+  }
+}
+
+
