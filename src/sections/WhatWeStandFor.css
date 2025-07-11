@@ -1,0 +1,260 @@
+.tedx-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black;
+  /* Make it full viewport height: */
+  min-height: 100vh;
+  padding: 2rem;      /* adjust as needed */
+  flex-wrap: wrap;    /* for small screens */
+}
+
+.tedx-text-wrapper {
+  position: relative;
+  width: 650px;
+  max-width: 90%;
+  margin-right: 5vw; /* optional */
+}
+
+.tedx-shadow {
+  position: absolute;
+  top: 10px;
+  left: -10px;
+  width: 100%;
+  height: 100%;
+  background-color: red;
+  border-radius: 20px;
+  z-index: 1;
+}
+
+.tedx-box {
+  position: relative;
+  background-color: #2e2e2e;
+  padding: 1rem 1rem 1.5rem 2rem;
+  border-radius: 20px;
+  color: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  z-index: 2;
+  text-align: right;
+}
+
+.tedx-box h2 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  font-family: 'Inter', sans-serif;
+}
+
+.tedx-box p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  font-family: 'Inter', sans-serif;
+}
+
+.highlight-red {
+  color: red;
+}
+
+/* X image stack */
+.tedx-x-image {
+ flex: 0 0 30%;
+  max-width: 30%;
+  position: relative;
+  padding: 0;
+  margin : 0;
+  height: 100vh;            /* full section height */
+  display: block;           /* no flex centering now */
+}
+
+.red-x {
+ position: absolute;
+  width: 80%;              /* full container width */
+  height: 60%;
+  bottom: 0;                /* flush to bottom */
+  right: 0;                 /* flush to right */
+  object-fit: contain;
+  z-index: 0;
+}
+
+.white-x {
+  position: absolute;
+  width: 80%;               /* smaller so red shows around edges */
+  height: 60%;
+  bottom: 1%;          /* lower on the page */
+  right: 1%;           /* further right */
+  transform: translate(5%, 5%); /* fine-tune overlap */
+  object-fit: contain;
+  z-index: 1;
+}
+/* Animations */
+.tedx-box,
+.tedx-box h2,
+.tedx-box p {
+  opacity: 1;
+  transform: none;
+}
+
+.animate .tedx-shadow {
+  animation: slideInUp 0.8s ease-out forwards;
+}
+
+
+/* Keyframes (same as before) */
+@keyframes slideInUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInDown {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .tedx-section {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .tedx-x-image {
+    width: 200px;
+  }
+
+  .tedx-box h2 {
+    font-size: 2rem;
+  }
+
+  .tedx-box p {
+    font-size: 1rem;
+  }
+}
+
+.white-x{
+  opacity: 0;
+}
+/* existing CSS... */
+
+/* slide the white X out when .animate-x is applied */
+.animate-x .white-x {
+  transform: translateX(40px);
+  animation: slideInRight1 0.8s ease-out 0.3s forwards;
+}
+
+@keyframes slideInRight1 {
+  from {
+    transform: translate(-200%, 5%);
+    opacity: 0;
+  }
+  to {
+    transform: translate(5%, 5%);
+    opacity: 1;
+  }
+}
+
+
+/* @media (max-width: 768px) {
+  .tedx-section {
+    flex-direction: column;
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .tedx-text-wrapper {
+    width: 100%;
+    margin: 0 auto 2rem;
+  }
+
+  .tedx-x-image {
+    max-width: 80%;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  .red-x,
+  .white-x {
+    height: 200px;
+    width: auto;
+    position: static;
+  }
+
+  .white-x {
+    transform: none;
+  }
+
+  .tedx-box h2 {
+    font-size: 2rem;
+  }
+
+  .tedx-box p {
+    font-size: 1rem;
+  }
+} */
+
+@media (max-width: 768px) {
+  .tedx-section {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 2rem 1rem;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .tedx-x-image {
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 600px;
+    z-index: 0;
+    opacity: 0.2; /* Make it subtle behind text */
+  }
+
+  .red-x,
+  .white-x {
+    position: absolute;
+    width: 500px;
+    height: 600px;
+    object-fit: contain;
+  }
+
+  .white-x {
+    transform: none;
+  }
+
+  .tedx-text-wrapper {
+    width: 100%;
+    max-width: 90%;
+    z-index: 1;
+  }
+
+  .tedx-box {
+    text-align: right;
+    padding: 1.5rem;
+  }
+
+  .tedx-box h2 {
+    font-size: 1.2rem;
+  }
+
+  .tedx-box p {
+    font-size: 0.95rem;
+  }
+}
+
