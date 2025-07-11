@@ -29,9 +29,9 @@ const FooterSection = () => {
           
 
           <div>
-            <Link to="/speaker-nomination">Speaker Nomination</Link>
+            <Link to="/speaker">Speaker Nomination</Link>
             <Link to="/Event">Events</Link>
-            <Link to="/sponsor-nomination">Partner With Us</Link>
+            <Link to="/sponsor">Partner With Us</Link>
             
           </div>
 

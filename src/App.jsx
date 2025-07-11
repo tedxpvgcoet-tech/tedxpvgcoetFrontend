@@ -17,8 +17,8 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/speaker-nomination" element={<SpeakerForm />} />
-        <Route path="/sponsor-nomination" element={<SponsorForm />} />
+        <Route path="/speaker" element={<SpeakerForm />} />
+        <Route path="/sponsor" element={<SponsorForm />} />
         <Route path="/Event" element={<Event />} />
         <Route path="/events/Punarutthan" element={<Punarutthan />} />
         <Route path="/events/AvantGarde" element={<AvantGarde />} />
