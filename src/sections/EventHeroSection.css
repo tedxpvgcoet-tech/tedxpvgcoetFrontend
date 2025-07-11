@@ -1,0 +1,140 @@
+.hero-container3{
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+}
+
+.hero-video3 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+.hero-text3 {
+  position: absolute;
+  top: 55%;          /* Push text lower */
+  left: 40%;
+  transform: translateY(-50%);
+  z-index: 1;
+  color: white;
+}
+
+.hero-text3 h1 {
+  margin: 0.2rem 0;     /* Reduce vertical spacing between lines */
+  line-height: 1.1;     /* Optional: adjust vertical alignment */
+}
+
+.event {
+  font-size: 6rem;
+  font-weight: 900;
+  color: red;
+  position: relative;
+  font-family: 'Inter', sans-serif;
+}
+
+.event::after {
+  content: 'Event';
+  position: absolute;
+  top: 0.25rem;
+  left: 0.25rem;
+  color: black;
+  z-index: -1;
+}
+
+
+/*.event {
+  font-size: 6rem;
+  color: #ff0000;
+}
+  text-shadow: 0 0 10px rgba(255, 0, 0, 0.7),
+               0 0 20px rgba(255, 0, 0, 0.6),
+               0 0 30px rgba(255, 0, 0, 0.5);
+  animation: pulse-glow 2.5s ease-in-out infinite;
+}*/
+
+/* Animation */
+/*@keyframes pulse-glow {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.7),
+                 0 0 20px rgba(255, 0, 0, 0.6),
+                 0 0 30px rgba(255, 0, 0, 0.5);
+    transform: scale(1);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(255, 0, 0, 1),
+                 0 0 30px rgba(255, 0, 0, 0.9),
+                 0 0 40px rgba(255, 0, 0, 0.8);
+    transform: scale(1.03);
+  }
+}*/
+
+
+@media (max-width: 768px) {
+  .event {
+    font-size: 4.3rem;
+  }
+
+
+}
+
+@media (max-width: 480px) {
+  .event {
+    font-size: 4.3rem;
+
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-container3 {
+    height: 80vh; /* Shorter height for tablets */
+  }
+
+  .hero-video3 {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    ;
+  }
+
+  .hero-text3 {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0 1rem;
+    text-align: center;
+  }
+
+  .event {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-container3 {
+    height: 70vh; /* More compact for phones */
+  }
+
+  .hero-video3 {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-text3 {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0 1rem;
+    text-align: center;
+  }
+
+  .event {
+    font-size: 2.5rem;
+  }
+}
+

@@ -1,0 +1,85 @@
+.AvantGarde-hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  color: white;
+  text-align: left;
+}
+
+.AvantGarde-text {
+  max-width: 800px;
+  animation: slideInText 1s ease-out forwards;
+  animation-delay: 0.5s;
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7); /* adjust opacity as needed */
+  z-index: 1;
+}
+
+.AvantGarde-text {
+  position: relative;
+  z-index: 2; /* ensures text appears above overlay */
+  max-width: 800px;
+  animation: slideInText 1s ease-out forwards;
+  animation-delay: 0.5s;
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+
+
+/* Slide-in keyframes */
+@keyframes slideInText {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+.AvantGarde-text h1 {
+  font-size: 2.5rem;
+  color: #e81b2a;
+  margin-bottom: 1rem;
+}
+
+.AvantGarde-text p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .AvantGarde-text {
+    padding: 1.5rem;
+  }
+
+  .AvantGarde-text h1 {
+    font-size: 2rem;
+  }
+
+  .AvantGarde-text p {
+    font-size: 1rem;
+  }
+} 

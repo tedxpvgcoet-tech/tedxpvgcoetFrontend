@@ -1,0 +1,122 @@
+/* 1. Base Layout: center everything */
+.subscribe-section {
+   display: grid;
+  place-items: center;
+  position: relative;
+  width: 100%;
+  /* height: 100vh;  ← remove this */
+  min-height: 100vh;  /* only ensures it’s *at least* full-screen */
+  background: black;
+  color: white;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+/* 2. Starburst logo pinned top-right */
+.subscribe-logo {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 90px;
+  height: 80px;
+  padding-right: 10px;
+}
+
+/* 3. Content container */
+.subscribe-content {
+  max-width: 1100px;
+  width: 100%;
+  padding: 0 1rem;
+  text-align: left;
+}
+
+/* 4. Fluid, responsive heading */
+.subscribe-content h2 {
+  margin: 0 0 2rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+  /* Clamp between 2rem and 3.5rem based on viewport */
+  font-size: clamp(2rem, 5vw, 3.5rem);
+}
+
+/* 5. Highlight color */
+.highlight-red {
+  color: #ff1a1a;
+}
+
+/* 6. Form layout */
+.subscribe-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* 7. Input styling */
+.subscribe-input {
+  flex: 1 1 300px;
+  min-width: 200px;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  max-height: 3rem;    /* never taller than 3rem */
+}
+
+/* 8. Button styling */
+.subscribe-button {
+  flex: 0 1 1200px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  background-color: #ff1a1a;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* 9. Responsive breakpoints */
+
+/* At <768px, stack the form vertically and center text */
+@media (max-width: 768px) {
+  .subscribe-content {
+    text-align: center;
+  }
+  .subscribe-form {
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;  /* center children horizontally */
+  }
+  .subscribe-input,
+  .subscribe-button {
+    width: 100%;
+  }
+
+  .subscribe-button {
+    width: auto;          /* shrink to content */
+    margin: 0 auto;       /* center button */
+  }
+}
+
+/* At <480px, shrink the logo and reduce padding */
+@media (max-width: 480px) {
+  .subscribe-section {
+    padding: 1rem;
+  }
+  .subscribe-logo {
+    top: 1rem;
+    right: 1rem;
+    padding-right: 10px;
+    width : 78px;
+  }
+  .subscribe-content {
+    padding: 0;
+  }
+
+  .subscribe-content h2{
+    text-align: left;
+  }
+}
