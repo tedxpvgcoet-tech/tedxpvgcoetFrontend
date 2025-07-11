@@ -206,6 +206,7 @@
   .form-inner-sponsor {
     max-width: 1400px; /* Increase this as needed */
     padding: 0 0;    /* Optional: More breathing space */
+    padding-top: 15px;
   }
 }
 

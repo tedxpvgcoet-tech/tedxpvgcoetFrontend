@@ -74,3 +74,18 @@
   }
 } 
 
+@media (min-width: 1000px) {
+  .punarutthan-text h1 {
+    font-size: 4rem; /* Increased from 2.5rem */
+  }
+
+  .punarutthan-text p {
+    font-size: 1.7rem; /* Increased from 1.1rem */
+    line-height: 1.8;  /* Slightly increased for better readability */
+  }
+
+  .punarutthan-text {
+    padding: 3rem;     /* Optional: more padding for larger screens */
+    max-width: 1000px; /* Optional: allow wider text block */
+  }
+}

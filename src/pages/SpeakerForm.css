@@ -28,7 +28,7 @@
   align-items: flex-start;
   justify-content: center;
   padding-top: 100px;
-  padding-bottom: 10px;
+  padding-bottom: 15px;
   box-sizing: border-box;
 }
 
@@ -163,5 +163,11 @@
 
   .speaker-form button {
     font-size: 1rem;
+  }
+}
+
+@media (min-width: 1500px) {
+  .form-inner h1 {
+    padding-top: 15px;
   }
 }
