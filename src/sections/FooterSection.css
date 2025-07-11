@@ -205,6 +205,64 @@
   min-width: 140px;
 }
 
+@media (min-width: 1024px) {
+  .footer-content {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 4rem;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: 4rem;
+    width: 100%;
+  }
+
+  .footer-links div {
+    min-width: 160px;
+  }
+
+  .contact-card {
+    border-right: 2px solid black;
+    padding-right: 2rem;
+    margin-right: 2rem;
+  }
+}
+
+@media (max-width: 1245px) and (min-width: 769px) {
+  .footer-links {
+    flex-wrap: wrap;
+    gap: 3rem;
+    justify-content: flex-start;
+  }
+
+  .footer-links div {
+    min-width: 45%;
+  }
+
+  .footer-content {
+    gap: 2rem;
+    padding: 5rem 2rem 3rem;
+  }
+
+  .contact-card p {
+    font-size: 0.95rem;
+    word-break: break-word;
+  }
+
+  .footer {
+  position: relative;
+  background: linear-gradient(to bottom, 
+              transparent 0%, 
+              transparent 50px, 
+              #EB0028 80px); /* red starts here */
+  }
+}
+
 
 
 
