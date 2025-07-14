@@ -1,7 +1,8 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import ScrollToTop from "./components/ScrollToTop"; // ✅ import here
+import ScrollToTop from "./components/ScrollToTop";
+import { inject } from "@vercel/analytics";
 
 import Home from "./pages/Home";
 import SpeakerForm from "./pages/SpeakerForm";
@@ -10,10 +11,12 @@ import Event from "./pages/Event";
 import Punarutthan from "./pages/Punarutthan";
 import AvantGarde from "./pages/AvantGarde";
 
+inject();
+
 function App() {
   return (
     <>
-      <ScrollToTop /> {/* ✅ include here */}
+      <ScrollToTop />
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
