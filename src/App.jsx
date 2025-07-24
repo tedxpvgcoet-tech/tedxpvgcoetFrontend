@@ -10,6 +10,7 @@ import SponsorForm from "./pages/SponsorForm";
 import Event from "./pages/Event";
 import Punarutthan from "./pages/Punarutthan";
 import AvantGarde from "./pages/AvantGarde";
+import TakeTheLeap from "./pages/TakeTheLeap"
 
 inject();
 
@@ -25,6 +26,7 @@ function App() {
         <Route path="/Event" element={<Event />} />
         <Route path="/events/Punarutthan" element={<Punarutthan />} />
         <Route path="/events/AvantGarde" element={<AvantGarde />} />
+        <Route path="/events/TakeTheLeap" element={<TakeTheLeap />} />
       </Routes>
     </>
   );

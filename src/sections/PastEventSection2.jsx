@@ -1,10 +1,8 @@
 // src/components/PastEventSection.jsx
 import { Link } from "react-router-dom";
-import "./PastEventSection1.css";
-import punarutthanImg from "../assets/Event/AvantGarde-bg.png"; // Use actual filename
+import "./PastEventSection2.css";
+import LeapImg from "../assets/Event/Take-the-leap-demo.png"; // Use actual filename
 import React, { useState, useEffect, useRef } from "react";
-
-
 
 
 const useInView = (options) => {
@@ -40,20 +38,19 @@ const PastEventSection1 = () => {
           ref={imgRef}
           className={`event-image1 ${imgVisible ? "slide-in-left" : ""}`}
         >
-          <img src={punarutthanImg} alt="Avant Garde Event" />
+          <img src={LeapImg} alt="Avant Garde Event" />
         </div>
 
         <div
           ref={textRef}
           className={`event-details1 ${textVisible ? "slide-in-right" : ""}`}
         >
-          <h2>Avant Garde</h2>
-          <p className="year1">2021</p>
+          <h2>Take the Leap</h2>
+          <p className="year1">2020</p>
           <p className="desc1">
-            "Avant Garde" embraces bold, unconventional ideas and celebrates those ahead of their time.
-It invites us to think differently and challenge the norm.
+            "Take the Leap" empowers us to embrace courage, step beyond our comfort zones, and ignite the spark of innovation. It invites us to transform challenges into opportunities and redefine what's possible.
           </p>
-          <Link to="/events/AvantGarde" className="see-more1">
+          <Link to="/events/TakeTheLeap" className="see-more1">
             See More
           </Link>
         </div>
