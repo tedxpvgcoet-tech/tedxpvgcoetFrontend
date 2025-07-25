@@ -19,57 +19,9 @@ const teamMembers = [
     role: "Treasurer ",
     img: require("../assets/Treasurer_Atharva_Ostwal.png")
   },
-  {
-    name: "Ayushi Chougule",
-    role: "Logistics and Operation Lead",
-    img: require("../assets/L&O_Ayushi_Chougule.png")
-  },
-  {
-    name: "Kasturi Bhandare",
-    role: "Logistics and Operation Lead",
-    img: require("../assets/L&O_Kasturi_Bhandare.png")
-  },
-  {
-    name: "Dhrushti Chilveri",
-    role: "Media and Communication Lead",
-    img: require("../assets/M&C_Dhrushti_Chilveri.png")
-  },
-  {
-    name: "Komal Pathare",
-    role: "Media and Communication Lead",
-    img: require("../assets/M&C_Komal_Pathare.png")
-  },
-  {
-    name: "Ved Dalvi",
-    role: "Finance & Sponsorship Lead",
-    img: require("../assets/F&S_Ved_Dalvi.png")
-  },
-  {
-    name: "Aditya Bhambe",
-    role: "Editorial Lead",
-    img: require("../assets/ED_Aditya_Bhambe.png")
-  },
-  {
-    name: "Aniket Gaudgaul",
-    role: "Curation Lead",
-    img: require("../assets/Curation_Aniket_Gaudgal.png")
-  },
-  {
-    name: "Ankita Renuse",
-    role: "Curation Lead",
-    img: require("../assets/Curation_Ankita_Renuse.png")
-  },
-  {
-    name: "Nirjara Mhaskar",
-    role: "Design & Production Lead",
-    img: require("../assets/D&P_Nirjara_Mhaskar.png")
-  },
-  {
-    name: "Ayush Koparde",
-    role: "Design & Production Lead",
-    img: require("../assets/D&P_Ayush_Koparde.png")
-  },
-  // Add more members as needed
+ 
+  
+    // Add more members as needed
 ];
 
 const PunarutthanTeamSection = () => {
@@ -77,7 +29,7 @@ const PunarutthanTeamSection = () => {
     <section className="team-section">
       <div className="team-section-dum">
 
-      <h2>Core Team</h2>
+      <h2>Team Punaratthan</h2>
       <div className="team-grid">
         {teamMembers.map((member, index) => (
           <div className="team-card" key={index}>
@@ -90,7 +42,7 @@ const PunarutthanTeamSection = () => {
         ))}
       </div>
       </div>
-      <FooterSection />
+      
     </section>
   );
 };
