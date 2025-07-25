@@ -12,7 +12,7 @@ const TakeTheLeapHeroSection = () => {
   <div className="AvantGarde-text">
     <h1>Take The Leap</h1>
     <p>
-     The TEDxPVGCOET theme "Take the Leap" is an invitation to embrace courage, step beyond conventional boundaries, and initiate transformative change. It embodies the spirit of risk-taking, the thrill of innovation, and the power of personal evolution. This theme encourages speakers and audiences alike to explore moments of decision that propel us forward—be it in career, creativity, or personal growth. "Take the Leap" challenges us to overcome hesitation, seize unforeseen opportunities, and trust in our ability to ascend to new heights, ultimately inspiring a journey of daring and discovery.</p>
+     The first ever event organized by TEDxPVGCOET, 'Take The Leap!', was themed aptly. Taking the leap is all about making the best of the freedom and liberty given to us, giving ourselves the chance to make mistakes and grow, paving the way for others to give their passion a chance, and throwing in all we have got and await all that life has in store for us. So, open your mind, unbound your thoughts, and let's together, Take the leap!.</p>
   </div>
 </div>
 

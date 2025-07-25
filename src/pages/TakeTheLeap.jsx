@@ -1,20 +1,17 @@
 import React from "react";
-import AvantGardeHeroSection from "../sections/AvantGardeHeroSection";
-import AvantGardeTalksSection from "../sections/AvantGardeTalkSection";
-import AvantGardeTeamSection from "../sections/AvantGardeTeamSection";
+import TakeTheLeapTalksSection from "../sections/TakeTheLeapTalkSection";
 import TakeTheLeapHeroSection from "../sections/TakeTheLeapHeroSection";
+import FooterSection from "../sections/FooterSection";
 
-
-const AvantGarde = () => {
+const TakeTheLeap = () => {
   return (
     <>
 
     <TakeTheLeapHeroSection />
-    <AvantGardeTalksSection/>
-    <AvantGardeTeamSection/>
-
+    <TakeTheLeapTalksSection/>
+     <FooterSection />
     </>
   );
 };
 
-export default AvantGarde;
+export default TakeTheLeap;

@@ -5,39 +5,45 @@ import { FaYoutube } from "react-icons/fa";
 // Replace these paths and links with your actual speaker data
 const speakers = [
   {
-    name: "Taufiq Qureshi",
-    desc: "World Music Pioneer",
-    img: require("../assets/Taufiq-Qureshi.jpg"),
-    link: "https://m.youtube.com/watch?v=PjFmBXxTHjQ"
+    name: "Greg Ellis",
+    desc: " American drummer and percussionist",
+    img: require("../assets/Event/Take The Leap/Greg-Elis.png"),
+    link: "https://youtu.be/d7f4yrJ6RoQ?si=xLe4j4y5GGUxMF-O"
   },
   {
-    name: "Ayesha Billimoria",
-    desc: "National Sprint Champion              ",
-    img: require("../assets/Ayesha-Billimoria.jpg"),
-    link: "https://m.youtube.com/watch?v=iRCqU9QkNiE"
+    name: "Gaurav Sangtani",
+    desc: " Founder President of Jigyasa Foundation",
+    img: require("../assets/Event/Take The Leap/Gaurav-Sangtani.png"),
+    link: "https://youtu.be/N0sJ3rAAqvI?si=tuDxLb48ZHvg8uWV"
   },
   {
-    name: "Kuntal Joisher",
-    desc: "Everest Climber",
-    img: require("../assets/kuntal-joisher.jpg"),
-    link: "https://m.youtube.com/watch?v=NcyKkzeZoLs"
+    name: "Rohan Albal",
+    desc: "Co-Founder & Chief Executive Officer at PowerDrift",
+    img: require("../assets/Event/Take The Leap/Rohan-Albal.png"),
+    link: "https://youtu.be/FtZTlce5kmw?si=eY1dxz_mri6PJt7R"
   },
   {
-    name: "Priyanka Kasture",
-    desc: "Influencer & Marketer",
-    img: require("../assets/priyanka-kasture.png"),
-    link: "https://m.youtube.com/watch?si=Y2_FQ2WdvarmtKXY&v=xv8aACt_OGo&feature=youtu.be"
+    name: "Saransh Sharma",
+    desc: "Accomplish writer",
+    img: require("../assets/Event/Take The Leap/Saransh-Sharma.png"),
+    link: "https://youtu.be/91euzYwihaE?si=TykaPCJiMfK3kWNn"
   },
   {
-    name: "Shreenand Bapat",
-    desc: "Historian & Researcher",
-    img: require("../assets/Shreenand-Bapat.jpeg"),
-    link: "https://m.youtube.com/watch?v=5syhwQTgPbY"
+    name: "Abhiram Joshi",
+    desc: "Creative Director",
+    img: require("../assets/Event/Take The Leap/Abhiram-Joshi.png"),
+    link: "https://youtu.be/yR_V4iyB3kQ?si=bgxbp3ppjgVMq925"
+  },
+  {
+    name: "Achuyt Godbole",
+    desc: "IITian & CEO",  
+    img: require("../assets/Event/Take The Leap/Achuyt-Godbole.png"),
+    link: "https://youtu.be/fb22W8dCvBY?si=GU5vK48Go-I910Cf"
   }
   // Add the remaining 4 speakers here
 ];
 
-const AvantGardeTalksSection = () => {
+const TakeTheLeapTalksSection = () => {
   return (
     <section className="talks-section2">
       <h2>Talks</h2>
@@ -64,4 +70,4 @@ const AvantGardeTalksSection = () => {
   );
 };
 
-export default AvantGardeTalksSection;
+export default TakeTheLeapTalksSection;

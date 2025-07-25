@@ -48,7 +48,7 @@ const PastEventSection1 = () => {
           <h2>Take the Leap</h2>
           <p className="year1">2020</p>
           <p className="desc1">
-            "Take the Leap" empowers us to embrace courage, step beyond our comfort zones, and ignite the spark of innovation. It invites us to transform challenges into opportunities and redefine what's possible.
+            Take The Leap! encourages us to unleash passion, challenge limits, and discover life's full potential
           </p>
           <Link to="/events/TakeTheLeap" className="see-more1">
             See More
