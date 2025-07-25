@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import "./PunarutthanTeamCurationSection.css";
 import FooterSection from "./FooterSection";
 
@@ -56,25 +56,50 @@ const teamMembers = [
 ];
 
 const PunarutthanCurationSection = () => {
-  return (
-    <section className="team-section">
-      <div className="team-section-dum">
-        <h2>Team Curation</h2>
-        <div className="team-grid">
-          {teamMembers.map((member, index) => (
-            <div className="team-card" key={member.name}>
-              <img src={member.img} alt={`Photo of ${member.name}`} />
-              <div className="team-info">
-                <h3>{member.name}</h3>
-                <p>{member.role}</p>
-              </div>
+  // State to manage visibility: initially false (show limited members)
+    const [showAllMembers, setShowAllMembers] = useState(false);
+
+    // Number of members to show initially (e.g., 2 rows of 3 = 6 members)
+    const initialMembersToShow = 3;
+
+    // Determine which members to render based on the 'showAllMembers' state
+    const membersToRender = showAllMembers
+        ? teamMembers
+        : teamMembers.slice(0, initialMembersToShow);
+
+    // Check if there are more members than the initial display count
+    const hasMoreMembers = teamMembers.length > initialMembersToShow;
+
+    return (
+        <section className="team-section">
+            <div className="team-section-dum">
+                <h2>Team Curation</h2>
+                <div className="team-grid">
+                    {membersToRender.map((member, index) => (
+                        <div className="team-card" key={index}>
+                            <img src={member.img} alt={member.name} />
+                            <div className="team-info">
+                                <h3>{member.name}</h3>
+                                <p>{member.role}</p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                {/* Render the "See More/Less" button only if there are more members */}
+                {hasMoreMembers && (
+                    <button
+                        className="see-more-btn" // Add this class to your CSS
+                        onClick={() => setShowAllMembers(!showAllMembers)}
+                    >
+                        {showAllMembers ? "See Less" : "See More"}
+                    </button>
+                )}
             </div>
-          ))}
-        </div>
-      </div>
-      
-    </section>
-  );
+            {/* You had FooterSection here previously, I've kept it as it was if you want it here */}
+            {/* <FooterSection /> */}
+        </section>
+    );
 };
 
 export default PunarutthanCurationSection;
