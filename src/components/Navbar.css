@@ -218,3 +218,27 @@
     margin: 20px 0;
   }
 }
+
+.transparent-navbar {
+  background-color: transparent !important;
+  backdrop-filter: none !important;
+  box-shadow: none !important;
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+}
+
+.transparent-navbar .nav-menu-icon {
+  color: red !important;
+  display: block;
+}
+
+.transparent-navbar .nav-icon {
+  color: rgb(234, 12, 12);
+}
+
+.transparent-navbar .navbar-logo {
+  filter: brightness(1.2);
+}
