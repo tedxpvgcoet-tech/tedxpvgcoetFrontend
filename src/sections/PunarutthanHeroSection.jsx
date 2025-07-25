@@ -1,6 +1,6 @@
 import React from "react";
 import "./PunarutthanHeroSection.css";
-import backgroundImage from "../assets/punarutthan-bg1.png"; // Replace with your actual image path
+import backgroundImage from "../assets/Event/punarutthan-bg1.png"; // Replace with your actual image path
 
 const PunarutthanHeroSection = () => {
   return (
