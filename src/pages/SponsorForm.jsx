@@ -43,7 +43,7 @@ const SponsorForm = () => {
     setSubmitting(true);
 
     try {
-      const res = await fetch("https://tedx-backend-tedz.onrender.com/sponsor", {
+      const res = await fetch("https://www.backend.tedxpvgcoet.in/sponsor", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -22,7 +22,7 @@ export default function SubscribeSection() {
     setSubmitting(true);
 
     try {
-      const res = await fetch("https://tedx-backend-tedz.onrender.com/subscriber", {
+      const res = await fetch("https://www.backend.tedxpvgcoet.in/subscriber", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
