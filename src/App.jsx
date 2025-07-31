@@ -10,12 +10,18 @@ import SponsorForm from "./pages/SponsorForm";
 import Event from "./pages/Event";
 import Punarutthan from "./pages/Punarutthan";
 import AvantGarde from "./pages/AvantGarde";
+import { Helmet } from "react-helmet"; 
 
 inject();
 
 function App() {
   return (
     <>
+
+      <Helmet>
+        <meta name="google-site-verification" content="efky2cFQbihVK_S-KaXPPK9S0J1-iJF7TMgFrAR8NXU" />
+      </Helmet>
+
       <ScrollToTop />
       <Navbar />
       <Routes>
