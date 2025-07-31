@@ -84,14 +84,14 @@
   }
 } 
 
-@media (min-width: 1000px) {
+@media (min-width: 1400px) {
   .AvantGarde-text h1 {
-    font-size: 4rem; /* Increased from 2.5rem */
+    font-size: 3.8rem; /* Increased from 2.5rem */
   }
 
   .AvantGarde-text p {
-    font-size: 1.7rem; /* Increased from 1.1rem */
-    line-height: 1.8;  /* Slightly increased for better readability */
+    font-size: 1.6rem; /* Increased from 1.1rem */
+    line-height: 1.3;  /* Slightly increased for better readability */
   }
 
   .AvantGarde-text {

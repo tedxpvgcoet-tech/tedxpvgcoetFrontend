@@ -50,6 +50,16 @@ const Navbar = () => {
           <Link to="/Event" className="nav-dropdown-item" onClick={() => setMenuOpen(false)}>
             Events
           </Link>
+          <br/>
+          <br/>
+          <Link to="/speaker" className="nav-dropdown-item" onClick={() => setMenuOpen(false)}>
+            Speaker Nomination
+          </Link>
+          <br/>
+          <br/>
+          <Link to="/sponsor" className="nav-dropdown-item" onClick={() => setMenuOpen(false)}>
+             Partner With Us
+          </Link>
           
 
         </div>
