@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import ScrollToTop from "./components/ScrollToTop";
 import { inject } from "@vercel/analytics";
+import { Helmet } from "react-helmet"; 
 
 import Home from "./pages/Home";
 import SpeakerForm from "./pages/SpeakerForm";
@@ -10,7 +11,6 @@ import SponsorForm from "./pages/SponsorForm";
 import Event from "./pages/Event";
 import Punarutthan from "./pages/Punarutthan";
 import AvantGarde from "./pages/AvantGarde";
-import { Helmet } from "react-helmet"; 
 
 inject();
 
