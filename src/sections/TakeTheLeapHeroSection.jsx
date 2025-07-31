@@ -1,11 +1,11 @@
 import React from "react";
 import "./TakeTheLeapHeroSection.css";
-import backgroundImage from "../assets/Event/Take-the-leap-demo.png"; // Replace with your actual image path
+import backgroundImage from "../assets/Event/Take-the-leap-bg-1.png"; // Replace with your actual image path
 
 const TakeTheLeapHeroSection = () => {
   return (
       <div
-  className="AvantGarde-hero"
+  className="takeLeap"
   style={{ backgroundImage: `url(${backgroundImage})` }}
 >
   <div className="overlay"></div> {/* Add this line */}

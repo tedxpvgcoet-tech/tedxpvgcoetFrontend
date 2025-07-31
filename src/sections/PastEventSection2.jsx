@@ -1,7 +1,7 @@
 // src/components/PastEventSection.jsx
 import { Link } from "react-router-dom";
 import "./PastEventSection2.css";
-import LeapImg from "../assets/Event/Take-the-leap-demo.png"; // Use actual filename
+import LeapImg from "../assets/Event/Take-the-leap-bg-1.png"; // Use actual filename
 import React, { useState, useEffect, useRef } from "react";
 
 

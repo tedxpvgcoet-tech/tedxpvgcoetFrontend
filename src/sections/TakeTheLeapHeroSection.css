@@ -14,6 +14,22 @@
   color: white;
   text-align: left;
 }
+.takeLeap{
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  color: white;
+  text-align: left;
+}
 
 .AvantGarde-text {
   max-width: 800px;
@@ -29,7 +45,7 @@
   left: 0;
   height: 100%;
   width: 100%;
-  background: rgba(0, 0, 0, 0.7); /* adjust opacity as needed */
+  background: rgba(0, 0, 0, 0.8); /* adjust opacity as needed */
   z-index: 1;
 }
 
