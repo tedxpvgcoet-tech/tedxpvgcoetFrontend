@@ -1,7 +1,7 @@
 // src/components/PastEventSection.jsx
 import { Link } from "react-router-dom";
 import "./PastEventSection1.css";
-import punarutthanImg from "../assets/AvantGarde-bg.png"; // Use actual filename
+import punarutthanImg from "../assets/Event/AvantGarde-bg.png"; // Use actual filename
 import React, { useState, useEffect, useRef } from "react";
 
 

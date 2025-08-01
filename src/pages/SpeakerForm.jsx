@@ -32,7 +32,7 @@ const SpeakerForm = () => {
     setSubmitting(true);
 
     try {
-      const res = await fetch("https://tedx-backend-tedz.onrender.com/speaker", {
+      const res = await fetch("https://www.backend.tedxpvgcoet.in/speaker", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

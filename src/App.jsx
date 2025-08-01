@@ -1,7 +1,9 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import ScrollToTop from "./components/ScrollToTop"; // ✅ import here
+import ScrollToTop from "./components/ScrollToTop";
+import { inject } from "@vercel/analytics";
+import { Helmet } from "react-helmet"; 
 
 import Home from "./pages/Home";
 import SpeakerForm from "./pages/SpeakerForm";
@@ -9,11 +11,19 @@ import SponsorForm from "./pages/SponsorForm";
 import Event from "./pages/Event";
 import Punarutthan from "./pages/Punarutthan";
 import AvantGarde from "./pages/AvantGarde";
+import TakeTheLeap from "./pages/TakeTheLeap"
+
+inject();
 
 function App() {
   return (
     <>
-      <ScrollToTop /> {/* ✅ include here */}
+
+      <Helmet>
+        <meta name="google-site-verification" content="efky2cFQbihVK_S-KaXPPK9S0J1-iJF7TMgFrAR8NXU" />
+      </Helmet>
+
+      <ScrollToTop />
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -22,6 +32,7 @@ function App() {
         <Route path="/Event" element={<Event />} />
         <Route path="/events/Punarutthan" element={<Punarutthan />} />
         <Route path="/events/AvantGarde" element={<AvantGarde />} />
+        <Route path="/events/TakeTheLeap" element={<TakeTheLeap />} />
       </Routes>
     </>
   );
