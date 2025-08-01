@@ -1,3 +1,36 @@
-# https://www.robotstxt.org/robotstxt.html
+
+# robots.txt for TEDx PVG COET (tedxpvgcoet.in)
+# Optimized for SEO & crawl efficiency
+
 User-agent: *
-Disallow:
+# Block sensitive or non-public areas
+Disallow: /admin/
+Disallow: /private/
+Disallow: /test/
+Disallow: /temp/
+
+# Prevent crawling of URLs with query parameters (if site generates filters/search)
+Disallow: /*?*
+
+# Allow all public content
+Allow: /
+Allow: /Event
+
+# Resources needed for rendering and SEO
+Allow: /*.js
+Allow: /*.css
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.png
+Allow: /*.svg
+Allow: /*.jsx
+
+
+
+
+# Sitemap declaration for better indexing
+Sitemap: https://www.tedxpvgcoet.in/sitemap.xml
+
+# Optional host directive for clarity
+Host: https://www.tedxpvgcoet.in
+

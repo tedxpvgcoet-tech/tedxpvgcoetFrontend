@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import ScrollToTop from "./components/ScrollToTop";
 import { inject } from "@vercel/analytics";
+import { Helmet } from "react-helmet"; 
 
 import Home from "./pages/Home";
 import SpeakerForm from "./pages/SpeakerForm";
@@ -17,6 +18,11 @@ inject();
 function App() {
   return (
     <>
+
+      <Helmet>
+        <meta name="google-site-verification" content="efky2cFQbihVK_S-KaXPPK9S0J1-iJF7TMgFrAR8NXU" />
+      </Helmet>
+
       <ScrollToTop />
       <Navbar />
       <Routes>
