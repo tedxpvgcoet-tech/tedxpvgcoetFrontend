@@ -14,12 +14,13 @@
   color: white;
   text-align: left;
 }
-.takeLeap{
+.takeLeap {
   position: relative;
   width: 100%;
   height: 100vh;
+  background-image: url("../assets/Event/Take-the-leap-bg-1.png");
   background-size: cover;
-  background-position: center;
+  background-position: right center;
   background-repeat: no-repeat;
   font-family: 'Inter', sans-serif;
   display: flex;
@@ -37,6 +38,8 @@
   animation-delay: 0.5s;
   padding: 2rem;
   border-radius: 10px;
+  align-self: right;
+  
 }
 
 .overlay {
@@ -45,7 +48,7 @@
   left: 0;
   height: 100%;
   width: 100%;
-  background: rgba(0, 0, 0, 0.8); /* adjust opacity as needed */
+  background: rgba(0, 0, 0, 0.83); /* adjust opacity as needed */
   z-index: 1;
 }
 
@@ -99,6 +102,15 @@
     font-size: 1rem;
   }
 } 
+
+@media (max-width: 768px) {
+  .takeLeap {
+    background-image: url("../assets/Event/TaekTheLeap-BG.jpg");
+    background-position: center 79px;
+    background-color: black;
+      background-size:cover;
+  }
+}
 
 @media (min-width: 1000px) {
   .AvantGarde-text h1 {
