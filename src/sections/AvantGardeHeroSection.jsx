@@ -1,6 +1,6 @@
 import React from "react";
 import "./AvantGardeHeroSection.css";
-import backgroundImage from "../assets/Event/AvantGarde-bg.png"; // Replace with your actual image path
+import backgroundImage from "../assets/AvantGarde-bg.png"; // Replace with your actual image path
 
 const AvantGardeHeroSection = () => {
   return (

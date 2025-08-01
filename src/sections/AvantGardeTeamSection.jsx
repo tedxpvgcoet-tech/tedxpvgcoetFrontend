@@ -1,5 +1,5 @@
 import React from "react";
-import "./TeamSection.css";
+import "./AvantGardeTeamSection.css";
 import FooterSection from "../sections/FooterSection";
 
 // Replace with actual team data and images

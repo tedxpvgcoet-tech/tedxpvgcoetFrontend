@@ -1,5 +1,5 @@
 import React from "react";
-import "./TeamSection.css";
+import "./PunarutthanTeamSection.css";
 import FooterSection from "../sections/FooterSection";
 
 // Replace with actual team data and images
@@ -26,15 +26,15 @@ const teamMembers = [
 
 const PunarutthanTeamSection = () => {
   return (
-    <section className="team-section3">
-        <div className="team-section3-dum">
+    <section className="team-section">
+      <div className="team-section-dum">
 
       <h2>Team Punaratthan</h2>
       <div className="team-grid">
         {teamMembers.map((member, index) => (
-          <div className="team-card3" key={index}>
+          <div className="team-card" key={index}>
             <img src={member.img} alt={member.name} />
-            <div className="team-info3">
+            <div className="team-info">
               <h3>{member.name}</h3>
               <p>{member.role}</p>
             </div>
