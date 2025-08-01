@@ -110,7 +110,7 @@ display: inline-block;
 
   .hero-sphere {
     height: 70px;
-    bottom: 60px;
+    bottom: 70px;
     right: 20px;
   }
 }
@@ -132,40 +132,4 @@ display: inline-block;
   }
 }
 
-@media (min-width: 1000px) and (max-width: 1499px) {
-  .tedx-section {
-    padding: 3rem 4rem;
-  }
-
-  .tedx-text-wrapper {
-    width: 700px;
-    max-width: 90%;
-  }
-
-  .tedx-box {
-    padding: 1.75rem 1.75rem 2rem 2.5rem;
-    border-radius: 22px;
-  }
-
-  .tedx-box h2 {
-    font-size: 3.5rem;
-  }
-
-  .tedx-box p {
-    font-size: 1.3rem;
-    line-height: 1.7;
-  }
-
-  .tedx-x-image {
-    width: 35%;
-    max-width: 35%;
-    height: 90vh;
-  }
-
-  .red-x,
-  .white-x {
-    width: 85%;
-    height: 65%;
-  }
-}
 
