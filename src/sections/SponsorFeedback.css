@@ -1,5 +1,5 @@
 .feedback-section {
-  margin-top: 4rem;
+  margin-top: 5rem;
   padding: 2rem 1rem;
   background: rgba(0, 0, 0, 0.6);
   border-radius: 10px;
@@ -96,6 +96,8 @@
 @media (max-width: 900px) {
   .feedback-section {
     padding: 1.5rem;
+    margin-top: 3rem;
+     margin-bottom: 2rem;
   }
 
   .feedback-section h2 {
@@ -108,6 +110,11 @@
 }
 
 @media (max-width: 600px) {
+  .feedback-section {
+    margin-bottom: 3rem;
+    margin-top: 5rem;
+    
+  }
   .feedback-section h2 {
     font-size: 1.75rem;
     text-align: center;
@@ -130,7 +137,9 @@
 @media (max-width: 500px) {
   .feedback-section {
     padding: 1rem;
-    margin-top: 2rem;
+    margin-top: 6rem;
+    margin-bottom: 3rem;
+    
   }
 
   .feedback-section h2 {

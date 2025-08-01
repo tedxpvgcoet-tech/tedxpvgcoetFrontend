@@ -1,0 +1,16 @@
+
+/* team.css */
+
+.team-page {
+  min-height: 100vh;
+  background-color: #171717;
+  background-image:
+    radial-gradient(circle at top left, rgba(255, 0, 0, 0.3) 0%, transparent 40%),
+    radial-gradient(circle at bottom right, rgba(255, 0, 0, 0.25) 0%, transparent 45%),
+    radial-gradient(circle at 80% 150%, rgba(255, 0, 0, 0.2) 0%, transparent 50%);
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  
+}
+

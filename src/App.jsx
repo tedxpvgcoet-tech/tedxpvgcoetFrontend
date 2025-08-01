@@ -9,6 +9,7 @@ import SponsorForm from "./pages/SponsorForm";
 import Event from "./pages/Event";
 import Punarutthan from "./pages/Punarutthan";
 import AvantGarde from "./pages/AvantGarde";
+import Team from "./pages/Team";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/Event" element={<Event />} />
         <Route path="/events/Punarutthan" element={<Punarutthan />} />
         <Route path="/events/AvantGarde" element={<AvantGarde />} />
+        <Route path="/Team" element={<Team />} />
       </Routes>
     </>
   );
