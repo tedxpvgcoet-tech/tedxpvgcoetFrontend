@@ -1,5 +1,3 @@
-
-
 .core-section {
   display: flex;
   align-items: center;
@@ -17,11 +15,32 @@
   justify-content: center;
 }
 
+/* Initial hidden state for animation */
 .core-image {
   width: 100%;
   max-width: 500px;
   height: auto;
   border-radius: 10px;
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+/* Triggered animation */
+.animate-image.core-image {
+  animation: slideInFromLeft 0.8s ease-out forwards;
+}
+
+/* Animation keyframes */
+@keyframes slideInFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .core-text {
@@ -60,6 +79,7 @@
   color: red;
 }
 
+/* Responsive adjustments */
 @media (max-width: 600px) {
   .core-section {
     flex-direction: column;
@@ -76,21 +96,22 @@
 
   .core-description {
     font-size: 1rem;
+    /* display: none; <-- REMOVED to show on mobile */
   }
 }
 
 @media (min-width: 601px) and (max-width: 992px) {
-    .core-description {
+  .core-description {
     padding-top: 80px;
     font-size: 1.1rem;
   }
 }
 
-@media (min-width: 993px){
-    .core-description {
+@media (min-width: 993px) {
+  .core-description {
     padding-top: 80px;
     font-size: 1.3rem;
-    }
+  }
 }
 
 @media (min-width: 1300px) {
@@ -99,19 +120,16 @@
   }
 
   .core-image {
-    max-width: 700px; /* Increase image size */
+    max-width: 700px;
   }
 
   .core-description {
     font-size: 1.7rem;
     line-height: 1.8;
-    padding-top: 80px; /* Optional: balance alignment */
-    
+    padding-top: 80px;
   }
 
   .core-button {
     font-size: 1.2rem;
   }
 }
-
-

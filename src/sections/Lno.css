@@ -1,5 +1,3 @@
-/* Curation.css */
-
 .lno-section {
   display: flex;
   align-items: center;
@@ -9,6 +7,18 @@
   color: white;
   flex-wrap: wrap;
   gap: 2rem;
+}
+
+.lno-image-container,
+.lno-text {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease-out;
+}
+
+.animate-lno {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .lno-image-container {
@@ -29,14 +39,6 @@
   max-width: 600px;
 }
 
-.lno-title {
-  font-size: 4rem;
-  color: red;
-  font-weight: 900;
-  margin-bottom: 1rem;
-  letter-spacing: 1px;
-}
-
 .lno-description {
   font-size: 1.2rem;
   font-style: italic;
@@ -44,6 +46,7 @@
   margin-bottom: 1.5rem;
   color: white;
   font-family: 'Kantumruy Pro', sans-serif;
+  padding-top: 0;
 }
 
 .lno-button {
@@ -60,6 +63,7 @@
   color: red;
 }
 
+/* Responsive Design */
 @media (max-width: 600px) {
   .lno-section {
     flex-direction: column;
@@ -70,27 +74,24 @@
     max-width: 100%;
   }
 
-  .lno-title {
-    font-size: 2.5rem;
-  }
-
   .lno-description {
     font-size: 1rem;
+    padding-top: 1rem;
   }
 }
 
 @media (min-width: 601px) and (max-width: 992px) {
-    .lno-description {
+  .lno-description {
     padding-top: 80px;
     font-size: 1.1rem;
   }
 }
 
-@media (min-width: 993px){
-    .lno-description {
+@media (min-width: 993px) {
+  .lno-description {
     padding-top: 80px;
     font-size: 1.3rem;
-    }
+  }
 }
 
 @media (min-width: 1300px) {
@@ -99,18 +100,16 @@
   }
 
   .lno-image {
-    max-width: 700px; /* Increase image size */
+    max-width: 700px;
   }
 
   .lno-description {
     font-size: 1.7rem;
     line-height: 1.8;
-    padding-top: 80px; /* Optional: balance alignment */
-    
+    padding-top: 80px;
   }
 
   .lno-button {
     font-size: 1.2rem;
   }
 }
-
