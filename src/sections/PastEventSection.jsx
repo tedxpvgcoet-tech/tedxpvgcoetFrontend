@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import "./PastEventSection.css";
-import punarutthanImg from "../assets/Event/Punarutthan-bg.jpg"; // Use actual filename
+import punarutthanImg from "../assets/Punarutthan-bg.jpg"; // Use actual filename
 import FooterSection from "../sections/FooterSection";
 
 const useInView = (options) => {
