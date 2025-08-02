@@ -242,3 +242,16 @@
 .transparent-navbar .navbar-logo {
   filter: brightness(1.2);
 }
+.team-navbar {
+  top: 16px;
+  background-color: rgba(255, 252, 252, 0.1);   /* more transparent */
+  backdrop-filter: blur(1.5px);           /* less blur */
+  -webkit-backdrop-filter: blur(1.5px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: top 0.3s ease, backdrop-filter 0.3s ease, background-color 0.3s ease;
+}
+
+/* Slightly raised on scroll */
+.team-navbar-scrolled {
+  top: 4px;
+}

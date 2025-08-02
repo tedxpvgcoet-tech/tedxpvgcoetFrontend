@@ -1,0 +1,63 @@
+.team-hero-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* default: left-align for mobile/tablet */
+  padding: 1rem;
+  background-color: transparent;
+  position: relative;
+}
+
+/* Center content on desktop only */
+@media (min-width: 993px) {
+  .team-hero-section {
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  height: 100vh;
+  }
+}
+
+/* Default: hide all */
+.team-hero-image {
+  display: none;
+  width: 100%;
+  height: auto;
+  padding-top: 90px;
+  margin-bottom: 1rem;
+}
+
+/* Show only on Desktop */
+.desktop-img {
+  display: block;
+}
+@media (max-width: 992px) {
+  .desktop-img {
+    display: none;
+  }
+}
+
+/* Show on Tablet */
+@media (min-width: 601px) and (max-width: 992px) {
+  .tablet-img {
+    display: block;
+  }
+}
+
+/* Show on Mobile */
+@media (max-width: 600px) {
+  .mobile-img {
+    display: block;
+  }
+}
+
+/* Red line with curved corners */
+.team-red-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: red;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
