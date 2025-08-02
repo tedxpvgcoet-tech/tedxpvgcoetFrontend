@@ -12,6 +12,7 @@ import Event from "./pages/Event";
 import Punarutthan from "./pages/Punarutthan";
 import AvantGarde from "./pages/AvantGarde";
 import Team from "./pages/Team";
+import CurationCard from "./sections/CurationCard"
 
 inject();
 
@@ -33,6 +34,7 @@ function App() {
         <Route path="/events/Punarutthan" element={<Punarutthan />} />
         <Route path="/events/AvantGarde" element={<AvantGarde />} />
         <Route path="/Team" element={<Team />} />  
+        <Route path="/curation-team" element={<CurationCard />} />  
       </Routes>
     </>
   );

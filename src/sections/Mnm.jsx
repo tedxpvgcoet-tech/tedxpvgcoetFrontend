@@ -12,8 +12,7 @@ const Mnm = () => {
       </div>
       <div className="mnm-text">
         <p className="mnm-description">
-          The TEDxPVGCOET Logistics and Operations (LNO) Team ensures smooth execution,
-          from stage setup to speaker coordination, enabling a seamless TEDx experience.
+          The TEDxPVGCOET Media & Marketing Team ignites engagement, from captivating content to widespread outreach, sharing every idea with the world
         </p>
         <Link to="/mnm-team" className="mnm-button">
           Learn More →
