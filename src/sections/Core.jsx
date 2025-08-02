@@ -12,8 +12,7 @@ const Core = () => {
       </div>
       <div className="core-text">
         <p className="core-description">
-          The TEDxPVGCOET Logistics and Operations (LNO) Team ensures smooth execution,
-          from stage setup to speaker coordination, enabling a seamless TEDx experience.
+          The TEDxPVGCOET Organizers orchestrate the entire symphony, from visionary planning to seamless execution, curating an unforgettable TEDx experience.
         </p>
         <Link to="/core-team" className="core-button">
           Learn More →
