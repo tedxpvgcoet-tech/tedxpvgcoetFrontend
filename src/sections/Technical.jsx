@@ -12,8 +12,7 @@ const Technical = () => {
       </div>
       <div className="technical-text">
         <p className="technical-description">
-          The TEDxPVGCOET Logistics and Operations (LNO) Team ensures smooth execution,
-          from stage setup to speaker coordination, enabling a seamless TEDx experience.
+          The TEDxPVGCOET Technical Team crafts the digital and audiovisual backbone, from crisp sound to flawless visuals, amplifying every idea worth spreading
         </p>
         <Link to="/technical-team" className="technical-button">
           Learn More →

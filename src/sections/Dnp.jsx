@@ -12,8 +12,7 @@ const Dnp = () => {
       </div>
       <div className="dnp-text">
         <p className="dnp-description">
-          The TEDxPVGCOET Logistics and Operations (LNO) Team ensures smooth execution,
-          from stage setup to speaker coordination, enabling a seamless TEDx experience.
+          The TEDxPVGCOET Design & Production Team transforms concepts into captivating realities, from stunning visuals to immersive experiences, bringing the TEDx vision to life.
         </p>
         <Link to="/dnp-team" className="dnp-button">
           Learn More →

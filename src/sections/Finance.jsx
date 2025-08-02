@@ -12,8 +12,7 @@ const Finance = () => {
       </div>
       <div className="fin-text">
         <p className="fin-description">
-          The TEDxPVGCOET Logistics and Operations (LNO) Team ensures smooth execution,
-          from stage setup to speaker coordination, enabling a seamless TEDx experience.
+          The TEDxPVGCOET Finance Team strategically manages resources, from budgeting to sponsorship, empowering the vision of an impactful TEDx event.
         </p>
         <Link to="/fin-team" className="fin-button">
           Learn More →
