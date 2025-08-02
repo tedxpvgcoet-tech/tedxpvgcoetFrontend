@@ -76,6 +76,7 @@
 
   .lno-description {
     font-size: 1rem;
+    display: none;
   }
 }
 
