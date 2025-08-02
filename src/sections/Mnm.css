@@ -1,4 +1,4 @@
-/* Curation.css */
+/* Mnm.css */
 
 .mnm-section {
   display: flex;
@@ -15,6 +15,14 @@
   flex: 1;
   display: flex;
   justify-content: center;
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: all 0.8s ease-out;
+}
+
+.mnm-image-container.animate-image {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .mnm-image {
@@ -60,6 +68,7 @@
   color: red;
 }
 
+/* ✅ Mobile Responsive */
 @media (max-width: 600px) {
   .mnm-section {
     flex-direction: column;
@@ -76,42 +85,46 @@
 
   .mnm-description {
     font-size: 1rem;
-    display: none;
+    display: block; /* ✅ Was 'none', now visible */
+    margin-top: 1rem;
+    line-height: 1.5;
+    padding: 0 1rem;
   }
 }
 
+/* Tablet */
 @media (min-width: 601px) and (max-width: 992px) {
-    .mnm-description {
+  .mnm-description {
     padding-top: 80px;
     font-size: 1.1rem;
   }
 }
 
-@media (min-width: 993px){
-    .mnm-description {
+/* Desktop */
+@media (min-width: 993px) {
+  .mnm-description {
     padding-top: 80px;
     font-size: 1.3rem;
-    }
+  }
 }
 
+/* Large Desktop */
 @media (min-width: 1300px) {
   .mnm-section {
     padding: 6rem 8rem;
   }
 
   .mnm-image {
-    max-width: 700px; /* Increase image size */
+    max-width: 700px;
   }
 
   .mnm-description {
     font-size: 1.7rem;
     line-height: 1.8;
-    padding-top: 80px; /* Optional: balance alignment */
-    
+    padding-top: 80px;
   }
 
   .mnm-button {
     font-size: 1.2rem;
   }
 }
-

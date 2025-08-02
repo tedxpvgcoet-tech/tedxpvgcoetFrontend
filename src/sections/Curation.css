@@ -1,52 +1,52 @@
-/* Curation.css */
-
-.curation-section {
+.curation {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 4rem 2rem;
-  background-color: transparent;
+  background: transparent;
   color: white;
   flex-wrap: wrap;
   gap: 2rem;
 }
 
-.curation-image-container {
+.curation-left {
   flex: 1;
   display: flex;
   justify-content: center;
+  min-height: 400px;
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: all 0.8s ease-out;
 }
 
-.curation-image {
+.curation-left.animate {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.curation-left img {
   width: 100%;
   max-width: 500px;
   height: auto;
   border-radius: 10px;
 }
 
-.curation-text {
+.curation-right {
   flex: 1;
   max-width: 600px;
+  text-align: left;
 }
 
-.curation-title {
-  font-size: 4rem;
-  color: red;
-  font-weight: 900;
-  margin-bottom: 1rem;
-  letter-spacing: 1px;
-}
-
-.curation-description {
+.curation-desc {
   font-size: 1.2rem;
   font-style: italic;
   line-height: 1.6;
   margin-bottom: 1.5rem;
-  color: white;
   font-family: 'Kantumruy Pro', sans-serif;
+  color: white;
 }
 
-.curation-button {
+.curation-btn {
   font-size: 1rem;
   color: white;
   text-decoration: none;
@@ -56,64 +56,66 @@
   font-family: 'Kantumruy Pro', sans-serif;
 }
 
-.curation-button:hover {
+.curation-btn:hover {
   color: red;
 }
 
+/* ✅ Responsive Design */
 @media (max-width: 600px) {
-  .curation-section {
+  .curation {
     flex-direction: column;
     text-align: center;
   }
 
-  .curation-text {
-    max-width: 100%;
+  .curation-right {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
   }
 
-  .curation-title {
-    font-size: 2.5rem;
-  }
-
-  .curation-description {
+  .curation-desc {
+    display: block;
     font-size: 1rem;
-    display: none;
+    padding: 1rem 0;
+  }
+
+  .curation-btn {
+    font-size: 1rem;
   }
 }
 
 @media (min-width: 601px) and (max-width: 992px) {
-    .curation-description {
-    padding-top: 80px;
+  .curation-desc {
+    padding-top: 40px;
     font-size: 1.1rem;
   }
 }
 
-@media (min-width: 993px){
-    .curation-description {
-    padding-top: 80px;
+@media (min-width: 993px) {
+  .curation-desc {
+    padding-top: 40px;
     font-size: 1.3rem;
-    }
+  }
 }
 
 @media (min-width: 1300px) {
-  .curation-section {
+  .curation {
     padding: 6rem 8rem;
   }
 
-  .curation-image {
-    max-width: 700px; /* Increase image size */
+  .curation-left img {
+    max-width: 700px;
   }
 
-  .curation-description {
+  .curation-desc {
     font-size: 1.7rem;
     line-height: 1.8;
-    padding-top: 80px; /* Optional: balance alignment */
-    
+    padding-top: 60px;
   }
 
-  .curation-button {
+  .curation-btn {
     font-size: 1.2rem;
   }
 }
-
-
-

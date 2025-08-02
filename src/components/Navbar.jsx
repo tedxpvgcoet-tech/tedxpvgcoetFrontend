@@ -1,5 +1,4 @@
-
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaInstagram, FaLinkedin, FaBars } from "react-icons/fa";
 import logo from "../assets/tedx-logo.png";
 import "./Navbar.css";
@@ -7,8 +6,12 @@ import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
-  const isEventPage = location.pathname === "/Event";
+
+  const path = location.pathname;
+  const isEventPage = path === "/Event";
+  const isTeamPage = path === "/Team";
 
   const handleScroll = (id) => {
     const section = document.getElementById(id);
@@ -18,8 +21,29 @@ const Navbar = () => {
     setMenuOpen(false);
   };
 
+  useEffect(() => {
+    if (!isTeamPage) return;
+
+    const handleScroll = () => {
+      if (window.scrollY > 10) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [isTeamPage]);
+
   return (
-    <nav className={`navbar ${isEventPage ? "transparent-navbar" : ""}`}>
+    <nav
+      className={`navbar 
+        ${isEventPage ? "event-navbar" : ""}
+        ${isTeamPage ? "team-navbar" : ""}
+        ${isTeamPage && scrolled ? "team-navbar-scrolled" : ""}
+      `}
+    >
       <div className="navbar-left">
         <Link to="/">
           <img src={logo} alt="TEDxPVGCOET Logo" className="navbar-logo" />
@@ -43,10 +67,7 @@ const Navbar = () => {
         >
           <FaLinkedin />
         </a>
-        <div
-          className="nav-menu-icon"
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
+        <div className="nav-menu-icon" onClick={() => setMenuOpen(!menuOpen)}>
           <FaBars />
         </div>
       </div>
@@ -60,10 +81,7 @@ const Navbar = () => {
           >
             Home
           </Link>
-          <p
-            className="nav-dropdown-item"
-            onClick={() => handleScroll("about")}
-          >
+          <p className="nav-dropdown-item" onClick={() => handleScroll("about")}>
             About
           </p>
           <Link
@@ -74,24 +92,34 @@ const Navbar = () => {
             Events
           </Link>
 
-          <br/>
-          <br/>
-          <Link to="/speaker" className="nav-dropdown-item" onClick={() => setMenuOpen(false)}>
+          <br />
+          <br />
+          <Link
+            to="/speaker"
+            className="nav-dropdown-item"
+            onClick={() => setMenuOpen(false)}
+          >
             Speaker Nomination
           </Link>
-          <br/>
-          <br/>
-          <Link to="/sponsor" className="nav-dropdown-item" onClick={() => setMenuOpen(false)}>
-             Partner With Us
+          <br />
+          <br />
+          <Link
+            to="/sponsor"
+            className="nav-dropdown-item"
+            onClick={() => setMenuOpen(false)}
+          >
+            Partner With Us
           </Link>
-          <br/>
-          <br/>
+          <br />
+          <br />
 
-          <Link to="/Team" className="nav-dropdown-item" onClick={() => setMenuOpen(false)}>
-             Team
+          <Link
+            to="/Team"
+            className="nav-dropdown-item"
+            onClick={() => setMenuOpen(false)}
+          >
+            Team
           </Link>
-          
-
         </div>
       )}
     </nav>
