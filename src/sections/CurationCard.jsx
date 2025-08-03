@@ -17,8 +17,13 @@ const curationTeam = [
   },
   {
     name: "Radha Hardikar",
-    role: "Curation Team Member",
+    role: "Curation Lead",
     image: require("../assets/B-W Individual/Curation/Cur_radha.jpg"),
+    social: {
+      linkedin: "#",
+      instagram: "#",
+      website: "#",
+    },
   },
   {
     name: "Samiksha Jadhav",

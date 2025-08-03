@@ -37,9 +37,9 @@ const Lno = () => {
       </div>
       <div className="lno-text">
         <p className="lno-description">
-          Step one: make a plan.
-          Step two: triple-check it. 
-          Step three: fix what broke anyway.
+          Step one: make a plan <br />
+          Step two: triple-check it. <br />
+          Step three: fix what broke anyway. <br />
           They do it all, and still stand tall. Spine of every TEDx move
         </p>
         <Link to="/logistics-team" className="lno-button">

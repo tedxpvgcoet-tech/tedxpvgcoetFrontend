@@ -33,7 +33,7 @@ const Curation = () => {
           They find the voices. You hear the echoes. Curation is where TEDx begins. They research, refine, and reach out- all to bring the right voices to the stage. Seekers of voices. Shapers of vision.
         </p>
         <a href="/curation-team" className="curation-btn">
-          Meet the Team
+          Learn More →
         </a>
       </div>
     </section>

@@ -38,7 +38,7 @@
 }
 
 .event::after {
-  content: 'Event';
+  content: 'Events';
   position: absolute;
   top: 0.25rem;
   left: 0.25rem;
