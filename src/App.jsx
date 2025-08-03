@@ -12,8 +12,15 @@ import Event from "./pages/Event";
 import Punarutthan from "./pages/Punarutthan";
 import AvantGarde from "./pages/AvantGarde";
 import Team from "./pages/Team";
-import CurationCard from "./sections/CurationCard"
-
+import CurationCard from "./sections/CurationCard";
+import LogisticsCard from "./sections/LogisticsCard";
+import MediaCard from "./sections/MediaCard";
+import EditorialCard from "./sections/EditorialCard";
+import FinanceCard from"./sections/FinanceCard";
+import DesignCard from "./sections/DesignCard";
+import TechnicalCard from"./sections/TechnicalCard";
+import OrganizersCard from "./sections/OrganizersCard";
+import Core from "./sections/Core"
 inject();
 
 function App() {
@@ -34,7 +41,19 @@ function App() {
         <Route path="/events/Punarutthan" element={<Punarutthan />} />
         <Route path="/events/AvantGarde" element={<AvantGarde />} />
         <Route path="/Team" element={<Team />} />  
-        <Route path="/curation-team" element={<CurationCard />} />  
+        <Route path="/core-team" element={<Core />} /> 
+        <Route path="/curation-team" element={<CurationCard />} /> 
+        <Route path="/logistics-team" element={<LogisticsCard />} />
+        <Route path="/media-team" element={<MediaCard />} /> 
+        <Route path="/editorial-team" element={<EditorialCard />} />
+        <Route path="/finance-team" element={<FinanceCard />} /> 
+        <Route path="/design-team" element={<DesignCard />} />  
+        <Route path="/technical-team" element={<TechnicalCard />} />  
+         <Route path="/organizers-team" element={<OrganizersCard />} /> 
+
+        
+         
+
       </Routes>
     </>
   );
