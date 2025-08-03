@@ -28,3 +28,7 @@ html, body {
 html {
   scroll-behavior: smooth;
 }
+
+.bg {
+  background-color: black;
+}

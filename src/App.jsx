@@ -20,6 +20,7 @@ import FinanceCard from"./sections/FinanceCard";
 import DesignCard from "./sections/DesignCard";
 import TechnicalCard from"./sections/TechnicalCard";
 import OrganizersCard from "./sections/OrganizersCard";
+import TakeTheLeap from "./pages/TakeTheLeap"
 
 inject();
 
@@ -40,6 +41,7 @@ function App() {
         <Route path="/Event" element={<Event />} />
         <Route path="/events/Punarutthan" element={<Punarutthan />} />
         <Route path="/events/AvantGarde" element={<AvantGarde />} />
+        <Route path="/events/TakeTheLeap" element={<TakeTheLeap />} />
         <Route path="/Team" element={<Team />} />  
         <Route path="/curation-team" element={<CurationCard />} /> 
         <Route path="/logistics-team" element={<LogisticsCard />} />
@@ -48,7 +50,7 @@ function App() {
         <Route path="/finance-team" element={<FinanceCard />} /> 
         <Route path="/design-team" element={<DesignCard />} />  
         <Route path="/technical-team" element={<TechnicalCard />} />  
-         <Route path="/organizers-team" element={<OrganizersCard />} /> 
+        <Route path="/organizers-team" element={<OrganizersCard />} /> 
 
         
          
