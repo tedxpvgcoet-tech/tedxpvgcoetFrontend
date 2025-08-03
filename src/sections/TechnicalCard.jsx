@@ -19,21 +19,41 @@ const curationTeam = [
     name: "Jagdish Prajapati",
     role: "Technical Team Member",
     image: require("../assets/B-W Individual/tech_jagdish.jpg"),
+    social: {
+      linkedin: "#",
+      instagram: "#",
+      website: "#",
+    },
   },
   {
     name: "Hussain Patanwala",
     role: "Technical Team Member",
     image: require("../assets/B-W Individual/tech_hussain.jpg"),
+    social: {
+      linkedin: "#",
+      instagram: "#",
+      website: "#",
+    },
   },
   {
     name: "Shrikant Mhaske",
     role: "Technical Team Member",
     image: require("../assets/B-W Individual/Tech_shrikant.jpg"),
+    social: {
+      linkedin: "#",
+      instagram: "#",
+      website: "#",
+    },
   },
   {
     name: "Atharva Kamble",
     role: "Technical Team Member",
     image: require("../assets/B-W Individual/tech_atharva.jpg"),
+    social: {
+      linkedin: "#",
+      instagram: "#",
+      website: "#",
+    },
   },
  
 

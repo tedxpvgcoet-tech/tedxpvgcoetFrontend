@@ -29,56 +29,111 @@ const curationTeam = [
     name: "Niyati Jadhav",
     role: "Logistics & Operations Team Member",
     image: require("../assets/B-W Individual/lno_niyati.jpg"),
+    social: {
+      linkedin: "#",
+      instagram: "#",
+      website: "#",
+    },
   },
   {
     name: "Roanak Rajurkar",
     role: "Logistics & Operations Team Member",
     image: require("../assets/B-W Individual/lno_roanak.jpg"),
+    social: {
+      linkedin: "#",
+      instagram: "#",
+      website: "#",
+    },
   },
   {
     name: "Janhavi Shinde",
     role: "Logistics & Operations Team Member",
     image: require("../assets/B-W Individual/lno_janhavi.jpg"),
+    social: {
+      linkedin: "#",
+      instagram: "#",
+      website: "#",
+    },
   },
   {
     name: "Atharva Deshmukh",
     role: "Logistics & Operations Team Member",
     image: require("../assets/B-W Individual/lno_atharva.jpg"),
+    social: {
+      linkedin: "#",
+      instagram: "#",
+      website: "#",
+    },
   },
   {
     name: "Alpesh Bhavar",
     role: "Logistics & Operations Team Member",
     image: require("../assets/B-W Individual/lno_alpesh.jpg"),
+    social: {
+      linkedin: "#",
+      instagram: "#",
+      website: "#",
+    },
   },
   {
     name: "Ayush Deshmukh",
     role: "Logistics & Operations Team Member",
     image: require("../assets/B-W Individual/lno_ayush.jpg"),
+    social: {
+      linkedin: "#",
+      instagram: "#",
+      website: "#",
+    },
   },
   {
     name: "Anish Kherdikar",
     role: "Logistics & Operations Team Member",
     image: require("../assets/B-W Individual/lno_anish.jpg"),
+    social: {
+      linkedin: "#",
+      instagram: "#",
+      website: "#",
+    },
   },
   {
     name: "Anushka Kanade",
     role: "Logistics & Operations Team Member",
     image: require("../assets/B-W Individual/lno_anushka.jpg"),
+    social: {
+      linkedin: "#",
+      instagram: "#",
+      website: "#",
+    },
   },
    {
     name: "Sukrut Angal",
     role: "Logistics & Operations Team Member",
     image: require("../assets/B-W Individual/lno_sukrut.jpg"),
+    social: {
+      linkedin: "#",
+      instagram: "#",
+      website: "#",
+    },
   },
    {
     name: "Fanaa Jain",
     role: "Logistics & Operations Team Member",
     image: require("../assets/B-W Individual/Lno_fana.jpg"),
+    social: {
+      linkedin: "#",
+      instagram: "#",
+      website: "#",
+    },
   },
    {
     name: "Krishna Gandhi",
     role: "Logistics & Operations Team Member",
     image: require("../assets/B-W Individual/lno_krishna.jpg"),
+    social: {
+      linkedin: "#",
+      instagram: "#",
+      website: "#",
+    },
   },
 
 ];

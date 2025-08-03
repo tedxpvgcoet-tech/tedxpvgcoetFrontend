@@ -29,36 +29,71 @@ const curationTeam = [
     name: "Samiksha Jadhav",
     role: "Curation Team Member",
     image: require("../assets/B-W Individual/Curation/Cur_samiksha.jpg"),
+        social: {
+      linkedin: "#",
+      instagram: "#",
+      website: "#",
+    },
   },
   {
     name: "Amey Pardeshi",
     role: "Curation Team Member",
     image: require("../assets/B-W Individual/Curation/cur_amey.jpg"),
+        social: {
+      linkedin: "#",
+      instagram: "#",
+      website: "#",
+    },
   },
   {
     name: "Rugved Dhole",
     role: "Curation Team Member",
     image: require("../assets/B-W Individual/Curation/cur_rugveda.jpg"),
+        social: {
+      linkedin: "#",
+      instagram: "#",
+      website: "#",
+    },
   },
   {
     name: "Ritika Paradkar",
     role: "Curation Team Member",
     image: require("../assets/B-W Individual/Curation/Cur_Ritika.jpg"),
+        social: {
+      linkedin: "#",
+      instagram: "#",
+      website: "#",
+    },
   },
   {
     name: "Archit Sonawane",
     role: "Curation Team Member",
     image: require("../assets/B-W Individual/Curation/Cur_archit.jpg"),
+        social: {
+      linkedin: "#",
+      instagram: "#",
+      website: "#",
+    },
   },
   {
     name: "Narayani Jalgaonkar",
     role: "Curation Team Member",
     image: require("../assets/B-W Individual/Curation/cur_narayani.jpg"),
+    social: {
+      linkedin: "#",
+      instagram: "#",
+      website: "#",
+    },
   },
   {
     name: "Ved Purohit",
     role: "Curation Team Member",
     image: require("../assets/B-W Individual/Curation/cur_ved.jpg"),
+        social: {
+      linkedin: "#",
+      instagram: "#",
+      website: "#",
+    },
   },
 
 ];

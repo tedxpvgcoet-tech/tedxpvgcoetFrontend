@@ -29,26 +29,47 @@ const curationTeam = [
     name: "Abhishek Rangole",
     role: "Editorial Team Member",
     image: require("../assets/B-W Individual/edi_abhishek.jpg"),
+    social: {
+      linkedin: "#",
+      instagram: "#",
+      website: "#",
+    },
   },
   {
     name: "Sneha Ghodke",
     role: "Editorial Team Member",
     image: require("../assets/B-W Individual/Edi_sneha.jpg"),
+    social: {
+      linkedin: "#",
+      instagram: "#",
+      website: "#",
+    },
   },
   {
     name: "Renuka Joshi",
     role: "Editorial Team Member",
     image: require("../assets/B-W Individual/edi_renuka.jpg"),
+    
   },
   {
     name: "Raviraj Bhoge",
     role: "Editorial Team Member",
     image: require("../assets/B-W Individual/edi_raviraj.jpg"),
+    social: {
+      linkedin: "#",
+      instagram: "#",
+      website: "#",
+    },
   },
   {
     name: "Omkar Hokarne",
     role: "Editorial Team Member",
     image: require("../assets/B-W Individual/Edi_omkar.jpg"),
+    social: {
+      linkedin: "#",
+      instagram: "#",
+      website: "#",
+    },
   },
  
 

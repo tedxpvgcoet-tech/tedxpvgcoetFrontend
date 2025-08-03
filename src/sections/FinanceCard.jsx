@@ -19,36 +19,71 @@ const curationTeam = [
     name: "Darshan Pakhale",
     role: "Finance Team Member",
     image: require("../assets/B-W Individual/Fin_darshan.jpg"),
+    social: {
+      linkedin: "#",
+      instagram: "#",
+      website: "#",
+    },
   },
   {
     name: "Kaustabh Nalawade",
     role: "Finance Team Member",
     image: require("../assets/B-W Individual/fin_kaustubh.jpg"),
+    social: {
+      linkedin: "#",
+      instagram: "#",
+      website: "#",
+    },
   },
   {
     name: "Girija Awate",
     role: "Finance Team Member",
     image: require("../assets/B-W Individual/fin_girija.jpg"),
+    social: {
+      linkedin: "#",
+      instagram: "#",
+      website: "#",
+    },
   },
   {
     name: "Devashree Deshpande",
     role: "Finance Team Member",
     image: require("../assets/B-W Individual/fin_devashree.jpg"),
+    social: {
+      linkedin: "#",
+      instagram: "#",
+      website: "#",
+    },
   },
   {
     name: "Mahek Mishra",
     role: "Finance Team Member",
     image: require("../assets/B-W Individual/Fin_mahek.jpg"),
+    social: {
+      linkedin: "#",
+      instagram: "#",
+      website: "#",
+    },
   },
   {
     name: "Aditya Bhise",
     role: "Finance Team Member",
     image: require("../assets/B-W Individual/fin_aditya.jpg"),
+    social: {
+      linkedin: "#",
+      instagram: "#",
+      website: "#",
+    },
   },
   {
     name: "Sanidhi Gade",
     role: "Finance Team Member",
     image: require("../assets/B-W Individual/fin_saanidhi.jpg"),
+    social: {
+      linkedin: "#",
+      instagram: "#",
+      website: "#",
+    },
   },
  
 

@@ -29,21 +29,41 @@ const curationTeam = [
     name: "Anuj Kale",
     role: "Design & Production Team Member",
     image: require("../assets/B-W Individual/dnp_anuj.jpg"),
+    social: {
+      linkedin: "#",
+      instagram: "#",
+      website: "#",
+    },
   },
   {
     name: "Sutirth Doshi",
     role: "Design & Production Team Member",
     image: require("../assets/B-W Individual/Dnp_sutirth.jpg"),
+    social: {
+      linkedin: "#",
+      instagram: "#",
+      website: "#",
+    },
   },
   {
     name: "Anuj Wagh",
     role: "Design & Production Team Member",
     image: require("../assets/B-W Individual/Dnp_anujw.jpg"),
+    social: {
+      linkedin: "#",
+      instagram: "#",
+      website: "#",
+    },
   },
   {
     name: "Avanti Satpute",
     role: "Design & Production Team Member",
     image: require("../assets/B-W Individual/Dnp_avanti.jpg"),
+    social: {
+      linkedin: "#",
+      instagram: "#",
+      website: "#",
+    },
   },
   
 

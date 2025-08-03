@@ -29,41 +29,81 @@ const curationTeam = [
     name: "Aryan Kanse",
     role: "Media & Marketing Team Member",
     image: require("../assets/B-W Individual/mnm_aryan.jpg"),
+    social: {
+      linkedin: "#",
+      instagram: "#",
+      website: "#",
+    },
   },
   {
     name: "Soham Kale",
     role: "Media & Marketing Team Member",
     image: require("../assets/B-W Individual/mnm_sohamk.jpg"),
+    social: {
+      linkedin: "#",
+      instagram: "#",
+      website: "#",
+    },
   },
   {
     name: "Soham Patwardhan",
     role: "Media & Marketing Team Member",
     image: require("../assets/B-W Individual/mnm_sohamp.jpg"),
+    social: {
+      linkedin: "#",
+      instagram: "#",
+      website: "#",
+    },
   },
   {
     name: "Ishika Dhorajkar",
     role: "Media & Marketing Team Member",
     image: require("../assets/B-W Individual/mnm_ishika.jpg"),
+    social: {
+      linkedin: "#",
+      instagram: "#",
+      website: "#",
+    },
   },
   {
     name: "Janhavi Salunkhe",
     role: "Media & Marketing Team Member",
     image: require("../assets/B-W Individual/Mnm_janhvi.jpg"),
+    social: {
+      linkedin: "#",
+      instagram: "#",
+      website: "#",
+    },
   },
   {
     name: "Rohan Naik",
     role: "Media & Marketing Team Member",
     image: require("../assets/B-W Individual/mnm_rohan.jpg"),
+    social: {
+      linkedin: "#",
+      instagram: "#",
+      website: "#",
+    },
   },
   {
     name: "Yash Garve",
     role: "Media & Marketing Team Member",
     image: require("../assets/B-W Individual/mnm_yash.jpg"),
+    social: {
+      linkedin: "#",
+      instagram: "#",
+      website: "#",
+    },
   },
   {
     name: "Atharva Joshi",
     role: "Media & Marketing Team Member",
     image: require("../assets/B-W Individual/mnm_atharva.jpg"),
+    social: {
+      linkedin: "#",
+      instagram: "#",
+      website: "#",
+    },
   },
 
 ];
