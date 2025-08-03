@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import ScrollToTop from "./components/ScrollToTop";
 import { inject } from "@vercel/analytics";
-import { Helmet } from "react-helmet"; 
+import { Helmet } from "react-helmet";
 
 import Home from "./pages/Home";
 import SpeakerForm from "./pages/SpeakerForm";
@@ -20,6 +20,7 @@ import FinanceCard from"./sections/FinanceCard";
 import DesignCard from "./sections/DesignCard";
 import TechnicalCard from"./sections/TechnicalCard";
 import OrganizersCard from "./sections/OrganizersCard";
+
 inject();
 
 function App() {
@@ -52,6 +53,7 @@ function App() {
         
          
 
+        <Route path="/curation-team" element={<CurationCard />} />  
       </Routes>
     </>
   );
