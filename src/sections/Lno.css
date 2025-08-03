@@ -9,29 +9,38 @@
   gap: 2rem;
 }
 
-.lno-image-container,
-.lno-text {
-  opacity: 0;
-  transform: translateY(50px);
-  transition: all 0.8s ease-out;
-}
-
-.animate-lno {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 .lno-image-container {
   flex: 1;
   display: flex;
   justify-content: center;
 }
 
+/* Hidden initial state */
 .lno-image {
   width: 100%;
   max-width: 500px;
   height: auto;
   border-radius: 10px;
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+/* Animation trigger */
+.animate-image.lno-image {
+  animation: slideInFromLeft 0.8s ease-out forwards;
+}
+
+/* Slide from left animation */
+@keyframes slideInFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .lno-text {
@@ -46,7 +55,6 @@
   margin-bottom: 1.5rem;
   color: white;
   font-family: 'Kantumruy Pro', sans-serif;
-  padding-top: 0;
 }
 
 .lno-button {

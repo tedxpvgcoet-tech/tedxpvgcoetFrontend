@@ -5,38 +5,37 @@ import { Link } from "react-router-dom";
 
 const Editorial = () => {
   const imageRef = useRef(null);
-  const textRef = useRef(null);
 
   useEffect(() => {
-    const imageEl = imageRef.current;
-    const textEl = textRef.current;
-
+    const currentImage = imageRef.current;
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("animate-editorial");
-          }
-        });
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          currentImage.classList.add("animate-image");
+          observer.unobserve(currentImage);
+        }
       },
       { threshold: 0.3 }
     );
 
-    if (imageEl) observer.observe(imageEl);
-    if (textEl) observer.observe(textEl);
+    if (currentImage) observer.observe(currentImage);
 
     return () => {
-      if (imageEl) observer.unobserve(imageEl);
-      if (textEl) observer.unobserve(textEl);
+      if (currentImage) observer.unobserve(currentImage);
     };
   }, []);
 
   return (
     <section className="editorial-section">
-      <div className="editorial-image-container" ref={imageRef}>
-        <img src={EdiImage} alt="Editorial Team" className="editorial-image" />
+      <div className="editorial-image-container">
+        <img
+          ref={imageRef}
+          src={EdiImage}
+          alt="Editorial Team"
+          className="editorial-image"
+        />
       </div>
-      <div className="editorial-text" ref={textRef}>
+      <div className="editorial-text">
         <p className="editorial-description">
           The TEDxPVGCOET Editorial Team crafts compelling content and ensures every
           message aligns with our event’s voice, clarity, and storytelling excellence.
