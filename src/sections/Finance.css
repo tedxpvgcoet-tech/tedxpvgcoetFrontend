@@ -1,3 +1,5 @@
+/* Curation.css */
+
 .fin-section {
   display: flex;
   align-items: center;
@@ -15,32 +17,11 @@
   justify-content: center;
 }
 
-/* Initial hidden state */
 .fin-image {
   width: 100%;
   max-width: 500px;
   height: auto;
   border-radius: 10px;
-  opacity: 0;
-  transform: translateX(-60px);
-  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-}
-
-/* Animation class trigger */
-.animate-image.fin-image {
-  animation: slideInFromLeft 0.8s ease-out forwards;
-}
-
-/* Keyframes */
-@keyframes slideInFromLeft {
-  0% {
-    opacity: 0;
-    transform: translateX(-60px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
 }
 
 .fin-text {
@@ -79,7 +60,7 @@
   color: red;
 }
 
-/* Responsive tweaks */
+/* Responsive */
 @media (max-width: 600px) {
   .fin-section {
     flex-direction: column;
@@ -100,17 +81,17 @@
 }
 
 @media (min-width: 601px) and (max-width: 992px) {
-  .fin-description {
+    .fin-description {
     padding-top: 80px;
     font-size: 1.1rem;
   }
 }
 
-@media (min-width: 993px) {
-  .fin-description {
+@media (min-width: 993px){
+    .fin-description {
     padding-top: 80px;
     font-size: 1.3rem;
-  }
+    }
 }
 
 @media (min-width: 1300px) {
@@ -119,16 +100,18 @@
   }
 
   .fin-image {
-    max-width: 700px;
+    max-width: 700px; /* Increase image size */
   }
 
   .fin-description {
     font-size: 1.7rem;
     line-height: 1.8;
-    padding-top: 80px;
+    padding-top: 80px; /* Optional: balance alignment */
+    
   }
 
   .fin-button {
     font-size: 1.2rem;
   }
 }
+

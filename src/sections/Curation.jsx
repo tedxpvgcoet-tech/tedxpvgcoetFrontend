@@ -1,40 +1,23 @@
-import React, { useEffect, useRef } from "react";
+// Curation.jsx
+import React from "react";
 import "./Curation.css";
-import curationImage from "../assets/curation.png";
+import curationImage from "../assets/curation.png"; // Replace with actual image path
+import { Link } from "react-router-dom";
 
 const Curation = () => {
-  const imageContainerRef = useRef(null);
-
-  useEffect(() => {
-    const currentRef = imageContainerRef.current;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("animate");
-        }
-      },
-      { threshold: 0.3 }
-    );
-
-    if (currentRef) observer.observe(currentRef);
-    return () => {
-      if (currentRef) observer.unobserve(currentRef);
-    };
-  }, []);
-
   return (
-    <section className="curation">
-      <div className="curation-left animate-on-scroll" ref={imageContainerRef}>
-        <img src={curationImage} alt="Curation Team" />
+    <section className="curation-section">
+      <div className="curation-image-container">
+        <img src={curationImage} alt="Curation Team" className="curation-image" />
       </div>
-      <div className="curation-right">
-        <p className="curation-desc">
-          The curation team is responsible for identifying, vetting, and guiding speakers to craft compelling and impactful TEDx talks. They ensure each story aligns with TED's mission of "ideas worth spreading".
+      <div className="curation-text">
+        
+        <p className="curation-description">
+          They find the voices. You hear the echoes. Curation is where TEDx begins. They research, refine, and reach out- all to bring the right voices to the stage. Seekers of voices. Shapers of vision.
         </p>
-        <a href="/punarutthan-team-curation" className="curation-btn">
-          Meet the Team
-        </a>
+        <Link to="/curation-team" className="curation-button">
+          Learn More →
+        </Link>
       </div>
     </section>
   );

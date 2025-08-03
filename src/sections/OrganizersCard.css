@@ -1,0 +1,272 @@
+/* CoreTeam.css */
+
+.core-team-page {
+  background-color: #0f0f0f;
+  min-height: 100vh;
+  padding: 4rem 2rem;
+  color: white;
+}
+
+.core-team-hero {
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.core-team-title {
+  font-size: 7rem;
+  color: red;
+  font-weight: 900;
+  text-align: center;
+  font-family: "Alfa Slab One", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.core-team-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  padding-top: 1rem;
+}
+
+/* Single row layout for each member */
+/* Member 1: Image-Info (Row 1) */
+.core-team-grid > :nth-child(1) { grid-column: 1; grid-row: 1; } /* Abhijeet Image */
+.core-team-grid > :nth-child(2) { grid-column: 2; grid-row: 1; } /* Abhijeet Info */
+
+/* Member 2: Info-Image (Row 2) */
+.core-team-grid > :nth-child(3) { grid-column: 2; grid-row: 2; } /* Avani Info */
+.core-team-grid > :nth-child(4) { grid-column: 1; grid-row: 2; } /* Avani Image */
+
+/* Member 3: Image-Info (Row 3) */
+.core-team-grid > :nth-child(5) { grid-column: 2; grid-row: 3; } /* Aarya Image */
+.core-team-grid > :nth-child(6) { grid-column: 1; grid-row: 3; } /* Aarya Info */
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .core-team-grid {
+    grid-template-columns: 1fr 1fr;
+    padding: 1rem;
+  }
+  
+  .core-team-hero {
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .core-team-title {
+    font-size: 6rem;
+    color: red;
+    font-weight: 900;
+    text-align: center;
+    font-family: "Alfa Slab One", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+}
+
+@media (max-width: 1180px) {
+  .core-team-hero {
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .core-team-title {
+    font-size: 6rem;
+    color: red;
+    font-weight: 900;
+    text-align: center;
+  }
+  
+  .core-team-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    row-gap: 0;
+  }
+  
+  .core-team-page {
+    padding: 1rem 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .core-team-hero {
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .core-team-title {
+    font-size: 6rem;
+    color: red;
+    font-weight: 900;
+    text-align: center;
+  }
+  
+  .core-team-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    row-gap: 0;
+  }
+  
+  .core-team-page {
+    padding: 2rem 1rem;
+  }
+}
+
+@media (max-width: 720px) {
+  .core-team-title {
+    font-size: 5.8rem;
+  }
+}
+
+
+
+@media (max-width: 510px) {
+  .core-team-hero {
+    height: 40vh;
+  }
+  .core-team-title {
+    font-size: 4.7rem;
+  }
+}
+
+@media (max-width: 592px) {
+  .core-team-hero {
+    height: 50vh;
+  }
+  .core-team-title {
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .core-team-title {
+    font-size: 3.8rem;
+  }
+}
+
+@media (max-width: 460px) {
+  .core-team-title {
+    font-size: 3.5rem;
+  }
+}
+
+@media (max-width: 430px) {
+  .core-team-hero {
+    height: 40vh;
+    padding-top: 2rem;
+  }
+  .core-team-title {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 390px) {
+  .core-team-hero {
+    height: 40vh;
+  }
+  .core-team-title {
+    font-size: 3.5rem;
+  }
+}
+
+@media (max-width: 350px) {
+  .core-team-hero {
+    height: 35vh;
+  }
+  .core-team-title {
+    font-size: 3rem;
+  }
+}
+
+/* Image tile */
+.core-team-img-tile {
+  background-color: black;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.core-team-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  aspect-ratio: 1/1;
+}
+
+/* Info tile */
+.core-team-info-tile {
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0.2rem 0.2rem;
+  border-radius: 5px;
+  font-family: "Kantumruy Pro", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: italic;
+  height: 100%;
+}
+
+.core-team-info-tile h3 {
+  font-size: 3rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.core-team-info-tile p {
+  font-size: 1rem;
+  color: #ccc;
+  margin-bottom: 0.5rem;
+}
+
+.core-team-social-icons {
+  margin-top: 0.5rem;
+}
+
+.core-team-social-icons a {
+  margin: 0 0.4rem;
+  color: white;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+.core-team-social-icons a:hover {
+  color: red;
+}
+
+/* Mobile-specific adjustments for tiles */
+@media (max-width: 768px) {
+  .core-team-info-tile {
+    padding: 1rem 0.5rem;
+  }
+  
+  .core-team-info-tile h3 {
+    font-size: 1.1rem;
+  }
+  
+  .core-team-info-tile p {
+    font-size: 0.9rem;
+  }
+  
+  .core-team-social-icons a {
+    font-size: 1rem;
+    margin: 0 0.3rem;
+  }
+}

@@ -20,7 +20,6 @@ import FinanceCard from"./sections/FinanceCard";
 import DesignCard from "./sections/DesignCard";
 import TechnicalCard from"./sections/TechnicalCard";
 import OrganizersCard from "./sections/OrganizersCard";
-import Core from "./sections/Core"
 inject();
 
 function App() {
@@ -41,7 +40,6 @@ function App() {
         <Route path="/events/Punarutthan" element={<Punarutthan />} />
         <Route path="/events/AvantGarde" element={<AvantGarde />} />
         <Route path="/Team" element={<Team />} />  
-        <Route path="/core-team" element={<Core />} /> 
         <Route path="/curation-team" element={<CurationCard />} /> 
         <Route path="/logistics-team" element={<LogisticsCard />} />
         <Route path="/media-team" element={<MediaCard />} /> 

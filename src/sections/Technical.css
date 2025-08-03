@@ -1,3 +1,5 @@
+/* Curation.css */
+
 .technical-section {
   display: flex;
   align-items: center;
@@ -15,32 +17,11 @@
   justify-content: center;
 }
 
-/* Initial hidden state for animation */
 .technical-image {
   width: 100%;
   max-width: 500px;
   height: auto;
   border-radius: 10px;
-  opacity: 0;
-  transform: translateX(-60px);
-  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-}
-
-/* Triggered animation */
-.animate-image.technical-image {
-  animation: slideInFromLeft 0.8s ease-out forwards;
-}
-
-/* Animation keyframes */
-@keyframes slideInFromLeft {
-  0% {
-    opacity: 0;
-    transform: translateX(-60px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
 }
 
 .technical-text {
@@ -79,7 +60,6 @@
   color: red;
 }
 
-/* Responsive adjustments */
 @media (max-width: 600px) {
   .technical-section {
     flex-direction: column;
@@ -96,22 +76,21 @@
 
   .technical-description {
     font-size: 1rem;
-    /* display: none; <-- REMOVED to ensure it's visible on mobile */
   }
 }
 
 @media (min-width: 601px) and (max-width: 992px) {
-  .technical-description {
+    .technical-description {
     padding-top: 80px;
     font-size: 1.1rem;
   }
 }
 
-@media (min-width: 993px) {
-  .technical-description {
+@media (min-width: 993px){
+    .technical-description {
     padding-top: 80px;
     font-size: 1.3rem;
-  }
+    }
 }
 
 @media (min-width: 1300px) {
@@ -120,16 +99,18 @@
   }
 
   .technical-image {
-    max-width: 700px;
+    max-width: 700px; /* Increase image size */
   }
 
   .technical-description {
     font-size: 1.7rem;
     line-height: 1.8;
-    padding-top: 80px;
+    padding-top: 80px; /* Optional: balance alignment */
+    
   }
 
   .technical-button {
     font-size: 1.2rem;
   }
 }
+
