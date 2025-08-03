@@ -36,8 +36,8 @@ const Dnp = () => {
       </div>
       <div className="dnp-text" ref={textRef}>
         <p className="dnp-description">
-          The TEDxPVGCOET Design & Production Team transforms concepts into captivating realities, from stunning visuals to immersive experiences, bringing the TEDx vision to life.
-        </p>
+                          The Vibe? Built. The Set? Engineered. The Elegance? Intentional. They dream in colour, build in rhythm, and leave no screw untightened. If the space speaks to you, they are the one's who taught it how.  </p>
+
         <Link to="/dnp-team" className="dnp-button">
           Learn More →
         </Link>

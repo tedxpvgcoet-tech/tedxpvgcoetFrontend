@@ -39,7 +39,7 @@ const Navbar = () => {
   return (
     <nav
       className={`navbar 
-        ${isEventPage ? "event-navbar" : ""}
+        ${isEventPage ? "transparent-navbar" : ""}
         ${isTeamPage ? "team-navbar" : ""}
         ${isTeamPage && scrolled ? "team-navbar-scrolled" : ""}
       `}

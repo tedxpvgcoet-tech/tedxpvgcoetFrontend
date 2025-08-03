@@ -37,8 +37,10 @@ const Lno = () => {
       </div>
       <div className="lno-text">
         <p className="lno-description">
-          The TEDxPVGCOET Logistics & Operations Team ensures smooth coordination,
-          strategic planning, and flawless execution of every on-ground activity.
+          Step one: make a plan.
+           Step two: triple-check it. 
+           Step three: fix what broke anyway.
+          They do it all, and still stand tall. Spine of every TEDx move
         </p>
         <Link to="/logistics-operations" className="lno-button">
           Learn More →

@@ -37,8 +37,7 @@ const Core = () => {
       </div>
       <div className="core-text">
         <p className="core-description">
-          The TEDxPVGCOET Organizers orchestrate the entire symphony, from visionary planning to seamless execution, curating an unforgettable TEDx experience.
-        </p>
+          The roots that sustain our ever-growing tree of ideas. Those who build, those who believe, and more importantly, those who continually support the notion of a community dedicated to spreading knowledge and provoking thought. Three Eyes. One Vision.        </p>
         <Link to="/core-team" className="core-button">
           Learn More →
         </Link>

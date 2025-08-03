@@ -30,7 +30,7 @@ const Curation = () => {
       </div>
       <div className="curation-right">
         <p className="curation-desc">
-          The curation team is responsible for identifying, vetting, and guiding speakers to craft compelling and impactful TEDx talks. They ensure each story aligns with TED's mission of "ideas worth spreading".
+          They find the voices. You hear the echoes. Curation is where TEDx begins. They research, refine, and reach out- all to bring the right voices to the stage. Seekers of voices. Shapers of vision.
         </p>
         <a href="/punarutthan-team-curation" className="curation-btn">
           Meet the Team

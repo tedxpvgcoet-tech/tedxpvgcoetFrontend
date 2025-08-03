@@ -41,8 +41,8 @@ const Finance = () => {
       </div>
       <div className="fin-text">
         <p className="fin-description">
-          The TEDxPVGCOET Finance Team strategically manages resources, from budgeting to sponsorship, empowering the vision of an impactful TEDx event.
-        </p>
+         Plan. Pitch. Provide. Garnering sponsorships, facilitating support and seamlessly tracking revenue and expenditure are all vital efforts being executed suently.
+They fund the dream and account for every detail. </p>
         <Link to="/fin-team" className="fin-button">
           Learn More →
         </Link>
