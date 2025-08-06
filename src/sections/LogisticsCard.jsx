@@ -142,7 +142,7 @@ const Logistics = () => {
   return (
     <div className="curation-page team-page">
         <div className="title-hero">
-      <h1 className="demo">LOGISTIC AND OPERATION</h1>
+      <h1 className="demo demo2">LOGISTIC AND OPERATION</h1>
         </div>
      <div className="curation-grid">
   {curationTeam.map((member, index) => {
