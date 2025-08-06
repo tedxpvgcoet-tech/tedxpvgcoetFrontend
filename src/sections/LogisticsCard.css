@@ -35,6 +35,24 @@
   padding-top:1rem;
 }
 
+.curation-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+}
+
+.curation-img-tile, .curation-info-tile {
+  height: 100%;
+  min-height: 100%; /* Ensure they fill the space */
+  border-radius: 0;
+}
+
+.chessboard-img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
 /* Responsive adjustments */
 @media (max-width: 1200px) {
   .curation-grid {
@@ -217,7 +235,13 @@
     height: 40vh;
   }
   .demo{
-    font-size: 3.5rem;
+    font-size: 2rem;
+  }
+  .curation-info-tile{
+    font-size: 0.5rem;
+  }
+  .demo2{
+        font-size: 2.8rem;
   }
 }
 @media (max-width: 350px) {
@@ -312,7 +336,7 @@
   text-align: center;
   text-align: center;
   padding: 0.2rem 0.2rem;
-  border-radius: 5px;
+  border-radius: 0px;
     font-family: "Kantumruy Pro", sans-serif;
     font-optical-sizing: auto;
   font-weight: 700;
