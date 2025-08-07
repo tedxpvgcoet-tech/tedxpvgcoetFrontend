@@ -20,9 +20,9 @@ const curationTeam = [
     role: "Technical Team Member",
     image: require("../assets/B-W Individual/tech_jagdish.jpg"),
     social: {
-      linkedin: "#",
+      linkedin: "https://www.linkedin.com/in/jagdish-15-prajapati/",
       instagram: "#",
-      website: "#",
+      website: "https://exercism.org/profiles/jagdishdrp",
     },
   },
   {
@@ -30,9 +30,9 @@ const curationTeam = [
     role: "Technical Team Member",
     image: require("../assets/B-W Individual/tech_hussain.jpg"),
     social: {
-      linkedin: "#",
-      instagram: "#",
-      website: "#",
+      linkedin: "https://www.linkedin.com/in/hussain-patanwala-9881b6328/",
+      instagram: "https://www.instagram.com/hussainn_53/",
+      website: "https://hussain053.github.io/Updated_Modern_Portfolio_2025/",
     },
   },
   {
@@ -40,7 +40,7 @@ const curationTeam = [
     role: "Technical Team Member",
     image: require("../assets/B-W Individual/Tech_shrikant.jpg"),
     social: {
-      linkedin: "#",
+      linkedin: "https://www.linkedin.com/in/shrikant-mhaske-920ab9290?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       instagram: "#",
       website: "#",
     },
@@ -50,8 +50,8 @@ const curationTeam = [
     role: "Technical Team Member",
     image: require("../assets/B-W Individual/tech_atharva.jpg"),
     social: {
-      linkedin: "#",
-      instagram: "#",
+      linkedin: "https://www.linkedin.com/in/atharva-kamble-10685928b/",
+      instagram: "https://www.instagram.com/atharva_kamble.09/",
       website: "#",
     },
   },

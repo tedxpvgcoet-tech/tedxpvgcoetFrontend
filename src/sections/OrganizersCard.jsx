@@ -9,8 +9,8 @@ const coreTeamMembers = [
     role: "Licensee, Organizer",
     image: require("../assets/B-W Individual/core_abhijeet.jpg"),
     social: {
-      linkedin: "#",
-      instagram: "#",
+      linkedin: "https://www.linkedin.com/in/abhijeet-thore-98909924a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      instagram: "https://www.instagram.com/abhijeet_thore2704?igsh=MXZzNWdjeTl5Nm1hMg==",
       website: "#",
     },
   },
@@ -19,8 +19,8 @@ const coreTeamMembers = [
     role: "Co Organizer",
     image: require("../assets/B-W Individual/core_avani.jpg"),
     social: {
-      linkedin: "#",
-      instagram: "#",
+      linkedin: "https://www.linkedin.com/in/avani-thakur-81b6351b2?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      instagram: "https://www.instagram.com/avani_thakur68?igsh=aWYwdHBxd2x3M240",
       website: "#",
     },
   },
@@ -29,8 +29,8 @@ const coreTeamMembers = [
     role: "Treasurer",
     image: require("../assets/B-W Individual/core_aarya.jpg"),
     social: {
-      linkedin: "#",
-      instagram: "#",
+      linkedin: "http://linkedin.com/in/aarya-gandhe",
+      instagram: "https://www.instagram.com/aarya_aaaaaaaa?igsh=cWI4MGJlejBjMXE4&utm_source=qr",
       website: "#",
     },
   },
