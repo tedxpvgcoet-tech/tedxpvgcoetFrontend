@@ -21,6 +21,8 @@ import DesignCard from "./sections/DesignCard";
 import TechnicalCard from"./sections/TechnicalCard";
 import OrganizersCard from "./sections/OrganizersCard";
 import TakeTheLeap from "./pages/TakeTheLeap"
+import DrishtiSection from "./sections/DrishtiSection"
+import PerspectiveSection from "./sections/PerspectiveSection"
 
 inject();
 
@@ -51,11 +53,11 @@ function App() {
         <Route path="/design-team" element={<DesignCard />} />  
         <Route path="/technical-team" element={<TechnicalCard />} />  
         <Route path="/organizers-team" element={<OrganizersCard />} /> 
+        <Route path="/curation-team" element={<CurationCard />} /> 
+        <Route path="/drishti-section" element={<DrishtiSection />} />
+        <Route path="/perspective-section" element={<PerspectiveSection />} />  
+  
 
-        
-         
-
-        <Route path="/curation-team" element={<CurationCard />} />  
       </Routes>
     </>
   );

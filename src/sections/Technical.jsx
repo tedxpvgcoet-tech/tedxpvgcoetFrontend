@@ -44,7 +44,7 @@ const Technical = () => {
       </div>
       <div className="technical-text" ref={textRef}>
         <p className="technical-description">
-                   From backstage bandwidth to centre-stage brilliance. Shifting screens, crafting digital marvels, making websites work in tandem with our ideas and vision, a brilliant network that connects us. And when something inevitably breaks? Well.. "it was working yesterday" Guardians of the Grid. </p>
+                 The Technical Team powers the digital infrastructure of TEDxPVGCOET. They manage the website, AV systems, livestreams, and real-time troubleshooting to ensure a smooth and glitch-free experience. </p>
 
         <Link to="/technical-team" className="technical-button">
           Learn More →

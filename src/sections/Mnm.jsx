@@ -35,7 +35,7 @@ const Mnm = () => {
       </div>
       <div className="mnm-text" ref={textRef}>
         <p className="mnm-description">
-         Because great ideas deserve to be seen, heard, and shared- with flair. They see moments before they happen, and make sure you see them too. They control the scroll, craft the frame, chase the spark. Your storytellers. Your strategists.
+        The Media and Marketing Team manages TEDxPVGCOET’s public presence. They drive communication strategies, social media campaigns, and visual storytelling to ensure the event reaches and resonates with its audience.
         </p>
 
         <Link to="/media-team" className="mnm-button">
