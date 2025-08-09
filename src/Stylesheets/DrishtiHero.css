@@ -33,7 +33,7 @@
   /*height: auto;*/
   height: 40rem;
   object-fit: contain;
-  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.9)); /* Glow effect */
+  /*filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.9)); /* Glow effect */
 }
 
 .drishti-hero__logo-component {
@@ -67,9 +67,41 @@
   font-weight: 200;
   text-align: center;
 }
+@media (max-width: 1440px) {
+  .drishti-hero__logo-image {
+    height: 35rem;
+  }
+  
+  .drishti-hero__title {
+    font-size: 3.5rem;
+  }
+  
+  .drishti-hero__description {
+    font-size: 1.5rem;
+  }
+}
+
+/* Desktop Styles */
+@media (max-width: 1200px) {
+  .drishti-hero__container {
+    gap: 2rem;
+    padding: 0 1rem;
+  }
+  
+  .drishti-hero__logo-image {
+    height: 30rem;
+  }
+  
+  .drishti-hero__title {
+    font-size: 3.2rem;
+  }
+  
+  .drishti-hero__description {
+    font-size: 1.4rem;
+  }
+}
 
 /* Tablet Styles */
-
 @media (max-width: 1024px) {
   .drishti-hero {
     padding: 1.5rem;
@@ -77,11 +109,15 @@
   
   .drishti-hero__container {
     gap: 2rem;
-    max-width: 900px;
+    justify-content: center;
   }
   
   .drishti-hero__logo-section {
-    max-width: 300px;
+    max-width: 350px;
+  }
+  
+  .drishti-hero__logo-image {
+    height: 25rem;
   }
   
   .drishti-hero__title {
@@ -89,26 +125,34 @@
   }
   
   .drishti-hero__description {
-    font-size: 1rem;
+    font-size: 1.3rem;
+    line-height: 1.3;
   }
 }
 
 /* Mobile Styles */
 @media (max-width: 768px) {
   .drishti-hero {
-    min-height: auto;
-    padding: 1rem;
+    min-height: 100vh;
+    padding: 2rem 1rem;
   }
   
   .drishti-hero__container {
     flex-direction: column;
+    justify-content: center;
     text-align: center;
-    gap: 2rem;
+    gap: 3rem;
+    height: 100%;
   }
   
   .drishti-hero__logo-section {
-    max-width: 250px;
+    max-width: 300px;
     order: 1;
+  }
+  
+  .drishti-hero__logo-image {
+    height: 20rem;
+    max-width: 100%;
   }
   
   .drishti-hero__content {
@@ -117,29 +161,67 @@
   }
   
   .drishti-hero__title {
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
+    font-size: 2.8rem;
+    margin-bottom: 2rem;
   }
   
   .drishti-hero__description {
-    font-size: 1rem;
-    line-height: 1.6;
-    text-align: left;
+    font-size: 1.1rem;
+    line-height: 1.4;
+    text-align: center;
+    max-width: 90%;
+    margin: 0 auto;
   }
 }
 
 /* Small Mobile Styles */
 @media (max-width: 480px) {
   .drishti-hero {
-    padding: 1rem 0.5rem;
+    padding: 1.5rem 0rem;
+    min-height: 100vh;
   }
   
   .drishti-hero__container {
-    gap: 1.5rem;
+    gap: 1rem;
+  }
+  
+  .drishti-hero__logo-section {
+    max-width: 250px;
+  }
+  
+  .drishti-hero__logo-image {
+    height: 16rem;
+  }
+  
+  .drishti-hero__title {
+    font-size: 2.2rem;
+    letter-spacing: 1px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .drishti-hero__description {
+    font-size: 1rem;
+    line-height: 1.5;
+    max-width: 95%;
+  }
+}
+
+/* Extra Small Mobile */
+@media (max-width: 360px) {
+  .drishti-hero {
+    padding: 1rem 0rem;
+  }
+  
+  .drishti-hero__container {
+    gap: 1rem;
   }
   
   .drishti-hero__logo-section {
     max-width: 200px;
+  }
+  
+  .drishti-hero__logo-image {
+    height: 14rem;
   }
   
   .drishti-hero__title {
@@ -149,22 +231,8 @@
   
   .drishti-hero__description {
     font-size: 0.9rem;
-    line-height: 1.5;
-  }
-}
-
-/* Extra Small Mobile */
-@media (max-width: 320px) {
-  .drishti-hero__logo-section {
-    max-width: 180px;
-  }
-  
-  .drishti-hero__title {
-    font-size: 1.8rem;
-  }
-  
-  .drishti-hero__description {
-    font-size: 0.85rem;
+    line-height: 1.4;
+    max-width: 100%;
   }
 }
 
