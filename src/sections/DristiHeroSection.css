@@ -13,7 +13,7 @@
   height: 100%;
   object-fit: cover;
 }
-
+/*
 .hero-overlay {
   position: absolute;
   bottom: 50px;
@@ -22,8 +22,8 @@
   display: flex;
   gap: 15px;
 }
-
-.watch-btn {
+*/
+/*.watch-btn {
   background: black;
   color: white;
   padding: 12px 24px;
@@ -50,4 +50,104 @@
 .learn-btn:hover {
   background: #e62b1e;
   color: white;
+}
+*/
+
+/*
+.watch-btn,
+.learn-btn {
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  min-width: 140px; /* keeps both buttons same size
+}
+
+
+.watch-btn {
+  background: black;
+  color: white;
+  border: 2px solid black;
+}
+
+.watch-btn:hover {
+  background: #e62b1e;
+  border-color: #e62b1e;
+}
+
+
+.learn-btn {
+  background: transparent;
+  color: black;
+  border: 2px solid #e62b1e;
+}
+
+.learn-btn:hover {
+  background: #e62b1e;
+  color: white;
+}
+*/
+
+
+
+
+/*
+.watch-btn {
+  background: transparent;
+  border: 2px solid white;
+  color: white;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.watch-btn:hover {
+  background: white;
+  color: black;
+}
+
+.learn-btn {
+  background: #e62b1e;
+  border: none;
+  color: white;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+.learn-btn:hover {
+  background: #c8231a;
+}
+*/
+
+
+.hero-overlay {
+ position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 15px;
+}
+
+.hero-btn {
+  min-width: 120px; /* ensures equal width */
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: rgba(255, 0, 0, 0.8);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+}
+
+.hero-btn:hover {
+  background-color: rgb(40, 38, 38);
 }

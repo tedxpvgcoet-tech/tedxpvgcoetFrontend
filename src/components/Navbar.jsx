@@ -12,6 +12,7 @@ const Navbar = () => {
   const path = location.pathname;
   const isEventPage = path === "/Event";
   const isTeamPage = path === "/Team";
+  const isThemePage = path === "/Dristi";
 
   const handleScroll = (id) => {
     const section = document.getElementById(id);
@@ -38,6 +39,7 @@ const Navbar = () => {
         className={`navbar 
         ${isEventPage ? "transparent-navbar" : ""}
         ${isTeamPage ? "team-navbar" : ""}
+        ${isThemePage ? "transparent-navbar" : ""}
         ${isTeamPage && scrolled ? "team-navbar-scrolled" : ""}
       `}
       >
