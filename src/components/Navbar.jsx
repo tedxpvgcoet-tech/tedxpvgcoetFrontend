@@ -25,11 +25,7 @@ const Navbar = () => {
     if (!isTeamPage) return;
 
     const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 10);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -37,92 +33,88 @@ const Navbar = () => {
   }, [isTeamPage]);
 
   return (
-    <nav
-      className={`navbar 
+    <>
+      <nav
+        className={`navbar 
         ${isEventPage ? "transparent-navbar" : ""}
         ${isTeamPage ? "team-navbar" : ""}
         ${isTeamPage && scrolled ? "team-navbar-scrolled" : ""}
       `}
-    >
-      <div className="navbar-left">
-        <Link to="/">
-          <img src={logo} alt="TEDxPVGCOET Logo" className="navbar-logo" />
+      >
+        <div className="navbar-left">
+          <Link to="/">
+            <img src={logo} alt="TEDxPVGCOET Logo" className="navbar-logo" />
+          </Link>
+        </div>
+
+        <div className="navbar-right">
+          <a
+            href="https://www.instagram.com/tedxpvgcoet/?hl=en"
+            target="_blank"
+            rel="noreferrer"
+            className="nav-icon"
+          >
+            <FaInstagram />
+          </a>
+          <a
+            href="https://www.linkedin.com/company/tedxpvgcoet/?originalSubdomain=in"
+            target="_blank"
+            rel="noreferrer"
+            className="nav-icon"
+          >
+            <FaLinkedin />
+          </a>
+          <div className="nav-menu-icon" onClick={() => setMenuOpen(true)}>
+            <FaBars />
+          </div>
+        </div>
+      </nav>
+
+      {/* Fullscreen Menu Overlay */}
+      <div className={`nav-fullscreen ${menuOpen ? "" : "closed"}`}>
+        <div className="nav-close-icon" onClick={() => setMenuOpen(false)}>
+          ✕
+        </div>
+        <Link
+          to="/"
+          className="nav-dropdown-item"
+          onClick={() => setMenuOpen(false)}
+        >
+          Home
+        </Link>
+        <p className="nav-dropdown-item" onClick={() => handleScroll("about")}>
+          About
+        </p>
+        <Link
+          to="/Event"
+          className="nav-dropdown-item"
+          onClick={() => setMenuOpen(false)}
+        >
+          Events
+        </Link>
+        <Link
+          to="/speaker"
+          className="nav-dropdown-item"
+          onClick={() => setMenuOpen(false)}
+        >
+          Speaker Nomination
+        </Link>
+        <Link
+          to="/sponsor"
+          className="nav-dropdown-item"
+          onClick={() => setMenuOpen(false)}
+        >
+          Partner With Us
+        </Link>
+        <Link
+          to="/Team"
+          className="nav-dropdown-item"
+          onClick={() => setMenuOpen(false)}
+        >
+          Team
         </Link>
       </div>
-
-      <div className="navbar-right">
-        <a
-          href="https://www.instagram.com/tedxpvgcoet/?hl=en"
-          target="_blank"
-          rel="noreferrer"
-          className="nav-icon"
-        >
-          <FaInstagram />
-        </a>
-        <a
-          href="https://www.linkedin.com/company/tedxpvgcoet/?originalSubdomain=in"
-          target="_blank"
-          rel="noreferrer"
-          className="nav-icon"
-        >
-          <FaLinkedin />
-        </a>
-        <div className="nav-menu-icon" onClick={() => setMenuOpen(!menuOpen)}>
-          <FaBars />
-        </div>
-      </div>
-
-      {menuOpen && (
-        <div className="nav-dropdown">
-          <Link
-            to="/"
-            className="nav-dropdown-item"
-            onClick={() => setMenuOpen(false)}
-          >
-            Home
-          </Link>
-          <p className="nav-dropdown-item" onClick={() => handleScroll("about")}>
-            About
-          </p>
-          <Link
-            to="/Event"
-            className="nav-dropdown-item"
-            onClick={() => setMenuOpen(false)}
-          >
-            Events
-          </Link>
-
-          <br />
-          <br />
-          <Link
-            to="/speaker"
-            className="nav-dropdown-item"
-            onClick={() => setMenuOpen(false)}
-          >
-            Speaker Nomination
-          </Link>
-          <br />
-          <br />
-          <Link
-            to="/sponsor"
-            className="nav-dropdown-item"
-            onClick={() => setMenuOpen(false)}
-          >
-            Partner With Us
-          </Link>
-          <br />
-          <br />
-
-          <Link
-            to="/Team"
-            className="nav-dropdown-item"
-            onClick={() => setMenuOpen(false)}
-          >
-            Team
-          </Link>
-        </div>
-      )}
-    </nav>
+    </>
   );
 };
 
