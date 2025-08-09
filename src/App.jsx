@@ -20,7 +20,9 @@ import FinanceCard from"./sections/FinanceCard";
 import DesignCard from "./sections/DesignCard";
 import TechnicalCard from"./sections/TechnicalCard";
 import OrganizersCard from "./sections/OrganizersCard";
+import DristiHeroSection from "./sections/DristiHeroSection";
 import TakeTheLeap from "./pages/TakeTheLeap"
+import ThemePage from "./pages/ThemePage";
 
 inject();
 
@@ -51,6 +53,7 @@ function App() {
         <Route path="/design-team" element={<DesignCard />} />  
         <Route path="/technical-team" element={<TechnicalCard />} />  
         <Route path="/organizers-team" element={<OrganizersCard />} /> 
+        <Route path="/Dristi" element={<ThemePage />} /> 
 
         
          
