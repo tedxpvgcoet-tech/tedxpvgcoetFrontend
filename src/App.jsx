@@ -53,8 +53,6 @@ function App() {
         <Route path="/technical-team" element={<TechnicalCard />} />  
         <Route path="/organizers-team" element={<OrganizersCard />} /> 
         <Route path="/temp" element={<DrishtiHero />} /> 
-
-        
          
 
         <Route path="/curation-team" element={<CurationCard />} />  
