@@ -1,0 +1,185 @@
+/* DrishtiHero Component Styles - Simple Structure */
+
+.drishti-hero {
+  min-height: 100vh;
+  background-color: #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.drishti-hero__container {
+ /* max-width: 1200px;*/
+ height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 3rem;
+}
+
+/* Logo Section - Left Side */
+.drishti-hero__logo-section {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 400px;
+}
+
+.drishti-hero__logo-image {
+  max-width: 100%;
+  /*height: auto;*/
+  height: 40rem;
+  object-fit: contain;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.9)); /* Glow effect */
+}
+
+.drishti-hero__logo-component {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Content Section - Right Side */
+.drishti-hero__content {
+  flex: 1;
+  max-width: 600px;
+  color: #ffffff;
+}
+
+.drishti-hero__title {
+  font-size: 4rem;
+  font-weight: 800;
+  margin: 0 0 2rem 0;
+  color: #ffffff;
+  letter-spacing: 2px;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.drishti-hero__description {
+  font-size: 1.7rem;
+  line-height: 1.1;
+  color: #e0e0e0;
+  margin: 0;
+  font-weight: 200;
+  text-align: center;
+}
+
+/* Tablet Styles */
+
+@media (max-width: 1024px) {
+  .drishti-hero {
+    padding: 1.5rem;
+  }
+  
+  .drishti-hero__container {
+    gap: 2rem;
+    max-width: 900px;
+  }
+  
+  .drishti-hero__logo-section {
+    max-width: 300px;
+  }
+  
+  .drishti-hero__title {
+    font-size: 3rem;
+  }
+  
+  .drishti-hero__description {
+    font-size: 1rem;
+  }
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .drishti-hero {
+    min-height: auto;
+    padding: 1rem;
+  }
+  
+  .drishti-hero__container {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+  }
+  
+  .drishti-hero__logo-section {
+    max-width: 250px;
+    order: 1;
+  }
+  
+  .drishti-hero__content {
+    max-width: none;
+    order: 2;
+  }
+  
+  .drishti-hero__title {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .drishti-hero__description {
+    font-size: 1rem;
+    line-height: 1.6;
+    text-align: left;
+  }
+}
+
+/* Small Mobile Styles */
+@media (max-width: 480px) {
+  .drishti-hero {
+    padding: 1rem 0.5rem;
+  }
+  
+  .drishti-hero__container {
+    gap: 1.5rem;
+  }
+  
+  .drishti-hero__logo-section {
+    max-width: 200px;
+  }
+  
+  .drishti-hero__title {
+    font-size: 2rem;
+    letter-spacing: 1px;
+  }
+  
+  .drishti-hero__description {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+}
+
+/* Extra Small Mobile */
+@media (max-width: 320px) {
+  .drishti-hero__logo-section {
+    max-width: 180px;
+  }
+  
+  .drishti-hero__title {
+    font-size: 1.8rem;
+  }
+  
+  .drishti-hero__description {
+    font-size: 0.85rem;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus styles for accessibility */
+.drishti-hero__logo-image:focus,
+.drishti-hero:focus-within {
+  outline: 2px solid #4ecdc4;
+  outline-offset: 4px;
+}
