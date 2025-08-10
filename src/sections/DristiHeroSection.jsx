@@ -42,7 +42,7 @@ export default DristiHeroSection;
 */
 import React from "react";
 import "./DristiHeroSection.css";
-import sampleVideo from "../assets/Event-bg.mp4";
+import sampleVideo from "../assets/themeReveal.mp4";
 
 const DristiHeroSection = () => {
   const handleWatchClick = () => {
