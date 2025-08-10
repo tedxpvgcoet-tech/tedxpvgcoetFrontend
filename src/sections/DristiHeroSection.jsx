@@ -46,7 +46,7 @@ import sampleVideo from "../assets/Event-bg.mp4";
 
 const DristiHeroSection = () => {
   const handleWatchClick = () => {
-    window.open("https://your-instapage-link.com", "_blank");
+    window.open("https://www.instagram.com/p/DNEFw7_ImjI/", "_blank");
   };
 
   const handleLearnMoreClick = () => {
@@ -68,12 +68,20 @@ const DristiHeroSection = () => {
       ></video>
 
       <div className="hero-overlay">
-        <button className="hero-btn" onClick={handleWatchClick}>
-          Watch
-        </button>
-        <button className="hero-btn" onClick={handleLearnMoreClick}>
-          Learn More
-        </button>
+       <button className="watch-btn" onClick={handleWatchClick}>
+  Watch
+</button>
+<button
+  className="learn-btn"
+  onClick={() =>
+    document.getElementById("learn-section").scrollIntoView({
+      behavior: "smooth",
+    })
+  }
+>
+  Learn More
+</button>
+
       </div>
     </div>
   );

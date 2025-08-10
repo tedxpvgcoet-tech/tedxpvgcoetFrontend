@@ -38,7 +38,7 @@ function App() {
       <ScrollToTop />
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<ThemePage />} />
         <Route path="/speaker" element={<SpeakerForm />} />
         <Route path="/sponsor" element={<SponsorForm />} />
         <Route path="/Event" element={<Event />} />
@@ -54,7 +54,7 @@ function App() {
         <Route path="/design-team" element={<DesignCard />} />  
         <Route path="/technical-team" element={<TechnicalCard />} />  
         <Route path="/organizers-team" element={<OrganizersCard />} /> 
-        <Route path="/Dristi" element={<ThemePage />} /> 
+        <Route path="/about" element={<Home />} /> 
 
         
          

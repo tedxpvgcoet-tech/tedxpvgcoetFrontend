@@ -12,7 +12,7 @@ const Navbar = () => {
   const path = location.pathname;
   const isEventPage = path === "/Event";
   const isTeamPage = path === "/Team";
-  const isThemePage = path === "/Dristi";
+  const isThemePage = path === "/";
 
   const handleScroll = (id) => {
     const section = document.getElementById(id);
@@ -84,9 +84,14 @@ const Navbar = () => {
         >
           Home
         </Link>
-        <p className="nav-dropdown-item" onClick={() => handleScroll("about")}>
+        <Link
+          to="/about"
+          className="nav-dropdown-item"
+          onClick={() => setMenuOpen(false)}
+        >
           About
-        </p>
+        </Link>
+       
         <Link
           to="/Event"
           className="nav-dropdown-item"
