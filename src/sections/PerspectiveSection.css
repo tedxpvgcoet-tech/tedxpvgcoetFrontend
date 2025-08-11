@@ -1,6 +1,10 @@
+.grey{
+    background-color: #171717;
+
+}
 .perspective {
   padding: 40px 20px;
-  background-color: #111;
+  background-color: #171717;
   color: white;
   text-align: left; /* Left align heading */
 }

@@ -22,11 +22,13 @@ import DrishtiSection from '../sections/DrishtiSection'
 const ThemePage = () => {
   return (
     <>
+    
       <DristiHeroSection />
       <div id="learn-section">
         <DrishtiHero />
         <DrishtiSection />
         <PerspectiveSection />
+        
       </div>
     </>
   )

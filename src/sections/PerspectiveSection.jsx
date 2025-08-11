@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./PerspectiveSection.css";
 import FooterSection from "./FooterSection";
 
+
 const images = [
   { id: 1, src: "https://picsum.photos/id/1015/400/500", text: "Illusion Artwork 1" },
   { id: 2, src: "https://picsum.photos/id/1025/400/500", text: "Illusion Artwork 2" },
@@ -30,6 +31,7 @@ export default function PerspectiveSection() {
   };
 
   return (
+    <section className="grey">
     <section className="perspective">
       <h2>Perspective</h2>
       <div className="grid">
@@ -47,7 +49,8 @@ export default function PerspectiveSection() {
           </div>
         ))}
       </div>
-      <FooterSection />
+    </section>
+    <FooterSection />
     </section>
   );
 }
