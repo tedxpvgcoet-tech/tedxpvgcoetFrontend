@@ -12,199 +12,133 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  z-index: -1;
 }
+
 .hero-overlay {
   position: absolute;
-  bottom: 50px;
+  bottom: 30px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   gap: 15px;
-  flex-wrap: wrap;
-  justify-content: center;
+  align-items: baseline;
+  z-index: 1; /* make sure it's above video */
+ 
 }
-.watch-btn,
-.learn-btn {
-  display: flex;               
-  align-items: center;         
-  justify-content: center;     
-  font-size: 1.1rem;
-  border: none;
+
+.btn {
+  display: inline-flex;              /* same vertical alignment */
+  align-items: center;               /* centers text vertically */
+  justify-content: center;           /* centers text horizontally */
+  padding: 10px 20px;
+  height: 50px;                       /* force same height */
+  box-sizing: border-box;             /* include border in height */
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;                     /* prevent extra vertical spacing */
   cursor: pointer;
-  font-weight: 500;
-  border-radius: 7px;
-  transition: background 0.3s, color 0.3s;
-  min-width: 150px; /* Same width */
-  text-align: center;
+  border-radius: 0;
+  transition: all 0.3s ease;
+  min-width: 150px; /* or whatever fits your text */
+  white-space: nowrap;
 }
 
-/* Watch Button (shorter height) */
+
 .watch-btn {
-  padding: 12px 24px; /* height from padding */
-  background: red;
-  color: #f5f5f5;
-  border: 2px solid #e62b1e;
+  position: relative;
+  border: 2px solid red;
+  background-color: #171717; /* solid black button background */
+  font-weight: bold;
+  overflow: hidden; /* hides gradient overflow */
+  color: #f59797; /* fallback */
 }
-.watch-btn:hover,
-.watch-btn:active,
-.watch-btn:focus {
-  background: black;
+
+
+.learn-btn {
+  background-color: rgba(0, 0, 0, 0.5);
+  color:white;
+  border: 2px solid #e74c3c;
+}
+
+
+.watch-btn:hover {
+  background-color: #333;
+}
+
+
+
+.learn-btn:hover {
+  background-color: #e74c3c;
   color: white;
 }
 
-/* Learn Button (taller height) */
-.learn-btn {
-  padding: 18px 24px; /* more height than watch */
-  background: red;
-  color: #f5f5f5;
-  border: 2px solid #e62b1e;
-}
-.learn-btn:hover,
-.learn-btn:active,
-.learn-btn:focus {
-  background: black;
-  color: white;
-}
+/*   RESPONSIVE DESIGN       */
+/* ========================= */
 @media (max-width: 768px) {
   .hero-overlay {
-    flex-wrap: nowrap;   /* Prevents wrapping */
+    bottom: 20px;
+    gap: 10px;
+    align-items: baseline;
+  }
+
+  .btn {
+    padding: 3px 16px;
+    font-size: 20px;
+    height: 46px;
+    min-width: 150px;
+  }
+}
+
+@media (max-width: 457px) {
+  .hero-container {
+    height: 100vh; /* still full height on mobile */
+  }
+
+  .hero-overlay {
+    flex-direction: row;
+    bottom: 15px;
+    gap: 8px;
+    padding-bottom: 30px;
+    align-items: baseline;
+  }
+
+  .btn {
+    padding: 2px 12px;
+    height: 42px;
+    min-width: 150px;
+    white-space: nowrap; /* never wrap text */
+    font-size: 20px;   /* slightly smaller text */
   }
 }
 
 
-/*
-.hero-overlay {
-  position: absolute;
-  bottom: 50px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
-  justify-content: center;
+@media (max-width: 1500px) {
+  .hero-overlay {
+    bottom: 20px;
+    gap: 10px;
+    align-items: baseline;
+  }
+
+  .btn {
+    padding: 3px 16px;
+    font-size: 25px;
+    height: 46px;
+    min-width: 150px;
+  }
 }
 
-.watch-btn,
-.learn-btn {
-  padding: 12px 24px;
-  font-size: 1.1rem;
-  border: none;
-  cursor: pointer;
-  font-weight: 500;
-  border-radius: 7px;
-  transition: background 0.3s, color 0.3s;
-  min-width: 150px; 
-  text-align: center;
-}
+@media (min-width: 1500px){
+  .hero-overlay {
+    bottom: 20px;
+    gap: 10px;
+    align-items: baseline;
+  }
 
-
-.watch-btn {
-  background: red;
-  color: #f5f5f5;
-  border: 2px solid #e62b1e;
+  .btn {
+    padding: 3px 16px;
+    font-size: 25px;
+    height: 46px;
+    min-width: 160px;
+  }
 }
-.watch-btn:hover,
-.watch-btn:active, 
-.watch-btn:focus {
-  background: black;
-  color: white;
-}
-
-
-.learn-btn {
-  background: red;
-  color: #f5f5f5;
-  border: 2px solid #e62b1e;
-}
-.learn-btn:hover,
-.learn-btn:active,
-.learn-btn:focus {
-  background: black;
-  color: white;
-}
-*/
-/*
-.hero-overlay {
-  position: absolute;
-  bottom: 50px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 15px;
-  flex-wrap: wrap; 
-  justify-content: center;
-}
-
-.watch-btn,
-.learn-btn {
-  padding: 12px 24px;
-  font-size: 1.1rem;
-  border: none;
-  cursor: pointer;
-  transition: 0.3s;
-  font-weight: 500;
-  border-radius: 7px;
-}
-
-
-.watch-btn {
-  background: red;
-    color: #f5f5f5;
-    border: 2px solid #e62b1e;
-}
-.watch-btn:hover {
-  background: black;
-}
-
-
-.learn-btn {
-    background: red;
-    color: #f5f5f5;
-    border: 2px solid #e62b1e;
-}
-
-.learn-btn:hover {
-  background: black;
-  color: white;
-}
-*/
-/*
-.hero-overlay {
-  position: absolute;
-  bottom: 50px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 15px;
-}
-
-.watch-btn {
-  background: black;
-  color: white;
-  padding: 12px 24px;
-  font-size: 1.1rem;
-  border: none;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.watch-btn:hover {
-  background: #e62b1e;
-}
-
-.learn-btn {
-  background: transparent;
-  color: black;
-  border: 2px solid #e62b1e;
-  padding: 12px 24px;
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.learn-btn:hover {
-  background: #e62b1e;
-  color: white;
-}
-
-*/

@@ -16,6 +16,7 @@ export default ThemePage
 import React from 'react'
 import DristiHeroSection from '../sections/DristiHeroSection'
 import DrishtiHero from '../sections/DrishthiHero'
+import PerspectiveSection from '../sections/PerspectiveSection'
 
 const ThemePage = () => {
   return (
@@ -23,6 +24,7 @@ const ThemePage = () => {
       <DristiHeroSection />
       <div id="learn-section">
         <DrishtiHero />
+        <PerspectiveSection />
       </div>
     </>
   )
