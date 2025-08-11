@@ -13,6 +13,7 @@
   height: 100%;
   object-fit: cover;
 }
+
 .hero-overlay {
   position: absolute;
   bottom: 50px;
@@ -20,191 +21,45 @@
   transform: translateX(-50%);
   display: flex;
   gap: 15px;
-  flex-wrap: wrap;
   justify-content: center;
+  align-items: center; /* ✅ aligns buttons vertically */
 }
+
 .watch-btn,
 .learn-btn {
-  display: flex;               
-  align-items: center;         
-  justify-content: center;     
+  display: flex;
+  align-items: center; /* ✅ centers text vertically */
+  justify-content: center; /* ✅ centers text horizontally */
   font-size: 1.1rem;
-  border: none;
-  cursor: pointer;
   font-weight: 500;
   border-radius: 7px;
+  cursor: pointer;
+  min-width: 150px;
+  height: 48px; /* ✅ same height for both buttons */
+  padding: 0 24px; /* ✅ equal horizontal padding only */
+  box-sizing: border-box; /* ✅ ensures borders don’t increase size */
   transition: background 0.3s, color 0.3s;
-  min-width: 150px; /* Same width */
-  text-align: center;
 }
 
-/* Watch Button (shorter height) */
+/* Solid Watch button */
 .watch-btn {
-  padding: 12px 24px; /* height from padding */
-  background: red;
-  color: #f5f5f5;
-  border: 2px solid #e62b1e;
-}
-.watch-btn:hover,
-.watch-btn:active,
-.watch-btn:focus {
   background: black;
   color: white;
-}
-
-/* Learn Button (taller height) */
-.learn-btn {
-  padding: 18px 24px; /* more height than watch */
-  background: red;
-  color: #f5f5f5;
-  border: 2px solid #e62b1e;
-}
-.learn-btn:hover,
-.learn-btn:active,
-.learn-btn:focus {
-  background: black;
-  color: white;
-}
-@media (max-width: 768px) {
-  .hero-overlay {
-    flex-wrap: nowrap;   /* Prevents wrapping */
-  }
-}
-
-
-/*
-.hero-overlay {
-  position: absolute;
-  bottom: 50px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.watch-btn,
-.learn-btn {
-  padding: 12px 24px;
-  font-size: 1.1rem;
   border: none;
-  cursor: pointer;
-  font-weight: 500;
-  border-radius: 7px;
-  transition: background 0.3s, color 0.3s;
-  min-width: 150px; 
-  text-align: center;
-}
-
-
-.watch-btn {
-  background: red;
-  color: #f5f5f5;
-  border: 2px solid #e62b1e;
-}
-.watch-btn:hover,
-.watch-btn:active, 
-.watch-btn:focus {
-  background: black;
-  color: white;
-}
-
-
-.learn-btn {
-  background: red;
-  color: #f5f5f5;
-  border: 2px solid #e62b1e;
-}
-.learn-btn:hover,
-.learn-btn:active,
-.learn-btn:focus {
-  background: black;
-  color: white;
-}
-*/
-/*
-.hero-overlay {
-  position: absolute;
-  bottom: 50px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 15px;
-  flex-wrap: wrap; 
-  justify-content: center;
-}
-
-.watch-btn,
-.learn-btn {
-  padding: 12px 24px;
-  font-size: 1.1rem;
-  border: none;
-  cursor: pointer;
-  transition: 0.3s;
-  font-weight: 500;
-  border-radius: 7px;
-}
-
-
-.watch-btn {
-  background: red;
-    color: #f5f5f5;
-    border: 2px solid #e62b1e;
-}
-.watch-btn:hover {
-  background: black;
-}
-
-
-.learn-btn {
-    background: red;
-    color: #f5f5f5;
-    border: 2px solid #e62b1e;
-}
-
-.learn-btn:hover {
-  background: black;
-  color: white;
-}
-*/
-/*
-.hero-overlay {
-  position: absolute;
-  bottom: 50px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 15px;
-}
-
-.watch-btn {
-  background: black;
-  color: white;
-  padding: 12px 24px;
-  font-size: 1.1rem;
-  border: none;
-  cursor: pointer;
-  transition: 0.3s;
 }
 
 .watch-btn:hover {
   background: #e62b1e;
 }
 
+/* Outlined Learn button */
 .learn-btn {
   background: transparent;
   color: black;
   border: 2px solid #e62b1e;
-  padding: 12px 24px;
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: 0.3s;
 }
 
 .learn-btn:hover {
   background: #e62b1e;
   color: white;
 }
-
-*/
