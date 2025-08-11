@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./PerspectiveSection.css";
+import FooterSection from "./FooterSection";
 
 const images = [
   { id: 1, src: "https://picsum.photos/id/1015/400/500", text: "Illusion Artwork 1" },
@@ -46,6 +47,7 @@ export default function PerspectiveSection() {
           </div>
         ))}
       </div>
+      <FooterSection />
     </section>
   );
 }

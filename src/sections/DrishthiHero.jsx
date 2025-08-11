@@ -47,12 +47,11 @@ const DrishtiHero = () => {
         </div>
         
         {/* Right side - Content */}
+          
+
         <div className="drishti-hero__content">
-          <h1 className="drishti-hero__title">
-            Drishti
-          </h1>
           <p className="drishti-hero__description">
-            Drishti -Perspective is about looking beyond the obvious, challenging assumptions, and discovering new ways of seeing the world. It's the ability to shift viewpoints, to recognize that the same reality can hold multiple truths depending on where you stand. Perspective shapes understanding, drives empathy, and fuels creativity—it's what transforms obstacles into opportunities and ideas into action. Drishti isn't just about sight; it's about vision—the deeper, more thoughtful way of perceiving life, people, and possibilities.
+            Perspective is more than just looking. It's the way your eyes see the world. Most of us are busy digging down into what we see, and everyone sees the world differently. The harsh truth is, no one is wrong. As Anaïs Nin once said, "We don't see things as they are, but we see them as we are!"
           </p>
         </div>
       </div>

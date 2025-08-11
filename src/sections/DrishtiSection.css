@@ -1,0 +1,121 @@
+/* Main section */
+.drishti-section {
+  position: relative;
+  background-color: #171717;
+  color: white;
+  padding: 4rem 2rem;
+  overflow: hidden;
+}
+
+/* Text content */
+.drishti-content {
+  position: relative;
+  max-width: 1300px; /* wider desktop width */
+  margin: 0 auto;
+  padding: 0 3rem;
+  z-index: 2;
+}
+
+.drishti-title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.drishti-text {
+  font-style: italic;
+  line-height: 1.8;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+/* Image container at bottom */
+.drishti-image-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40%; /* covers bottom 40% of section */
+  overflow: hidden;
+}
+
+.drishti-grid {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Transparent gradient for readability without dimming */
+.fade-overlay {
+  position: absolute;
+  top: -50%;
+  left: 0;
+  width: 100%;
+  height: 150%;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.6) 15%, /* subtle fade at bottom */
+    rgba(0, 0, 0, 0) 70%
+  );
+  pointer-events: none;
+}
+
+/* Tablet view */
+@media (min-width: 768px) {
+  .drishti-title {
+    font-size: 4rem;
+  }
+  .drishti-text {
+    font-size: 1.2rem;
+  }
+}
+
+/* Desktop view */
+@media (min-width: 1024px) {
+  .drishti-title {
+    font-size: 4.5rem;
+  }
+  .drishti-text {
+    font-size: 1.25rem;
+  }
+}
+
+/* MOBILE: Fuller width layout */
+@media (max-width: 767px) {
+  .drishti-content {
+    padding: 0 1rem;
+    max-width: 100%; /* now fully stretched across mobile */
+  }
+
+  .drishti-image-container {
+    height: 55%; /* more space for image on mobile */
+  }
+
+  .drishti-grid {
+    object-fit: cover;
+    object-position: center;
+    background-color: black;
+    filter: brightness(1.1) contrast(1.05);
+  }
+
+  .fade-overlay {
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.5) 30%,
+      rgba(0, 0, 0, 0) 80%
+    );
+  }
+
+  .drishti-title {
+    font-size: 2rem;
+    line-height: 1.3;
+    padding: 0 0.5rem;
+  }
+
+  .drishti-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    padding: 0 0.8rem; /* slightly more room from edges */
+  }
+}
