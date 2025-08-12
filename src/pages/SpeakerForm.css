@@ -25,8 +25,9 @@
   margin-left: 0;
   margin-right: 0;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
+  flex-direction: column; /* stack vertically */
   padding-top: 100px;
   padding-bottom: 15px;
   box-sizing: border-box;
@@ -169,5 +170,40 @@
 @media (min-width: 1500px) {
   .form-inner h1 {
     padding-top: 15px;
+  }
+}
+
+.para{
+  
+  font-size: 18px;
+  color: white;
+  align-items: center;
+  justify-items: center;
+  text-align: center;
+}
+
+@media (max-width: 501px) {
+  .para {
+    font-size: 14px;
+    padding: 25px 15px;
+    margin-bottom: 5px; /* space before form */
+  }
+}
+@media (min-width: 500px) and (max-width: 720px) {
+  .para {
+    font-size: 14px;
+    padding: 14px 15px;
+    line-height: 1.4;
+    margin-bottom: 40px; /* space before form */
+
+  }
+}
+
+/* Larger screens */
+@media (min-width: 1200px) {
+  .para {
+    font-size: 18px;
+    margin-bottom: 40px; /* space before form */
+
   }
 }
