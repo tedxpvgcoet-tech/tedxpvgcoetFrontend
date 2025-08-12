@@ -204,6 +204,7 @@
   .para {
     font-size: 18px;
     margin-bottom: 40px; /* space before form */
+    padding-top: 30px;
 
   }
 }
