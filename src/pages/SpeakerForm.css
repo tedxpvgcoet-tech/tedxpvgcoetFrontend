@@ -199,11 +199,18 @@
   }
 }
 
+@media (min-width: 721px) {
+  .para {
+    margin-bottom: 40px; /* space before form */
+  }
+}
+
 /* Larger screens */
 @media (min-width: 1200px) {
   .para {
     font-size: 18px;
     margin-bottom: 40px; /* space before form */
+    padding-top: 30px;
 
   }
 }
