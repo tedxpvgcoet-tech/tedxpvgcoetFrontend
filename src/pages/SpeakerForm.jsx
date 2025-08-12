@@ -197,7 +197,7 @@ const SpeakerForm = () => {
                 How do you think your talk will impact or inspire the audience?
               </h3>
               <br />
-              <text
+              <input
                 name="audience_impact"
                 placeholder="Answer"
                 required
@@ -212,7 +212,7 @@ const SpeakerForm = () => {
                 current occupation)
               </h3>
               <br />
-              <text
+              <input
                 name="speaker_bio"
                 placeholder="Answer"
                 required
@@ -227,7 +227,7 @@ const SpeakerForm = () => {
                 details.
               </h3>
               <br />
-              <text
+              <input
                 name="previous_ted_talk"
                 placeholder="Answer"
                 required
@@ -242,7 +242,7 @@ const SpeakerForm = () => {
                 "Drishti"?
               </h3>
               <br />
-              <text
+              <input
                 name="theme_alignment"
                 placeholder="Answer"
                 required
@@ -254,7 +254,7 @@ const SpeakerForm = () => {
             <div className="full-width">
               <h3>Any Additional Comments or Information:</h3>
               <br />
-              <text
+              <input
                 name="additional_info"
                 placeholder="Answer"
                 required
