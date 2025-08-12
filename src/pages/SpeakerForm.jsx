@@ -4,7 +4,6 @@ import "./SpeakerForm.css";
 import FooterSection from "../sections/FooterSection";
 import { FiExternalLink } from "react-icons/fi";
 
-
 const SpeakerForm = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -12,6 +11,12 @@ const SpeakerForm = () => {
     age: "",
     domain: "",
     organization: "",
+    current_location: "",
+    professional_affiliation: "",
+    speaker_bio: "",
+    previous_ted_talk: "",
+    theme_alignment: "",
+    additional_info: "",
     linkedin: "",
     instagram: "",
     phone_number: "",
@@ -55,6 +60,12 @@ const SpeakerForm = () => {
         age: "",
         domain: "",
         organization: "",
+        current_location: "",
+        professional_affiliation: "",
+        speaker_bio: "",
+        previous_ted_talk: "",
+        theme_alignment: "",
+        additional_info: "",
         linkedin: "",
         instagram: "",
         phone_number: "",
@@ -76,32 +87,46 @@ const SpeakerForm = () => {
       </video>
       <main className="form-page">
         <div className="para">
-            <h2>Theme for TEDxPVGCOET 2025-2026:</h2><br/><br/>
+          <h2>Theme for TEDxPVGCOET 2025-2026:</h2>
+          <br />
+          <br />
 
-            <p>The theme for <strong>TEDxPVGCOET 2025</strong> is  <strong>"Drishti (दृष्टि)"</strong>, a Sanskrit word that means vision or perspective. But this isn’t just about what we see with our eyes—it’s about how we understand, interpret, and connect with the world around us. Drishti is about looking beyond the surface to find deeper meaning and clarity.<br/><br/>
-
-            In a fast-paced world full of noise and distraction, Drishti asks us to slow down, reflect, and truly see—ourselves, others, and the challenges we face. It’s about shifting perspective, finding insight in unexpected places, and discovering new ways of thinking, feeling, and acting. Whether in our personal lives, work, or relationships, this kind of vision leads to transformation.<br/><br/>
-
-            For more details about the theme check out this document:<br/>
+          <p>
+            The theme for <strong>TEDxPVGCOET 2025</strong> is{" "}
+            <strong>"Drishti (दृष्टि)"</strong>, a Sanskrit word that means
+            vision or perspective. But this isn’t just about what we see with
+            our eyes—it’s about how we understand, interpret, and connect with
+            the world around us. Drishti is about looking beyond the surface to
+            find deeper meaning and clarity.
+            <br />
+            <br />
+            In a fast-paced world full of noise and distraction, Drishti asks us
+            to slow down, reflect, and truly see—ourselves, others, and the
+            challenges we face. It’s about shifting perspective, finding insight
+            in unexpected places, and discovering new ways of thinking, feeling,
+            and acting. Whether in our personal lives, work, or relationships,
+            this kind of vision leads to transformation.
+            <br />
+            <br />
+            For more details about the theme check out this document:
+            <br />
             <a
               href="https://docs.google.com/document/d/1Sw1Fh00eBpIFEEyjzYP6uHSiJABevaSqhiyfg0tmFh8/edit?usp=drivesdk"
               target="_blank"
               rel="noopener noreferrer"
-              style={{ color: "white"}}
+              style={{ color: "white" }}
             >
               Theme Document&nbsp;
               <FiExternalLink size={12} />
-            </a><br/><br/>
-            
-
-            
+            </a>
+            <br />
+            <br />
             <strong> Date:</strong> September 13th, 2025&nbsp;&nbsp;
-            <strong> Location:</strong> PVGCOET, Pune, Maharashtra, India<br/>
+            <strong> Location:</strong> PVGCOET, Pune, Maharashtra, India
+            <br />
           </p>
-          </div>
+        </div>
         <div className="form-inner">
-          
-        
           <h1>Speaker Nomination</h1>
           <form className="speaker-form" onSubmit={handleSubmit}>
             <div className="full-width">
@@ -145,36 +170,34 @@ const SpeakerForm = () => {
               />
             </div>
 
-           <div className="full-width">
-              <input
-                  type="text"
-                  name="organization"
-                  placeholder="Current Location/City"
-                  required
-                  value={formData.organization}
-                  onChange={handleChange}
-                />
-            </div>
-
             <div className="full-width">
-              <input
-                  type="text"
-                  name="organization"
-                  placeholder="Profesional Affiliation/Title"
-                  required
-                  value={formData.organization}
-                  onChange={handleChange}
-                />
-            </div>
-            
-
-            
-
-            <div className="full-width">
-              <h3>How do you think your talk will impact or inspire the audience?</h3>
-              <br />
               <input
                 type="text"
+                name="current_location"
+                placeholder="Current Location/City"
+                required
+                value={formData.current_location}
+                onChange={handleChange}
+              />
+            </div>
+
+            <div className="full-width">
+              <input
+                type="text"
+                name="professional_affiliation"
+                placeholder="Professional Affiliation/Title"
+                required
+                value={formData.professional_affiliation}
+                onChange={handleChange}
+              />
+            </div>
+
+            <div className="full-width">
+              <h3>
+                How do you think your talk will impact or inspire the audience?
+              </h3>
+              <br />
+              <textarea
                 name="audience_impact"
                 placeholder="Answer"
                 required
@@ -184,40 +207,46 @@ const SpeakerForm = () => {
             </div>
 
             <div className="full-width">
-              <h3>Speaker's Bio (Briefly describe your professional background and current occupation)</h3>
+              <h3>
+                Speaker's Bio (Briefly describe your professional background and
+                current occupation)
+              </h3>
               <br />
-              <input
-                type="text"
-                name="audience_impact"
+              <textarea
+                name="speaker_bio"
                 placeholder="Answer"
                 required
-                value={formData.audience_impact}
+                value={formData.speaker_bio}
                 onChange={handleChange}
               />
             </div>
 
             <div className="full-width">
-              <h3>Have you given a TED or TEDx talk before? If yes, please provide details.</h3>
+              <h3>
+                Have you given a TED or TEDx talk before? If yes, please provide
+                details.
+              </h3>
               <br />
-              <input
-                type="text"
-                name="audience_impact"
+              <textarea
+                name="previous_ted_talk"
                 placeholder="Answer"
                 required
-                value={formData.audience_impact}
+                value={formData.previous_ted_talk}
                 onChange={handleChange}
               />
             </div>
 
             <div className="full-width">
-              <h3>How will your talk align with this year's TEDxPVGCOET theme "Drishti"?</h3>
+              <h3>
+                How will your talk align with this year's TEDxPVGCOET theme
+                "Drishti"?
+              </h3>
               <br />
-              <input
-                type="text"
-                name="audience_impact"
+              <textarea
+                name="theme_alignment"
                 placeholder="Answer"
                 required
-                value={formData.audience_impact}
+                value={formData.theme_alignment}
                 onChange={handleChange}
               />
             </div>
@@ -225,12 +254,11 @@ const SpeakerForm = () => {
             <div className="full-width">
               <h3>Any Additional Comments or Information:</h3>
               <br />
-              <input
-                type="text"
-                name="audience_impact"
+              <textarea
+                name="additional_info"
                 placeholder="Answer"
                 required
-                value={formData.audience_impact}
+                value={formData.additional_info}
                 onChange={handleChange}
               />
             </div>
