@@ -199,6 +199,12 @@
   }
 }
 
+@media (min-width: 721px) {
+  .para {
+    margin-bottom: 40px; /* space before form */
+  }
+}
+
 /* Larger screens */
 @media (min-width: 1200px) {
   .para {
