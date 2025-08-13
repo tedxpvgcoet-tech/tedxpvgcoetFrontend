@@ -36,9 +36,7 @@ const FooterSection = () => {
           </div>
 
           <div>
-            <p onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}>
-              About
-            </p>
+            <Link to="/about">About</Link>
             <Link to="/">Home</Link>
             
           </div>
