@@ -8,7 +8,7 @@ const AvantGardeHeroSection = () => {
   className="AvantGarde-hero"
   style={{ backgroundImage: `url(${backgroundImage})` }}
 >
-  <div className="overlay"></div> {/* Add this line */}
+  <div className="overlay2"></div> {/* Add this line */}
   <div className="AvantGarde-text">
     <h1>Avant Garde</h1>
     <p>

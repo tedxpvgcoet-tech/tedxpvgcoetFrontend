@@ -10,7 +10,7 @@ const Navbar = () => {
   const location = useLocation();
 
   const path = location.pathname;
-  const isEventPage = path === "/Event";
+  const isEventPage = path === "/Event" || path === "/events/TakeTheLeap" || path === "/events/AvantGarde" || path === "/events/Punarutthan";
   const isTeamPage = path === "/Team";
   const isThemePage = path === "/";
 

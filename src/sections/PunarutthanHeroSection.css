@@ -15,11 +15,10 @@
   text-align: left;
 }
 
-.punarutthan-hero::before {
-  content: "";
+.overlay3 {
   position: absolute;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.7); /* darkness: adjust opacity here */
+  background-color: rgba(0, 0, 0, 0.8); /* darkness: adjust opacity here */
   z-index: 1;
 }
 

@@ -6,7 +6,7 @@ import mobileBGimg from "../assets/Event/TaekTheLeap-BG.jpg"
 const TakeTheLeapHeroSection = () => {
   return (
 <div className="takeLeap">
-  <div className="overlay"></div>
+  <div className="overlay1"></div>
   <div className="AvantGarde-text">
     <h1>Take The Leap</h1>
     <p>
