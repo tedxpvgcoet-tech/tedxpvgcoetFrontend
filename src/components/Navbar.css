@@ -224,6 +224,11 @@
 .transparent-navbar .navbar-logo {
   filter: brightness(1.2);
 }
+.transparent-navbar .nav-icon:hover,
+.transparent-navbar .nav-menu-icon:hover {
+  color: white !important;
+}
+
 
 .team-navbar {
   top: 16px;
