@@ -9,7 +9,7 @@ const DristiHeroSection = () => {
   };
 
   const handleLearnMoreClick = () => {
-        window.open("https://your-newsletter-link.com", "_blank"); // <-- replace with actual link
+        window.open("https://tedxpvgcoet.substack.com/", "_blank"); // <-- replace with actual link
   };
 
   // Choose video based on screen size
