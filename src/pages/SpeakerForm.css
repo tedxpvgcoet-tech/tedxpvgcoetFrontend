@@ -21,7 +21,7 @@
 .form-page {
   min-height: calc(100vh -  (var(--footer-height) + var(--navbar-height)));
   padding-left: 25px;
-  padding-right: 0;
+  padding-right: 25px;
   margin-left: 0;
   margin-right: 0;
   display: flex;
