@@ -22,6 +22,7 @@
   transform: translateX(-50%);
   display: flex;
   gap: 15px;
+<<<<<<< HEAD
   align-items: baseline;
   z-index: 1; /* make sure it's above video */
  
@@ -141,4 +142,47 @@
     height: 46px;
     min-width: 160px;
   }
+=======
+  justify-content: center;
+  align-items: center; /* ✅ aligns buttons vertically */
+}
+
+.watch-btn,
+.learn-btn {
+  display: flex;
+  align-items: center; /* ✅ centers text vertically */
+  justify-content: center; /* ✅ centers text horizontally */
+  font-size: 1.1rem;
+  font-weight: 500;
+  border-radius: 7px;
+  cursor: pointer;
+  min-width: 150px;
+  height: 48px; /* ✅ same height for both buttons */
+  padding: 0 24px; /* ✅ equal horizontal padding only */
+  box-sizing: border-box; /* ✅ ensures borders don’t increase size */
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Solid Watch button */
+.watch-btn {
+  background: black;
+  color: white;
+  border: none;
+}
+
+.watch-btn:hover {
+  background: #e62b1e;
+}
+
+/* Outlined Learn button */
+.learn-btn {
+  background: transparent;
+  color: black;
+  border: 2px solid #e62b1e;
+}
+
+.learn-btn:hover {
+  background: #e62b1e;
+  color: white;
+>>>>>>> Dristi
 }

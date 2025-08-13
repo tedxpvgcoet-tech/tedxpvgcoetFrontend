@@ -1,32 +1,21 @@
 import React, { useEffect, useRef } from 'react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger'; // Add this import
 import '../Stylesheets/DrishtiHero.css';
-import "../Stylesheets/animation.css"
-import logo from "../assets/Drishti/Drishiti_logo.png"
+import logo from "../assets/Drishti/Drishiti_logo.png";
+import { setupLogoAnimations } from '../Javascript/animation';
 
 const DrishtiHero = () => {
   const logoRef = useRef(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (logoRef.current) {
-        const scrollPosition = window.scrollY;
-        const logoElement = logoRef.current;
-        
-        // Add/remove class based on scroll position
-        if (scrollPosition > 50) {
-          logoElement.classList.add('scroll-animate');
-        } else {
-          logoElement.classList.remove('scroll-animate');
-        }
-        
-        // Optional: Adjust animation intensity based on scroll
-        const rotation = Math.min(scrollPosition / 10, 15);
-        logoElement.style.setProperty('--scroll-rotation', `${rotation}deg`);
+    setupLogoAnimations(logoRef);
+    
+    // Cleanup function
+    return () => {
+      if (ScrollTrigger) {
+        ScrollTrigger.getAll().forEach(trigger => trigger.kill());
       }
     };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
