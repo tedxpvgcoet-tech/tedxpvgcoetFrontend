@@ -25,9 +25,9 @@ const ThemePage = () => {
     
       <DristiHeroSection />
       <div id="learn-section">
-        <DrishtiHero />
-        <DrishtiSection />
-        <PerspectiveSection />
+        <DrishtiHero className="bg" />
+        <DrishtiSection className="bg" />
+        <PerspectiveSection className="bg" />
         
       </div>
     </>

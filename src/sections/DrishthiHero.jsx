@@ -40,7 +40,7 @@ const DrishtiHero = () => {
 
         <div className="drishti-hero__content">
           <p className="drishti-hero__description">
-            Perspective is more than just looking. It's the way your eyes see the world. Most of us are busy digging down into what we see, and everyone sees the world differently. The harsh truth is, no one is wrong. As Anaïs Nin once said, "We don't see things as they are, but we see them as we are!"
+            Perspective is more than just looking. It's the way your eyes see the world. Most of us are busy digging down into what we see, and everyone sees the world differently. The harsh truth is, no one is wrong. As Anaïs Nin once said, "We don't see things as they are, but we see them as we are!
           </p>
         </div>
       </div>
