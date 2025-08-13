@@ -33,7 +33,7 @@ export default function PerspectiveSection() {
         The more you follow the pattern, the less you are certain of where you began.<br/>
         It is not a path for reaching somewhere, but for learning how to see without needing to arrive.<br/>
         And perhaps that is the point, that the journey exists not to end, but to change the one who walks it.<br/>
-        _ SNEHA GHODKE
+        -SNEHA GHODKE
 
       </>
     )
@@ -43,7 +43,7 @@ export default function PerspectiveSection() {
     desc: (
       <>
         It feels like a quiet meditation on the nature of perception and awareness. At first, the eye pulls me in with its raw intensity, inviting curiosity and a sense of vulnerability—almost as if it’s searching for answers or deeper meaning. Then, the focus shifts to the flower’s delicate center, which seems to whisper about the beauty we discover when we truly pay attention to the world’s small details. Finally, the tangled branches silhouetted against the sky evoke a sense of interconnected thoughts and possibilities, reminding me how our vision expands and weaves together experiences, emotions, and ideas. Altogether, it’s a layered journey from simply seeing to genuinely understanding and connecting<br/>
-        ~Renuka Joshi
+        -Renuka Joshi
 
       </>
     )
@@ -136,7 +136,7 @@ export default function PerspectiveSection() {
       <>
         He plays as if the world is listening for the very last time, as if the weight of everything he has ever felt rests on the tips of his fingers.<br/>
         Each note is not just sound but a fragment of his soul torn away, aching to be understood. The flames are not destruction but the truest shape of love when it is so deep it swallows you whole. Every chord is a memory, every pause a wound that time refuses to close. He knows the keys will crumble, that the song will vanish into silence, yet he plays because stopping would mean losing himself. The fire is his grief, his hope, his surrender, his only prayer. Some beauty survives only by burning, and some truths can only be freed when they finally let go. And in that heat he feels both destroyed and reborn, as if the pain is teaching him how to exist again. The music rises above the crackle of flames, carrying pieces of him to places he will never see. He does not fear the end anymore because the song has already outlived him in spirit. In the burning, he finds a strange kind of peace.<br/>
-        _ SNEHA GHODKE
+        -SNEHA GHODKE
 
 
       </>
