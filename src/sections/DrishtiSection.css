@@ -10,7 +10,7 @@
 /* Text content */
 .drishti-content {
   position: relative;
-  max-width: 1300px; /* wider desktop width */
+  max-width: 1300px;
   margin: 0 auto;
   padding: 0 3rem;
   z-index: 2;
@@ -24,41 +24,48 @@
 }
 
 .drishti-text {
+  font-family: 'Kantumruy Pro', sans-serif;
   font-style: italic;
   line-height: 1.8;
   font-size: 1.1rem;
   text-align: center;
 }
 
-/* Image container at bottom */
+/* Image container - now covers full section */
 .drishti-image-container {
   position: absolute;
-  bottom: 0;
+  top: 0;
   left: 0;
   width: 100%;
-  height: 40%; /* covers bottom 40% of section */
+  height: 100%; /* full height */
   overflow: hidden;
+  z-index: 0;
 }
 
 .drishti-grid {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  opacity: 0.9; /* increased overall visibility */
+  filter: brightness(1.2) contrast(1.15); /* makes lines more visible */
 }
 
-/* Transparent gradient for readability without dimming */
+/* Transparent gradient for readability */
 .fade-overlay {
   position: absolute;
-  top: -50%;
+  top: 0;
   left: 0;
   width: 100%;
-  height: 150%;
+  height: 100%;
   background: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.6) 15%, /* subtle fade at bottom */
-    rgba(0, 0, 0, 0) 70%
+    to bottom,
+    rgba(0, 0, 0, 0.45) 0%,   /* slightly dark top for text */
+    rgba(0, 0, 0, 0.25) 30%,  /* balanced middle */
+    rgba(0, 0, 0, 0.05) 70%,  /* almost clear */
+    rgba(0, 0, 0, 0) 100%     /* fully visible bottom */
   );
   pointer-events: none;
+  z-index: 1;
 }
 
 /* Tablet view */
@@ -84,27 +91,8 @@
 /* MOBILE: Fuller width layout */
 @media (max-width: 767px) {
   .drishti-content {
-    padding: 0 1rem;
-    max-width: 100%; /* now fully stretched across mobile */
-  }
-
-  .drishti-image-container {
-    height: 55%; /* more space for image on mobile */
-  }
-
-  .drishti-grid {
-    object-fit: cover;
-    object-position: center;
-    background-color: black;
-    filter: brightness(1.1) contrast(1.05);
-  }
-
-  .fade-overlay {
-    background: linear-gradient(
-      to top,
-      rgba(0, 0, 0, 0.5) 30%,
-      rgba(0, 0, 0, 0) 80%
-    );
+    padding: 0 0rem;
+    max-width: 100%;
   }
 
   .drishti-title {
@@ -116,6 +104,17 @@
   .drishti-text {
     font-size: 0.95rem;
     line-height: 1.6;
-    padding: 0 0.8rem; /* slightly more room from edges */
+    padding: 0 0rem;
+  }
+
+  /* Slightly stronger gradient for mobile */
+  .fade-overlay {
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.5) 0%,
+      rgba(0, 0, 0, 0.3) 40%,
+      rgba(0, 0, 0, 0.1) 80%,
+      rgba(0, 0, 0, 0) 100%
+    );
   }
 }

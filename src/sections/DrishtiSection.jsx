@@ -1,6 +1,6 @@
 import React from "react";
 import "./DrishtiSection.css";
-import gridImage from "../assets/B-W Individual/Perspective_grid.jpg";
+import gridImage from "../assets/Grid.png";
 
 export default function DrishtiSection() {
   return (

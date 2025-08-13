@@ -1,6 +1,6 @@
 import React from "react";
 import "./DristiHeroSection.css";
-import desktopVideo from "../assets/themeReveal.mp4";  // Desktop video
+import desktopVideo from "../assets/DesktopTheme.mp4";  // Desktop video
 import mobileVideo from "../assets/mobile-video.mp4"; // Mobile video
 
 const DristiHeroSection = () => {
@@ -13,7 +13,7 @@ const DristiHeroSection = () => {
   };
 
   // Choose video based on screen size
-  const videoSrc = window.innerWidth <= 768 ? mobileVideo : desktopVideo;
+  const videoSrc = window.innerWidth <= 568 ? mobileVideo : desktopVideo;
 
   return (
     <div className="hero-container">
