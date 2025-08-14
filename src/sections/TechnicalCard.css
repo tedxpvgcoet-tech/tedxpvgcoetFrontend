@@ -1,0 +1,343 @@
+
+
+
+
+.curation-page {
+  background-color: #0f0f0f;
+  min-height: 100vh;
+  padding: 4rem 2rem;
+  color: white;
+}
+
+.title-hero {
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.curation-title {
+  font-size: 10rem;
+  color: red;
+  font-weight: 900;
+  text-align: center;
+   font-family: "Alfa Slab One", serif;
+  font-weight: 400;
+  font-style: normal;
+
+}
+
+.curation-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0rem;
+  justify-content: center;
+  align-items: start;
+  padding: 2rem;
+  padding-top:1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .curation-grid {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 1rem;
+
+  }
+  .title-hero {
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.curation-title {
+  font-size: 8rem;
+  color: red;
+  font-weight: 900;
+  text-align: center;
+   font-family: "Alfa Slab One", serif;
+  font-weight: 400;
+  font-style: normal;
+
+}
+}
+@media (max-width: 1180) {
+    .title-hero {
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .curation-title {
+    font-size: 10rem;
+    color: red;
+    font-weight:900;
+    text-align: center;
+  }
+  
+  .curation-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    row-gap: 0;
+  }
+  
+  .curation-page {
+    padding: 1rem 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .title-hero {
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .curation-title {
+    font-size: 7rem;
+    color: red;
+    font-weight:900;
+    text-align: center;
+  }
+  
+  .curation-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    row-gap: 0;
+  }
+  
+  .curation-page {
+    padding: 2rem 1rem;
+  }
+  
+  /* Force chessboard pattern by targeting specific positions */
+  /* Row 1: Image-Info (positions 1-2) */
+  .curation-grid > :nth-child(1) { order: 1; } /* Image */
+  .curation-grid > :nth-child(2) { order: 2; } /* Info */
+  
+  /* Row 2: Info-Image (positions 3-4) */  
+  .curation-grid > :nth-child(3) { order: 4; } /* Info */
+  .curation-grid > :nth-child(4) { order: 3; } /* Image */
+  
+  /* Row 3: Image-Info (positions 5-6) */
+  .curation-grid > :nth-child(5) { order: 6; } /* Image */
+  .curation-grid > :nth-child(6) { order: 5; } /* Info */
+  
+  /* Row 4: Info-Image (positions 7-8) */
+  .curation-grid > :nth-child(7) { order: 7; } /* Info */
+  .curation-grid > :nth-child(8) { order: 8; } /* Image */
+  
+  /* Row 5: Image-Info (positions 9-10) */
+  .curation-grid > :nth-child(9) { order: 9; } /* Image */
+  .curation-grid > :nth-child(10) { order: 10; } /* Info */
+  
+  /* Row 6: Info-Image (positions 11-12) */
+  .curation-grid > :nth-child(11) { order: 12; } /* Info */
+  .curation-grid > :nth-child(12) { order: 11; } /* Image */
+  
+  /* Row 7: Image-Info (positions 13-14) */
+  .curation-grid > :nth-child(13) { order: 14; } /* Image */
+  .curation-grid > :nth-child(14) { order: 13; } /* Info */
+  
+  /* Row 8: Info-Image (positions 15-16) */
+  .curation-grid > :nth-child(15) { order: 15; } /* Info */
+  .curation-grid > :nth-child(16) { order: 16; } /* Image */
+
+  .curation-grid > :nth-child(17) { order: 17; } /* Info */
+  .curation-grid > :nth-child(18) { order: 18; } /* Image */
+}
+
+
+@media (max-width: 720px) {
+
+  .curation-title {
+    font-size: 6rem;
+
+  }
+}
+@media (max-width: 650px) {
+    .title-hero{
+    height: 40vh;
+  }
+  .curation-title {
+    font-size: 6rem;
+  }
+}
+@media (max-width: 510px) {
+    .title-hero{
+    height: 40vh;
+  }
+  .curation-title {
+    font-size: 5rem;
+  }
+}
+@media (max-width: 592px) {
+    .title-hero{
+    height: 40vh;
+  }
+  .curation-title {
+    font-size: 4.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .curation-title {
+    font-size: 4rem;
+  }
+}
+@media (max-width: 460px) {
+  .curation-title {
+    font-size: 4rem;
+  }
+}
+@media (max-width: 430px) {
+    .title-hero{
+    height: 40vh;
+    padding-top: 2rem;
+  }
+  .curation-title {
+    font-size: 4rem;
+  }
+}
+@media (max-width: 390px) {
+    .title-hero{
+    height: 40vh;
+  }
+  .curation-title {
+    font-size: 3rem;
+  }
+}
+@media (max-width: 350px) {
+    .title-hero{
+    height: 35vh;
+  }
+  .curation-title {
+    font-size: 3rem;
+  }
+}
+
+
+.curation-card {
+  background-color: black;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.curation-card:hover {
+  transform: scale(1.03);
+}
+
+.curation-img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.curation-info {
+  margin-top: 1rem;
+}
+
+.curation-info h3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0.4rem 0 0.2rem;
+}
+
+.curation-info p {
+  font-size: 0.95rem;
+  color: #ccc;
+  margin: 0;
+}
+
+.social-icons {
+  margin-top: 0.5rem;
+}
+
+.social-icons a {
+  margin: 0 0.4rem;
+  color: white;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: red;
+}
+
+/* Image tile */
+.curation-img-tile {
+  background-color: black;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chessboard-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /*border-radius: 5px;*/
+  aspect-ratio: 1/1;
+}
+
+/* Info tile */
+.curation-info-tile {
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  text-align: center;
+  padding: 0.2rem 0.2rem;
+  border-radius: 0px;
+    font-family: "Kantumruy Pro", sans-serif;
+    font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: italic;
+  height: 100%;
+}
+
+.curation-info-tile h3 {
+  font-size: 3rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.curation-info-tile p {
+  font-size: 1rem;
+  color: #ccc;
+  margin-bottom: 0.5rem;
+}
+
+/* Mobile-specific adjustments for tiles */
+@media (max-width: 768px) {
+  .curation-info-tile {
+    padding: 1rem 0.5rem; /* Reduce padding on mobile */
+  }
+  
+  .curation-info-tile h3 {
+    font-size: 1.1rem; /* Smaller font on mobile */
+  }
+  
+  .curation-info-tile p {
+    font-size: 0.9rem; /* Smaller font on mobile */
+  }
+  
+  .social-icons a {
+    font-size: 1rem; /* Smaller social icons on mobile */
+    margin: 0 0.3rem;
+  }
+}

@@ -1,0 +1,121 @@
+.editorial-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  background-color: transparent;
+  color: white;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.editorial-image-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+/* Initial state */
+.editorial-image {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 10px;
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+/* Slide-in animation */
+.animate-image.editorial-image {
+  animation: slideInFromLeft 0.8s ease-out forwards;
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.editorial-text {
+  flex: 1;
+  max-width: 600px;
+}
+
+.editorial-description {
+  font-size: 1.2rem;
+  font-style: italic;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  color: white;
+  font-family: 'Kantumruy Pro', sans-serif;
+}
+
+.editorial-button {
+  font-size: 1rem;
+  color: white;
+  text-decoration: none;
+  border-bottom: 1px solid red;
+  padding-bottom: 2px;
+  transition: color 0.3s;
+  font-family: 'Kantumruy Pro', sans-serif;
+}
+
+.editorial-button:hover {
+  color: red;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .editorial-section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .editorial-text {
+    max-width: 100%;
+  }
+
+  .editorial-description {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 992px) {
+  .editorial-description {
+    padding-top: 80px;
+    font-size: 1.1rem;
+  }
+}
+
+@media (min-width: 993px) {
+  .editorial-description {
+    padding-top: 80px;
+    font-size: 1.3rem;
+  }
+}
+
+@media (min-width: 1300px) {
+  .editorial-section {
+    padding: 6rem 8rem;
+  }
+
+  .editorial-image {
+    max-width: 700px;
+  }
+
+  .editorial-description {
+    font-size: 1.7rem;
+    line-height: 1.8;
+    padding-top: 80px;
+  }
+
+  .editorial-button {
+    font-size: 1.2rem;
+  }
+}

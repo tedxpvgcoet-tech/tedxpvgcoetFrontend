@@ -1,0 +1,171 @@
+.hero-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+}
+
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+.hero-text {
+  position: absolute;
+  top: 55%;          /* Push text lower */
+  left: 5%;
+  transform: translateY(-50%);
+  z-index: 1;
+  color: white;
+}
+
+.hero-text h1 {
+  margin: 0.2rem 0;     /* Reduce vertical spacing between lines */
+  line-height: 1.1;     /* Optional: adjust vertical alignment */
+}
+/*if want less gap then 
+margin: 0;
+line-height: 1;
+
+display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  font-family: 'Inter', sans-serif;
+  font-size: 6rem;
+  font-weight: bold;
+  opacity: 0;
+  animation: typing 1s steps(10, end) forwards;
+*/
+
+/* Base styles for the sliding words */
+.slide-in {
+  opacity: 0;
+  transform: translateX(-100px);
+  white-space: nowrap;
+  font-family: 'Inter', sans-serif;
+  font-size: 6rem;
+  font-weight: bold;
+  animation: slideIn 1s ease-out forwards;
+  padding-left: 0px;
+}
+
+.line-1 {
+  animation-delay: 1s;
+}
+
+.line-2 {
+  animation-delay: 1.5s;
+}
+
+.line-3 {
+  animation-delay: 2s;
+}
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+.hero-sphere {
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
+  height: 70px;
+  z-index: 2;
+}
+
+@media (max-width: 768px) {
+  .slide-in {
+     
+    font-size: 4.3rem;
+  }
+.hero-text{
+    top: 50%; /* ↓ Decrease from 55% */
+  }
+
+  .hero-sphere {
+    height: 70px;
+    bottom: 60px;
+    right: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .slide-in {
+    font-size: 4.3rem;
+    
+
+  }
+  .hero-text{
+    top: 50%; /* ↓ Decrease from 55% */
+  }
+
+  .hero-sphere {
+    height: 70px;
+    bottom: 60px;
+    right: 20px;
+  }
+}
+
+@media (min-width: 1500px) {
+  .slide-in {
+    font-size: 8rem; /* Increased from 6rem */
+  }
+
+  .hero-text {
+    top: 50%; /* Optional: center text slightly more */
+    left: 8%; /* Optional: increase padding from left */
+  }
+
+  .hero-sphere {
+    height: 90px; /* Slightly larger sphere */
+    bottom: 70px;
+    right: 70px;
+  }
+}
+
+@media (min-width: 1000px) and (max-width: 1499px) {
+  .tedx-section {
+    padding: 3rem 4rem;
+  }
+
+  .tedx-text-wrapper {
+    width: 700px;
+    max-width: 90%;
+  }
+
+  .tedx-box {
+    padding: 1.75rem 1.75rem 2rem 2.5rem;
+    border-radius: 22px;
+  }
+
+  .tedx-box h2 {
+    font-size: 3.5rem;
+  }
+
+  .tedx-box p {
+    font-size: 1.3rem;
+    line-height: 1.7;
+  }
+
+  .tedx-x-image {
+    width: 35%;
+    max-width: 35%;
+    height: 90vh;
+  }
+
+  .red-x,
+  .white-x {
+    width: 85%;
+    height: 65%;
+  }
+}
+
