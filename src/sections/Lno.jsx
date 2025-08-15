@@ -37,10 +37,7 @@ const Lno = () => {
       </div>
       <div className="lno-text">
         <p className="lno-description">
-          Step one: make a plan <br />
-          Step two: triple-check it. <br />
-          Step three: fix what broke anyway. <br />
-          They do it all, and still stand tall. Spine of every TEDx move
+         This team handles all behind-the-scenes planning and execution. From scheduling and vendor coordination to real-time problem-solving, they make sure the event runs seamlessly from start to finish.
         </p>
         <Link to="/logistics-team" className="lno-button">
           Learn More →

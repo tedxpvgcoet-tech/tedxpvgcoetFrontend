@@ -41,8 +41,7 @@ const Finance = () => {
       </div>
       <div className="fin-text">
         <p className="fin-description">
-         Plan. Pitch. Provide. Garnering sponsorships, facilitating support and seamlessly tracking revenue and expenditure are all vital efforts being executed suently.
-They fund the dream and account for every detail. </p>
+       From sponsorships to budgeting, the Finance Team ensures the event is financially sound. They manage resources with transparency and foresight, supporting both creativity and sustainability. </p>
         <Link to="/finance-team" className="fin-button">
           Learn More →
         </Link>

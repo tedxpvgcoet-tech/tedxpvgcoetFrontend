@@ -37,7 +37,8 @@ const Editorial = () => {
       </div>
       <div className="editorial-text">
         <p className="editorial-description">
-          Proof that a well-placed comma can be more powerful than a mic drop. Every word you hear, read, or scroll past? Brewed here. They Write. They Edit. They Refine. Until every word feels just right- making sure everything sounds as good as it looks</p>
+          The Editorial Team crafts the written voice of TEDxPVGCOET- from theme documents to speaker communications. They refine every word to ensure clarity, consistency, and alignment with the event’s vision.
+          </p>
 
         <Link to="/editorial-team" className="editorial-button">
           Learn More →

@@ -37,7 +37,7 @@ const Core = () => {
       </div>
       <div className="core-text">
         <p className="core-description">
-          The roots that sustain our ever-growing tree of ideas. Those who build, those who believe, and more importantly, those who continually support the notion of a community dedicated to spreading knowledge and provoking thought. Three Eyes. One Vision.        </p>
+          They form the central pillar of TEDxPVGCOET. They oversee the vision, ensure inter-team coordination, and maintain alignment with the TEDx philosophy. Their role is both strategic and supportive- guiding planning, enabling collaboration, and upholding the event’s standards. With clarity of purpose and a commitment to excellence, they build the foundation upon which every team functions and every idea thrives.</p>
         <Link to="/organizers-team" className="core-button">
           Learn More →
         </Link>

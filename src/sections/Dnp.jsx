@@ -36,7 +36,8 @@ const Dnp = () => {
       </div>
       <div className="dnp-text" ref={textRef}>
         <p className="dnp-description">
-                          The Vibe? Built. The Set? Engineered. The Elegance? Intentional. They dream in colour, build in rhythm, and leave no screw untightened. If the space speaks to you, they are the one's who taught it how.  </p>
+                        Responsible for the event’s physical and visual experience, the DNP Team turns themes into immersive spaces. Through set design, spatial planning, and creative execution, they build the TEDx atmosphere. 
+                         </p>
 
         <Link to="/design-team" className="dnp-button">
           Learn More →
