@@ -30,7 +30,7 @@ const Curation = () => {
       </div>
       <div className="curation-right">
         <p className="curation-desc">
-          They find the voices. You hear the echoes. Curation is where TEDx begins. They research, refine, and reach out- all to bring the right voices to the stage. Seekers of voices. Shapers of vision.
+         The Curation Team finds and refines the voices that define TEDx. Through research, outreach, and collaboration, they shape powerful talks that align with the TEDx mission and leave a lasting impact.
         </p>
         <a href="/curation-team" className="curation-btn">
           Learn More →
