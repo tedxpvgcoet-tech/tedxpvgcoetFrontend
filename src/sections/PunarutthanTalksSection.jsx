@@ -27,7 +27,7 @@ const speakers = [
     name: "Siddharth Mayur",
     desc: "Founder & CEO",
     img: require("../assets/Siddharth-Mayur.jpg"),
-    link: "https://youtu.be/NAPCZvHKTeM?si=vc9oquwfVQMhMdGW"
+    link: "https://youtu.be/naTQYghjvTU?si=wGUjqsJpo9d31n5Z"
   },
   {
     name: "Sonal Ved",
