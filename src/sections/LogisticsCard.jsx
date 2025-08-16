@@ -46,16 +46,6 @@ const curationTeam = [
     },
   },
   {
-    name: "Janhavi Shinde",
-    role: "Logistics & Operations Team Member",
-    image: require("../assets/B-W Individual/lno_janhavi.jpg"),
-    social: {
-      linkedin: "https://www.linkedin.com/in/janhavi-shinde-059729266?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-      instagram: "https://www.instagram.com/janhaviiiiiiiiii?igsh=eXBjdXc0bGluYWg4",
-      website: "#",
-    },
-  },
-  {
     name: "Atharva Deshmukh",
     role: "Logistics & Operations Team Member",
     image: require("../assets/B-W Individual/lno_atharva.jpg"),
