@@ -45,8 +45,6 @@ const curationTeam = [
       website: "#",
     },
   },
-  
-  
   {
     name: "Atharva Deshmukh",
     role: "Logistics & Operations Team Member",
