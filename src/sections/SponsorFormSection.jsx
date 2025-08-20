@@ -41,7 +41,7 @@ const SponsorForm = () => {
     setSubmitting(true);
 
     try {
-        const res = await fetch("https://www.backend.tedxpvgcoet.in/sponsor", {
+      const res = await fetch("https://www.backend.tedxpvgcoet.in/sponsor", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -116,33 +116,28 @@ const SponsorForm = () => {
           <div className="full-width-sponsor">
             <input type="text" name="expectations" placeholder="What would you expect in return?" required value={formData.expectations} onChange={handleChange} />
           </div>
-          <div className="full-width-sponsor">
-                <div className="statements">
-                  <label>
-                    <input
-                      type="checkbox"
-                      name="have_sponsored_before"
-                      checked={formData.have_sponsored_before === "Yes"}
-                      onChange={handleChange}
-                    />{" "}
-                    Have you sponsored similar events before?
-                  </label>
-                </div>
-              </div>
 
-              <div className="full-width-sponsor">
-                <div className="statements">
-                  <label>
-                    <input
-                      type="checkbox"
-                      required
-                      checked={consentGiven}
-                      onChange={(e) => setConsentGiven(e.target.checked)}
-                    />{" "}
-                    I consent to be contacted regarding sponsorship.
-                  </label>
-                </div>
+          <div className="full-width-sponsor checkbox-alignment-container">
+            <label className="checkbox-row">
+              <input
+                type="checkbox"
+                name="have_sponsored_before"
+                checked={formData.have_sponsored_before === "Yes"}
+                onChange={handleChange}
+              />
+              <span>Have you sponsored similar events before?</span>
+            </label>
+            <label className="checkbox-row">
+              <input
+                type="checkbox"
+                required
+                checked={consentGiven}
+                onChange={(e) => setConsentGiven(e.target.checked)}
+              />
+              <span>I consent to be contacted regarding sponsorship.</span>
+            </label>
           </div>
+          
           <div className="full-width-sponsor">
             <button type="submit" disabled={submitting || !consentGiven}>
               {submitting ? "Submitting..." : "Submit"}

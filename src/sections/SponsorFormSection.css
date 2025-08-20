@@ -45,7 +45,7 @@
 .sponsor-form {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1rem;
+  gap: 1.5rem;
   width: 100%;
   max-width: 100%;
 }
@@ -109,21 +109,35 @@
   color: white;
 }
 
-.statements label {
-  color: white;
+/* === UPDATED DESKTOP STYLES FOR CHECKBOX === */
+.checkbox-alignment-container {
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  gap: 2rem;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  cursor: pointer;
+  color: white;
   font-size: 1rem;
 }
 
-.statements input[type="checkbox"] {
-  transform: scale(1.5);
-  margin-right: 0.5rem;
-  margin-left: 4px;
-  accent-color: red;
+.checkbox-row input[type="checkbox"] {
+  width: 1.3em;
+  height: 1.3em;
+  flex-shrink: 0;
+  accent-color: #e81b2a;
+  /* Add a small margin to create space between the checkbox and the text */
+  margin-right: 0.75rem;
 }
+
+/* The .checkbox-row span rule that created the large space has been removed. */
+
+/* === END OF DESKTOP STYLES === */
+
 
 /* Responsive */
 @media (max-width: 900px) {
@@ -137,6 +151,7 @@
   }
 }
 
+/* --- MOBILE VIEW STYLES (UNCHANGED) --- */
 @media (max-width: 600px) {
   .form-inner-sponsor h1 {
     font-size: 2rem;
@@ -148,6 +163,20 @@
 
   .sponsor-form button {
     font-size: 1rem;
+  }
+
+  .checkbox-row {
+    align-items: flex-start;
+  }
+
+  .checkbox-row input[type="checkbox"] {
+    margin-right: 0.75rem; 
+    margin-top: 0.1em;
+  }
+
+  .checkbox-row span {
+    margin-left: 0;
+    padding-left: 0;
   }
 }
 
