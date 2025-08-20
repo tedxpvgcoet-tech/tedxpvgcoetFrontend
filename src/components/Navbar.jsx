@@ -10,8 +10,8 @@ const Navbar = () => {
   const location = useLocation();
 
   const path = location.pathname;
-  const isEventPage = path === "/Event" || path === "/events/TakeTheLeap" || path === "/events/AvantGarde" || path === "/events/Punarutthan";
-  const isTeamPage = path === "/Team";
+  const isEventPage = path === "/events" || path === "/events/TakeTheLeap" || path === "/events/AvantGarde" || path === "/events/Punarutthan";
+  const isTeamPage = path === "/team";
   const isThemePage = path === "/";
 
   const handleScroll = (id) => {
@@ -93,7 +93,7 @@ const Navbar = () => {
         </Link>
        
         <Link
-          to="/Event"
+          to="/events"
           className="nav-dropdown-item"
           onClick={() => setMenuOpen(false)}
         >
@@ -114,7 +114,7 @@ const Navbar = () => {
           Partner With Us
         </Link>
         <Link
-          to="/Team"
+          to="/team"
           className="nav-dropdown-item"
           onClick={() => setMenuOpen(false)}
         >

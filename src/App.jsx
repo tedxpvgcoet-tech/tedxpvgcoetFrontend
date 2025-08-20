@@ -41,11 +41,11 @@ function App() {
         <Route path="/" element={<ThemePage />} />
         <Route path="/speaker" element={<SpeakerForm />} />
         <Route path="/sponsor" element={<SponsorForm />} />
-        <Route path="/Event" element={<Event />} />
+        <Route path="/events" element={<Event />} />
         <Route path="/events/Punarutthan" element={<Punarutthan />} />
         <Route path="/events/AvantGarde" element={<AvantGarde />} />
         <Route path="/events/TakeTheLeap" element={<TakeTheLeap />} />
-        <Route path="/Team" element={<Team />} />  
+        <Route path="/team" element={<Team />} />  
         <Route path="/curation-team" element={<CurationCard />} /> 
         <Route path="/logistics-team" element={<LogisticsCard />} />
         <Route path="/media-team" element={<MediaCard />} /> 
@@ -55,10 +55,6 @@ function App() {
         <Route path="/technical-team" element={<TechnicalCard />} />  
         <Route path="/organizers-team" element={<OrganizersCard />} /> 
         <Route path="/about" element={<Home />} /> 
-
-        
-         
-
         <Route path="/curation-team" element={<CurationCard />} />  
       </Routes>
     </>

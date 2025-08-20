@@ -30,7 +30,7 @@ const FooterSection = () => {
 
           <div>
             <Link to="/speaker">Speaker Nomination</Link>
-            <Link to="/Event">Events</Link>
+            <Link to="/events">Events</Link>
             <Link to="/sponsor">Partner With Us</Link>
             
           </div>
@@ -38,7 +38,7 @@ const FooterSection = () => {
           <div>
             <Link to="/about">About</Link>
             <Link to="/">Home</Link>
-            
+            <Link to="/team">Team</Link>
           </div>
 
           <div className="contact-card">
