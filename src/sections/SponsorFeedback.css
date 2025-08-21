@@ -5,8 +5,6 @@
   border-radius: 10px;
   color: white;
   font-family: 'Inter', sans-serif;
-
-  /* Matching width/padding to sponsor form */
   width: 100%;
   max-width: 800px;
   margin-left: auto;
@@ -66,14 +64,27 @@
   color: gold;
 }
 
+/* === UPDATED DESKTOP STYLES FOR CONSENT CHECKBOX === */
 .consent-label {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  width: 100%;
   font-size: 1rem;
   color: white;
   margin-top: 0.5rem;
+  cursor: pointer;
 }
+
+.consent-label input[type="checkbox"] {
+  width: 1.3em;
+  height: 1.3em;
+  flex-shrink: 0;
+  accent-color: #e81b2a;
+  /* This adds the small space you requested */
+  margin-right: 0.75rem;
+}
+
+/* The .consent-label span rule that created the large space has been removed. */
 
 
 .feedback-form button {
@@ -97,7 +108,7 @@
   .feedback-section {
     padding: 1.5rem;
     margin-top: 3rem;
-     margin-bottom: 2rem;
+    margin-bottom: 2rem;
   }
 
   .feedback-section h2 {
@@ -109,11 +120,11 @@
   }
 }
 
+/* --- MOBILE VIEW STYLES (UNCHANGED) --- */
 @media (max-width: 600px) {
   .feedback-section {
     margin-bottom: 3rem;
     margin-top: 5rem;
-    
   }
   .feedback-section h2 {
     font-size: 1.75rem;
@@ -132,6 +143,20 @@
   .feedback-form button {
     font-size: 1rem;
   }
+
+  .consent-label {
+    align-items: flex-start;
+  }
+
+  .consent-label input[type="checkbox"] {
+    margin-right: 0.75rem;
+    margin-top: 0.1em;
+  }
+
+  .consent-label span {
+    margin-left: 0;
+    padding-left: 0;
+  }
 }
 
 @media (max-width: 500px) {
@@ -139,7 +164,6 @@
     padding: 1rem;
     margin-top: 6rem;
     margin-bottom: 3rem;
-    
   }
 
   .feedback-section h2 {
