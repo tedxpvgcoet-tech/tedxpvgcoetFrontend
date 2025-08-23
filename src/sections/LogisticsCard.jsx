@@ -12,7 +12,7 @@ const curationTeam = [
     social: {
       linkedin: "https://www.linkedin.com/in/rudraunsh-joshi",
       instagram: "https://www.instagram.com/rudraunsh._?igsh=aWpkaTFwd2NxYmoz",
-      website: "#",
+     
     },
   },
    {
@@ -22,7 +22,7 @@ const curationTeam = [
     social: {
       linkedin: "http://linkedin.com/in/tanishkaahirekar",
       instagram: "https://www.instagram.com/tanisshkkaa_?igsh=dm16M3c2Y25qODZ3",
-      website: "#",
+      
     },
   },
   {
@@ -30,9 +30,9 @@ const curationTeam = [
     role: "Logistics & Operations Team Member",
     image: require("../assets/B-W Individual/lno_niyati.jpg"),
     social: {
-      linkedin: "#",
+     
       instagram: "https://www.instagram.com/niyati._9?igsh=Ym5jd3JqcWQ1YXgy",
-      website: "#",
+     
     },
   },
   {
@@ -42,7 +42,7 @@ const curationTeam = [
     social: {
       linkedin: "https://www.linkedin.com/in/roanak-rajurkar-150937341?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       instagram: "https://www.instagram.com/roanak.572?igsh=Zzdjd2piczQ2Y2N2",
-      website: "#",
+      
     },
   },
   {
@@ -52,7 +52,7 @@ const curationTeam = [
     social: {
       linkedin: "https://www.linkedin.com/in/atharva-deshmukh-b4812a290?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       instagram: "https://www.instagram.com/atharvad_06?igsh=NDlxOTY1MHptMW13",
-      website: "#",
+      
     },
   },
   {
@@ -62,7 +62,7 @@ const curationTeam = [
     social: {
       linkedin: "https://www.linkedin.com/in/alpesh-bhavar-11355428b",
       instagram: "https://www.instagram.com/alpesh_bhavar_patil?igsh=aTI1dnRqY3FmZWk4",
-      website: "#",
+     
     },
   },
   {
@@ -72,7 +72,7 @@ const curationTeam = [
     social: {
       linkedin: "https://www.linkedin.com/in/aayush-deshmukh1248",
       instagram: "https://www.instagram.com/aayush.3am/",
-      website: "#",
+      
     },
   },
   {
@@ -82,7 +82,7 @@ const curationTeam = [
     social: {
       linkedin: "https://www.linkedin.com/in/anish-kherdikar-326085294?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
       instagram: "https://www.instagram.com/anish_kherdikar?igsh=c3B5MGFoaXNvMGN3&utm_source=qr",
-      website: "#",
+      
     },
   },
   {
@@ -92,7 +92,7 @@ const curationTeam = [
     social: {
       linkedin: "https://www.linkedin.com/in/anushka-kanade-415614378?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BhC9NlCEmTdCSCSa4mh0yVw%3D%3D",
       instagram: "https://www.instagram.com/iwantcheesecakeee?igsh=Y2xhc3Fsa3Z2NTZ5",
-      website: "#",
+      
     },
   },
    {
@@ -102,27 +102,23 @@ const curationTeam = [
     social: {
       linkedin: "https://www.linkedin.com/in/sukrut-angal-a40b10290?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       instagram: "https://www.instagram.com/sukrut__07/profilecard/?igsh=MXQzMDIxODlhYmhyaQ==",
-      website: "#",
+      
     },
   },
    {
     name: "Fanaa Jain",
     role: "Logistics & Operations Team Member",
     image: require("../assets/B-W Individual/Lno_fana.jpg"),
-    social: {
-      linkedin: "#",
-      instagram: "#",
-      website: "#",
-    },
+    
   },
    {
     name: "Krishna Gandhi",
     role: "Logistics & Operations Team Member",
     image: require("../assets/B-W Individual/lno_krishna.jpg"),
     social: {
-      linkedin: "#",
+     
       instagram: "https://www.instagram.com/krishnagandhi_26?igsh=bG9qZmJjaWxqNHFj",
-      website: "#",
+     
     },
   },
 
