@@ -26,7 +26,7 @@ const DristiHeroSection = () => {
           Watch
         </button>
         <button className="btn learn-btn" onClick={handleLearnMoreClick}>
-          NewsLetter
+          Newsletter
         </button>
       </div>
     </div>
