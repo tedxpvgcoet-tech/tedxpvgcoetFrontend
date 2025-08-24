@@ -17,7 +17,7 @@ const curationTeam = [
     image: require("../assets/B-W Individual/tech_jagdish.jpg"),
     social: {
       linkedin: "https://www.linkedin.com/in/jagdish-15-prajapati/",
-    
+      instagram: "https://www.instagram.com/jagdish15p/",
       website: "https://exercism.org/profiles/jagdishdrp",
     },
   },
