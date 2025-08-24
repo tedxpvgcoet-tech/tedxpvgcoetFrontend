@@ -12,7 +12,7 @@ const curationTeam = [
     social: {
       linkedin: "https://www.linkedin.com/in/afaanshaikh",
       instagram: "https://www.instagram.com/instashebang?igsh=NTc5NTV1ZmtvamZ4",
-      website: "#",
+     
     },
   },
    {
@@ -22,7 +22,7 @@ const curationTeam = [
     social: {
       linkedin: "http://linkedin.com/in/prathamesh-jadhav-51ba0b346",
       instagram: "https://www.instagram.com/prathamj_13?igsh=MWo0Z2lseWg1eDg1Zw%3D%3D&utm_source=qr",
-      website: "#",
+      
     },
   },
   {
@@ -32,7 +32,7 @@ const curationTeam = [
     social: {
       linkedin: "http://linkedin.com/in/aryan-kanse-684618256",
       instagram: "https://www.instagram.com/aryankanse_14?igsh=bTQ4ZjdjNzdoZWJj&utm_source=qr",
-      website: "#",
+      
     },
   },
   {
@@ -52,7 +52,7 @@ const curationTeam = [
     social: {
       linkedin: "https://www.linkedin.com/in/soham-patwardhan-180b12270?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       instagram: "https://www.instagram.com/soham_0804?igsh=bXp1bXdrNDljaGYx",
-      website: "#",
+     
     },
   },
   {
@@ -62,7 +62,7 @@ const curationTeam = [
     social: {
       linkedin: "https://www.linkedin.com/in/ishika-dhorajkar-a47863303?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       instagram: "https://www.instagram.com/ishika_dhorajkar/profilecard/?igsh=a2JkMDJmZmY4a3h3",
-      website: "#",
+      
     },
   },
   {
@@ -72,18 +72,14 @@ const curationTeam = [
     social: {
       linkedin: "https://www.linkedin.com/in/janhavi-s-49736536b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
       instagram: "https://www.instagram.com/janhaviii_salunkhe?igsh=NzE5M3ZoYzBobzNj&utm_source=ig_contact_invite",
-      website: "#",
+      
     },
   },
   {
     name: "Rohan Naik",
     role: "Media & Marketing Team Member",
     image: require("../assets/B-W Individual/mnm_rohan.jpg"),
-    social: {
-      linkedin: "#",
-      instagram: "#",
-      website: "#",
-    },
+    
   },
   {
     name: "Yash Garve",
@@ -92,7 +88,7 @@ const curationTeam = [
     social: {
       linkedin: "https://www.linkedin.com/in/yash-garve-b63492248?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
       instagram: "https://www.instagram.com/fantasticyash",
-      website: "#",
+     
     },
   },
   {
@@ -102,7 +98,7 @@ const curationTeam = [
     social: {
       linkedin: "#",
       instagram: "#",
-      website: "#",
+      
     },
   },
 
