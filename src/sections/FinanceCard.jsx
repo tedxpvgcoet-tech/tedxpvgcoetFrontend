@@ -12,7 +12,7 @@ const curationTeam = [
     social: {
       linkedin: "https://www.linkedin.com/in/sargun-kaur-gurudatta-2a88931a7?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       instagram: "https://www.instagram.com/sargun__gurudatta?igsh=MWcwODlyMzN2Y203YQ==",
-      website: "#",
+     
     },
   },
   {
@@ -21,19 +21,15 @@ const curationTeam = [
     image: require("../assets/B-W Individual/Fin_darshan.jpg"),
     social: {
       linkedin: "www.linkedin.com/in/darshan-pakhale-a97b12329",
-      instagram: "#",
-      website: "#",
+      
+      
     },
   },
   {
     name: "Kaustabh Nalawade",
     role: "Finance Team Member",
     image: require("../assets/B-W Individual/fin_kaustubh.jpg"),
-    social: {
-      linkedin: "#",
-      instagram: "#",
-      website: "#",
-    },
+   
   },
   {
     name: "Girija Awate",
@@ -42,7 +38,7 @@ const curationTeam = [
     social: {
       linkedin: "https://www.linkedin.com/in/girija-awate-6894b5217?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       instagram: "https://www.instagram.com/girija_awate1093?igsh=YnpwbzI3bzR3OGZu",
-      website: "#",
+     
     },
   },
   {
@@ -52,7 +48,7 @@ const curationTeam = [
     social: {
       linkedin: "http://www.linkedin.com/in/devashree-deshpande-729b30290",
       instagram: "https://www.instagram.com/devashree__23?igsh=MTl5NWhrZDl2ZDZjZg==",
-      website: "#",
+      
     },
   },
   {
@@ -62,7 +58,7 @@ const curationTeam = [
     social: {
       linkedin: "https://www.linkedin.com/in/mahek-mishra-264130340?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       instagram: "https://www.instagram.com/mahek.1726?igsh=MWwzNjJtcXR3MGk3aw==",
-      website: "#",
+      
     },
   },
   {
@@ -72,7 +68,7 @@ const curationTeam = [
     social: {
       linkedin: "https://www.linkedin.com/in/aditya-bhise-899493291?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       instagram: "https://www.instagram.com/adityabhisepatil?igsh=bG9oc2IycHVsNDcw",
-      website: "#",
+      
     },
   },
   {
@@ -82,7 +78,7 @@ const curationTeam = [
     social: {
       linkedin: "https://www.linkedin.com/in/saanidhi-gade-431344241?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       instagram: "https://www.instagram.com/_.saanidhi._?igsh=NTV4MDgwdW1jb256",
-      website: "#",
+      
     },
   },
  
