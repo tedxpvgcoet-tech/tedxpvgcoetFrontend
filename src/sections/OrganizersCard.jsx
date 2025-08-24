@@ -39,6 +39,7 @@ const coreTeamMembers = [
 const CoreTeam = () => {
   return (
     <div className="core-team-page team-page">
+            <div id="page-top"/>
       <div className="core-team-hero">
         <h1 className="demo">TEAM ORGANIZERS</h1>
       </div>

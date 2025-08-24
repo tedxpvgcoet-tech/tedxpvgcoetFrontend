@@ -3,6 +3,8 @@
 import React from "react";
 import "./LogisticsCard.css"
 import "../pages/Team.css"
+import ScrollToTop from "../components/ScrollToTop";
+
 
 const curationTeam = [
   {
@@ -130,6 +132,8 @@ const curationTeam = [
 
 const Logistics = () => {
   return (
+    <>
+        <div id="page-top"/>
     <div className="curation-page team-page">
         <div className="title-hero">
       <h1 className="demo demo2">LOGISTIC AND OPERATION</h1>
@@ -179,6 +183,7 @@ const Logistics = () => {
 
 
     </div>
+    </>
   );
 };
 export default Logistics;

@@ -1,4 +1,4 @@
-import React from "react";
+import {React,useEffect} from "react";
 import TeamHeroSection from "../sections/TeamHeroSection";
 import Curation from "../sections/Curation";
 import Lno from "../sections/Lno";
@@ -14,7 +14,7 @@ import "./Team.css"
 
 const Team = () => {
     return (
-        <div className="team-page">
+        <div className="team-page"id="page-top">
           <TeamHeroSection />
           <Core />
           <Curation />
