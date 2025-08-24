@@ -62,6 +62,7 @@ const curationTeam = [
 const Technical = () => {
   return (
     <div className="curation-page team-page">
+            <div id="page-top"/>
         <div className="title-hero">
       <h1 className="curation-title">TECHNICAL</h1>
         </div>

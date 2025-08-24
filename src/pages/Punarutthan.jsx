@@ -15,6 +15,7 @@ import PunarutthanTeamDesignandProductionSection from "../sections/PunarutthanTe
 const Punarutthan = () => {
   return (
     <>
+          <div id="page-top"/>
    <PunarutthanHeroSection/>
    <PunarutthanTalksSection/>
    <PunarutthanTeamSection />

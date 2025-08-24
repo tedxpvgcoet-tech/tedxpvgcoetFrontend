@@ -6,7 +6,7 @@ import "../index.css"
 
 const TakeTheLeap = () => {
   return (
-    <div className="bg">
+    <div className="bg" id="page-top">
 
     <TakeTheLeapHeroSection />
     <TakeTheLeapTalksSection/>

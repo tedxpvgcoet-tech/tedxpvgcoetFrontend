@@ -7,7 +7,7 @@ import AvantGardeTeamSection from "../sections/AvantGardeTeamSection";
 const AvantGarde = () => {
   return (
     <>
-
+          <div id="page-top"/>
     <AvantGardeHeroSection />
     <AvantGardeTalksSection/>
     <AvantGardeTeamSection/>

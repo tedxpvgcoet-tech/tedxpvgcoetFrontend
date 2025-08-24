@@ -92,6 +92,7 @@ const curationTeam = [
 const Finance = () => {
   return (
     <div className="curation-page team-page">
+            <div id="page-top"/>
         <div className="title-hero">
       <h1 className="curation-title">FINANCE</h1>
         </div>
