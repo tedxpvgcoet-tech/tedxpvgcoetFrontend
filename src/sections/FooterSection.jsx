@@ -2,6 +2,7 @@ import React from "react";
 import "./FooterSection.css";
 import { Link } from "react-router-dom";
 import { FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
 const FooterSection = () => {
   return (
@@ -20,7 +21,7 @@ const FooterSection = () => {
           <div className="footer-icons">
             <a href="https://www.instagram.com/tedxpvgcoet/?hl=en" target="_blank"><FaInstagram /></a>
             <a href="https://www.linkedin.com/company/tedxpvgcoet/?originalSubdomain=in" target="_blank"><FaLinkedin /></a>
-            <a href="https://x.com/TEDxPVGCOET" target="_blank"><FaTwitter/></a>
+            <a href="https://x.com/TEDxPVGCOET" target="_blank"><FaXTwitter/></a>
           </div>
         </div>
 
