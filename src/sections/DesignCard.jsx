@@ -8,7 +8,7 @@ const curationTeam = [
   {
     name: "Varun Tammewar",
     role: "Design & Production Head",
-    image: require("../assets/B-W Individual/dnp_varun (1).jpg"),
+    image: require("../assets/B-W Individual/dnp_varun (1)-small.png"),
     social: {
       linkedin: "https://www.linkedin.com/in/varun-tammewar-41a191225?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       instagram: "https://www.instagram.com/varruunnnnnn?igsh=MXVyNzlwbnZyeDMy",
@@ -18,7 +18,7 @@ const curationTeam = [
    {
     name: "Lakshmikant Chaudhari",
     role: "Design & Production Head",
-    image: require("../assets/B-W Individual/Dnp_laksh.jpg"),
+    image: require("../assets/B-W Individual/Dnp_laksh-small.png"),
     social: {
       linkedin: "https://in.linkedin.com/in/lakshmikant-chaudhari-506453285",
       instagram: "https://www.instagram.com/laksh.me.kant_c?igsh=OG5tdW5lYXhjNGdi",
@@ -28,7 +28,7 @@ const curationTeam = [
   {
     name: "Anuj Kale",
     role: "Design & Production Team Member",
-    image: require("../assets/B-W Individual/dnp_anuj.jpg"),
+    image: require("../assets/B-W Individual/dnp_anuj-small.png"),
     social: {
       linkedin: "https://www.linkedin.com/in/anuj-kale-672532291",
       instagram: "https://www.instagram.com/anujxkale?igsh=MTJ3emFsa200YXdlYg==",
@@ -38,7 +38,7 @@ const curationTeam = [
   {
     name: "Sutirth Doshi",
     role: "Design & Production Team Member",
-    image: require("../assets/B-W Individual/Dnp_sutirth.jpg"),
+    image: require("../assets/B-W Individual/Dnp_sutirth-small.png"),
     social: {
       linkedin: "https://www.linkedin.com/in/sutirthdoshi?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       instagram: "https://www.instagram.com/sutirthdoshi?igsh=aGVvd3F0dDYxNzBo",
@@ -48,7 +48,7 @@ const curationTeam = [
   {
     name: "Anuj Wagh",
     role: "Design & Production Team Member",
-    image: require("../assets/B-W Individual/Dnp_anujw.jpg"),
+    image: require("../assets/B-W Individual/Dnp_anujw-small.png"),
     social: {
       
       instagram: "https://www.instagram.com/anujjjjj._2726_",
@@ -58,7 +58,7 @@ const curationTeam = [
   {
     name: "Avanti Satpute",
     role: "Design & Production Team Member",
-    image: require("../assets/B-W Individual/Dnp_avanti.jpg"),
+    image: require("../assets/B-W Individual/Dnp_avanti-small.png"),
     social: {
       linkedin: "https://www.linkedin.com/in/avanti-satpute-b35494317?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       instagram: "https://www.instagram.com/ss_avantii?igsh=OWI0OTVyb3kzMzg5",

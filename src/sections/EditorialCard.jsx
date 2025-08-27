@@ -8,7 +8,7 @@ const curationTeam = [
   {
     name: "Gargee Kulkarni",
     role: "Editorial Lead",
-    image: require("../assets/B-W Individual/Edi_gargee.jpg"),
+    image: require("../assets/B-W Individual/Edi_gargee-small.png"),
     social: {
       linkedin: "https://www.linkedin.com/in/gargeesk24?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       instagram: "https://www.instagram.com/shelfrighteouss?igsh=MTczc3pxNDNzMTFpcg==",
@@ -18,7 +18,7 @@ const curationTeam = [
   {
     name: "Hiya Pantvaidya",
     role: "Editorial Lead",
-    image: require("../assets/B-W Individual/Edi_hiya.jpg"),
+    image: require("../assets/B-W Individual/Edi_hiya-small.png"),
     social: {
       linkedin: "https://www.linkedin.com/in/hiya-pantvaidya-8a7058332?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       instagram: "https://www.instagram.com/hiyaaa_007?igsh=MTF0NXA0ZzI2b2J5Nw==",
@@ -28,7 +28,7 @@ const curationTeam = [
   {
     name: "Abhishek Rangole",
     role: "Editorial Team Member",
-    image: require("../assets/B-W Individual/edi_abhishek.jpg"),
+    image: require("../assets/B-W Individual/edi_abhishek-small.png"),
     social: {
       linkedin: "https://www.linkedin.com/in/abhishek-rangole",
       instagram: "https://www.instagram.com/rango_abhi?igsh=MXhzaGxudG96bnMwcQ==",
@@ -38,7 +38,7 @@ const curationTeam = [
   {
     name: "Sneha Ghodke",
     role: "Editorial Team Member",
-    image: require("../assets/B-W Individual/Edi_sneha.jpg"),
+    image: require("../assets/B-W Individual/Edi_sneha-small.png"),
     social: {
       linkedin: "https://www.linkedin.com/in/snehaganeshghodke",
       instagram: "https://www.instagram.com/the_.sg._/",
@@ -48,7 +48,7 @@ const curationTeam = [
   {
     name: "Renuka Joshi",
     role: "Editorial Team Member",
-    image: require("../assets/B-W Individual/edi_renuka.jpg"),
+    image: require("../assets/B-W Individual/edi_renuka-small.png"),
      social: {
       linkedin: "https://www.linkedin.com/in/renuka-joshi-430541290?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       instagram: "https://www.instagram.com/renuka___.__?igsh=M2FtcTdiOGNmamN3",
@@ -59,7 +59,7 @@ const curationTeam = [
   {
     name: "Raviraj Bhoge",
     role: "Editorial Team Member",
-    image: require("../assets/B-W Individual/edi_raviraj.jpg"),
+    image: require("../assets/B-W Individual/edi_raviraj-small.png"),
     social: {
       linkedin: "https://www.linkedin.com/in/raviraj-bhoge-2627722b4?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       instagram: "https://www.instagram.com/iamraviraj69?igsh=MTU2aHNnaDE5cWg5dA==",
@@ -69,7 +69,7 @@ const curationTeam = [
   {
     name: "Omkar Hokarne",
     role: "Editorial Team Member",
-    image: require("../assets/B-W Individual/Edi_omkar.jpg"),
+    image: require("../assets/B-W Individual/Edi_omkar-small.png"),
     social: {
       linkedin: "https://www.linkedin.com/in/omkar-hokarne-0a15aa224?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
       instagram: "https://www.instagram.com/_omkar_hokarne?igsh=eTlkajVkem1kMDF3&utm_source=qr",

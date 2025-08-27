@@ -8,7 +8,7 @@ const curationTeam = [
   {
     name: "Sargun Kaur Gurudatta",
     role: "Finance Lead",
-    image: require("../assets/B-W Individual/Fin_sargun.jpg"),
+    image: require("../assets/B-W Individual/Fin_sargun-small.png"),
     social: {
       linkedin: "https://www.linkedin.com/in/sargun-kaur-gurudatta-2a88931a7?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       instagram: "https://www.instagram.com/sargun__gurudatta?igsh=MWcwODlyMzN2Y203YQ==",
@@ -18,7 +18,7 @@ const curationTeam = [
   {
     name: "Darshan Pakhale",
     role: "Finance Team Member",
-    image: require("../assets/B-W Individual/Fin_darshan.jpg"),
+    image: require("../assets/B-W Individual/Fin_darshan-small.png"),
     social: {
       linkedin: "www.linkedin.com/in/darshan-pakhale-a97b12329",
       
@@ -27,7 +27,7 @@ const curationTeam = [
   {
     name: "Kaustabh Nalawade",
     role: "Finance Team Member",
-    image: require("../assets/B-W Individual/fin_kaustubh.jpg"),
+    image: require("../assets/B-W Individual/fin_kaustubh-small.png"),
     social: {
       linkedin: "https://www.google.com/url?q=http://www.linkedin.com/in/kaustubhkn&sa=D&source=editors&ust=1756280079248258&usg=AOvVaw1d4fVmwvAwyHlbVLRERMRx",
       instagram: "https://www.google.com/url?q=http://www.instagram.com/kaustubhkn&sa=D&source=editors&ust=1756280079248766&usg=AOvVaw0Zd2rqP46eQXwU826Kz_-3",
@@ -37,7 +37,7 @@ const curationTeam = [
   {
     name: "Girija Awate",
     role: "Finance Team Member",
-    image: require("../assets/B-W Individual/fin_girija.jpg"),
+    image: require("../assets/B-W Individual/fin_girija-small.png"),
     social: {
       linkedin: "https://www.linkedin.com/in/girija-awate-6894b5217?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       instagram: "https://www.instagram.com/girija_awate1093?igsh=YnpwbzI3bzR3OGZu",
@@ -47,7 +47,7 @@ const curationTeam = [
   {
     name: "Devashree Deshpande",
     role: "Finance Team Member",
-    image: require("../assets/B-W Individual/fin_devashree.jpg"),
+    image: require("../assets/B-W Individual/fin_devashree-small.png"),
     social: {
       linkedin: "http://www.linkedin.com/in/devashree-deshpande-729b30290",
       instagram: "https://www.instagram.com/devashree__23?igsh=MTl5NWhrZDl2ZDZjZg==",
@@ -57,7 +57,7 @@ const curationTeam = [
   {
     name: "Mahek Mishra",
     role: "Finance Team Member",
-    image: require("../assets/B-W Individual/Fin_mahek.jpg"),
+    image: require("../assets/B-W Individual/Fin_mahek-small.png"),
     social: {
       linkedin: "https://www.linkedin.com/in/mahek-mishra-264130340?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       instagram: "https://www.instagram.com/mahek.1726?igsh=MWwzNjJtcXR3MGk3aw==",
@@ -67,7 +67,7 @@ const curationTeam = [
   {
     name: "Aditya Bhise",
     role: "Finance Team Member",
-    image: require("../assets/B-W Individual/fin_aditya.jpg"),
+    image: require("../assets/B-W Individual/fin_aditya-small.png"),
     social: {
       linkedin: "https://www.linkedin.com/in/aditya-bhise-899493291?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       instagram: "https://www.instagram.com/adityabhisepatil?igsh=bG9oc2IycHVsNDcw",
@@ -77,7 +77,7 @@ const curationTeam = [
   {
     name: "Sanidhi Gade",
     role: "Finance Team Member",
-    image: require("../assets/B-W Individual/fin_saanidhi.jpg"),
+    image: require("../assets/B-W Individual/fin_saanidhi-small.png"),
     social: {
       linkedin: "https://www.linkedin.com/in/saanidhi-gade-431344241?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       instagram: "https://www.instagram.com/_.saanidhi._?igsh=NTV4MDgwdW1jb256",
