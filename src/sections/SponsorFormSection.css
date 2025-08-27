@@ -98,7 +98,6 @@
 
 .checkbox-group div {
   display: flex;
-  flex-wrap: wrap;
   gap: 1rem;
 }
 
@@ -157,11 +156,24 @@
     font-size: 1rem;
   }
 
-  /* --- MOBILE FIX FOR PARTNERSHIP OPTIONS --- */
+  /* --- MOBILE VIEW - PERFECT LEFT ALIGNMENT --- */
   .checkbox-group div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+  
+  .checkbox-group label {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Creates a 2-column layout */
-    gap: 0.75rem; /* Adjusts the space between items */
+    grid-template-columns: auto 1fr; /* Precise columns for checkbox and text */
+    align-items: center; /* Vertically centers the items */
+    gap: 0.5rem;
+    width: 100%;
+  }
+  
+  .checkbox-group input[type="checkbox"] {
+    margin: 0; /* Reset margin for perfect grid alignment */
   }
 
   .checkbox-row {

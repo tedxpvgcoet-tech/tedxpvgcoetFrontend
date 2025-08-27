@@ -12,7 +12,7 @@ const curationTeam = [
     social: {
       linkedin: "https://www.linkedin.com/in/varun-tammewar-41a191225?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       instagram: "https://www.instagram.com/varruunnnnnn?igsh=MXVyNzlwbnZyeDMy",
-      website: "#",
+    
     },
   },
    {
@@ -22,7 +22,7 @@ const curationTeam = [
     social: {
       linkedin: "https://in.linkedin.com/in/lakshmikant-chaudhari-506453285",
       instagram: "https://www.instagram.com/laksh.me.kant_c?igsh=OG5tdW5lYXhjNGdi",
-      website: "#",
+      
     },
   },
   {
@@ -32,7 +32,7 @@ const curationTeam = [
     social: {
       linkedin: "https://www.linkedin.com/in/anuj-kale-672532291",
       instagram: "https://www.instagram.com/anujxkale?igsh=MTJ3emFsa200YXdlYg==",
-      website: "#",
+      
     },
   },
   {
@@ -42,7 +42,7 @@ const curationTeam = [
     social: {
       linkedin: "https://www.linkedin.com/in/sutirthdoshi?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       instagram: "https://www.instagram.com/sutirthdoshi?igsh=aGVvd3F0dDYxNzBo",
-      website: "#",
+      
     },
   },
   {
@@ -50,9 +50,9 @@ const curationTeam = [
     role: "Design & Production Team Member",
     image: require("../assets/B-W Individual/Dnp_anujw.jpg"),
     social: {
-      linkedin: "#",
+      
       instagram: "https://www.instagram.com/anujjjjj._2726_",
-      website: "#",
+      
     },
   },
   {
@@ -62,7 +62,7 @@ const curationTeam = [
     social: {
       linkedin: "https://www.linkedin.com/in/avanti-satpute-b35494317?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       instagram: "https://www.instagram.com/ss_avantii?igsh=OWI0OTVyb3kzMzg5",
-      website: "#",
+      
     },
   },
   
