@@ -8,7 +8,7 @@ const curationTeam = [
   {
     name: "Tanushka Bankar",
     role: "Technical Lead",
-    image: require("../assets/B-W Individual/tech_tanushka.jpg"),
+    image: require("../assets/B-W Individual/tech_tanushka-small.png"),
     social: {
       linkedin: "https://www.linkedin.com/in/tanushka-bankar-93727731a",
       instagram: "https://www.instagram.com/tanushka_bankar?igsh=MWdpMG5pMzd1d2x6cw==",
@@ -18,7 +18,7 @@ const curationTeam = [
   {
     name: "Jagdish Prajapati",
     role: "Technical Team Member",
-    image: require("../assets/B-W Individual/tech_jagdish.jpg"),
+    image: require("../assets/B-W Individual/tech_jagdish-small.png"),
     social: {
       linkedin: "https://www.linkedin.com/in/jagdish-15-prajapati/",
       instagram: "https://www.instagram.com/jagdish15p/",
@@ -28,7 +28,7 @@ const curationTeam = [
   {
     name: "Hussain Patanwala",
     role: "Technical Team Member",
-    image: require("../assets/B-W Individual/tech_hussain.jpg"),
+    image: require("../assets/B-W Individual/tech_hussain-small.png"),
     social: {
       linkedin: "https://www.linkedin.com/in/hussain-patanwala-9881b6328/",
       instagram: "https://www.instagram.com/hussainn_53/",
@@ -38,7 +38,7 @@ const curationTeam = [
   {
     name: "Shrikant Mhaske",
     role: "Technical Team Member",
-    image: require("../assets/B-W Individual/Tech_shrikant.jpg"),
+    image: require("../assets/B-W Individual/Tech_shrikant-small.png"),
     social: {
       linkedin: "https://www.linkedin.com/in/shrikant-mhaske-920ab9290?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       
@@ -48,7 +48,7 @@ const curationTeam = [
   {
     name: "Atharva Kamble",
     role: "Technical Team Member",
-    image: require("../assets/B-W Individual/tech_atharva.jpg"),
+    image: require("../assets/B-W Individual/tech_atharva-small.png"),
     social: {
       linkedin: "https://www.linkedin.com/in/atharva-kamble-10685928b/",
       instagram: "https://www.instagram.com/atharva_kamble.09/",
