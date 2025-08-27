@@ -10,9 +10,9 @@ const curationTeam = [
     role: "Technical Lead",
     image: require("../assets/B-W Individual/tech_tanushka.jpg"),
     social: {
-      linkedin: "#",
-      instagram: "#",
-      website: "#",
+      linkedin: "https://www.linkedin.com/in/tanushka-bankar-93727731a",
+      instagram: "https://www.instagram.com/tanushka_bankar?igsh=MWdpMG5pMzd1d2x6cw==",
+      
     },
   },
   {
@@ -21,7 +21,7 @@ const curationTeam = [
     image: require("../assets/B-W Individual/tech_jagdish.jpg"),
     social: {
       linkedin: "https://www.linkedin.com/in/jagdish-15-prajapati/",
-      instagram: "#",
+      instagram: "https://www.instagram.com/jagdish15p/",
       website: "https://exercism.org/profiles/jagdishdrp",
     },
   },
@@ -41,8 +41,8 @@ const curationTeam = [
     image: require("../assets/B-W Individual/Tech_shrikant.jpg"),
     social: {
       linkedin: "https://www.linkedin.com/in/shrikant-mhaske-920ab9290?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-      instagram: "#",
-      website: "#",
+      
+      
     },
   },
   {
@@ -52,7 +52,7 @@ const curationTeam = [
     social: {
       linkedin: "https://www.linkedin.com/in/atharva-kamble-10685928b/",
       instagram: "https://www.instagram.com/atharva_kamble.09/",
-      website: "#",
+      
     },
   },
  
