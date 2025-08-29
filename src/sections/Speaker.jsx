@@ -4,6 +4,7 @@ import speakerImage from "../assets/Hruitvik.png";
 import speakerImage2 from "../assets/KEDAR.png";
 import speakerImage3 from "../assets/Group 30.png"; 
 import speakerImage4 from "../assets/Bhooshan (1) (1).png"; 
+import "./SectionHeader.css"
 
 const SpeakerCard = ({ image, description }) => {
   const [showInfo, setShowInfo] = useState(false);
@@ -48,6 +49,12 @@ const Speaker = () => {
 
   return (
     <section className="speaker-section">
+      <div className="section-header">
+      <h2 className="section-header__title">
+        <span className="section-header__pre">MEET THE</span>
+        <span className="section-header__main">SPEAKERS</span>
+      </h2>
+    </div>
       {/* Mobile */}
       <div className="speaker-mobile">
         {speakers.map((s, i) => (
