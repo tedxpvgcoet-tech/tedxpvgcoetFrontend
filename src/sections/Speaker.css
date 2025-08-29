@@ -1,7 +1,13 @@
 .speaker-section {
   padding: 4rem 2rem;
   color: white;
-  background-color: black;
+   background-color: #171717;
+  background-image:
+    radial-gradient(circle at top left, rgba(255, 0, 0, 0.23) 0%, transparent 17%),
+    radial-gradient(circle at 95% 30%, rgba(255, 0, 0, 0.23) 0%, transparent 17%),
+    radial-gradient(circle at 0% 60%, rgba(255, 0, 0, 0.23) 0%, transparent 17%),
+    radial-gradient(circle at 90% 96%, rgba(255, 0, 0, 0.23) 0%, transparent 17%);
+  background-repeat: no-repeat;
 }
 
 /* ===== Mobile ===== */
@@ -102,6 +108,7 @@
     justify-content: space-evenly; /* equal gaps left + right + between */
     gap: 2rem;
     flex-wrap: wrap;
+   
   }
 
   .speaker-carde {

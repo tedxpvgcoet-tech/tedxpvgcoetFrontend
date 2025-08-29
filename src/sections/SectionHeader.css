@@ -1,0 +1,40 @@
+.section-header {
+  background-color: #000; /* Black background */
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.section-header__title {
+  margin: 0;
+  font-family: "Kantumruy Pro", sans-serif;
+  line-height: 1.2;
+}
+
+.section-header__pre {
+  display: block;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  color: #fff; /* White text */
+  margin-bottom: 0.5rem;
+}
+
+.section-header__main {
+  display: block;
+  color: #e10600; /* Red text */
+  font-weight: 800;
+  font-size: 2rem;
+}
+
+@media (min-width: 992px) {
+  .section-header {
+    padding: 3rem 1rem;
+  }
+
+  .section-header__pre {
+    font-size: 1.2rem;
+  }
+
+  .section-header__main {
+    font-size: 3rem;
+  }
+}

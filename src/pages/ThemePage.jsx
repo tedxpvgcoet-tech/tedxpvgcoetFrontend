@@ -4,6 +4,7 @@ import DrishtiHero from '../sections/DrishthiHero'
 import PerspectiveSection from '../sections/PerspectiveSection'
 import DrishtiSection from '../sections/DrishtiSection'
 import Speaker from '../sections/Speaker'
+import SectionHeader from '../sections/SectionHeader'
 
 const ThemePage = () => {
   return (
@@ -11,6 +12,7 @@ const ThemePage = () => {
     
       <DristiHeroSection />
       <DrishtiHero />
+      <SectionHeader></SectionHeader>
       <Speaker/>
 
       <DrishtiSection />
