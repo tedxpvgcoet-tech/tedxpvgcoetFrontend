@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Speaker.css";
-import speakerImage from "../assets/Bhooshan.png";
+import speakerImage from "../assets/Hruitvik.png";
+import speakerImage2 from "../assets/KEDAR.png";
 
 const SpeakerCard = ({ image, description }) => {
   const [showInfo, setShowInfo] = useState(false);
@@ -38,7 +39,7 @@ const Speaker = () => {
 
   const speakers = [
     { image: speakerImage, description },
-    { image: speakerImage, description },
+    { image: speakerImage2, description },
   ];
 
   return (

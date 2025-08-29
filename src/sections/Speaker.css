@@ -130,6 +130,14 @@
   .speaker-infoe {
     animation: slideInFromRight 0.6s ease-out forwards;
   }
+  .speaker-photo {
+  flex-direction: column; /* stack image + button vertically */
+}
+
+.speaker-photo img {
+  margin-bottom: 1rem; /* small gap between photo and button */
+}
+
 
   @keyframes slideInFromLeft {
     0% {
