@@ -1,10 +1,10 @@
-
 .speaker-section {
   padding: 4rem 2rem;
   color: white;
   background-color: black;
 }
 
+/* ===== Mobile ===== */
 .speaker-mobile {
   display: none;
 }
@@ -18,11 +18,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
+    gap: 2rem;
   }
 
-  .speaker-mobile-photo,
-  .speaker-mobile-info {
+  .speaker-photo,
+  .speaker-infoe {
     width: 100%;
     max-width: 400px;
     text-align: center;
@@ -31,7 +31,7 @@
   .speaker-image {
     width: 100%;
     max-width: 350px;
-    border-radius: 12px;
+    border-radius: 12px; /* no border */
   }
 
   .speaker-learn-btn,
@@ -53,11 +53,11 @@
     color: black;
   }
 
-  .speaker-mobile-photo {
+  .speaker-photo {
     animation: slideInFromLeft 0.6s ease-out forwards;
   }
 
-  .speaker-mobile-info {
+  .speaker-infoe {
     animation: slideInFromRight 0.6s ease-out forwards;
   }
 
@@ -91,7 +91,7 @@
   }
 }
 
-
+/* ===== Desktop ===== */
 @media (min-width: 992px) {
   .speaker-mobile {
     display: none;
@@ -99,84 +99,64 @@
 
   .speaker-desktop {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    justify-content: space-evenly; /* equal gaps left + right + between */
     gap: 2rem;
     flex-wrap: wrap;
   }
 
-  .speaker-image-container {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-  }
-
-  .speaker-image {
-    width: 100%;
+  .speaker-carde {
+    flex: 1 1 calc(50% - 2rem);
     max-width: 500px;
-    border-radius: 12px;
+    text-align: center;
+    position: relative;
   }
 
-  .speaker-text {
-    flex: 1;
-    max-width: 600px;
-  }
-
-  .speaker-description {
-    font-size: 1.2rem;
-    font-style: italic;
-    line-height: 1.6;
-    font-family: "Kantumruy Pro", sans-serif;
-  }
-}
-/*
-.speaker-section {
-  padding: 4rem 2rem;
-  color: white;
-  background-color: black;
-}
-
-.speaker-mobile {
-  display: none;
-}
-
-@media (max-width: 991px) {
-  .speaker-desktop {
-    display: none;
-  }
-
-  .speaker-mobile {
+  .speaker-photo,
+  .speaker-infoe {
+    width: 100%;
+    animation-duration: 0.6s;
+    animation-fill-mode: forwards;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    min-height: 500px;
-    position: relative;
-    overflow: hidden;
+    justify-content: center; /* keep content vertically centered */
+    min-height: 450px;       /* match photo + description */
+  }
+
+  .speaker-photo {
+    animation: slideInFromLeft 0.6s ease-out forwards;
+  }
+
+  .speaker-infoe {
+    animation: slideInFromRight 0.6s ease-out forwards;
+  }
+
+  @keyframes slideInFromLeft {
+    0% {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideInFromRight {
+    0% {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .speaker-image {
     width: 100%;
     max-width: 400px;
-    margin: 0 auto;
-  }
-
-  .speaker-mobile-photo,
-  .speaker-mobile-info {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-  }
-
-  .speaker-image {
-    width: 100%;
-    max-width: 350px;
-    border-radius: 12px;
+    border-radius: 12px; /* no border */
   }
 
   .speaker-learn-btn,
@@ -198,85 +178,10 @@
     color: black;
   }
 
-  .speaker-mobile-photo {
-    animation: slideInFromLeft 0.6s ease-out forwards;
-  }
-
-  .speaker-mobile-info {
-    animation: slideInFromRight 0.6s ease-out forwards;
-  }
-
-  @keyframes slideInFromLeft {
-    0% {
-      opacity: 0;
-      transform: translate(-50%, 50px);
-    }
-    100% {
-      opacity: 1;
-      transform: translate(-50%, 0);
-    }
-  }
-
-  @keyframes slideInFromRight {
-    0% {
-      opacity: 0;
-      transform: translate(50%, 0);
-    }
-    100% {
-      opacity: 1;
-      transform: translate(-50%, 0);
-    }
-  }
-
-  .speaker-description {
-    font-size: 1rem;
-    line-height: 1.5;
-    font-style: italic;
-    font-family: "Kantumruy Pro", sans-serif;
-    padding: 1rem;
-    max-width: 350px;
-  }
-}
-
-@media (min-width: 992px) {
-  .speaker-mobile {
-    display: none;
-  }
-
-  .speaker-desktop {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .speaker-image-container {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-  }
-
-  .speaker-image {
-    width: 100%;
-    max-width: 500px;
-    border-radius: 12px;
-  }
-
-  .speaker-text {
-    flex: 1;
-    max-width: 600px;
-  }
-
   .speaker-description {
     font-size: 1.2rem;
-    font-style: italic;
     line-height: 1.6;
+    font-style: italic;
     font-family: "Kantumruy Pro", sans-serif;
   }
 }
-*/
-
-
