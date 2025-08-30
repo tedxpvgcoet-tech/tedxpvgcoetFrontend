@@ -1,7 +1,7 @@
 .speaker-section {
   padding: 4rem 2rem;
   color: white;
-   background-color: #171717;
+  background-color: #171717;
   background-image:
     radial-gradient(circle at top left, rgba(255, 0, 0, 0.23) 0%, transparent 17%),
     radial-gradient(circle at 95% 30%, rgba(255, 0, 0, 0.23) 0%, transparent 17%),
@@ -10,193 +10,107 @@
   background-repeat: no-repeat;
 }
 
-/* ===== Mobile ===== */
-.speaker-mobile {
-  display: none;
-}
-
-@media (max-width: 991px) {
-  .speaker-desktop {
-    display: none;
-  }
-
-  .speaker-mobile {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-  }
-
-  .speaker-photo,
-  .speaker-infoe {
-    width: 100%;
-    max-width: 400px;
-    text-align: center;
-  }
-
-  .speaker-image {
-    width: 100%;
-    max-width: 350px;
-    border-radius: 12px; /* no border */
-  }
-
-  .speaker-learn-btn,
-  .speaker-back-btn {
-    margin-top: 1rem;
-    font-size: 1rem;
-    color: white;
-    background: transparent;
-    border: 1px solid red;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-
-  .speaker-learn-btn:hover,
-  .speaker-back-btn:hover {
-    background: red;
-    color: black;
-  }
-
-  .speaker-photo {
-    animation: slideInFromLeft 0.6s ease-out forwards;
-  }
-
-  .speaker-infoe {
-    animation: slideInFromRight 0.6s ease-out forwards;
-  }
-
-  @keyframes slideInFromLeft {
-    0% {
-      opacity: 0;
-      transform: translateX(-50px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-
-  @keyframes slideInFromRight {
-    0% {
-      opacity: 0;
-      transform: translateX(50px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-
-  .speaker-description {
-    font-size: 1rem;
-    line-height: 1.5;
-    font-style: italic;
-    font-family: "Kantumruy Pro", sans-serif;
-  }
-}
-
-/* ===== Desktop ===== */
-@media (min-width: 992px) {
-  .speaker-mobile {
-    display: none;
-  }
-
-  .speaker-desktop {
-    display: flex;
-    justify-content: space-evenly; /* equal gaps left + right + between */
-    gap: 2rem;
-    flex-wrap: wrap;
-   
-  }
-
-  .speaker-carde {
-    flex: 1 1 calc(50% - 2rem);
-    max-width: 500px;
-    text-align: center;
-    position: relative;
-  }
-
-  .speaker-photo,
-  .speaker-infoe {
-    width: 100%;
-    animation-duration: 0.6s;
-    animation-fill-mode: forwards;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; /* keep content vertically centered */
-    min-height: 450px;       /* match photo + description */
-  }
-
-  .speaker-photo {
-    animation: slideInFromLeft 0.6s ease-out forwards;
-  }
-
-  .speaker-infoe {
-    animation: slideInFromRight 0.6s ease-out forwards;
-  }
-  .speaker-photo {
-  flex-direction: column; /* stack image + button vertically */
+/* --- BASE STYLES for photo and info cards --- */
+.speaker-photo,
+.speaker-infoe {
+  width: 100%;
+  animation-duration: 0.6s;
+  animation-fill-mode: forwards;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .speaker-photo img {
-  margin-bottom: 1rem; /* small gap between photo and button */
+  margin-bottom: 1rem;
 }
 
+.speaker-image {
+  width: 100%;
+  border-radius: 12px;
+}
 
-  @keyframes slideInFromLeft {
-    0% {
-      opacity: 0;
-      transform: translateX(-50px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
+.speaker-learn-btn,
+.speaker-back-btn {
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: white;
+  background: transparent;
+  border: 1px solid red;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
 
-  @keyframes slideInFromRight {
-    0% {
-      opacity: 0;
-      transform: translateX(50px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
+.speaker-learn-btn:hover,
+.speaker-back-btn:hover {
+  background: red;
+  color: black;
+}
 
-  .speaker-image {
-    width: 100%;
-    max-width: 400px;
-    border-radius: 12px; /* no border */
-  }
+.speaker-description {
+  font-style: italic;
+  font-family: "Kantumruy Pro", sans-serif;
+}
 
-  .speaker-learn-btn,
-  .speaker-back-btn {
-    margin-top: 1rem;
-    font-size: 1rem;
-    color: white;
-    background: transparent;
-    border: 1px solid red;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
+@keyframes slideInFromLeft {
+  0% { opacity: 0; transform: translateX(-50px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
 
-  .speaker-learn-btn:hover,
-  .speaker-back-btn:hover {
-    background: red;
-    color: black;
-  }
+@keyframes slideInFromRight {
+  0% { opacity: 0; transform: translateX(50px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
 
-  .speaker-description {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    font-style: italic;
-    font-family: "Kantumruy Pro", sans-serif;
-  }
+/* ===== Mobile Specific Styles ===== */
+@media (max-width: 991px) {
+  .speaker-desktop { display: none; }
+  .speaker-mobile { display: flex; flex-direction: column; align-items: center; gap: 2rem; }
+  .speaker-photo, .speaker-infoe { max-width: 400px; }
+  .speaker-image { max-width: 350px; }
+  .speaker-photo { animation-name: slideInFromLeft; }
+  .speaker-infoe { animation-name: slideInFromRight; }
+  .speaker-description { font-size: 1rem; line-height: 1.5; }
+  
+  /* Responsive styles for icons */
+  .speaker-socials { gap: 1.2rem; }
+  .social-icon-link { font-size: 2.2rem; }
+}
+
+/* ===== Desktop Specific Styles ===== */
+@media (min-width: 992px) {
+  .speaker-mobile { display: none; }
+  .speaker-desktop { display: flex; justify-content: space-evenly; gap: 2rem; flex-wrap: wrap; }
+  .speaker-carde { flex: 1 1 calc(50% - 2rem); max-width: 500px; position: relative; }
+  .speaker-photo, .speaker-infoe { min-height: 450px; }
+  .speaker-photo { animation-name: slideInFromLeft; }
+  .speaker-infoe { animation-name: slideInFromRight; }
+  .speaker-image { max-width: 400px; }
+  .speaker-description { font-size: 1.2rem; line-height: 1.6; }
+}
+
+/* --- NEW: Social Icons Container --- */
+.speaker-socials {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem; /* Space between icons */
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* --- NEW: Generic Style for ALL Social Icons --- */
+.social-icon-link {
+  color: white;
+  font-size: 2.5rem; /* Default size for desktop */
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icon-link:hover {
+  color: #E60023; /* TED Red */
+  transform: scale(1.1);
 }
