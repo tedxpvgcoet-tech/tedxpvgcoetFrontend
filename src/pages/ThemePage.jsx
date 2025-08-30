@@ -12,9 +12,7 @@ const ThemePage = () => {
     
       <DristiHeroSection />
       <DrishtiHero />
-      
       <Speaker/>
-
       <DrishtiSection />
       <PerspectiveSection />
       
