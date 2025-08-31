@@ -25,6 +25,7 @@ import TakeTheLeap from "./pages/TakeTheLeap"
 import DrishtiHero from "./sections/DrishthiHero"
 import ThemePage from "./pages/ThemePage";
 
+
 inject();
 
 function App() {
@@ -55,7 +56,9 @@ function App() {
         <Route path="/technical-team" element={<TechnicalCard />} />  
         <Route path="/organizers-team" element={<OrganizersCard />} /> 
         <Route path="/about" element={<Home />} /> 
-        <Route path="/curation-team" element={<CurationCard />} />  
+        <Route path="/curation-team" element={<CurationCard />} />
+         
+      
       </Routes>
     </>
   );

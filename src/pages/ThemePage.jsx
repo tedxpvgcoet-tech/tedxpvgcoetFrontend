@@ -4,6 +4,7 @@ import DrishtiHero from '../sections/DrishthiHero'
 import PerspectiveSection from '../sections/PerspectiveSection'
 import DrishtiSection from '../sections/DrishtiSection'
 import Speaker from '../sections/Speaker'
+import Booknow from '../sections/Booknow'
 
 
 const ThemePage = () => {
@@ -11,6 +12,7 @@ const ThemePage = () => {
     <>
     
       <DristiHeroSection />
+      <Booknow/>
       <DrishtiHero />
       <Speaker/>
       <DrishtiSection />

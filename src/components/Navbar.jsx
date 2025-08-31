@@ -39,7 +39,7 @@ const Navbar = () => {
         className={`navbar 
         ${isEventPage ? "transparent-navbar" : ""}
         ${isTeamPage ? "team-navbar" : ""}
-        ${isThemePage ? "team-navbar" : ""}
+        
         ${isTeamPage && scrolled ? "team-navbar-scrolled" : ""}
       `}
       >
