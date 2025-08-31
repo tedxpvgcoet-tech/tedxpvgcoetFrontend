@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import "./Speaker.css";
-import speakerImage from "../assets/Hruitvik.png";
-import speakerImage3 from "../assets/KEDAR.png";
-import speakerImage4 from "../assets/Group 30.png";
-import speakerImage2 from "../assets/Bhooshan (1) (1).png";
+import speakerImage from "../assets/Drishti/Hruitvik.png";
+import speakerImage3 from "../assets/Drishti/Kedar.png";
+import speakerImage4 from "../assets/Drishti/Aditya.png";
+import speakerImage2 from "../assets/Drishti/Bhooshan.png";
+import speakerImage5 from "../assets/Drishti/Surabhi.png";
+import speakerImage6 from "../assets/Drishti/LSChaudhary.png";
 import "./SectionHeader.css";
 
 // 1. IMPORT ALL REQUIRED ICONS
@@ -91,6 +93,18 @@ const Speaker = () => {
       image: speakerImage4,
       description: "Dr. Aditya Abhyankar, Dean at SPPU, is a scientist, innovator, and thought leader. With 8 U.S. patents and 14 Indian patents, he bridges technology, philosophy, and entrepreneurship to redefine changemaking. He brings his journey of deep tech innovation to the TEDx stage.",
       scholarUrl: "https://scholar.google.com/citations?user=VnjgF5sAAAAJ&hl=en", 
+    },
+     {
+      id: 5,
+      image: speakerImage5,
+      description: "Surabhi Handay , a celebrated actress in Marathi cinema admired for her portrayal of Mhalsa Devi in Jai Malhar, is an artist who seamlessly blends culture, theatre, and performance. An accomplished singer and storyteller, she goes beyond entertainment to explore the deeper essence of art and expression. From the cinematic stage to TEDxPVGCOET 2025, she arrives to share her artistic journey, unravel stories of culture and creativity, and offer a fresh perspective on the power of performance.",
+      instagramUrl: "https://www.instagram.com/surbhihandayofficial/", 
+    },
+     {
+      id: 6,
+      image: speakerImage6,
+      description: "Major L. S. Chaudhary , a former Indian Army officer and Rashtriya Rifles veteran, has led high-stakes counter-terror operations in Kashmir, surviving near-death situations and neutralizing heavily armed insurgent groups under his command. His journey from battlefield grit and combat injuries to mentoring future leaders and training defence aspirants is one of resilience, clarity, and purpose. Through his talks and YouTube channel, he shares battlefield-tested lessons that transcend the military. At TEDxPVGCOET 2025, he brings a soldier’s perspective that can transform how we see leadership, resilience, and life itself.",
+      instagramUrl: "https://www.instagram.com/major_lsc/", 
     },
   ];
 
