@@ -1,0 +1,51 @@
+/* --- Base Styles --- */
+.hero-container {
+  height: 100vh;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+  /* Flexbox settings to position content */
+  display: flex;
+  justify-content: center; /* Horizontally center */
+  align-items: flex-end;   /* Vertically align to the BOTTOM */
+
+  /* Add padding to give the button space from the edge */
+  padding-bottom: 50px;
+  box-sizing: border-box; /* Ensures padding is included in the element's total height */
+}
+
+.book-now-btn {
+  padding: 12px 28px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+  background-color: #E62B1E; /* Initial TEDx Red color */
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  text-transform: uppercase;
+  text-decoration: none; 
+  
+  /* --- This creates the smooth color change --- */
+  transition: background-color 0.3s ease;
+}
+
+/* --- This is the new, simple hover effect --- */
+.book-now-btn:hover {
+  background-color: #111; /* Black color on hover */
+}
+
+
+/* --- Desktop Specific Styles --- */
+@media (min-width: 768px) {
+  .hero-container {
+    padding-bottom: 80px; 
+  }
+
+  .book-now-btn {
+    padding: 16px 36px;
+    font-size: 1.5rem;
+  }
+}

@@ -39,7 +39,7 @@ const Navbar = () => {
         className={`navbar 
         ${isEventPage ? "transparent-navbar" : ""}
         ${isTeamPage ? "team-navbar" : ""}
-        ${isThemePage ? "team-navbar" : ""}
+        
         ${isTeamPage && scrolled ? "team-navbar-scrolled" : ""}
       `}
       >
@@ -90,6 +90,14 @@ const Navbar = () => {
           onClick={() => setMenuOpen(false)}
         >
           About
+        </Link>
+
+        <Link
+          to="https://tedxpvgcoet.substack.com/"
+          className="nav-dropdown-item"
+          onClick={() => setMenuOpen(false)}
+        >
+          News letter
         </Link>
        
         <Link

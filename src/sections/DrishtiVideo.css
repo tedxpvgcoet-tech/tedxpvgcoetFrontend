@@ -1,0 +1,43 @@
+.vid-container {
+  display: flex;                 
+  justify-content: center;        /* center horizontally */
+  align-items: center;            /* center vertically */
+  flex-direction: column;
+  padding: 2rem;                  /* some spacing around the video */
+  /*background: #000; */
+background: #171717;/* optional background */
+
+}
+
+.drishti-video {
+  width: 65%;             /* default desktop size */
+  margin-top: 3rem;
+  height: auto;                   /* keep aspect ratio */
+  max-width: 1200px;              /* prevent it from being too big */
+  border-radius: 12px;            
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.watch-btn {
+  position: relative;
+  border: 2px solid red;
+  background-color: #171717; /* solid black button background */
+  font-weight: bold;
+  overflow: hidden; /* hides gradient overflow */
+  color: #f59797; /* fallback */
+}
+
+/* Tablet screens */
+@media (max-width: 1024px) {
+  .drishti-video {
+    width: 80%;
+  }
+}
+
+/* Mobile screens */
+@media (max-width: 600px) {
+  .drishti-video {
+    width: 95%;
+    border-radius: 8px;
+  }
+}
