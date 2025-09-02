@@ -47,7 +47,7 @@ const Booknow = () => {
     >
       <div className="hero-content">
         <a
-          href="https://www.instagram.com"
+          href="https://konfhub.com/drishti"
           target="_blank"
           rel="noopener noreferrer"
           className="book-now-btn"
