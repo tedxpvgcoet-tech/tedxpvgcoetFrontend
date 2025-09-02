@@ -1,0 +1,105 @@
+.punarutthan-hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  color: white;
+  text-align: left;
+}
+
+.overlay3 {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.8); /* darkness: adjust opacity here */
+  z-index: 1;
+}
+
+
+
+.punarutthan-text {
+  max-width: 800px;
+  padding: 2rem;
+  border-radius: 10px;
+  z-index: 2; /* ⬅️ important */
+  animation: slideInText 1s ease-out forwards;
+  animation-delay: 0.5s;
+}
+
+
+/* Slide-in keyframes */
+@keyframes slideInText {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+.punarutthan-text h1 {
+  font-size: 2.5rem;
+  color: #e81b2a;
+  margin-bottom: 1rem;
+}
+
+.punarutthan-text p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .punarutthan-text {
+    padding: 1.5rem;
+  }
+
+  .punarutthan-text h1 {
+    font-size: 2rem;
+  }
+
+  .punarutthan-text p {
+    font-size: 1rem;
+  }
+} 
+
+@media (min-width: 1000px) {
+  .punarutthan-text h1 {
+    font-size: 4rem; /* Increased from 2.5rem */
+  }
+
+  .punarutthan-text p {
+    font-size: 1.5rem; /* Increased from 1.1rem */
+    line-height: 1.3;  /* Slightly increased for better readability */
+  }
+
+  .punarutthan-text {
+    padding: 3rem;     /* Optional: more padding for larger screens */
+    max-width: 1000px; /* Optional: allow wider text block */
+  }
+
+  @media (min-width: 1600px) {
+
+    .punarutthan-text p {
+    font-size: 1.8rem; /* Increased from 1.1rem */
+    line-height: 1.5  /* Slightly increased for better readability */
+  }
+  .punarutthan-text {
+    padding: 3rem;     /* Optional: more padding for larger screens */
+    max-width: 1200px; /* Optional: allow wider text block */
+  }
+}
+}
+
+
+

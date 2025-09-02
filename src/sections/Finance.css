@@ -1,0 +1,134 @@
+.fin-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  background-color: transparent;
+  color: white;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.fin-image-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+/* Initial hidden state */
+.fin-image {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 10px;
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+/* Animation class trigger */
+.animate-image.fin-image {
+  animation: slideInFromLeft 0.8s ease-out forwards;
+}
+
+/* Keyframes */
+@keyframes slideInFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.fin-text {
+  flex: 1;
+  max-width: 600px;
+}
+
+.fin-title {
+  font-size: 4rem;
+  color: red;
+  font-weight: 900;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+}
+
+.fin-description {
+  font-size: 1.2rem;
+  font-style: italic;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  color: white;
+  font-family: 'Kantumruy Pro', sans-serif;
+}
+
+.fin-button {
+  font-size: 1rem;
+  color: white;
+  text-decoration: none;
+  border-bottom: 1px solid red;
+  padding-bottom: 2px;
+  transition: color 0.3s;
+  font-family: 'Kantumruy Pro', sans-serif;
+}
+
+.fin-button:hover {
+  color: red;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .fin-section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .fin-text {
+    max-width: 100%;
+  }
+
+  .fin-title {
+    font-size: 2.5rem;
+  }
+
+  .fin-description {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 992px) {
+  .fin-description {
+    padding-top: 80px;
+    font-size: 1.1rem;
+  }
+}
+
+@media (min-width: 993px) {
+  .fin-description {
+    padding-top: 80px;
+    font-size: 1.3rem;
+  }
+}
+
+@media (min-width: 1300px) {
+  .fin-section {
+    padding: 6rem 8rem;
+  }
+
+  .fin-image {
+    max-width: 700px;
+  }
+
+  .fin-description {
+    font-size: 1.7rem;
+    line-height: 1.8;
+    padding-top: 80px;
+  }
+
+  .fin-button {
+    font-size: 1.2rem;
+  }
+}

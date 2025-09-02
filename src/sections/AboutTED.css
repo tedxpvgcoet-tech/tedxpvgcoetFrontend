@@ -1,0 +1,241 @@
+.ted-background {
+  width: 100%;
+  height: 100vh;
+  background:
+    url("../assets/x-pattern.jpg") no-repeat left center,
+    black;
+  background-size: 50% 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 5%;
+  box-sizing: border-box;
+  flex-wrap: wrap; /* Allow wrapping on small screens */
+
+}
+
+.about-wrapper {
+  position: relative;
+  width: 650px;
+  max-width: 90%;
+}
+
+.about-shadow {
+  position: absolute;
+  top: 10px;
+  left: -10px;
+  width: 100%;
+  height: 100%;
+  background-color: red;
+  border-radius: 20px;
+  z-index: 1;
+}
+
+.about-box {
+  position: relative;
+  background-color: #2e2e2e;
+  padding:  1rem 1rem 1.5rem 2rem;
+  border-radius: 20px;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  z-index: 2;
+  text-align: right; /* Align text to the right */
+}
+
+.about-box h2 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.about-box p {
+  font-size: 1.2rem; /* Increase paragraph size */
+  line-height: 1.6;   /* Adjust line spacing */
+  margin-bottom: 0.5rem;
+}
+
+.highlight-red {
+  color: red;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .ted-background {
+    background-size: 40% 100%;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  .about-box {
+    padding: 1.5rem;
+    font-size: 1rem;
+    text-align: right;
+  }
+
+  .about-box h2 {
+    font-size: 2rem;
+  }
+
+  .about-box p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .ted-background {
+    position: relative;
+    background: url("../assets/x-pattern.jpg") no-repeat center center, black;
+    background-size: cover; /* Show full pattern */
+    flex-direction: column;
+    padding: 2rem 1rem;
+  }
+
+  .about-wrapper {
+    width: 100%;
+    margin-top: 2rem;
+    z-index: 1; /* Ensure box stays above background */
+  }
+
+  .about-box {
+    padding: 1.25rem;
+    text-align: right;
+  }
+
+  .about-box h2 {
+    font-size: 1.8rem;
+  }
+
+  .about-box p {
+    font-size: 0.95rem;
+  }
+
+  .about-shadow {
+    top: 8px;
+    left: -8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-box {
+    padding: 1rem;
+  }
+
+  .about-box h2 {
+    font-size: 1.5rem;
+  }
+
+  .about-box p {
+    font-size: 0.9rem;
+  }
+}
+
+/* Initially hidden */
+.about-box,
+.about-box h2,
+.about-box p {
+  opacity: 0;
+}
+
+/* Animate when in view */
+/* Animate when in view */
+.animate .about-shadow {
+  animation: slideInUp 0.6s ease-out forwards;           /* was 0.8s */
+}
+
+.animate .about-box {
+  transform: translateY(-50px);
+  animation: slideInDown 0.6s ease-out 0.4s forwards;    /* delay reduced from 0.8s to 0.4s */
+}
+
+.animate .about-box h2,
+.animate .about-box p {
+  transform: translateX(40px);
+  animation: slideInRight 0.5s ease-out 0.9s forwards;   /* delay reduced from 1.6s to 0.9s */
+}
+
+@keyframes slideInDown {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1068px) {
+  .ted-background {
+    background:
+      url("../assets/x-pattern.jpg") no-repeat left center,
+      black;
+    background-size: 48% 100%; /* increased from 40% */
+    padding: 3rem 1.5rem;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .about-wrapper {
+    max-width: 700px;
+    width: 100%;
+    text-align: right;
+  }
+
+  .about-box {
+    padding: 2rem;
+    font-size: 1.1rem;
+    border-radius: 20px;
+    text-align: right;
+  }
+
+  .about-box h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .about-box p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+
+  .about-shadow {
+    top: 10px;
+    left: -10px;
+  }
+}
+
+@media (min-width: 1500px) {
+  .ted-background {
+    background-size: 55% 100%;
+    padding-right: 8%;
+  }
+
+  .about-wrapper {
+    max-width: 800px;
+  }
+
+  .about-box {
+    padding: 2.5rem 2rem 3rem 3rem;
+    border-radius: 24px;
+  }
+
+  .about-box h2 {
+    font-size: 3.5rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .about-box p {
+    font-size: 1.4rem;
+    line-height: 1.8;
+  }
+
+  .about-shadow {
+    top: 12px;
+    left: -12px;
+    border-radius: 24px;
+  }
+}

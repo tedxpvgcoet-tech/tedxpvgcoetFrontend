@@ -1,0 +1,102 @@
+.talks-section {
+  background-color: #000;
+  color: white;
+  padding: 4rem 2rem;
+  font-family: 'Inter', sans-serif;
+}
+
+.talks-section h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.talks-grid {
+  display: grid;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: start;
+
+}
+
+.speaker-card {
+  max-width: 300px; /* Decrease width */
+  max-height: 400px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 0 4px red;
+  background-color: #1a1a1a;
+  transition: transform 0.3s ease;
+}
+
+.talks-grid > .speaker-card {
+  margin: 0 auto; /* centers cards in their columns */
+}
+
+
+.speaker-card img {
+  width: 290px;
+  height: 190px;
+  display: block;
+  object-fit: cover;
+}
+
+.speaker-info {
+  background-color: #e81b2a;
+  padding: 1rem;
+  color: white;
+  text-align: left;
+}
+
+.speaker-info h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.speaker-info p {
+  margin: 0.3rem 0 0;
+  font-size: 0.95rem;
+}
+
+.watch-btn {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 0.8rem;
+  background-color: white;
+  color: #e81b2a;
+  padding: 0.4rem 0.8rem;
+  border-radius: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.watch-btn:hover {
+  background-color: #ffe3e6;
+}
+
+.yt-icon {
+  font-size: 1.1rem;
+  margin-left: 0.5rem;
+}
+
+/* Default: 1 card per row (mobile-first) */
+@media (max-width: 767px) {
+  .talks-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Medium screens: 2 cards per row */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .talks-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Large screens: 3 cards per row */
+@media (min-width: 1024px) {
+  .talks-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
