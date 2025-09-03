@@ -6,6 +6,8 @@ import speakerImage4 from "../assets/Drishti/Aditya.png";
 import speakerImage2 from "../assets/Drishti/Bhooshan.png";
 import speakerImage5 from "../assets/Drishti/Surabhi.png";
 import speakerImage6 from "../assets/Drishti/LSChaudhary.png";
+import speakerImage7 from "../assets/Drishti/Archit.png";
+import speakerImage8 from "../assets/Drishti/Manveer.png";
 import "./SectionHeader.css";
 
 // 1. IMPORT ALL REQUIRED ICONS
@@ -105,6 +107,18 @@ const Speaker = () => {
       image: speakerImage6,
       description: "Major L. S. Chaudhary , a former Indian Army officer and Rashtriya Rifles veteran, has led high-stakes counter-terror operations in Kashmir, surviving near-death situations and neutralizing heavily armed insurgent groups under his command. His journey from battlefield grit and combat injuries to mentoring future leaders and training defence aspirants is one of resilience, clarity, and purpose. Through his talks and YouTube channel, he shares battlefield-tested lessons that transcend the military. At TEDxPVGCOET 2025, he brings a soldier’s perspective that can transform how we see leadership, resilience, and life itself.",
       instagramUrl: "https://www.instagram.com/major_lsc/", 
+    },
+     {
+      id: 7,
+      image: speakerImage7,
+      description: "Archit Chandak , IPS officer of the 2018 batch and SP Akola, is redefining modern policing in Maharashtra with innovation, empathy, and vision. From introducing the Garud Drishti tool as DCP Nagpur—reshaping crime prevention with data and insight—to building citizen trust through direct dialogue on Instagram, he proves that policing today is as much about connection as it is about enforcement. At TEDxPVGCOET 2025, he brings his journey where technology meets leadership, action meets empathy, and public service becomes a force for lasting change.",
+      instagramUrl: "https://www.instagram.com/archit.59/", 
+    },
+     {
+      id: 8,
+      image: speakerImage8,
+      description: "Manveer Singh , Finance Educator and Pragmatic Investor, is transforming the way people understand money and markets. Through Stocks with Manveer, he simplifies stock market concepts for thousands of followers on Instagram and YouTube, empowering beginners to gain confidence and financial awareness. Believing that clarity and patience matter more than chasing quick profits, he inspires people to build sustainable wealth. At TEDxPVGCOET 2025, he reveals how a small shift in financial perspective can open doors to a transformed future.",
+      instagramUrl: "https://www.instagram.com/stockswithmanveer/", 
     },
   ];
 
