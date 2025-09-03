@@ -6,8 +6,8 @@ import speakerImage4 from "../assets/Drishti/Aditya.png";
 import speakerImage2 from "../assets/Drishti/Bhooshan.png";
 import speakerImage5 from "../assets/Drishti/Surabhi.png";
 import speakerImage6 from "../assets/Drishti/LSChaudhary.png";
-import speakerImage7 from "../assets/Drishti/Group 22.png";
-import speakerImage8 from "../assets/Drishti/Group 23.png";
+import speakerImage7 from "../assets/Drishti/Archit.png";
+import speakerImage8 from "../assets/Drishti/Manveer.png";
 import "./SectionHeader.css";
 
 // 1. IMPORT ALL REQUIRED ICONS
