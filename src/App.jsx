@@ -24,6 +24,7 @@ import DristiHeroSection from "./sections/DristiHeroSection";
 import TakeTheLeap from "./pages/TakeTheLeap"
 import DrishtiHero from "./sections/DrishthiHero"
 import ThemePage from "./pages/ThemePage";
+import RetroCam from "./pages/RetroCam"
 
 inject();
 
@@ -56,6 +57,7 @@ function App() {
         <Route path="/organizers-team" element={<OrganizersCard />} /> 
         <Route path="/about" element={<Home />} /> 
         <Route path="/curation-team" element={<CurationCard />} />  
+        <Route path="/cam" element={<RetroCam />} />  
       </Routes>
     </>
   );
