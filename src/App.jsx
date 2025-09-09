@@ -8,6 +8,7 @@ import { Helmet } from "react-helmet";
 import Home from "./pages/Home";
 import SpeakerForm from "./pages/SpeakerForm";
 import SponsorForm from "./pages/SponsorForm";
+import CamRedirect from "./pages/CamRedirect";
 import Event from "./pages/Event";
 import Punarutthan from "./pages/Punarutthan";
 import AvantGarde from "./pages/AvantGarde";
@@ -55,7 +56,8 @@ function App() {
         <Route path="/technical-team" element={<TechnicalCard />} />  
         <Route path="/organizers-team" element={<OrganizersCard />} /> 
         <Route path="/about" element={<Home />} /> 
-        <Route path="/curation-team" element={<CurationCard />} />  
+        <Route path="/curation-team" element={<CurationCard />} /> 
+        <Route path="/cam" element={<CamRedirect />} />
       </Routes>
     </>
   );
