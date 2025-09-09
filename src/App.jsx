@@ -25,7 +25,6 @@ import DristiHeroSection from "./sections/DristiHeroSection";
 import TakeTheLeap from "./pages/TakeTheLeap"
 import DrishtiHero from "./sections/DrishthiHero"
 import ThemePage from "./pages/ThemePage";
-import RetroCam from "./pages/RetroCam"
 
 inject();
 
