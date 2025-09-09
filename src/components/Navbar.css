@@ -255,11 +255,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start; /* 🔹 was center → now top aligned */
   padding-top: 4rem;
   transition: opacity 0.3s ease, transform 0.3s ease;
   opacity: 1;
   transform: translateY(0);
+
+  /* 🔹 Fix for small-height devices */
+  overflow-y: auto;
+  max-height: 100vh;
 }
 
 .nav-fullscreen.closed {
