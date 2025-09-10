@@ -265,7 +265,8 @@
   transition: opacity 0.3s ease, transform 0.3s ease;
   opacity: 1;
   transform: translateY(0);
-  overflow-y: hidden;
+  overflow-y: auto;
+  max-height: 100svh;
 }
 
 .nav-fullscreen.closed {
