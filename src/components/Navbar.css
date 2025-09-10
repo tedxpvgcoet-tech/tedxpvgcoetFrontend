@@ -163,6 +163,11 @@
   .nav-icon {
     font-size: 22px;
   }
+
+  .nav-fullscreen .nav-dropdown-item {
+  font-size: 24px;
+  margin: 0.8rem 0;
+}
 }
 
 @media (min-width: 1500px) {
@@ -270,9 +275,9 @@
 }
 
 .nav-fullscreen .nav-dropdown-item {
-  font-size: 24px;    /* smaller */
+  font-size: 28px;
   color: red;
-  margin: 0.8rem 0;   /* reduced spacing */
+  margin: 1.5rem 0;
   font-weight: 600;
   cursor: pointer;
   text-decoration: none;
