@@ -9,6 +9,7 @@ import Home from "./pages/Home";
 import SpeakerForm from "./pages/SpeakerForm";
 import SponsorForm from "./pages/SponsorForm";
 import CamRedirect from "./pages/CamRedirect";
+import FeedbackRedirect from "./pages/FeedbackRedirect";
 import Event from "./pages/Event";
 import Punarutthan from "./pages/Punarutthan";
 import AvantGarde from "./pages/AvantGarde";
@@ -58,6 +59,7 @@ function App() {
         <Route path="/about" element={<Home />} /> 
         <Route path="/curation-team" element={<CurationCard />} /> 
         <Route path="/cam" element={<CamRedirect />} />
+        <Route path="/feedback" element={<FeedbackRedirect />} />
       </Routes>
     </>
   );
