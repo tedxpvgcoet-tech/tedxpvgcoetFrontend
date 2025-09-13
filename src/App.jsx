@@ -59,6 +59,7 @@ function App() {
         <Route path="/about" element={<Home />} /> 
         <Route path="/curation-team" element={<CurationCard />} />
         <Route path="/feedback" element={<CamRedirect />} />
+        <Route path="/cam" element={<CamRedirect />} />
       </Routes>
     </>
   );
