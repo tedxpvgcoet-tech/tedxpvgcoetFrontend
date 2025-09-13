@@ -57,9 +57,8 @@ function App() {
         <Route path="/technical-team" element={<TechnicalCard />} />  
         <Route path="/organizers-team" element={<OrganizersCard />} /> 
         <Route path="/about" element={<Home />} /> 
-        <Route path="/curation-team" element={<CurationCard />} /> 
-        <Route path="/cam" element={<CamRedirect />} />
-        <Route path="/feedback" element={<FeedbackRedirect />} />
+        <Route path="/curation-team" element={<CurationCard />} />
+        <Route path="/feedback" element={<CamRedirect />} />
       </Routes>
     </>
   );
