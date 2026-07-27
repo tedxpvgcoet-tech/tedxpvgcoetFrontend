@@ -1,0 +1,90 @@
+.team-section {
+  background-color: #000;
+  color: white;
+  font-family: 'Inter', sans-serif;
+}
+
+.team-section-dum {
+  padding: 4rem 2rem;
+}
+
+.team-section h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.team-grid {
+  display: grid;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: start;
+  
+}
+
+.team-grid > .team-card {
+  margin: 0 auto; /* centers cards in their columns */
+}
+
+/* Team Card Styles */
+.team-card {
+  max-width: 300px; /* Decrease width */
+  max-height: 400px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 0 4px red;
+  background-color: #1a1a1a;
+  transition: transform 0.3s ease;
+
+}
+
+.team-card img {
+  display: block;
+  margin: 0 auto;
+  width: 290px;
+  height: 190px;
+  object-fit: contain;
+  background-color: #1a1a1a; /* or any dark bg */
+}
+
+.team-info {
+  background-color: #e81b2a;
+  padding: 1rem;
+  color: white;
+  text-align: left;
+}
+
+.team-info h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.team-info p {
+  margin: 0.3rem 0 0;
+  font-size: 0.95rem;
+}
+
+/* Responsive Grid */
+
+/* Default: 1 card per row */
+@media (max-width: 767px) {
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+/* Medium: 2 cards per row */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+    
+  }
+}
+
+/* Large: 3 cards per row */
+@media (min-width: 1024px) {
+  .team-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

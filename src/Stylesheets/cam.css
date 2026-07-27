@@ -1,0 +1,302 @@
+/* RetroCamera.css */
+
+/* Main container styles */
+.retro-camera-container {
+  background: linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%);
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+.retro-camera-wrapper {
+  max-width: 42rem;
+  margin: 0 auto;
+}
+
+/* Header styles */
+.retro-camera-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.retro-camera-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #78350f;
+  margin-bottom: 0.5rem;
+  font-family: 'Courier New', monospace;
+}
+
+.retro-camera-subtitle {
+  color: #92400e;
+  font-size: 1rem;
+  font-style: italic;
+}
+
+/* Camera section styles */
+.camera-section {
+  background-color: #fffbeb;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  margin-bottom: 1.5rem;
+}
+
+/* Video and placeholder styles */
+.video-container {
+  position: relative;
+}
+
+.camera-video {
+  width: 100%;
+  height: 20rem;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  border: 4px solid #fbbf24;
+  filter: sepia(20%) contrast(110%) saturate(120%);
+}
+
+.camera-placeholder {
+  width: 100%;
+  height: 20rem;
+  background-color: #fde68a;
+  border-radius: 0.5rem;
+  border: 4px solid #fbbf24;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.placeholder-content {
+  text-align: center;
+  color: #92400e;
+}
+
+.placeholder-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.placeholder-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.placeholder-subtitle {
+  font-size: 0.875rem;
+}
+
+/* Control buttons */
+.controls-container {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  justify-content: center;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease-in-out;
+  transform: scale(1);
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-start {
+  background-color: #059669;
+  color: white;
+}
+
+.btn-start:hover {
+  background-color: #047857;
+}
+
+.btn-capture {
+  background-color: #dc2626;
+  color: white;
+}
+
+.btn-capture:hover {
+  background-color: #b91c1c;
+}
+
+.btn-share {
+  background-color: #7c3aed;
+  color: white;
+}
+
+.btn-share:hover {
+  background-color: #6d28d9;
+}
+
+/* Photo section styles */
+.photo-section {
+  background-color: white;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.photo-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #78350f;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-family: 'Courier New', monospace;
+}
+
+.photo-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.photo-canvas {
+  width: 100%;
+  border-radius: 0.5rem;
+  border: 4px solid #fbbf24;
+  filter: sepia(15%) contrast(105%) saturate(110%);
+}
+
+.photo-controls {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* Hidden elements */
+.hidden {
+  display: none !important;
+}
+
+.hidden-canvas {
+  display: none;
+}
+
+/* Retro filter effects */
+.retro-filter {
+  filter: sepia(20%) contrast(110%) saturate(120%) hue-rotate(-5deg);
+}
+
+.film-grain {
+  position: relative;
+}
+
+.film-grain::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle, transparent 1px, rgba(255, 255, 255, 0.1) 1px);
+  background-size: 2px 2px;
+  pointer-events: none;
+  opacity: 0.3;
+  animation: grain 0.2s steps(10) infinite;
+}
+
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-1px, -1px); }
+  20% { transform: translate(-1px, 1px); }
+  30% { transform: translate(1px, -1px); }
+  40% { transform: translate(1px, 1px); }
+  50% { transform: translate(-1px, 0); }
+  60% { transform: translate(1px, 0); }
+  70% { transform: translate(0, -1px); }
+  80% { transform: translate(0, 1px); }
+  90% { transform: translate(-1px, -1px); }
+}
+
+/* Responsive design */
+@media (max-width: 640px) {
+  .retro-camera-title {
+    font-size: 1.875rem;
+  }
+  
+  .camera-video,
+  .camera-placeholder {
+    height: 16rem;
+  }
+  
+  .placeholder-icon {
+    font-size: 3rem;
+  }
+  
+  .controls-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .btn {
+    width: 100%;
+    max-width: 200px;
+  }
+  
+  .photo-controls {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Vintage camera body styling */
+.camera-body {
+  background: linear-gradient(145deg, #d4af37, #b8860b);
+  border-radius: 1rem;
+  padding: 1rem;
+  position: relative;
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.2),
+    0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.camera-body::before {
+  content: '';
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  right: 0.5rem;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+}
+
+/* Viewfinder style */
+.viewfinder {
+  border: 3px solid #8b5a00;
+  border-radius: 0.25rem;
+  box-shadow: inset 0 0 0 1px #ffd700;
+}
+
+/* Flash effect for capture */
+@keyframes flash {
+  0% { opacity: 0; }
+  50% { opacity: 0.8; background-color: rgba(255, 255, 255, 0.8); }
+  100% { opacity: 0; }
+}
+
+.flash-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  animation: flash 0.3s ease-out;
+}

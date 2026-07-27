@@ -1,0 +1,364 @@
+.tedx-section1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black;
+  /* Make it full viewport height: */
+  min-height: 100vh;
+  padding: 2rem;      /* adjust as needed */
+  flex-wrap: wrap;    /* for small screens */
+}
+
+.tedx-text-wrapper1 {
+  position: relative;
+  width: 650px;
+  max-width: 90%;
+  margin-right: 5vw; /* optional */
+}
+
+.tedx-shadow1 {
+  position: absolute;
+  top: 10px;
+  left: -10px;
+  width: 100%;
+  height: 100%;
+  background-color: red;
+  border-radius: 20px;
+  z-index: 1;
+}
+
+.tedx-box1 {
+  position: relative;
+  background-color: #2e2e2e;
+  padding: 1rem 1rem 1.5rem 2rem;
+  border-radius: 20px;
+  color: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  z-index: 2;
+  text-align: left;
+}
+
+.tedx-box1 h2 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  font-family: 'Inter', sans-serif;
+}
+
+.tedx-box1 p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  font-family: 'Inter', sans-serif;
+}
+
+.highlight-red {
+  color: red;
+}
+
+/* X image stack */
+.tedx-x-image {
+ flex: 0 0 30%;
+  max-width: 30%;
+  position: relative;
+  padding: 0;
+  margin : 0;
+  height: 100vh;            /* full section height */
+  display: block;           /* no flex centering now */
+}
+
+.red-x1 {
+ position: absolute;
+  width: 80%;              /* full container width */
+  height: 60%;
+  bottom: 0;                /* flush to bottom */
+  right: 0;                 /* flush to right */
+  object-fit: contain;
+  z-index: 0;
+}
+
+.white-x1 {
+  position: absolute;
+  width: 80%;               /* smaller so red shows around edges */
+  height: 60%;
+  bottom: 1%;          /* lower on the page */
+  right: 1%;           /* further right */
+  transform: translate(5%, 5%); /* fine-tune overlap */
+  object-fit: contain;
+  z-index: 1;
+}
+/* Animations */
+.tedx-box1,
+.tedx-box1 h2,
+.tedx-box1 p {
+  opacity: 1;
+  transform: none;
+}
+
+.animate .tedx-shadow1 {
+  animation: slideInUp 0.6s ease-out forwards;           /* was 0.8s */
+}
+
+
+
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInDown {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive */
+/*@media (max-width: 768px) {
+  .tedx-section1 {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .tedx-x-image {
+    width: 200px;
+  }
+
+  .tedx-box1 h2 {
+    font-size: 2rem;
+  }
+
+  .tedx-box1 p {
+    font-size: 1rem;
+  }
+}*/
+
+@media (max-width: 768px) {
+  .tedx-section1 {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 2rem 1rem;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .tedx-x-image {
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 600px;
+    z-index: 0;
+    opacity: 0.2; /* Make it subtle behind text */
+  }
+
+  .red-x1,
+  .white-x1 {
+    position: absolute;
+    width: 500px;
+    height: 600px;
+    object-fit: contain;
+  }
+
+  .white-x1 {
+    transform: translate(5%, 5%);
+  }
+
+  .tedx-text-wrapper1 {
+    width: 100%;
+    max-width: 90%;
+    z-index: 1;
+  }
+
+  .tedx-box1 {
+    text-align: left;
+    padding: 1.5rem;
+  }
+
+  .tedx-box1 h2 {
+    font-size: 1.2rem;
+  }
+
+  .tedx-box1 p {
+    font-size: 0.95rem;
+  }
+}
+
+
+/* existing CSS... */
+
+/* slide the white X out when .animate-x is applied */
+.animate-x .white-x1 {
+  animation: slideOutRight 0.8s ease-in-out 0.3s forwards;
+}
+
+@keyframes slideOutRight {
+  from {
+    transform: translate(5%, 5%);
+  }
+  to {
+    transform: translate(200%, 5%);
+  }
+}
+
+
+/*@media (max-width: 768px) {
+  .tedx-section1 {
+    flex-direction: column;
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .tedx-text-wrapper1 {
+    width: 100%;
+    margin: 0 auto 2rem;
+  }
+
+  .tedx-x-image {
+    max-width: 80%;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  .red-x1,
+  .white-x1 {
+    height: 200px;
+    width: auto;
+    position: static;
+  }
+
+  .white-x1 {
+    transform: none;
+  }
+
+  .tedx-box1 h2 {
+    font-size: 2rem;
+  }
+
+  .tedx-box1 p {
+    font-size: 1rem;
+  }
+}
+*/
+@media (min-width: 769px) and (max-width: 1068px) {
+  .tedx-section1 {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 1rem;
+    text-align: left;
+  }
+
+  .tedx-text-wrapper1 {
+    width: 55%;
+    max-width: none;
+    margin-right: 2rem;
+  }
+
+  .tedx-x-image {
+    position: relative;
+    width: 35%;
+    height: 300px; /* Adjust height to fit Xs well */
+  }
+
+  .red-x1, .white-x1 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .red-x1 {
+    z-index: 0;
+  }
+
+  .white-x1 {
+    z-index: 1;
+    transform: translate(0, 0);
+  }
+
+  /* Slide white X out when .animate-x is applied */
+  .animate-x .white-x1 {
+    animation: slideOutRight 0.8s ease-in-out 0.3s forwards;
+  }
+
+  @keyframes slideOutRight {
+    from {
+      transform: translate(0, 0);
+    }
+    to {
+      transform: translateX(200%);
+    }
+  }
+}
+
+@media (min-width: 1500px) {
+  .tedx-section1 {
+    padding: 4rem 5rem;
+    gap: 4rem;
+  }
+
+  .tedx-text-wrapper1 {
+    max-width: 800px;
+    width: 100%;
+  }
+
+  .tedx-box1 {
+    padding: 2.5rem 2.5rem 3rem 3rem;
+    border-radius: 24px;
+  }
+
+  .tedx-box1 h2 {
+    font-size: 3.5rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .tedx-box1 p {
+    font-size: 1.4rem;
+    line-height: 1.8;
+  }
+
+  .tedx-shadow1 {
+    top: 12px;
+    left: -12px;
+    border-radius: 24px;
+  }
+
+  .tedx-x-image {
+    max-width: 35%;
+    height: 100vh;
+  }
+
+  .red-x1,
+  .white-x1 {
+    width: 90%;
+    height: 90%;
+  }
+   .red-x1 {
+  bottom: -22px; /* Move down by 20px */
+}
+
+.white-x1 {
+  bottom: -20px; /* Slightly above red-x */
+}
+
+  .white-x1 {
+    transform: translate(5%, 5%);
+  }
+}
+
+

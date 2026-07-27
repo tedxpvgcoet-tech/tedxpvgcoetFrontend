@@ -1,0 +1,235 @@
+/* Common Styles */
+
+.perspective-section2 {
+  background-color: #171717;
+}
+
+.perspective-section {
+  background: #171717;
+  padding: 2rem 1rem;
+}
+
+.perspective-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  row-gap: 2rem;
+  column-gap: 2rem;
+  grid-template-areas:
+    "img1 img2 img3"
+    "img1 img2 img3"
+    "img1 img5 img3"
+    "img1 img5 img6"
+    "img4 img5 img6";
+}
+
+/* Assign grid areas */
+.item-1 { grid-area: img1; }
+.item-2 { grid-area: img2; }
+.item-3 { grid-area: img3; }
+.item-4 { grid-area: img4; }
+.item-5 { grid-area: img5; }
+.item-6 { grid-area: img6; }
+
+/* Image container */
+.perspective-item {
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.perspective-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+  display: block;
+}
+
+/* Overlay for description */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  text-align: center;
+  padding: 1rem;
+  transition: opacity 0.4s ease, transform 0.3s ease;
+  overflow-y: auto;
+}
+
+/* Hover effect for desktop */
+@media (min-width: 601px) {
+  .perspective-item:hover .overlay {
+    opacity: 1;
+  }
+}
+
+/* Small tablets (601px - 800px) */
+@media (min-width: 601px) and (max-width: 800px) {
+  .overlay {
+    font-size: 0.5rem; /* Smaller text */
+    padding: 0.2rem;   /* Less padding */
+    line-height: 1.1;  /* Tighter spacing */
+  }
+}
+
+/* ----- MOBILE: remove grid and enable full-screen readable overlay ----- */
+/* Mobile (<= 600px) */
+/* ----- MOBILE: overlay stays inside image box ----- */
+@media (max-width: 600px) {
+
+  /* Remove grid: just stack items */
+  .perspective-grid {
+    display: block; /* no grid on mobile */
+    margin: 0;      
+  }
+
+  .perspective-item {
+    display: block;
+    margin: 0 1rem 1rem 1rem;
+    position: relative;
+  }
+
+  .perspective-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 20px;
+    display: block;
+  }
+
+  /* Overlay hidden by default */
+  .perspective-item .overlay {
+    opacity: 0;
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    padding: 0.8rem;
+    font-size: 0.65rem;
+    line-height: 1.4;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+  }
+
+  /* Show overlay only inside clicked image */
+  .perspective-item.active .overlay {
+    opacity: 1;
+  }
+
+  /* Make text readable inside box */
+  .perspective-item.active .overlay p,
+  .perspective-item.active .overlay > * {
+    margin: 0;
+    color: #fff;
+    font-size: 0.65rem;
+    line-height: 1.5;
+    text-align: center;
+  }
+}
+
+/* Mid-size screens (801px - 1100px) */
+@media (min-width: 801px) and (max-width: 1100px) {
+  .perspective-item:hover .overlay {
+    opacity: 1;
+  }
+
+  .overlay {
+    font-size: 0.6rem; /* Slightly smaller than desktop */
+    padding: 0.8rem;   /* Less padding for mid-size screens */
+    line-height: 1.2;
+  }
+
+  .perspective-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5rem; /* Slightly tighter gaps than large desktop */
+  }
+}
+
+/* Large screens (1101px - 1500px) */
+@media (min-width: 1101px) and (max-width: 1500px) {
+  .perspective-item:hover .overlay {
+    opacity: 1;
+  }
+
+  .overlay {
+    font-size: 0.9rem; /* Normal readable text */
+    padding: 1rem;
+    padding-top: 0.5rem;
+    line-height: 1.2;
+  }
+
+  .perspective-grid {
+    grid-template-columns: 1fr 1fr 1fr; /* Three columns */
+    gap: 2rem;
+  }
+}
+
+/* Extra large screens (1501px+) */
+@media (min-width: 1501px) {
+  .perspective-item:hover .overlay {
+    opacity: 1;
+  }
+
+  .overlay {
+    font-size: 1.3rem; /* Normal readable text */
+    padding-top: 0.5rem;
+    padding: 1.2rem;
+    line-height: 1.1;
+  }
+
+  .perspective-grid {
+    grid-template-columns: 1fr 1fr 1fr; /* Three columns */
+    gap: 2rem;
+  }
+}
+
+.perspective-title {
+  text-align: left;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: white; /* dark grey for elegance */
+  padding-bottom: 0px;
+  font-family: 'Georgia', serif; /* gives it a literary feel */
+  letter-spacing: 1px;
+  animation: fadeInUp 1s ease forwards;
+  opacity: 0;
+  padding-left: 1.9rem;
+}
+
+/* Animation for fade-in with upward motion */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Title responsive tweaks */
+@media (min-width: 800px) and (max-width: 1100px) {
+  .perspective-title {
+    font-size: 2.2rem;
+  }
+}
+
+/* Extra-small phones */
+@media (max-width: 390px) {
+  .perspective-item.active .overlay p,
+  .perspective-item.active .overlay > * {
+    font-size: 0.5rem;
+    line-height: 1.5;
+  }
+}
