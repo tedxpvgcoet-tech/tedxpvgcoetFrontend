@@ -1,7 +1,7 @@
 import React from "react";
-import TakeTheLeapTalksSection from "../sections/TakeTheLeapTalkSection";
-import TakeTheLeapHeroSection from "../sections/TakeTheLeapHeroSection";
-import FooterSection from "../sections/FooterSection";
+import TakeTheLeapTalksSection from "../sections/Events/TakeTheLeap/TakeTheLeapTalkSection";
+import TakeTheLeapHeroSection from "../sections/Events/TakeTheLeap/TakeTheLeapHeroSection";
+import FooterSection from "../sections/Common/FooterSection";
 import "../index.css"
 
 const TakeTheLeap = () => {

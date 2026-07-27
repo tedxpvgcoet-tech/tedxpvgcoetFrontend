@@ -1,7 +1,7 @@
 import React from "react";
-import AvantGardeHeroSection from "../sections/AvantGardeHeroSection";
-import AvantGardeTalksSection from "../sections/AvantGardeTalkSection";
-import AvantGardeTeamSection from "../sections/AvantGardeTeamSection";
+import AvantGardeHeroSection from "../sections/Events/AvantGarde/AvantGardeHeroSection";
+import AvantGardeTalksSection from "../sections/Events/AvantGarde/AvantGardeTalkSection";
+import AvantGardeTeamSection from "../sections/Events/AvantGarde/AvantGardeTeamSection";
 
 
 const AvantGarde = () => {

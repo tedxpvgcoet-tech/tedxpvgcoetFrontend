@@ -14,14 +14,14 @@ import Event from "./pages/Event";
 import Punarutthan from "./pages/Punarutthan";
 import AvantGarde from "./pages/AvantGarde";
 import Team from "./pages/Team";
-import CurationCard from "./sections/CurationCard";
-import LogisticsCard from "./sections/LogisticsCard";
-import MediaCard from "./sections/MediaCard";
-import EditorialCard from "./sections/EditorialCard";
-import FinanceCard from"./sections/FinanceCard";
-import DesignCard from "./sections/DesignCard";
-import TechnicalCard from"./sections/TechnicalCard";
-import OrganizersCard from "./sections/OrganizersCard";
+import CurationCard from "./sections/Team/CurationCard";
+import LogisticsCard from "./sections/Team/LogisticsCard";
+import MediaCard from "./sections/Team/MediaCard";
+import EditorialCard from "./sections/Team/EditorialCard";
+import FinanceCard from"./sections/Team/FinanceCard";
+import DesignCard from "./sections/Team/DesignCard";
+import TechnicalCard from"./sections/Team/TechnicalCard";
+import OrganizersCard from "./sections/Team/OrganizersCard";
 import TakeTheLeap from "./pages/TakeTheLeap"
 import ThemePage from "./pages/ThemePage";
 

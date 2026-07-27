@@ -1,7 +1,7 @@
 import backgroundVideo from "../assets/backgrounds/background.mp4";
-import SponsorFormSection from "../sections/SponsorFormSection";
-import SponsorFeedback from "../sections/SponsorFeedback";
-import FooterSection from "../sections/FooterSection";
+import SponsorFormSection from "../sections/Forms/SponsorFormSection";
+import SponsorFeedback from "../sections/Forms/SponsorFeedback";
+import FooterSection from "../sections/Common/FooterSection";
 
 const SponsorForm = () => {
   return (

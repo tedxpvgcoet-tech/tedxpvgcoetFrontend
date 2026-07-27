@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import backgroundVideo from "../assets/backgrounds/background.mp4";
 import "./SpeakerForm.css";
-import FooterSection from "../sections/FooterSection";
+import FooterSection from "../sections/Common/FooterSection";
 import { FiExternalLink } from "react-icons/fi";
 
 const SpeakerForm = () => {

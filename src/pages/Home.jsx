@@ -1,10 +1,10 @@
 import React from "react";
-import HeroSection from "../sections/HeroSection";
-import AboutTED from "../sections/AboutTED";
-import AboutTEDx from '../sections/AboutTEDx';
-import WhatWeStandFor from "../sections/WhatWeStandFor";
-import SubscribeSection from "../sections/SubscribeSection";
-import GallerySection from "../sections/GallerySection";
+import HeroSection from "../sections/Common/HeroSection";
+import AboutTED from "../sections/Common/AboutTED";
+import AboutTEDx from '../sections/Common/AboutTEDx';
+import WhatWeStandFor from "../sections/Common/WhatWeStandFor";
+import SubscribeSection from "../sections/Forms/SubscribeSection";
+import GallerySection from "../sections/Common/GallerySection";
 
 const Home = () => {
   return (

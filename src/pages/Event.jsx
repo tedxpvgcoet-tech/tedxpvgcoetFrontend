@@ -1,8 +1,8 @@
 import React from "react";
-import EventHeroSection from "../sections/EventHeroSection";
-import PastEventSection from "../sections/PastEventSection";
-import PastEventSection1 from "../sections/PastEventSection1";
-import PastEventSection2 from "../sections/PastEventSection2";
+import EventHeroSection from "../sections/Events/Common/EventHeroSection";
+import PastEventSection from "../sections/Events/PastEvents/PastEventSection";
+import PastEventSection1 from "../sections/Events/PastEvents/PastEventSection1";
+import PastEventSection2 from "../sections/Events/PastEvents/PastEventSection2";
 import ScrollToTop from "../components/ScrollToTop";
 
 

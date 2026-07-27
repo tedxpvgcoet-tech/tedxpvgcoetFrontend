@@ -1,14 +1,14 @@
 import React from "react";
-import TeamHeroSection from "../sections/TeamHeroSection";
-import Curation from "../sections/Curation";
-import Lno from "../sections/Lno";
-import Editorial from "../sections/Editorial";
-import Mnm from "../sections/Mnm";
-import Dnp from "../sections/Dnp";
-import Technical from "../sections/Technical";
-import Finance from "../sections/Finance";
-import FooterSection from "../sections/FooterSection";
-import Core from "../sections/Core";
+import TeamHeroSection from "../sections/Team/TeamHeroSection";
+import Curation from "../sections/Team/Curation";
+import Lno from "../sections/Team/Lno";
+import Editorial from "../sections/Team/Editorial";
+import Mnm from "../sections/Team/Mnm";
+import Dnp from "../sections/Team/Dnp";
+import Technical from "../sections/Team/Technical";
+import Finance from "../sections/Team/Finance";
+import FooterSection from "../sections/Common/FooterSection";
+import Core from "../sections/Team/Core";
 import "./Team.css"
 
 

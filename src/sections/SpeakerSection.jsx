@@ -1,6 +1,6 @@
 import React from "react";
-import "./Speaker.css";
-import SpeakerCard from "./SpeakerCard";
+import "./Forms/Speaker.css";
+import SpeakerCard from "./Forms/SpeakerCard";
 
 // Example data – you can expand this later
 import speakerImage from "../assets/Bhooshan.webp";
