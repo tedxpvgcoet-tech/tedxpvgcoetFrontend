@@ -1,0 +1,73 @@
+name: format-command
+
+on:
+  repository_dispatch:
+    types: [format-command]
+
+jobs:
+  format:
+    name: "Format code via /format command"
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+    steps:
+      - name: Checkout PR branch
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ github.event.client_payload.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.client_payload.pull_request.head.ref }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Run Prettier
+        run: npx prettier --write .
+
+      - name: Commit and push changes
+        id: auto_commit
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "style: auto-format code with Prettier (/format)"
+          commit_author: "github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
+
+      - name: Post completion comment
+        if: success() && steps.auto_commit.outputs.changes_detected == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.payload.client_payload.github.payload.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: "Okay, I fixed your mess. 💅 Prettier has been run and the formatting fixes are pushed to this PR.\n\n**Heads up though:** Since a bot pushed this commit, GitHub won't auto-trigger your CI. You'll need to either:\n- Push an empty commit: `git commit --allow-empty -m 'Trigger builds'` and push\n- Or close and reopen this PR like it's 2019\n\nYou're welcome. ✨"
+            })
+
+      - name: Post no-changes comment
+        if: success() && steps.auto_commit.outputs.changes_detected == 'false'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.payload.client_payload.github.payload.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: "Actually? Your code was already clean. ✨ No changes needed. Didn't think I'd be saying that, but here we are."
+            })
+
+      - name: Post failure comment
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            github.rest.issues.createComment({
+              issue_number: context.payload.client_payload.github.payload.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `Well, that went sideways. 🫠 Prettier crashed — which honestly takes talent.\n\nCheck the [workflow logs](${runUrl}) to see what exploded, or just run \`npx prettier --write .\` locally like a normal person.`
+            })
