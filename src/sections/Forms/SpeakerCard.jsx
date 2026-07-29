@@ -9,7 +9,12 @@ const SpeakerCard = ({ speaker }) => {
       {/* Mobile + Desktop shared logic */}
       {!showInfo ? (
         <div className="speaker-photo">
-          <img src={speaker.image} alt={speaker.name} className="speaker-image"  loading="lazy" />
+          <img
+            src={speaker.image}
+            alt={speaker.name}
+            className="speaker-image"
+            loading="lazy"
+          />
           <button
             className="speaker-learn-btn"
             onClick={() => setShowInfo(true)}

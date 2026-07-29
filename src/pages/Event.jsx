@@ -5,18 +5,14 @@ import PastEventSection1 from "../sections/Events/PastEvents/PastEventSection1";
 import PastEventSection2 from "../sections/Events/PastEvents/PastEventSection2";
 import ScrollToTop from "../components/ScrollToTop";
 
-
-
 const Event = () => {
-
   return (
     <div id="page-top">
-    
-    <ScrollToTop/>
-    <EventHeroSection />
-    <PastEventSection2/>
-    <PastEventSection1/>
-    <PastEventSection />
+      <ScrollToTop />
+      <EventHeroSection />
+      <PastEventSection2 />
+      <PastEventSection1 />
+      <PastEventSection />
     </div>
   );
 };

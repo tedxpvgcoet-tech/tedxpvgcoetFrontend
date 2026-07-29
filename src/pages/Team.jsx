@@ -9,28 +9,25 @@ import Technical from "../sections/Team/Technical";
 import Finance from "../sections/Team/Finance";
 import FooterSection from "../sections/Common/FooterSection";
 import Core from "../sections/Team/Core";
-import "./Team.css"
-
+import "./Team.css";
 
 const Team = () => {
-    return (
-        <div className="team-page"id="page-top">
-          <TeamHeroSection />
-          <Core />
-          <Curation />
-          <Lno />
-          <Editorial />
-          <Mnm />
-          <Dnp />
-          <Technical />
-          <Finance />
-          <FooterSection />
-     
+  return (
+    <div className="team-page" id="page-top">
+      <TeamHeroSection />
+      <Core />
+      <Curation />
+      <Lno />
+      <Editorial />
+      <Mnm />
+      <Dnp />
+      <Technical />
+      <Finance />
+      <FooterSection />
+
       {/* Other content/sections go here */}
     </div>
-    );
+  );
 };
 
 export default Team;
-
-

@@ -15,7 +15,7 @@ const Finance = () => {
           observer.unobserve(currentImage);
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.3 },
     );
 
     if (currentImage) {
@@ -37,11 +37,15 @@ const Finance = () => {
           src={finImage}
           alt="Finance Team"
           className="fin-image"
-         loading="lazy" />
+          loading="lazy"
+        />
       </div>
       <div className="fin-text">
         <p className="fin-description">
-       From sponsorships to budgeting, the Finance Team ensures the event is financially sound. They manage resources with transparency and foresight, supporting both creativity and sustainability. </p>
+          From sponsorships to budgeting, the Finance Team ensures the event is
+          financially sound. They manage resources with transparency and
+          foresight, supporting both creativity and sustainability.{" "}
+        </p>
         <Link to="/finance-team" className="fin-button">
           Learn More →
         </Link>

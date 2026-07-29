@@ -11,8 +11,10 @@ const EventHeroSection = () => {
       </video>
 
       <div className="hero-text3">
-        <h1><span className="event">Events</span></h1>
-     </div>
+        <h1>
+          <span className="event">Events</span>
+        </h1>
+      </div>
     </div>
   );
 };

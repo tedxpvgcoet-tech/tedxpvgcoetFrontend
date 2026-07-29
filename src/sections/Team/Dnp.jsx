@@ -19,7 +19,7 @@ const Dnp = () => {
           textBlockRef?.classList.add("animate-dnp");
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.3 },
     );
 
     if (imageRef) observer.observe(imageRef);
@@ -32,12 +32,19 @@ const Dnp = () => {
   return (
     <section className="dnp-section">
       <div className="dnp-image-container" ref={imageContainerRef}>
-        <img src={dnpImage} alt="Design & Production Team" className="dnp-image"  loading="lazy" />
+        <img
+          src={dnpImage}
+          alt="Design & Production Team"
+          className="dnp-image"
+          loading="lazy"
+        />
       </div>
       <div className="dnp-text" ref={textRef}>
         <p className="dnp-description">
-                        Responsible for the event’s physical and visual experience, the DNP Team turns themes into immersive spaces. Through set design, spatial planning, and creative execution, they build the TEDx atmosphere. 
-                         </p>
+          Responsible for the event’s physical and visual experience, the DNP
+          Team turns themes into immersive spaces. Through set design, spatial
+          planning, and creative execution, they build the TEDx atmosphere.
+        </p>
 
         <Link to="/design-team" className="dnp-button">
           Learn More →

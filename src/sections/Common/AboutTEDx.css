@@ -5,8 +5,8 @@
   background-color: black;
   /* Make it full viewport height: */
   min-height: 100vh;
-  padding: 2rem;      /* adjust as needed */
-  flex-wrap: wrap;    /* for small screens */
+  padding: 2rem; /* adjust as needed */
+  flex-wrap: wrap; /* for small screens */
 }
 
 .tedx-text-wrapper1 {
@@ -33,7 +33,7 @@
   padding: 1rem 1rem 1.5rem 2rem;
   border-radius: 20px;
   color: white;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   z-index: 2;
   text-align: left;
 }
@@ -41,13 +41,13 @@
 .tedx-box1 h2 {
   font-size: 3rem;
   margin-bottom: 1rem;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 .tedx-box1 p {
   font-size: 1.2rem;
   line-height: 1.6;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 .highlight-red {
@@ -56,31 +56,31 @@
 
 /* X image stack */
 .tedx-x-image {
- flex: 0 0 30%;
+  flex: 0 0 30%;
   max-width: 30%;
   position: relative;
   padding: 0;
-  margin : 0;
-  height: 100vh;            /* full section height */
-  display: block;           /* no flex centering now */
+  margin: 0;
+  height: 100vh; /* full section height */
+  display: block; /* no flex centering now */
 }
 
 .red-x1 {
- position: absolute;
-  width: 80%;              /* full container width */
+  position: absolute;
+  width: 80%; /* full container width */
   height: 60%;
-  bottom: 0;                /* flush to bottom */
-  right: 0;                 /* flush to right */
+  bottom: 0; /* flush to bottom */
+  right: 0; /* flush to right */
   object-fit: contain;
   z-index: 0;
 }
 
 .white-x1 {
   position: absolute;
-  width: 80%;               /* smaller so red shows around edges */
+  width: 80%; /* smaller so red shows around edges */
   height: 60%;
-  bottom: 1%;          /* lower on the page */
-  right: 1%;           /* further right */
+  bottom: 1%; /* lower on the page */
+  right: 1%; /* further right */
   transform: translate(5%, 5%); /* fine-tune overlap */
   object-fit: contain;
   z-index: 1;
@@ -94,11 +94,8 @@
 }
 
 .animate .tedx-shadow1 {
-  animation: slideInUp 0.6s ease-out forwards;           /* was 0.8s */
+  animation: slideInUp 0.6s ease-out forwards; /* was 0.8s */
 }
-
-
-
 
 @keyframes slideInUp {
   from {
@@ -198,7 +195,6 @@
   }
 }
 
-
 /* existing CSS... */
 
 /* slide the white X out when .animate-x is applied */
@@ -214,7 +210,6 @@
     transform: translate(200%, 5%);
   }
 }
-
 
 /*@media (max-width: 768px) {
   .tedx-section1 {
@@ -275,7 +270,8 @@
     height: 300px; /* Adjust height to fit Xs well */
   }
 
-  .red-x1, .white-x1 {
+  .red-x1,
+  .white-x1 {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -348,17 +344,15 @@
     width: 90%;
     height: 90%;
   }
-   .red-x1 {
-  bottom: -22px; /* Move down by 20px */
-}
+  .red-x1 {
+    bottom: -22px; /* Move down by 20px */
+  }
 
-.white-x1 {
-  bottom: -20px; /* Slightly above red-x */
-}
+  .white-x1 {
+    bottom: -20px; /* Slightly above red-x */
+  }
 
   .white-x1 {
     transform: translate(5%, 5%);
   }
 }
-
-

@@ -1,6 +1,7 @@
 /* Logo Animation Styles */
 @keyframes logo-float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0) rotateY(0deg);
     filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.9));
   }
@@ -34,7 +35,7 @@
 }
 
 .drishti-hero__logo-image.scroll-animate {
-  animation: 
+  animation:
     logo-perspective 8s ease-in-out infinite,
     logo-float 6s ease-in-out infinite;
 }

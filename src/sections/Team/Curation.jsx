@@ -14,7 +14,7 @@ const Curation = () => {
           entry.target.classList.add("animate");
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.3 },
     );
 
     if (currentRef) observer.observe(currentRef);
@@ -26,11 +26,13 @@ const Curation = () => {
   return (
     <section className="curation">
       <div className="curation-left animate-on-scroll" ref={imageContainerRef}>
-        <img src={curationImage} alt="Curation Team"  loading="lazy" />
+        <img src={curationImage} alt="Curation Team" loading="lazy" />
       </div>
       <div className="curation-right">
         <p className="curation-desc">
-         The Curation Team finds and refines the voices that define TEDx. Through research, outreach, and collaboration, they shape powerful talks that align with the TEDx mission and leave a lasting impact.
+          The Curation Team finds and refines the voices that define TEDx.
+          Through research, outreach, and collaboration, they shape powerful
+          talks that align with the TEDx mission and leave a lasting impact.
         </p>
         <a href="/curation-team" className="curation-btn">
           Learn More →

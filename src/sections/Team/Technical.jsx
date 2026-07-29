@@ -16,11 +16,11 @@ const Technical = () => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("animate-image");
-             observer.unobserve(entry.target);
+            observer.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.3 }
+      { threshold: 0.3 },
     );
 
     if (imageElement) observer.observe(imageElement);
@@ -40,11 +40,15 @@ const Technical = () => {
           src={technicalImage}
           alt="Technical Team"
           className="technical-image"
-         loading="lazy" />
+          loading="lazy"
+        />
       </div>
       <div className="technical-text" ref={textRef}>
         <p className="technical-description">
-                 The Technical Team powers the digital infrastructure of TEDxPVGCOET. They manage the website, AV systems, livestreams, and real-time troubleshooting to ensure a smooth and glitch-free experience. </p>
+          The Technical Team powers the digital infrastructure of TEDxPVGCOET.
+          They manage the website, AV systems, livestreams, and real-time
+          troubleshooting to ensure a smooth and glitch-free experience.{" "}
+        </p>
 
         <Link to="/technical-team" className="technical-button">
           Learn More →

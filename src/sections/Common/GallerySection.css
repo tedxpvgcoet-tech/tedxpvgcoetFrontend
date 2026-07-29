@@ -12,7 +12,7 @@
 /* Title */
 .gallery-title {
   color: white;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 50px;
   margin-left: 20px;
 }
@@ -30,13 +30,28 @@
 }
 
 /* Grid Areas */
-.gallery-title { grid-area: title; align-self: self-start; }
-.item-1 { grid-area: img1; }
-.item-2 { grid-area: img2; }
-.item-3 { grid-area: img3; }
-.item-4 { grid-area: img4; }
-.item-5 { grid-area: img5; }
-.item-6 { grid-area: img6; }
+.gallery-title {
+  grid-area: title;
+  align-self: self-start;
+}
+.item-1 {
+  grid-area: img1;
+}
+.item-2 {
+  grid-area: img2;
+}
+.item-3 {
+  grid-area: img3;
+}
+.item-4 {
+  grid-area: img4;
+}
+.item-5 {
+  grid-area: img5;
+}
+.item-6 {
+  grid-area: img6;
+}
 
 /* Image Styling with Hover */
 .gallery-item img {
@@ -45,15 +60,15 @@
   object-fit: cover;
   border-radius: 20px;
   display: block;
-  transition: transform 0.4s ease, filter 0.4s ease;
+  transition:
+    transform 0.4s ease,
+    filter 0.4s ease;
 }
 
 .gallery-item img:hover {
   transform: scale(1.05);
   filter: brightness(0.85);
 }
-
-
 
 /* Mobile: 2-column stack */
 @media (max-width: 600px) {

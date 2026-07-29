@@ -80,33 +80,93 @@ const SponsorForm = () => {
         <h1>Partner With Us</h1>
         <form className="sponsor-form" onSubmit={handleSubmit}>
           <div className="full-width-sponsor">
-            <input type="text" name="name" placeholder="Full Name" required value={formData.name} onChange={handleChange} />
+            <input
+              type="text"
+              name="name"
+              placeholder="Full Name"
+              required
+              value={formData.name}
+              onChange={handleChange}
+            />
           </div>
           <div className="full-width-sponsor">
-            <input type="text" name="organization" placeholder="Organization / Company Name" required value={formData.organization} onChange={handleChange} />
+            <input
+              type="text"
+              name="organization"
+              placeholder="Organization / Company Name"
+              required
+              value={formData.organization}
+              onChange={handleChange}
+            />
           </div>
           <div className="full-width-sponsor">
-            <input type="text" name="designation" placeholder="Designation" required value={formData.designation} onChange={handleChange} />
+            <input
+              type="text"
+              name="designation"
+              placeholder="Designation"
+              required
+              value={formData.designation}
+              onChange={handleChange}
+            />
           </div>
           <div className="two-col-sponsor">
-            <input type="email" name="email" placeholder="Email Address" required value={formData.email} onChange={handleChange} />
-            <input type="text" name="phone_number" placeholder="Phone Number" required value={formData.phone_number} onChange={handleChange} />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email Address"
+              required
+              value={formData.email}
+              onChange={handleChange}
+            />
+            <input
+              type="text"
+              name="phone_number"
+              placeholder="Phone Number"
+              required
+              value={formData.phone_number}
+              onChange={handleChange}
+            />
           </div>
           <div className="full-width-sponsor">
-            <input type="url" name="link" placeholder="Website / Social Media Links" required value={formData.link} onChange={handleChange} />
+            <input
+              type="url"
+              name="link"
+              placeholder="Website / Social Media Links"
+              required
+              value={formData.link}
+              onChange={handleChange}
+            />
           </div>
           <div className="full-width-sponsor checkbox-group">
             <label>Type of Partnership Interested In:</label>
             <div>
-              {["Title Sponsor", "Co-Sponsor", "Gifting Partner", "Media Partner"].map((type) => (
+              {[
+                "Title Sponsor",
+                "Co-Sponsor",
+                "Gifting Partner",
+                "Media Partner",
+              ].map((type) => (
                 <label key={type}>
-                  <input type="radio" name="tier" value={type} required checked={formData.tier === type} onChange={handleChange} /> {type}
+                  <input
+                    type="radio"
+                    name="tier"
+                    value={type}
+                    required
+                    checked={formData.tier === type}
+                    onChange={handleChange}
+                  />{" "}
+                  {type}
                 </label>
               ))}
             </div>
           </div>
           <div className="full-width-sponsor">
-            <select name="range" required value={formData.range} onChange={handleChange}>
+            <select
+              name="range"
+              required
+              value={formData.range}
+              onChange={handleChange}
+            >
               <option value="">Select Sponsorship Range</option>
               <option value="10k-50k">₹10,000 - ₹50,000</option>
               <option value="50k-1lakh">₹50,000 - ₹1,00,000</option>
@@ -114,7 +174,14 @@ const SponsorForm = () => {
             </select>
           </div>
           <div className="full-width-sponsor">
-            <input type="text" name="expectations" placeholder="What would you expect in return?" required value={formData.expectations} onChange={handleChange} />
+            <input
+              type="text"
+              name="expectations"
+              placeholder="What would you expect in return?"
+              required
+              value={formData.expectations}
+              onChange={handleChange}
+            />
           </div>
 
           <div className="full-width-sponsor checkbox-alignment-container">
@@ -137,7 +204,7 @@ const SponsorForm = () => {
               <span>I consent to be contacted regarding sponsorship.</span>
             </label>
           </div>
-          
+
           <div className="full-width-sponsor">
             <button type="submit" disabled={submitting || !consentGiven}>
               {submitting ? "Submitting..." : "Submit"}

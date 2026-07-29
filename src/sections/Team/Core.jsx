@@ -15,7 +15,7 @@ const Core = () => {
           observer.unobserve(currentImage);
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.3 },
     );
 
     if (currentImage) observer.observe(currentImage);
@@ -33,11 +33,18 @@ const Core = () => {
           src={coreImage}
           alt="Core Team"
           className="core-image"
-         loading="lazy" />
+          loading="lazy"
+        />
       </div>
       <div className="core-text">
         <p className="core-description">
-          They form the central pillar of TEDxPVGCOET. They oversee the vision, ensure inter-team coordination, and maintain alignment with the TEDx philosophy. Their role is both strategic and supportive- guiding planning, enabling collaboration, and upholding the event’s standards. With clarity of purpose and a commitment to excellence, they build the foundation upon which every team functions and every idea thrives.</p>
+          They form the central pillar of TEDxPVGCOET. They oversee the vision,
+          ensure inter-team coordination, and maintain alignment with the TEDx
+          philosophy. Their role is both strategic and supportive- guiding
+          planning, enabling collaboration, and upholding the event’s standards.
+          With clarity of purpose and a commitment to excellence, they build the
+          foundation upon which every team functions and every idea thrives.
+        </p>
         <Link to="/organizers-team" className="core-button">
           Learn More →
         </Link>

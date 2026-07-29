@@ -1,5 +1,5 @@
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -13,7 +13,7 @@ export const setupLogoAnimations = (logoRef) => {
   gsap.set(logo, {
     opacity: 1,
     rotation: 0,
-    transformOrigin: "center center"
+    transformOrigin: "center center",
   });
 
   // Simple rotation animation on scroll
@@ -25,8 +25,8 @@ export const setupLogoAnimations = (logoRef) => {
       end: "center center",
       scrub: 2, // Smoother scrubbing
       markers: false, // Set to true to debug trigger positions
-      toggleActions: "play none none reverse"
-    }
+      toggleActions: "play none none reverse",
+    },
   });
 
   // Subtle hover effect when in view
@@ -40,7 +40,7 @@ export const setupLogoAnimations = (logoRef) => {
       trigger: logo,
       start: "top 70%",
       end: "bottom 30%",
-      toggleActions: "play pause resume pause"
-    }
+      toggleActions: "play pause resume pause",
+    },
   });
 };

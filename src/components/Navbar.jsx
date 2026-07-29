@@ -10,7 +10,11 @@ const Navbar = () => {
   const location = useLocation();
 
   const path = location.pathname;
-  const isEventPage = path === "/events" || path === "/events/TakeTheLeap" || path === "/events/AvantGarde" || path === "/events/Punarutthan";
+  const isEventPage =
+    path === "/events" ||
+    path === "/events/TakeTheLeap" ||
+    path === "/events/AvantGarde" ||
+    path === "/events/Punarutthan";
   const isTeamPage = path === "/team";
 
   useEffect(() => {
@@ -42,7 +46,12 @@ const Navbar = () => {
       >
         <div className="navbar-left">
           <Link to="/">
-            <img src={logo} alt="TEDxPVGCOET Logo" className="navbar-logo"  loading="lazy" />
+            <img
+              src={logo}
+              alt="TEDxPVGCOET Logo"
+              className="navbar-logo"
+              loading="lazy"
+            />
           </Link>
         </div>
 
@@ -96,7 +105,7 @@ const Navbar = () => {
         >
           News letter
         </Link>
-       
+
         <Link
           to="/events"
           className="nav-dropdown-item"

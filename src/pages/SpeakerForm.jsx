@@ -28,11 +28,13 @@ const SpeakerForm = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      alert("🚫 Speaker nominations for Drishti (TEDxPVGCOET 2025) are now closed.\nThank you for your interest in being part of our journey.\nWe look forward to your application next time.\nStay connected, and keep spreading Ideas Worth Spreading!");
+      alert(
+        "🚫 Speaker nominations for Drishti (TEDxPVGCOET 2025) are now closed.\nThank you for your interest in being part of our journey.\nWe look forward to your application next time.\nStay connected, and keep spreading Ideas Worth Spreading!",
+      );
     }, 1000);
-  
+
     return () => clearTimeout(timer);
-  }, []);  
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;

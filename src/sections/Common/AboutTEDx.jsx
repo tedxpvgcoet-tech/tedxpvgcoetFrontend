@@ -16,7 +16,7 @@ const AboutTEDx = () => {
           observer.disconnect();
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.3 },
     );
     if (element) observer.observe(element);
     return () => {
@@ -36,15 +36,22 @@ const AboutTEDx = () => {
             What is <span className="highlight-red">TEDx</span>?
           </h2>
           <p>
-            <span className="highlight-red">X</span>  = independently organized event
-In the spirit of discovering and spreading ideas, TEDx is a program of local, self-organized events that bring people together to share a TED-like experience. At a TEDx event, TED Talks video and live speakers combine to spark deep discussion and connection. These local, self-organized events are branded TEDx, where x = independently organized TED event. The TED Conference provides general guidance for the TEDx program, but individual TEDx events are self-organized.
+            <span className="highlight-red">X</span> = independently organized
+            event In the spirit of discovering and spreading ideas, TEDx is a
+            program of local, self-organized events that bring people together
+            to share a TED-like experience. At a TEDx event, TED Talks video and
+            live speakers combine to spark deep discussion and connection. These
+            local, self-organized events are branded TEDx, where x =
+            independently organized TED event. The TED Conference provides
+            general guidance for the TEDx program, but individual TEDx events
+            are self-organized.
           </p>
         </div>
       </div>
 
       <div className="tedx-x-image">
-        <img src={redX} className="red-x1" alt="Red X"  loading="lazy" />
-        <img src={whiteX} className="white-x1" alt="White X"  loading="lazy" />
+        <img src={redX} className="red-x1" alt="Red X" loading="lazy" />
+        <img src={whiteX} className="white-x1" alt="White X" loading="lazy" />
       </div>
     </div>
   );

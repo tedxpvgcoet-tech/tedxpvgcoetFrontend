@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { FaStar } from "react-icons/fa";
 import "./SponsorFeedback.css";
 
-
-
 const SponsorFeedback = () => {
   const [consent, setConsent] = useState(false);
   const [rating, setRating] = useState(0);
@@ -63,9 +61,7 @@ const SponsorFeedback = () => {
           {[1, 2, 3, 4, 5].map((star) => (
             <FaStar
               key={star}
-              className={
-                (hovered || rating) >= star ? "star filled" : "star"
-              }
+              className={(hovered || rating) >= star ? "star filled" : "star"}
               onClick={() => setRating(star)}
               onMouseEnter={() => setHovered(star)}
               onMouseLeave={() => setHovered(null)}
@@ -88,9 +84,10 @@ const SponsorFeedback = () => {
             onChange={(e) => setConsent(e.target.checked)}
             required
           />
-          <label htmlFor="consent">I agree to be contacted in the future.</label>
+          <label htmlFor="consent">
+            I agree to be contacted in the future.
+          </label>
         </div>
-
 
         <button type="submit">Submit Feedback</button>
       </form>

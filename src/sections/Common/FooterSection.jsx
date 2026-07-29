@@ -19,22 +19,36 @@ const FooterSection = () => {
             This independent TEDx event is operated under licence from TED.
           </p>
           <div className="footer-icons">
-            <a href="https://www.instagram.com/tedxpvgcoet/?hl=en" target="_blank" rel="noreferrer"><FaInstagram /></a>
-            <a href="https://www.linkedin.com/company/tedxpvgcoet/?originalSubdomain=in" target="_blank" rel="noreferrer"><FaLinkedin /></a>
-            <a href="https://x.com/TEDxPVGCOET" target="_blank" rel="noreferrer"><FaXTwitter/></a>
+            <a
+              href="https://www.instagram.com/tedxpvgcoet/?hl=en"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FaInstagram />
+            </a>
+            <a
+              href="https://www.linkedin.com/company/tedxpvgcoet/?originalSubdomain=in"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FaLinkedin />
+            </a>
+            <a
+              href="https://x.com/TEDxPVGCOET"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FaXTwitter />
+            </a>
           </div>
         </div>
 
         {/* Right Section: Link Columns */}
         <div className="footer-links">
-
-          
-
           <div>
             <Link to="/speaker">Speaker Nomination</Link>
             <Link to="/events">Events</Link>
             <Link to="/sponsor">Partner With Us</Link>
-            
           </div>
 
           <div>
@@ -44,16 +58,20 @@ const FooterSection = () => {
           </div>
 
           <div className="contact-card">
-             <p><strong>Contact Us:</strong><br /><strong>Abhijeet Thore</strong><br />(Licensee & Organizer)<br />
-                +91 70581 82571<br />
-                abhithore2704@gmail.com
+            <p>
+              <strong>Contact Us:</strong>
+              <br />
+              <strong>Abhijeet Thore</strong>
+              <br />
+              (Licensee & Organizer)
+              <br />
+              +91 70581 82571
+              <br />
+              abhithore2704@gmail.com
             </p>
           </div>
-            
-
-         </div>
         </div>
-    
+      </div>
     </footer>
   );
 };

@@ -1,6 +1,6 @@
 import React from "react";
 import "./DristiHeroSection.css";
-import desktopVideo from "../assets/DesktopTheme.mp4";  // Desktop video
+import desktopVideo from "../assets/DesktopTheme.mp4"; // Desktop video
 import mobileVideo from "../assets/mobile-video.mp4"; // Mobile video
 
 const DristiHeroSection = () => {
@@ -9,7 +9,7 @@ const DristiHeroSection = () => {
   };
 
   const handleLearnMoreClick = () => {
-        window.open("https://tedxpvgcoet.substack.com/", "_blank"); // <-- replace with actual link
+    window.open("https://tedxpvgcoet.substack.com/", "_blank"); // <-- replace with actual link
   };
 
   // Choose video based on screen size

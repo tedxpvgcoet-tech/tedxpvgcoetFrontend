@@ -3,15 +3,13 @@ import AvantGardeHeroSection from "../sections/Events/AvantGarde/AvantGardeHeroS
 import AvantGardeTalksSection from "../sections/Events/AvantGarde/AvantGardeTalkSection";
 import AvantGardeTeamSection from "../sections/Events/AvantGarde/AvantGardeTeamSection";
 
-
 const AvantGarde = () => {
   return (
     <>
-          <div id="page-top"/>
-    <AvantGardeHeroSection />
-    <AvantGardeTalksSection/>
-    <AvantGardeTeamSection/>
-
+      <div id="page-top" />
+      <AvantGardeHeroSection />
+      <AvantGardeTalksSection />
+      <AvantGardeTeamSection />
     </>
   );
 };

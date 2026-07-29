@@ -24,26 +24,24 @@
   gap: 15px;
   align-items: baseline;
   z-index: 1; /* make sure it's above video */
- 
 }
 
 .btn {
-  display: inline-flex;              /* same vertical alignment */
-  align-items: center;               /* centers text vertically */
-  justify-content: center;           /* centers text horizontally */
+  display: inline-flex; /* same vertical alignment */
+  align-items: center; /* centers text vertically */
+  justify-content: center; /* centers text horizontally */
   padding: 10px 20px;
-  height: 50px;                       /* force same height */
-  box-sizing: border-box;             /* include border in height */
+  height: 50px; /* force same height */
+  box-sizing: border-box; /* include border in height */
   font-size: 18px;
   font-weight: 700;
-  line-height: 1;                     /* prevent extra vertical spacing */
+  line-height: 1; /* prevent extra vertical spacing */
   cursor: pointer;
   border-radius: 0;
   transition: all 0.3s ease;
   min-width: 150px; /* or whatever fits your text */
   white-space: nowrap;
 }
-
 
 .watch-btn {
   position: relative;
@@ -54,19 +52,15 @@
   color: #f59797; /* fallback */
 }
 
-
 .learn-btn {
   background-color: rgba(0, 0, 0, 0.5);
-  color:white;
+  color: white;
   border: 2px solid #e74c3c;
 }
-
 
 .watch-btn:hover {
   background-color: #333;
 }
-
-
 
 .learn-btn:hover {
   background-color: #e74c3c;
@@ -108,10 +102,9 @@
     height: 42px;
     min-width: 150px;
     white-space: nowrap; /* never wrap text */
-    font-size: 20px;   /* slightly smaller text */
+    font-size: 20px; /* slightly smaller text */
   }
 }
-
 
 @media (max-width: 1500px) {
   .hero-overlay {
@@ -128,7 +121,7 @@
   }
 }
 
-@media (min-width: 1500px){
+@media (min-width: 1500px) {
   .hero-overlay {
     bottom: 20px;
     gap: 10px;

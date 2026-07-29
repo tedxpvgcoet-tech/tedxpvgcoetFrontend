@@ -23,7 +23,9 @@
   border-radius: 10px;
   opacity: 0;
   transform: translateX(-60px);
-  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+  transition:
+    opacity 0.3s ease-out,
+    transform 0.3s ease-out;
 }
 
 /* Slide-in animation */
@@ -53,7 +55,7 @@
   line-height: 1.6;
   margin-bottom: 1.5rem;
   color: white;
-  font-family: 'Kantumruy Pro', sans-serif;
+  font-family: "Kantumruy Pro", sans-serif;
 }
 
 .editorial-button {
@@ -63,7 +65,7 @@
   border-bottom: 1px solid red;
   padding-bottom: 2px;
   transition: color 0.3s;
-  font-family: 'Kantumruy Pro', sans-serif;
+  font-family: "Kantumruy Pro", sans-serif;
 }
 
 .editorial-button:hover {

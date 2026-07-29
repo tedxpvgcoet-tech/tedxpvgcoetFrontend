@@ -1,7 +1,6 @@
 import backgroundVideo1 from "../../assets/backgrounds/background.mp4";
 import "./BackgroundSection.css";
 
-
 const BackgroundSection = () => {
   return (
     <div className="hero-container1">

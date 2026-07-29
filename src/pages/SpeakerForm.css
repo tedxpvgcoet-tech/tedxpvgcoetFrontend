@@ -4,7 +4,7 @@
   width: 100%;
   height: auto;
   overflow: hidden;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   max-width: 100%;
 }
 
@@ -19,7 +19,7 @@
 }
 /* Make sure the page takes full viewport height */
 .form-page {
-  min-height: calc(100vh -  (var(--footer-height) + var(--navbar-height)));
+  min-height: calc(100vh - (var(--footer-height) + var(--navbar-height)));
   padding-left: 25px;
   padding-right: 25px;
   margin-left: 0;
@@ -36,22 +36,21 @@
 /* Inner wrapper to limit width */
 .form-inner {
   width: 100%;
-  padding: 0 1rem; 
+  padding: 0 1rem;
   max-width: 800px;
 }
 
 .form-inner h1 {
   color: white;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 2.5rem;
   margin-bottom: 2rem;
   text-align: center;
 }
 
 .full-width h3 {
-    color: white;
-    font-family: 'Inter', sans-serif;
-
+  color: white;
+  font-family: "Inter", sans-serif;
 }
 
 /* Layout grid for form */
@@ -79,10 +78,10 @@
   width: 100%;
   padding: 0.75rem 1rem;
   font-size: 1rem;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   border: 2px solid #555;
   border-radius: 4px;
-  background: rgba(255,255,255,0.8);
+  background: rgba(255, 255, 255, 0.8);
   color: #222;
   box-sizing: border-box;
 }
@@ -91,7 +90,7 @@
 .speaker-form button {
   padding: 0.75rem 1.5rem;
   font-size: 1rem;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   border: none;
   border-radius: 4px;
   background-color: #e81b2a;
@@ -121,7 +120,7 @@
     padding-top: 10px;
   }
 
-  .form-page{
+  .form-page {
     padding-bottom: 10px;
   }
 }
@@ -140,9 +139,9 @@
     width: 100%; /* Full-width on smaller screens */
   }
 
-  .form-page{
+  .form-page {
     padding-bottom: 10px;
-    padding-left:3px;
+    padding-left: 3px;
     padding-right: 3px;
   }
 }
@@ -176,8 +175,7 @@
   }
 }
 
-.para{
-  
+.para {
   font-size: 18px;
   color: white;
   align-items: center;
@@ -198,7 +196,6 @@
     padding: 14px 15px;
     line-height: 1.4;
     margin-bottom: 40px; /* space before form */
-
   }
 }
 
@@ -214,6 +211,5 @@
     font-size: 18px;
     margin-bottom: 40px; /* space before form */
     padding-top: 30px;
-
   }
 }

@@ -18,7 +18,7 @@ const Mnm = () => {
           textBlockRef?.classList.add("animate-mnm");
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.3 },
     );
 
     if (imageRef) observer.observe(imageRef);
@@ -31,11 +31,19 @@ const Mnm = () => {
   return (
     <section className="mnm-section">
       <div className="mnm-image-container" ref={imageContainerRef}>
-        <img src={mnmImage} alt="MnM Team" className="mnm-image"  loading="lazy" />
+        <img
+          src={mnmImage}
+          alt="MnM Team"
+          className="mnm-image"
+          loading="lazy"
+        />
       </div>
       <div className="mnm-text" ref={textRef}>
         <p className="mnm-description">
-        The Media and Marketing Team manages TEDxPVGCOET’s public presence. They drive communication strategies, social media campaigns, and visual storytelling to ensure the event reaches and resonates with its audience.
+          The Media and Marketing Team manages TEDxPVGCOET’s public presence.
+          They drive communication strategies, social media campaigns, and
+          visual storytelling to ensure the event reaches and resonates with its
+          audience.
         </p>
 
         <Link to="/media-team" className="mnm-button">

@@ -4,21 +4,17 @@ import "./PastEventSection2.css";
 import LeapImg from "../../../assets/Event/Take-the-leap-bg-1.webp"; // Use actual filename
 import React, { useState, useEffect, useRef } from "react";
 
-
 const useInView = (options) => {
   const ref = useRef(null);
   const [isIntersecting, setIntersecting] = useState(false);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIntersecting(true);
-          observer.disconnect(); // trigger once
-        }
-      },
-      options
-    );
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setIntersecting(true);
+        observer.disconnect(); // trigger once
+      }
+    }, options);
 
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
@@ -38,7 +34,7 @@ const PastEventSection2 = () => {
           ref={imgRef}
           className={`event-image1 ${imgVisible ? "slide-in-left" : ""}`}
         >
-          <img src={LeapImg} alt="Avant Garde Event"  loading="lazy" />
+          <img src={LeapImg} alt="Avant Garde Event" loading="lazy" />
         </div>
 
         <div
@@ -48,7 +44,8 @@ const PastEventSection2 = () => {
           <h2>Take the Leap</h2>
           <p className="year1">2020</p>
           <p className="desc1">
-            Take The Leap! encourages us to unleash passion, challenge limits, and discover life's full potential
+            Take The Leap! encourages us to unleash passion, challenge limits,
+            and discover life's full potential
           </p>
           <Link to="/events/TakeTheLeap" className="see-more1">
             See More

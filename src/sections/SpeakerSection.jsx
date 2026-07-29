@@ -10,13 +10,12 @@ const speakers = [
     name: "Dr. Bhoshan Kelkar",
     image: speakerImage,
     description:
-      "Dr. Bhoshan Kelkar, an eminent thought leader and educator in emerging technologies..."
+      "Dr. Bhoshan Kelkar, an eminent thought leader and educator in emerging technologies...",
   },
   {
     name: "Another Speaker",
     image: speakerImage,
-    description:
-      "This is another speaker description..."
+    description: "This is another speaker description...",
   },
   // Add as many as you want...
 ];

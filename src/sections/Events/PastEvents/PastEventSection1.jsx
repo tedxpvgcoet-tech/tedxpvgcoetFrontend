@@ -4,23 +4,17 @@ import "./PastEventSection1.css";
 import punarutthanImg from "../../../assets/backgrounds/AvantGarde-bg.webp"; // Use actual filename
 import React, { useState, useEffect, useRef } from "react";
 
-
-
-
 const useInView = (options) => {
   const ref = useRef(null);
   const [isIntersecting, setIntersecting] = useState(false);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIntersecting(true);
-          observer.disconnect(); // trigger once
-        }
-      },
-      options
-    );
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setIntersecting(true);
+        observer.disconnect(); // trigger once
+      }
+    }, options);
 
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
@@ -40,7 +34,7 @@ const PastEventSection1 = () => {
           ref={imgRef}
           className={`event-image1 ${imgVisible ? "slide-in-left" : ""}`}
         >
-          <img src={punarutthanImg} alt="Avant Garde Event"  loading="lazy" />
+          <img src={punarutthanImg} alt="Avant Garde Event" loading="lazy" />
         </div>
 
         <div
@@ -50,8 +44,9 @@ const PastEventSection1 = () => {
           <h2>Avant Garde</h2>
           <p className="year1">2021</p>
           <p className="desc1">
-            "Avant Garde" embraces bold, unconventional ideas and celebrates those ahead of their time.
-It invites us to think differently and challenge the norm.
+            "Avant Garde" embraces bold, unconventional ideas and celebrates
+            those ahead of their time. It invites us to think differently and
+            challenge the norm.
           </p>
           <Link to="/events/AvantGarde" className="see-more1">
             See More

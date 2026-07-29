@@ -4,7 +4,7 @@
   padding: 4rem 2rem;
   position: relative;
   overflow: hidden;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 .past-event-content1 {
@@ -74,8 +74,6 @@
   .event-details1 {
     max-width: 90%;
   }
-
-
 }
 
 .slide-in-left {
@@ -107,4 +105,3 @@
     opacity: 1;
   }
 }
-

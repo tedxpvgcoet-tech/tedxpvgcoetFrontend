@@ -4,7 +4,7 @@
   background: rgba(0, 0, 0, 0.6);
   border-radius: 10px;
   color: white;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   width: 100%;
   max-width: 800px;
   margin-left: auto;
@@ -33,7 +33,7 @@
   border-radius: 4px;
   background: rgba(255, 255, 255, 0.9);
   color: #222;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   width: 100%;
   box-sizing: border-box;
 }
@@ -85,7 +85,6 @@
 }
 
 /* The .consent-label span rule that created the large space has been removed. */
-
 
 .feedback-form button {
   background-color: #e81b2a;

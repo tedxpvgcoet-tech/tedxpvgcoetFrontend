@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import './Booknow.css';
+import React, { useState, useEffect } from "react";
+import "./Booknow.css";
 
 // Import your images
 import mobileBackgroundImage from "../assets/Drishti/mobile.jpg";
@@ -8,7 +8,7 @@ import desktopBackgroundImage from "../assets/Drishti/bigimg.jpg";
 // --- OPTIMIZATION: Debounce Helper Function ---
 function debounce(func, delay) {
   let timer;
-  return function(...args) {
+  return function (...args) {
     clearTimeout(timer);
     timer = setTimeout(() => {
       func.apply(this, args);
@@ -24,12 +24,12 @@ const useWindowWidth = () => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
     };
-    
+
     const debouncedHandleResize = debounce(handleResize, 150);
 
-    window.addEventListener('resize', debouncedHandleResize);
-    
-    return () => window.removeEventListener('resize', debouncedHandleResize);
+    window.addEventListener("resize", debouncedHandleResize);
+
+    return () => window.removeEventListener("resize", debouncedHandleResize);
   }, []);
 
   return windowWidth;

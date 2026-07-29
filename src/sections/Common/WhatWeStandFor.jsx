@@ -16,7 +16,7 @@ const WhatWeStandFor = () => {
           observer.disconnect();
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.3 },
     );
     if (element) observer.observe(element);
     return () => {
@@ -29,28 +29,28 @@ const WhatWeStandFor = () => {
 
   return (
     <div className={containerClasses} ref={sectionRef}>
-
-
       <div className="tedx-x-image">
-        <img src={redX} className="red-x" alt="Red X"  loading="lazy" />
-        <img src={whiteX} className="white-x" alt="White X"  loading="lazy" />
+        <img src={redX} className="red-x" alt="Red X" loading="lazy" />
+        <img src={whiteX} className="white-x" alt="White X" loading="lazy" />
       </div>
 
       <div className={`tedx-text-wrapper ${inView ? "animate" : ""}`}>
         <div className="tedx-shadow"></div>
         <div className="tedx-box">
-          <h2>
-            What We Stand For ?
-          </h2>
+          <h2>What We Stand For ?</h2>
           <p>
-             PVG’s College of Engineering and Technology (PVGCOET) carries a rich culture of education and hosts a plethora of events bringing about all-round development of students. The TEDxPVGCOET event is a prized gemstone hosted independently by students and faculty members  under a University TEDx license.This event enables participants from different backgrounds to witness thought-provoking talks, and has hosted thought leaders, artists, scientists, entrepreneurs, and change-makers through the years.
+            PVG’s College of Engineering and Technology (PVGCOET) carries a rich
+            culture of education and hosts a plethora of events bringing about
+            all-round development of students. The TEDxPVGCOET event is a prized
+            gemstone hosted independently by students and faculty members under
+            a University TEDx license.This event enables participants from
+            different backgrounds to witness thought-provoking talks, and has
+            hosted thought leaders, artists, scientists, entrepreneurs, and
+            change-makers through the years.
           </p>
         </div>
       </div>
     </div>
-
-    
-
   );
 };
 

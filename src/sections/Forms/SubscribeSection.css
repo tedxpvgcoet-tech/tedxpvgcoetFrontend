@@ -1,11 +1,11 @@
 /* 1. Base Layout: center everything */
 .subscribe-section {
-   display: grid;
+  display: grid;
   place-items: center;
   position: relative;
   width: 100%;
   /* height: 100vh;  ← remove this */
-  min-height: 100vh;  /* only ensures it’s *at least* full-screen */
+  min-height: 100vh; /* only ensures it’s *at least* full-screen */
   background: black;
   color: white;
   padding: 2rem;
@@ -33,7 +33,7 @@
 /* 4. Fluid, responsive heading */
 .subscribe-content h2 {
   margin: 0 0 2rem;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-weight: 700;
   line-height: 1.2;
   /* Clamp between 2rem and 3.5rem based on viewport */
@@ -62,7 +62,7 @@
   border-radius: 8px;
   border: none;
   outline: none;
-  max-height: 3rem;    /* never taller than 3rem */
+  max-height: 3rem; /* never taller than 3rem */
 }
 
 /* 8. Button styling */
@@ -88,7 +88,7 @@
   .subscribe-form {
     flex-direction: row;
     gap: 1rem;
-    align-items: center;  /* center children horizontally */
+    align-items: center; /* center children horizontally */
   }
   .subscribe-input,
   .subscribe-button {
@@ -96,8 +96,8 @@
   }
 
   .subscribe-button {
-    width: auto;          /* shrink to content */
-    margin: 0 auto;       /* center button */
+    width: auto; /* shrink to content */
+    margin: 0 auto; /* center button */
   }
 }
 
@@ -110,13 +110,13 @@
     top: 1rem;
     right: 1rem;
     padding-right: 10px;
-    width : 78px;
+    width: 78px;
   }
   .subscribe-content {
     padding: 0;
   }
 
-  .subscribe-content h2{
+  .subscribe-content h2 {
     text-align: left;
   }
 }

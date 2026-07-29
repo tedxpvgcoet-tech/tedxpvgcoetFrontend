@@ -5,7 +5,7 @@ import logo from "../../assets/logos/Subscirbe-logo.webp";
 export default function SubscribeSection() {
   const [formData, setFormData] = useState({
     name: "",
-    email: ""
+    email: "",
   });
   const [submitting, setSubmitting] = useState(false);
 
@@ -13,7 +13,7 @@ export default function SubscribeSection() {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -25,9 +25,9 @@ export default function SubscribeSection() {
       const res = await fetch("https://www.backend.tedxpvgcoet.in/subscriber", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(formData),
       });
 
       if (!res.ok) {
@@ -38,7 +38,7 @@ export default function SubscribeSection() {
       // Reset form on success
       setFormData({
         name: "",
-        email: ""
+        email: "",
       });
     } catch (err) {
       console.error("Subscription error:", err);
@@ -49,11 +49,17 @@ export default function SubscribeSection() {
 
   return (
     <section className="subscribe-section">
-      <img src={logo} alt="TEDx Icon" className="subscribe-logo"  loading="lazy" />
+      <img
+        src={logo}
+        alt="TEDx Icon"
+        className="subscribe-logo"
+        loading="lazy"
+      />
 
       <div className="subscribe-content">
         <h2>
-          The Best of <span className="highlight-red">TEDxPVGCOET</span>,<br />Straight to You
+          The Best of <span className="highlight-red">TEDxPVGCOET</span>,<br />
+          Straight to You
         </h2>
 
         <form className="subscribe-form" onSubmit={handleSubmit}>
@@ -77,7 +83,11 @@ export default function SubscribeSection() {
             onChange={handleChange}
           />
 
-          <button type="submit" className="subscribe-button" disabled={submitting}>
+          <button
+            type="submit"
+            className="subscribe-button"
+            disabled={submitting}
+          >
             {submitting ? "Subscribing..." : "Receive Ideas"}
           </button>
         </form>

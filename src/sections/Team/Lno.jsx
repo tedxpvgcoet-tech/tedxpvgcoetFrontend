@@ -15,7 +15,7 @@ const Lno = () => {
           observer.unobserve(currentImage);
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.3 },
     );
 
     if (currentImage) observer.observe(currentImage);
@@ -33,11 +33,14 @@ const Lno = () => {
           src={LnoImage}
           alt="Logistics & Operations Team"
           className="lno-image"
-         loading="lazy" />
+          loading="lazy"
+        />
       </div>
       <div className="lno-text">
         <p className="lno-description">
-         This team handles all behind-the-scenes planning and execution. From scheduling and vendor coordination to real-time problem-solving, they make sure the event runs seamlessly from start to finish.
+          This team handles all behind-the-scenes planning and execution. From
+          scheduling and vendor coordination to real-time problem-solving, they
+          make sure the event runs seamlessly from start to finish.
         </p>
         <Link to="/logistics-team" className="lno-button">
           Learn More →

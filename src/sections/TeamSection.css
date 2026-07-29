@@ -1,11 +1,11 @@
 .team-section3 {
   background-color: #000;
   color: white;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 .team-section3-dum {
-    padding: 4rem 2rem;
+  padding: 4rem 2rem;
 }
 
 .team-section3 h2 {
@@ -23,7 +23,6 @@
 .team-grid3 > .team-card3 {
   margin: 0 auto; /* centers cards in their columns */
 }
-
 
 /* Team Card Styles */
 .team-card3 {
@@ -69,11 +68,9 @@
     grid-template-columns: 1fr;
   }
   .team-card3 img {
-   width:300px;
-   height:260px;
+    width: 300px;
+    height: 260px;
   }
-
-
 }
 
 /* Medium: 2 cards per row */
@@ -83,14 +80,14 @@
   }
 
   .team-card3 {
-  max-width: 250px; /* Decrease width */
-  max-height: 350px;
+    max-width: 250px; /* Decrease width */
+    max-height: 350px;
   }
 
   .team-card3 img {
-  width: 250px;
-  height: 160px;
-}
+    width: 250px;
+    height: 160px;
+  }
 }
 
 /* Large: 3 cards per row */
@@ -100,12 +97,12 @@
   }
 
   .team-card3 {
-  max-width: 250px; /* Decrease width */
-  max-height: 350px;
+    max-width: 250px; /* Decrease width */
+    max-height: 350px;
   }
 
   .team-card3 img {
-  width: 250px;
-  height: 160px;
-}
+    width: 250px;
+    height: 160px;
+  }
 }

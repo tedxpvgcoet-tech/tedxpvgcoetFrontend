@@ -23,7 +23,7 @@
   font-weight: 700;
   color: #78350f;
   margin-bottom: 0.5rem;
-  font-family: 'Courier New', monospace;
+  font-family: "Courier New", monospace;
 }
 
 .retro-camera-subtitle {
@@ -155,7 +155,7 @@
   color: #78350f;
   margin-bottom: 1rem;
   text-align: center;
-  font-family: 'Courier New', monospace;
+  font-family: "Courier New", monospace;
 }
 
 .photo-container {
@@ -197,14 +197,17 @@
 }
 
 .film-grain::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: 
-    radial-gradient(circle, transparent 1px, rgba(255, 255, 255, 0.1) 1px);
+  background-image: radial-gradient(
+    circle,
+    transparent 1px,
+    rgba(255, 255, 255, 0.1) 1px
+  );
   background-size: 2px 2px;
   pointer-events: none;
   opacity: 0.3;
@@ -212,16 +215,37 @@
 }
 
 @keyframes grain {
-  0%, 100% { transform: translate(0, 0); }
-  10% { transform: translate(-1px, -1px); }
-  20% { transform: translate(-1px, 1px); }
-  30% { transform: translate(1px, -1px); }
-  40% { transform: translate(1px, 1px); }
-  50% { transform: translate(-1px, 0); }
-  60% { transform: translate(1px, 0); }
-  70% { transform: translate(0, -1px); }
-  80% { transform: translate(0, 1px); }
-  90% { transform: translate(-1px, -1px); }
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  10% {
+    transform: translate(-1px, -1px);
+  }
+  20% {
+    transform: translate(-1px, 1px);
+  }
+  30% {
+    transform: translate(1px, -1px);
+  }
+  40% {
+    transform: translate(1px, 1px);
+  }
+  50% {
+    transform: translate(-1px, 0);
+  }
+  60% {
+    transform: translate(1px, 0);
+  }
+  70% {
+    transform: translate(0, -1px);
+  }
+  80% {
+    transform: translate(0, 1px);
+  }
+  90% {
+    transform: translate(-1px, -1px);
+  }
 }
 
 /* Responsive design */
@@ -229,26 +253,26 @@
   .retro-camera-title {
     font-size: 1.875rem;
   }
-  
+
   .camera-video,
   .camera-placeholder {
     height: 16rem;
   }
-  
+
   .placeholder-icon {
     font-size: 3rem;
   }
-  
+
   .controls-container {
     flex-direction: column;
     align-items: center;
   }
-  
+
   .btn {
     width: 100%;
     max-width: 200px;
   }
-  
+
   .photo-controls {
     flex-direction: column;
     align-items: center;
@@ -261,20 +285,25 @@
   border-radius: 1rem;
   padding: 1rem;
   position: relative;
-  box-shadow: 
+  box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.2),
     inset 0 -1px 0 rgba(0, 0, 0, 0.2),
     0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .camera-body::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0.5rem;
   left: 0.5rem;
   right: 0.5rem;
   height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
 }
 
 /* Viewfinder style */
@@ -286,9 +315,16 @@
 
 /* Flash effect for capture */
 @keyframes flash {
-  0% { opacity: 0; }
-  50% { opacity: 0.8; background-color: rgba(255, 255, 255, 0.8); }
-  100% { opacity: 0; }
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.8;
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 .flash-overlay {

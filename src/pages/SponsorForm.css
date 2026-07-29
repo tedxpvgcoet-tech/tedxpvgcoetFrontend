@@ -4,7 +4,7 @@
   width: 100%;
   height: auto;
   overflow: hidden;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   max-width: 100%;
 }
 
@@ -17,4 +17,3 @@
   object-fit: cover;
   z-index: -1;
 }
-

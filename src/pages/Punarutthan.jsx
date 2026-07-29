@@ -9,23 +9,19 @@ import PunarutthanTeamEditorialSection from "../sections/Events/Punarutthan/Puna
 import PunarutthanTeamCurationSection from "../sections/Events/Punarutthan/PunarutthanTeamCurationSection";
 import PunarutthanTeamDesignandProductionSection from "../sections/Events/Punarutthan/PunarutthanTeamDesignandProductionSection";
 
-
-
-
 const Punarutthan = () => {
   return (
     <>
-          <div id="page-top"/>
-   <PunarutthanHeroSection/>
-   <PunarutthanTalksSection/>
-   <PunarutthanTeamSection />
-   <PunarutthanTeamLogicticsandOperationSection />
-   <PunarutthanTeamMediaandCommunicationSection/>
-   <PunarutthanTeamFinanceandSponsorshipSection/>
-   <PunarutthanTeamEditorialSection/>
-   <PunarutthanTeamCurationSection/>
-   <PunarutthanTeamDesignandProductionSection/>
-
+      <div id="page-top" />
+      <PunarutthanHeroSection />
+      <PunarutthanTalksSection />
+      <PunarutthanTeamSection />
+      <PunarutthanTeamLogicticsandOperationSection />
+      <PunarutthanTeamMediaandCommunicationSection />
+      <PunarutthanTeamFinanceandSponsorshipSection />
+      <PunarutthanTeamEditorialSection />
+      <PunarutthanTeamCurationSection />
+      <PunarutthanTeamDesignandProductionSection />
     </>
   );
 };

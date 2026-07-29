@@ -1,20 +1,19 @@
 .vid-container {
-  display: flex;                 
-  justify-content: center;        /* center horizontally */
-  align-items: center;            /* center vertically */
+  display: flex;
+  justify-content: center; /* center horizontally */
+  align-items: center; /* center vertically */
   flex-direction: column;
-  padding: 2rem;                  /* some spacing around the video */
+  padding: 2rem; /* some spacing around the video */
   /*background: #000; */
-background: #171717;/* optional background */
-
+  background: #171717; /* optional background */
 }
 
 .drishti-video {
-  width: 65%;             /* default desktop size */
+  width: 65%; /* default desktop size */
   margin-top: 3rem;
-  height: auto;                   /* keep aspect ratio */
-  max-width: 1200px;              /* prevent it from being too big */
-  border-radius: 12px;            
+  height: auto; /* keep aspect ratio */
+  max-width: 1200px; /* prevent it from being too big */
+  border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
