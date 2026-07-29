@@ -1,29 +1,29 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import ScrollToTop from "./components/ScrollToTop";
 import { inject } from "@vercel/analytics";
 import { Helmet } from "react-helmet";
 
-import Home from "./pages/Home";
-import SpeakerForm from "./pages/SpeakerForm";
-import SponsorForm from "./pages/SponsorForm";
-import CamRedirect from "./pages/CamRedirect";
-import FeedbackRedirect from "./pages/FeedbackRedirect";
-import Event from "./pages/Event";
-import Punarutthan from "./pages/Punarutthan";
-import AvantGarde from "./pages/AvantGarde";
-import Team from "./pages/Team";
-import CurationCard from "./sections/Team/CurationCard";
-import LogisticsCard from "./sections/Team/LogisticsCard";
-import MediaCard from "./sections/Team/MediaCard";
-import EditorialCard from "./sections/Team/EditorialCard";
-import FinanceCard from"./sections/Team/FinanceCard";
-import DesignCard from "./sections/Team/DesignCard";
-import TechnicalCard from"./sections/Team/TechnicalCard";
-import OrganizersCard from "./sections/Team/OrganizersCard";
-import TakeTheLeap from "./pages/TakeTheLeap"
-import ThemePage from "./pages/ThemePage";
+const Home = lazy(() => import("./pages/Home"));
+const SpeakerForm = lazy(() => import("./pages/SpeakerForm"));
+const SponsorForm = lazy(() => import("./pages/SponsorForm"));
+const CamRedirect = lazy(() => import("./pages/CamRedirect"));
+const FeedbackRedirect = lazy(() => import("./pages/FeedbackRedirect"));
+const Event = lazy(() => import("./pages/Event"));
+const Punarutthan = lazy(() => import("./pages/Punarutthan"));
+const AvantGarde = lazy(() => import("./pages/AvantGarde"));
+const Team = lazy(() => import("./pages/Team"));
+const CurationCard = lazy(() => import("./sections/Team/CurationCard"));
+const LogisticsCard = lazy(() => import("./sections/Team/LogisticsCard"));
+const MediaCard = lazy(() => import("./sections/Team/MediaCard"));
+const EditorialCard = lazy(() => import("./sections/Team/EditorialCard"));
+const FinanceCard = lazy(() => import("./sections/Team/FinanceCard"));
+const DesignCard = lazy(() => import("./sections/Team/DesignCard"));
+const TechnicalCard = lazy(() => import("./sections/Team/TechnicalCard"));
+const OrganizersCard = lazy(() => import("./sections/Team/OrganizersCard"));
+const TakeTheLeap = lazy(() => import("./pages/TakeTheLeap"));
+const ThemePage = lazy(() => import("./pages/ThemePage"));
 
 inject();
 
@@ -37,28 +37,29 @@ function App() {
 
       <ScrollToTop />
       <Navbar />
-      <Routes>
-        <Route path="/" element={<ThemePage />} />
-        <Route path="/speaker" element={<SpeakerForm />} />
-        <Route path="/sponsor" element={<SponsorForm />} />
-        <Route path="/events" element={<Event />} />
-        <Route path="/events/Punarutthan" element={<Punarutthan />} />
-        <Route path="/events/AvantGarde" element={<AvantGarde />} />
-        <Route path="/events/TakeTheLeap" element={<TakeTheLeap />} />
-        <Route path="/team" element={<Team />} />  
-        <Route path="/curation-team" element={<CurationCard />} /> 
-        <Route path="/logistics-team" element={<LogisticsCard />} />
-        <Route path="/media-team" element={<MediaCard />} /> 
-        <Route path="/editorial-team" element={<EditorialCard />} />
-        <Route path="/finance-team" element={<FinanceCard />} /> 
-        <Route path="/design-team" element={<DesignCard />} />  
-        <Route path="/technical-team" element={<TechnicalCard />} />  
-        <Route path="/organizers-team" element={<OrganizersCard />} /> 
-        <Route path="/about" element={<Home />} /> 
-        <Route path="/curation-team" element={<CurationCard />} />
-        <Route path="/feedback" element={<FeedbackRedirect />} />
-        <Route path="/cam" element={<CamRedirect />} />
-      </Routes>
+      <Suspense fallback={<div style={{ height: "100vh", display: "flex", alignItems: "center", justifyContent: "center", backgroundColor: "#171717", color: "#fff", fontSize: "1.2rem", letterSpacing: "1px" }}>Loading...</div>}>
+        <Routes>
+          <Route path="/" element={<ThemePage />} />
+          <Route path="/speaker" element={<SpeakerForm />} />
+          <Route path="/sponsor" element={<SponsorForm />} />
+          <Route path="/events" element={<Event />} />
+          <Route path="/events/Punarutthan" element={<Punarutthan />} />
+          <Route path="/events/AvantGarde" element={<AvantGarde />} />
+          <Route path="/events/TakeTheLeap" element={<TakeTheLeap />} />
+          <Route path="/team" element={<Team />} />  
+          <Route path="/curation-team" element={<CurationCard />} /> 
+          <Route path="/logistics-team" element={<LogisticsCard />} />
+          <Route path="/media-team" element={<MediaCard />} /> 
+          <Route path="/editorial-team" element={<EditorialCard />} />
+          <Route path="/finance-team" element={<FinanceCard />} /> 
+          <Route path="/design-team" element={<DesignCard />} />  
+          <Route path="/technical-team" element={<TechnicalCard />} />  
+          <Route path="/organizers-team" element={<OrganizersCard />} /> 
+          <Route path="/about" element={<Home />} /> 
+          <Route path="/feedback" element={<FeedbackRedirect />} />
+          <Route path="/cam" element={<CamRedirect />} />
+        </Routes>
+      </Suspense>
     </>
   );
 }
