@@ -25,6 +25,17 @@ jobs:
         with:
           node-version: "20"
 
+      - name: Acknowledge with reaction
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.reactions.createForIssueComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              comment_id: context.payload.client_payload.github.payload.comment.id,
+              content: 'eyes',
+            });
+
       - name: Run Prettier
         run: npx prettier --write .
 
