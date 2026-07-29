@@ -11,7 +11,15 @@
   }
 }
 
-@keyframes logo-perspective {
+
+
+
+
+
+
+
+  
+  @keyframes logo-perspective {
   0% {
     transform: perspective(1000px)
       rotateY(calc(var(--scroll-rotation, 0) * 1deg)) rotateX(0deg);
