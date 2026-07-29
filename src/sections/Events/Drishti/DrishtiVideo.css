@@ -25,6 +25,7 @@ background: #171717;/* optional background */
   font-weight: bold;
   overflow: hidden; /* hides gradient overflow */
   color: #f59797; /* fallback */
+  margin-top: 2rem; /* Add spacing below the video */
 }
 
 /* Tablet screens */

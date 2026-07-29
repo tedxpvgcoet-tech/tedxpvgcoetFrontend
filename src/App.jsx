@@ -2,6 +2,7 @@ import React, { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import ScrollToTop from "./components/ScrollToTop";
+import Loader from "./components/Loader";
 import { inject } from "@vercel/analytics";
 import { Helmet } from "react-helmet";
 
@@ -37,7 +38,7 @@ function App() {
 
       <ScrollToTop />
       <Navbar />
-      <Suspense fallback={<div style={{ height: "100vh", display: "flex", alignItems: "center", justifyContent: "center", backgroundColor: "#171717", color: "#fff", fontSize: "1.2rem", letterSpacing: "1px" }}>Loading...</div>}>
+      <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<ThemePage />} />
           <Route path="/speaker" element={<SpeakerForm />} />
