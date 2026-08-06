@@ -22,13 +22,16 @@ export default function SubscribeSection() {
     setSubmitting(true);
 
     try {
-      const res = await fetch("https://www.backend.tedxPVGCOETM.in/subscriber", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const res = await fetch(
+        "https://www.backend.tedxPVGCOETM.in/subscriber",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
         },
-        body: JSON.stringify(formData),
-      });
+      );
 
       if (!res.ok) {
         const data = await res.json();
