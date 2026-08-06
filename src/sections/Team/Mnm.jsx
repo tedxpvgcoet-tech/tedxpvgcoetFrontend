@@ -40,7 +40,7 @@ const Mnm = () => {
       </div>
       <div className="mnm-text" ref={textRef}>
         <p className="mnm-description">
-          The Media and Marketing Team manages TEDxPVGCOET’s public presence.
+          The Media and Marketing Team manages TEDxPVGCOETM’s public presence.
           They drive communication strategies, social media campaigns, and
           visual storytelling to ensure the event reaches and resonates with its
           audience.

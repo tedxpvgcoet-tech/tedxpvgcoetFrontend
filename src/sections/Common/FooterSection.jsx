@@ -13,28 +13,28 @@ const FooterSection = () => {
         {/* Left Section: Logo, Description, Icons */}
         <div className="footer-left">
           <h2 className="footer-logo">
-            TED<span className="highlight-red">x</span>PVGCOET
+            TED<span className="highlight-red">x</span>PVGCOETM
           </h2>
           <p className="footer-description">
             This independent TEDx event is operated under licence from TED.
           </p>
           <div className="footer-icons">
             <a
-              href="https://www.instagram.com/tedxpvgcoet/?hl=en"
+              href="https://www.instagram.com/tedxPVGCOETM/?hl=en"
               target="_blank"
               rel="noreferrer"
             >
               <FaInstagram />
             </a>
             <a
-              href="https://www.linkedin.com/company/tedxpvgcoet/?originalSubdomain=in"
+              href="https://www.linkedin.com/company/tedxPVGCOETM/?originalSubdomain=in"
               target="_blank"
               rel="noreferrer"
             >
               <FaLinkedin />
             </a>
             <a
-              href="https://x.com/TEDxPVGCOET"
+              href="https://x.com/TEDxPVGCOETM"
               target="_blank"
               rel="noreferrer"
             >

@@ -2,7 +2,7 @@ import os
 import re
 import shutil
 
-src_dir = r"c:\Programming\TEDx\tedxpvgcoetFrontend\src"
+src_dir = r"c:\Programming\TEDx\tedxPVGCOETMFrontend\src"
 sections_dir = os.path.join(src_dir, "sections")
 
 groups = {

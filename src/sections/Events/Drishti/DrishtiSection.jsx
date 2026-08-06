@@ -13,7 +13,7 @@ export default function DrishtiSection() {
           heart and mind come to understand. The word Drishti, rooted in
           Sanskrit, translates to “vision” or “perspective.” It symbolizes a way
           of looking at the world that is deep, conscious, and transformative.
-          At TEDxPVGCOET 2025, we aim to celebrate this form of vision—not just
+          At TEDxPVGCOETM 2025, we aim to celebrate this form of vision—not just
           as observation, but as understanding. This year’s theme is a journey
           into perception, into awareness, into the quiet clarity that arises
           when we begin to see beyond distractions and surface-level truths.

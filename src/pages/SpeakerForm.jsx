@@ -29,7 +29,7 @@ const SpeakerForm = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       alert(
-        "🚫 Speaker nominations for Drishti (TEDxPVGCOET 2025) are now closed.\nThank you for your interest in being part of our journey.\nWe look forward to your application next time.\nStay connected, and keep spreading Ideas Worth Spreading!",
+        "🚫 Speaker nominations for Drishti (TEDxPVGCOETM 2025) are now closed.\nThank you for your interest in being part of our journey.\nWe look forward to your application next time.\nStay connected, and keep spreading Ideas Worth Spreading!",
       );
     }, 1000);
 
@@ -49,7 +49,7 @@ const SpeakerForm = () => {
     setSubmitting(true);
 
     try {
-      const res = await fetch("https://www.backend.tedxpvgcoet.in/speaker", {
+      const res = await fetch("https://www.backend.tedxPVGCOETM.in/speaker", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -97,12 +97,12 @@ const SpeakerForm = () => {
       </video>
       <main className="form-page">
         <div className="para">
-          <h2>Theme for TEDxPVGCOET 2025-2026:</h2>
+          <h2>Theme for TEDxPVGCOETM 2025-2026:</h2>
           <br />
           <br />
 
           <p>
-            The theme for <strong>TEDxPVGCOET 2025</strong> is{" "}
+            The theme for <strong>TEDxPVGCOETM 2025</strong> is{" "}
             <strong>"Drishti (दृष्टि)"</strong>, a Sanskrit word that means
             vision or perspective. But this isn’t just about what we see with
             our eyes—it’s about how we understand, interpret, and connect with
@@ -131,12 +131,12 @@ const SpeakerForm = () => {
             <br />
             <br />
             <strong> Date:</strong> September 13th, 2025&nbsp;&nbsp;
-            <strong> Location:</strong> PVGCOET, Pune, Maharashtra, India
+            <strong> Location:</strong> PVGCOETM, Pune, Maharashtra, India
             <br />
           </p>
         </div>
         <div className="form-inner">
-          <h1>Registrations have been closed for TEDxPVGCOET2025</h1>
+          <h1>Registrations have been closed for TEDxPVGCOETM2025</h1>
           <form className="speaker-form" onSubmit={handleSubmit}>
             <div className="full-width">
               <input
@@ -247,7 +247,7 @@ const SpeakerForm = () => {
 
             <div className="full-width">
               <h3>
-                How will your talk align with this year's TEDxPVGCOET theme
+                How will your talk align with this year's TEDxPVGCOETM theme
                 "Drishti"?
               </h3>
               <br />

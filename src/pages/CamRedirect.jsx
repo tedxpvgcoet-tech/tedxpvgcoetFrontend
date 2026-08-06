@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 function CamRedirect() {
   useEffect(() => {
-    window.location.href = "https://www.cam.tedxpvgcoet.in";
+    window.location.href = "https://www.cam.tedxPVGCOETM.in";
   }, []);
 
   return <p></p>;

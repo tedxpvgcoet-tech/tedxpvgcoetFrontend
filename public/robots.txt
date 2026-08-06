@@ -1,5 +1,5 @@
 
-# robots.txt for TEDx PVG COET (tedxpvgcoet.in)
+# robots.txt for TEDx PVG COET (tedxPVGCOETM.in)
 # Optimized for SEO & crawl efficiency
 
 User-agent: *
@@ -29,8 +29,8 @@ Allow: /*.jsx
 
 
 # Sitemap declaration for better indexing
-Sitemap: https://www.tedxpvgcoet.in/sitemap.xml
+Sitemap: https://www.tedxPVGCOETM.in/sitemap.xml
 
 # Optional host directive for clarity
-Host: https://www.tedxpvgcoet.in
+Host: https://www.tedxPVGCOETM.in
 

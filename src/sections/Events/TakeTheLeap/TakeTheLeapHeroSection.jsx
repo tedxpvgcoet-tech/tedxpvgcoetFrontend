@@ -8,7 +8,7 @@ const TakeTheLeapHeroSection = () => {
       <div className="AvantGarde-text">
         <h1>Take The Leap</h1>
         <p>
-          The first ever event organized by TEDxPVGCOET, 'Take The Leap!', was
+          The first ever event organized by TEDxPVGCOETM, 'Take The Leap!', was
           themed aptly. Taking the leap is all about making the best of the
           freedom and liberty given to us, giving ourselves the chance to make
           mistakes and grow, paving the way for others to give their passion a
