@@ -48,57 +48,57 @@ function App() {
     return () => clearTimeout(timer);
   }, [showIntro]);
 
- return (
-  <>
-    <Helmet>
-      <meta
-        name="google-site-verification"
-        content="efky2cFQbihVK_S-KaXPPK9S0J1-iJF7TMgFrAR8NXU"
-      />
-    </Helmet>
+  return (
+    <>
+      <Helmet>
+        <meta
+          name="google-site-verification"
+          content="efky2cFQbihVK_S-KaXPPK9S0J1-iJF7TMgFrAR8NXU"
+        />
+      </Helmet>
 
-    <ScrollToTop />
+      <ScrollToTop />
 
-    {showIntro ? (
-      // FIRST OPENING:
-      // Only render the cinematic loader
-      <Loader forceFullIntro />
-    ) : (
-      // AFTER INTRO / REFRESH:
-      // Render the actual website
-      <>
-        <Navbar />
+      {showIntro ? (
+        // FIRST OPENING:
+        // Only render the cinematic loader
+        <Loader forceFullIntro />
+      ) : (
+        // AFTER INTRO / REFRESH:
+        // Render the actual website
+        <>
+          <Navbar />
 
-        <Suspense fallback={<Loader />}>
-          <Routes>
-            <Route path="/" element={<ThemePage />} />
-            <Route path="/speaker" element={<SpeakerForm />} />
-            <Route path="/sponsor" element={<SponsorForm />} />
+          <Suspense fallback={<Loader />}>
+            <Routes>
+              <Route path="/" element={<ThemePage />} />
+              <Route path="/speaker" element={<SpeakerForm />} />
+              <Route path="/sponsor" element={<SponsorForm />} />
 
-            <Route path="/events" element={<Event />} />
-            <Route path="/events/Punarutthan" element={<Punarutthan />} />
-            <Route path="/events/AvantGarde" element={<AvantGarde />} />
-            <Route path="/events/TakeTheLeap" element={<TakeTheLeap />} />
+              <Route path="/events" element={<Event />} />
+              <Route path="/events/Punarutthan" element={<Punarutthan />} />
+              <Route path="/events/AvantGarde" element={<AvantGarde />} />
+              <Route path="/events/TakeTheLeap" element={<TakeTheLeap />} />
 
-            <Route path="/team" element={<Team />} />
-            <Route path="/curation-team" element={<CurationCard />} />
-            <Route path="/logistics-team" element={<LogisticsCard />} />
-            <Route path="/media-team" element={<MediaCard />} />
-            <Route path="/editorial-team" element={<EditorialCard />} />
-            <Route path="/finance-team" element={<FinanceCard />} />
-            <Route path="/design-team" element={<DesignCard />} />
-            <Route path="/technical-team" element={<TechnicalCard />} />
-            <Route path="/organizers-team" element={<OrganizersCard />} />
+              <Route path="/team" element={<Team />} />
+              <Route path="/curation-team" element={<CurationCard />} />
+              <Route path="/logistics-team" element={<LogisticsCard />} />
+              <Route path="/media-team" element={<MediaCard />} />
+              <Route path="/editorial-team" element={<EditorialCard />} />
+              <Route path="/finance-team" element={<FinanceCard />} />
+              <Route path="/design-team" element={<DesignCard />} />
+              <Route path="/technical-team" element={<TechnicalCard />} />
+              <Route path="/organizers-team" element={<OrganizersCard />} />
 
-            <Route path="/about" element={<Home />} />
-            <Route path="/feedback" element={<FeedbackRedirect />} />
-            <Route path="/cam" element={<CamRedirect />} />
-          </Routes>
-        </Suspense>
-      </>
-    )}
-  </>
-);
+              <Route path="/about" element={<Home />} />
+              <Route path="/feedback" element={<FeedbackRedirect />} />
+              <Route path="/cam" element={<CamRedirect />} />
+            </Routes>
+          </Suspense>
+        </>
+      )}
+    </>
+  );
 }
 
 export default App;

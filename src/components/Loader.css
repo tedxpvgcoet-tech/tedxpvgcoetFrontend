@@ -29,7 +29,6 @@
   color: white;
 }
 
-
 /* ==========================================
    Ambient Background
    ========================================== */
@@ -49,7 +48,6 @@
   animation: ambientPulse 3s ease-in-out infinite;
 }
 
-
 /* ==========================================
    Idea Animation
    ========================================== */
@@ -66,7 +64,6 @@
 
   margin-bottom: 25px;
 }
-
 
 /* Central idea point */
 
@@ -87,7 +84,6 @@
 
   z-index: 5;
 }
-
 
 /* Expanding idea waves */
 
@@ -114,7 +110,6 @@
 .ring-3 {
   /*animation: spreadIdea 2.4s ease-out 1.4s infinite;*/
 }
-
 
 /* ==========================================
    Floating Idea Nodes
@@ -170,7 +165,6 @@
   animation-delay: 2s;
 }
 
-
 /* ==========================================
    TEDx Branding
    ========================================== */
@@ -185,7 +179,6 @@
   z-index: 10;
 }
 
-
 .tedx-logo {
   display: flex;
   align-items: baseline;
@@ -194,7 +187,6 @@
 
   letter-spacing: -1px;
 }
-
 
 .ted {
   font-family: Arial, Helvetica, sans-serif;
@@ -207,7 +199,6 @@
   letter-spacing: -5px;
   line-height: 0.9;
 }
-
 
 .x {
   font-family: Arial, Helvetica, sans-serif;
@@ -227,7 +218,6 @@
   animation: xPulse 1s ease-in-out infinite;
 }
 
-
 .pvgcoet {
   font-family: Arial, Helvetica, sans-serif;
 
@@ -241,7 +231,6 @@
   letter-spacing: 0.5px;
   line-height: 1;
 }
-
 
 /* ==========================================
    Tagline
@@ -257,7 +246,6 @@
 
   color: rgba(255, 255, 255, 0.42);
 }
-
 
 /* ==========================================
    Loading Indicator
@@ -276,7 +264,6 @@
   overflow: hidden;
 }
 
-
 .loading-pulse {
   position: absolute;
 
@@ -287,9 +274,8 @@
 
   box-shadow: 0 0 8px rgba(230, 43, 30, 0.8);
 
-  animation: loadingMove .4s ease-in-out infinite;
+  animation: loadingMove 0.4s ease-in-out infinite;
 }
-
 
 /* ==========================================
    Animations
@@ -306,7 +292,6 @@
   }
 }
 
-
 @keyframes spreadIdea {
   0% {
     width: 20px;
@@ -321,7 +306,6 @@
   }
 }
 
-
 @keyframes particleFloat {
   0%,
   100% {
@@ -334,7 +318,6 @@
     opacity: 0.9;
   }
 }
-
 
 @keyframes ambientPulse {
   0%,
@@ -349,7 +332,6 @@
   }
 }
 
-
 @keyframes xPulse {
   0%,
   100% {
@@ -360,7 +342,6 @@
     text-shadow: 0 0 16px rgba(230, 43, 30, 0.35);
   }
 }
-
 
 @keyframes loadingMove {
   0% {
@@ -375,7 +356,6 @@
     left: -45px;
   }
 }
-
 
 /* ==========================================
    Mobile
