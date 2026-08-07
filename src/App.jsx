@@ -25,6 +25,7 @@ const TechnicalCard = lazy(() => import("./sections/Team/TechnicalCard"));
 const OrganizersCard = lazy(() => import("./sections/Team/OrganizersCard"));
 const TakeTheLeap = lazy(() => import("./pages/TakeTheLeap"));
 const ThemePage = lazy(() => import("./pages/ThemePage"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 
 inject();
 
@@ -61,6 +62,7 @@ function App() {
           <Route path="/about" element={<Home />} />
           <Route path="/feedback" element={<FeedbackRedirect />} />
           <Route path="/cam" element={<CamRedirect />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
     </>
