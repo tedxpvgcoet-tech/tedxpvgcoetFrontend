@@ -1,56 +1,414 @@
+/* ==========================================
+   TEDxPVGCOETM Loading Screen
+   ========================================== */
+
 .loader-container {
-  height: 100vh;
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+
   width: 100vw;
+  height: 100vh;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #171717; /* Dark TEDx aesthetic */
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(230, 43, 30, 0.07) 0%,
+      rgba(230, 43, 30, 0.025) 25%,
+      transparent 55%
+    ),
+    #050505;
+
   color: white;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 9999;
 }
 
-.loader-spinner {
-  width: 50px;
-  height: 50px;
-  border: 4px solid rgba(255, 255, 255, 0.1);
-  border-left-color: #e62b1e; /* TEDx Red */
+
+/* ==========================================
+   Ambient Background
+   ========================================== */
+
+.ambient-glow {
+  position: absolute;
+
+  width: 420px;
+  height: 420px;
+
   border-radius: 50%;
-  animation: spin 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+
+  background: rgba(230, 43, 30, 0.06);
+
+  filter: blur(100px);
+
+  animation: ambientPulse 3s ease-in-out infinite;
+}
+
+
+/* ==========================================
+   Idea Animation
+   ========================================== */
+
+.idea-animation {
+  position: relative;
+
+  width: 180px;
+  height: 180px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   margin-bottom: 25px;
 }
 
-.loader-text {
-  font-size: 1.4rem;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 800;
-  letter-spacing: 3px;
-  opacity: 0.9;
-  animation: pulse 1.5s ease-in-out infinite;
+
+/* Central idea point */
+
+.idea-dot {
+  position: absolute;
+
+  width: 10px;
+  height: 10px;
+
+  background: #e62b1e;
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 12px rgba(230, 43, 30, 0.9),
+    0 0 30px rgba(230, 43, 30, 0.5);
+
+  /*animation: ideaPulse 0.8s ease-in-out infinite;*/
+
+  z-index: 5;
 }
 
-.loader-x {
+
+/* Expanding idea waves */
+
+.idea-ring {
+  position: absolute;
+
+  width: 20px;
+  height: 20px;
+
+  border: 1px solid rgba(230, 43, 30, 0.5);
+  border-radius: 50%;
+
+  opacity: 0;
+}
+
+.ring-1 {
+  /*animation: spreadIdea 2.4s ease-out infinite;*/
+}
+
+.ring-2 {
+  /*animation: spreadIdea 2.4s ease-out 0.7s infinite;
+}
+
+.ring-3 {
+  /*animation: spreadIdea 2.4s ease-out 1.4s infinite;*/
+}
+
+
+/* ==========================================
+   Floating Idea Nodes
+   ========================================== */
+
+.particle {
+  position: absolute;
+
+  width: 4px;
+  height: 4px;
+
+  border-radius: 50%;
+
+  background: rgba(230, 43, 30, 0.7);
+
+  box-shadow: 0 0 8px rgba(230, 43, 30, 0.5);
+
+  animation: particleFloat 3s ease-in-out infinite;
+}
+
+.particle-1 {
+  top: 25%;
+  left: 25%;
+}
+
+.particle-2 {
+  top: 20%;
+  right: 27%;
+  animation-delay: 0.4s;
+}
+
+.particle-3 {
+  top: 50%;
+  left: 12%;
+  animation-delay: 0.8s;
+}
+
+.particle-4 {
+  top: 50%;
+  right: 12%;
+  animation-delay: 1.2s;
+}
+
+.particle-5 {
+  bottom: 20%;
+  left: 30%;
+  animation-delay: 1.6s;
+}
+
+.particle-6 {
+  bottom: 20%;
+  right: 30%;
+  animation-delay: 2s;
+}
+
+
+/* ==========================================
+   TEDx Branding
+   ========================================== */
+
+.brand-reveal {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  z-index: 10;
+}
+
+
+.tedx-logo {
+  display: flex;
+  align-items: baseline;
+
+  white-space: nowrap;
+
+  letter-spacing: -1px;
+}
+
+
+.ted {
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-weight: 900;
+
   color: #e62b1e;
+
+  letter-spacing: -5px;
+  line-height: 0.9;
 }
 
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+
+.x {
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: clamp(1.9rem, 3.8vw, 3.4rem);
+  font-weight: 900;
+
+  color: #e62b1e;
+
+  position: relative;
+  top: -0.52em;
+
+  margin-left: 4px;
+
+  line-height: 1;
+
+  animation: xPulse 1s ease-in-out infinite;
 }
 
-@keyframes pulse {
+
+.pvgcoet {
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: clamp(1.45rem, 2.5vw, 2.25rem);
+  font-weight: 300;
+
+  margin-left: 10px;
+
+  color: rgba(255, 255, 255, 0.92);
+
+  letter-spacing: 0.5px;
+  line-height: 1;
+}
+
+
+/* ==========================================
+   Tagline
+   ========================================== */
+
+.tagline {
+  margin-top: 12px;
+
+  font-size: 1rem;
+  font-weight: 400;
+
+  letter-spacing: 5px;
+
+  color: rgba(255, 255, 255, 0.42);
+}
+
+
+/* ==========================================
+   Loading Indicator
+   ========================================== */
+
+.loading-track {
+  position: relative;
+
+  width: 120px;
+  height: 1px;
+
+  margin-top: 25px;
+
+  background: rgba(255, 255, 255, 0.12);
+
+  overflow: hidden;
+}
+
+
+.loading-pulse {
+  position: absolute;
+
+  width: 45px;
+  height: 100%;
+
+  background: #e62b1e;
+
+  box-shadow: 0 0 8px rgba(230, 43, 30, 0.8);
+
+  animation: loadingMove .4s ease-in-out infinite;
+}
+
+
+/* ==========================================
+   Animations
+   ========================================== */
+
+@keyframes ideaPulse {
   0%,
   100% {
-    opacity: 0.7;
+    transform: scale(1);
   }
+
   50% {
+    transform: scale(1.5);
+  }
+}
+
+
+@keyframes spreadIdea {
+  0% {
+    width: 20px;
+    height: 20px;
+    opacity: 0.8;
+  }
+
+  100% {
+    width: 170px;
+    height: 170px;
+    opacity: 0;
+  }
+}
+
+
+@keyframes particleFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.25;
+  }
+
+  50% {
+    transform: translateY(-8px);
+    opacity: 0.9;
+  }
+}
+
+
+@keyframes ambientPulse {
+  0%,
+  100% {
+    transform: scale(0.9);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: scale(1.1);
     opacity: 1;
+  }
+}
+
+
+@keyframes xPulse {
+  0%,
+  100% {
+    text-shadow: 0 0 0 rgba(230, 43, 30, 0);
+  }
+
+  50% {
+    text-shadow: 0 0 16px rgba(230, 43, 30, 0.35);
+  }
+}
+
+
+@keyframes loadingMove {
+  0% {
+    left: -45px;
+  }
+
+  50% {
+    left: 120px;
+  }
+
+  100% {
+    left: -45px;
+  }
+}
+
+
+/* ==========================================
+   Mobile
+   ========================================== */
+
+@media (max-width: 600px) {
+  .idea-animation {
+    width: 140px;
+    height: 140px;
+
+    margin-bottom: 18px;
+  }
+
+  @keyframes spreadIdea {
+    0% {
+      width: 15px;
+      height: 15px;
+      opacity: 0.8;
+    }
+
+    100% {
+      width: 130px;
+      height: 130px;
+      opacity: 0;
+    }
+  }
+
+  .pvgcoet {
+    margin-left: 8px;
+  }
+
+  .tagline {
+    letter-spacing: 3px;
+    font-size: 0.55rem;
   }
 }
