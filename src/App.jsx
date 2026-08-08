@@ -43,7 +43,7 @@ function App() {
     const timer = setTimeout(() => {
       sessionStorage.setItem("tedxIntroShown", "true");
       setShowIntro(false);
-    }, 2200);
+    }, 3500);
 
     return () => clearTimeout(timer);
   }, [showIntro]);
