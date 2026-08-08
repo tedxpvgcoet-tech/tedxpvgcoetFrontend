@@ -2,12 +2,51 @@ import React, { useState, useEffect } from "react";
 import { FaInstagram, FaLinkedin, FaBars } from "react-icons/fa";
 import logo from "../assets/logos/tedx-logo.webp";
 import "./Navbar.css";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const smoothScrollToTop = () => {
+    const startY =
+      document.documentElement.scrollTop || document.body.scrollTop;
+    if (startY === 0) return;
+
+    const duration = 600; // ms
+    const startTime = performance.now();
+
+    const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+
+    const step = (currentTime) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = easeOutCubic(progress);
+
+      const newY = startY * (1 - eased);
+      document.documentElement.scrollTop = newY;
+      document.body.scrollTop = newY;
+
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      }
+    };
+
+    requestAnimationFrame(step);
+  };
+
+  const handleLogoClick = (e) => {
+    e.preventDefault();
+    if (location.pathname === "/") {
+      // Smooth animated scroll to top if already on home page
+      smoothScrollToTop();
+    } else {
+      // Navigate to "/" if we are on a different page
+      navigate("/", { replace: true });
+    }
+  };
 
   const path = location.pathname;
   const isEventPage =
@@ -45,7 +84,7 @@ const Navbar = () => {
       `}
       >
         <div className="navbar-left">
-          <Link to="/">
+          <Link to="/" onClick={handleLogoClick}>
             <img
               src={logo}
               alt="TEDxPVGCOET Logo"
