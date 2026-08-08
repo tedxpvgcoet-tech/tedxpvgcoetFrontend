@@ -11,7 +11,8 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const smoothScrollToTop = () => {
-    const startY = document.documentElement.scrollTop || document.body.scrollTop;
+    const startY =
+      document.documentElement.scrollTop || document.body.scrollTop;
     if (startY === 0) return;
 
     const duration = 600; // ms
