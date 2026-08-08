@@ -34,7 +34,6 @@ const NotFound = () => {
         }
       `}</style>
 
-
       <video
         src={bgVideo}
         autoPlay
@@ -163,4 +162,3 @@ const styles = {
 };
 
 export default NotFound;
-
