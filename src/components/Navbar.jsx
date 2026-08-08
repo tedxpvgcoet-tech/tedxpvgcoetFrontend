@@ -39,10 +39,13 @@ const Navbar = () => {
 
   const handleLogoClick = (e) => {
     e.preventDefault();
-    // Force navigate to "/" with replace so location.key changes even if already on "/"
-    navigate("/", { replace: true });
-    // Smooth animated scroll to top
-    smoothScrollToTop();
+    if (location.pathname === "/") {
+      // Smooth animated scroll to top if already on home page
+      smoothScrollToTop();
+    } else {
+      // Navigate to "/" if we are on a different page
+      navigate("/", { replace: true });
+    }
   };
 
   const path = location.pathname;
