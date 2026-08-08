@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import ScrollToTop from "./components/ScrollToTop";
@@ -29,6 +29,25 @@ const ThemePage = lazy(() => import("./pages/ThemePage"));
 inject();
 
 function App() {
+  // Full cinematic intro only once per browser session
+  const [showIntro, setShowIntro] = useState(() => {
+    return sessionStorage.getItem("tedxIntroShown") !== "true";
+  });
+
+  useEffect(() => {
+    if (!showIntro) {
+      return;
+    }
+
+    // Keep the full first-visit animation visible
+    const timer = setTimeout(() => {
+      sessionStorage.setItem("tedxIntroShown", "true");
+      setShowIntro(false);
+    }, 3500);
+
+    return () => clearTimeout(timer);
+  }, [showIntro]);
+
   return (
     <>
       <Helmet>
@@ -39,30 +58,45 @@ function App() {
       </Helmet>
 
       <ScrollToTop />
-      <Navbar />
-      <Suspense fallback={<Loader />}>
-        <Routes>
-          <Route path="/" element={<ThemePage />} />
-          <Route path="/speaker" element={<SpeakerForm />} />
-          <Route path="/sponsor" element={<SponsorForm />} />
-          <Route path="/events" element={<Event />} />
-          <Route path="/events/Punarutthan" element={<Punarutthan />} />
-          <Route path="/events/AvantGarde" element={<AvantGarde />} />
-          <Route path="/events/TakeTheLeap" element={<TakeTheLeap />} />
-          <Route path="/team" element={<Team />} />
-          <Route path="/curation-team" element={<CurationCard />} />
-          <Route path="/logistics-team" element={<LogisticsCard />} />
-          <Route path="/media-team" element={<MediaCard />} />
-          <Route path="/editorial-team" element={<EditorialCard />} />
-          <Route path="/finance-team" element={<FinanceCard />} />
-          <Route path="/design-team" element={<DesignCard />} />
-          <Route path="/technical-team" element={<TechnicalCard />} />
-          <Route path="/organizers-team" element={<OrganizersCard />} />
-          <Route path="/about" element={<Home />} />
-          <Route path="/feedback" element={<FeedbackRedirect />} />
-          <Route path="/cam" element={<CamRedirect />} />
-        </Routes>
-      </Suspense>
+
+      {showIntro ? (
+        // FIRST OPENING:
+        // Only render the cinematic loader
+        <Loader forceFullIntro />
+      ) : (
+        // AFTER INTRO / REFRESH:
+        // Render the actual website
+        <>
+          <Navbar />
+
+          <Suspense fallback={<Loader />}>
+            <Routes>
+              <Route path="/" element={<ThemePage />} />
+              <Route path="/speaker" element={<SpeakerForm />} />
+              <Route path="/sponsor" element={<SponsorForm />} />
+
+              <Route path="/events" element={<Event />} />
+              <Route path="/events/Punarutthan" element={<Punarutthan />} />
+              <Route path="/events/AvantGarde" element={<AvantGarde />} />
+              <Route path="/events/TakeTheLeap" element={<TakeTheLeap />} />
+
+              <Route path="/team" element={<Team />} />
+              <Route path="/curation-team" element={<CurationCard />} />
+              <Route path="/logistics-team" element={<LogisticsCard />} />
+              <Route path="/media-team" element={<MediaCard />} />
+              <Route path="/editorial-team" element={<EditorialCard />} />
+              <Route path="/finance-team" element={<FinanceCard />} />
+              <Route path="/design-team" element={<DesignCard />} />
+              <Route path="/technical-team" element={<TechnicalCard />} />
+              <Route path="/organizers-team" element={<OrganizersCard />} />
+
+              <Route path="/about" element={<Home />} />
+              <Route path="/feedback" element={<FeedbackRedirect />} />
+              <Route path="/cam" element={<CamRedirect />} />
+            </Routes>
+          </Suspense>
+        </>
+      )}
     </>
   );
 }
