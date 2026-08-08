@@ -11,8 +11,16 @@ import speakerImage8 from "../../assets/Drishti/Manveer.png";
 import "../Common/SectionHeader.css";
 
 // 1. IMPORT ALL REQUIRED ICONS
-import { FaInstagram, FaLinkedin } from "react-icons/fa";
+import { FaInstagram, FaLinkedin, FaYoutube } from "react-icons/fa";
 import { SiGooglescholar } from "react-icons/si";
+
+// Helper function to extract 11-character YouTube video ID from links or raw IDs
+const getYouTubeId = (urlOrId) => {
+  if (!urlOrId) return "";
+  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+  const match = urlOrId.match(regExp);
+  return match && match[2].length === 11 ? match[2] : urlOrId;
+};
 
 // --- SpeakerCard Component ---
 // Now accepts all potential social URLs as props
@@ -22,8 +30,12 @@ const SpeakerCard = ({
   instagramUrl,
   linkedinUrl,
   scholarUrl,
+  youtubeId,
 }) => {
   const [showInfo, setShowInfo] = useState(false);
+  const [showVideo, setShowVideo] = useState(false);
+
+  const parsedYoutubeId = getYouTubeId(youtubeId);
 
   return (
     <div className="speaker-carde">
@@ -35,12 +47,24 @@ const SpeakerCard = ({
             className="speaker-image"
             loading="lazy"
           />
-          <button
-            className="speaker-learn-btn"
-            onClick={() => setShowInfo(true)}
-          >
-            Learn More →
-          </button>
+          <div className="speaker-actions-row">
+            {parsedYoutubeId && (
+              <button
+                className="speaker-yt-play-btn"
+                onClick={() => setShowVideo(true)}
+                title="Watch Talk"
+              >
+                <FaYoutube style={{ fontSize: "1.2rem" }} />
+                <span>Watch Talk</span>
+              </button>
+            )}
+            <button
+              className="speaker-learn-btn"
+              onClick={() => setShowInfo(true)}
+            >
+              Learn More →
+            </button>
+          </div>
         </div>
       ) : (
         <div className="speaker-infoe">
@@ -92,6 +116,23 @@ const SpeakerCard = ({
           </button>
         </div>
       )}
+
+      {/* Video Modal */}
+      {showVideo && (
+        <div className="speaker-modal-overlay" onClick={() => setShowVideo(false)}>
+          <div className="speaker-modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="speaker-modal-close" onClick={() => setShowVideo(false)}>✕</button>
+            <div className="speaker-modal-video">
+              <iframe
+                src={`https://www.youtube-nocookie.com/embed/${parsedYoutubeId}?autoplay=1`}
+                title="TEDx Talk"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
@@ -107,6 +148,7 @@ const Speaker = () => {
         "Once a badminton player with a career-high global ranking of 140, Hruitvik Ambekar now transforms stories of sport, struggle, and self-discovery into life lessons. From athlete to professional and four-time TEDx speaker, he redefines vision beyond victory.",
       instagramUrl: "https://www.instagram.com/hruitvikambekar/",
       linkedinUrl: "https://www.linkedin.com/in/hruitvik-ambekar-87a8631b1/",
+      youtubeId: "https://youtu.be/iLB67EgWHqQ?si=eIqnw9-E772Hz1mf",
     },
     {
       id: 2,
@@ -114,6 +156,7 @@ const Speaker = () => {
       description:
         "Dr. Bhooshan Kelkar is a prism of ideas where technology, education, and imagination converge to create meaningful change. With 23 US patents and 17 books, he transforms complexity into clarity. An AI visionary and mentor, he inspires audiences to look beyond marksheets toward the future.",
       linkedinUrl: "https://www.linkedin.com/in/bhooshan-kelkar/",
+      youtubeId: "https://youtu.be/l4UtmTWZqsA",
     },
     {
       id: 3,
@@ -121,6 +164,7 @@ const Speaker = () => {
       description:
         "Kedar Patankar blends technology, storytelling, and environmental action. He has led semiconductor breakthroughs, created acclaimed works like Scam 2003, and, as TEDx speaker and SI-GPT CTO, merges technical mastery with entrepreneurial vision. Founder of The Trash Talk, he turns sustainability into a movement.",
       instagramUrl: "https://www.instagram.com/kedarpatankar_official/",
+      youtubeId: "https://youtu.be/nV15ceT4LD0",
     },
     {
       id: 4,
@@ -129,6 +173,7 @@ const Speaker = () => {
         "Dr. Aditya Abhyankar, Dean at SPPU, is a scientist, innovator, and thought leader. With 8 U.S. patents and 14 Indian patents, he bridges technology, philosophy, and entrepreneurship to redefine changemaking. He brings his journey of deep tech innovation to the TEDx stage.",
       scholarUrl:
         "https://scholar.google.com/citations?user=VnjgF5sAAAAJ&hl=en",
+      youtubeId: "https://youtu.be/z2rUAc4LXAI",
     },
     {
       id: 5,
@@ -136,6 +181,7 @@ const Speaker = () => {
       description:
         "Surabhi Handay , a celebrated actress in Marathi cinema admired for her portrayal of Mhalsa Devi in Jai Malhar, is an artist who seamlessly blends culture, theatre, and performance. An accomplished singer and storyteller, she goes beyond entertainment to explore the deeper essence of art and expression. From the cinematic stage to TEDxPVGCOET 2025, she arrives to share her artistic journey, unravel stories of culture and creativity, and offer a fresh perspective on the power of performance.",
       instagramUrl: "https://www.instagram.com/surbhihandayofficial/",
+      youtubeId: "https://youtu.be/HVJ_mhU3W5s",
     },
     {
       id: 6,
@@ -157,6 +203,7 @@ const Speaker = () => {
       description:
         "Manveer Singh , Finance Educator and Pragmatic Investor, is transforming the way people understand money and markets. Through Stocks with Manveer, he simplifies stock market concepts for thousands of followers on Instagram and YouTube, empowering beginners to gain confidence and financial awareness. Believing that clarity and patience matter more than chasing quick profits, he inspires people to build sustainable wealth. At TEDxPVGCOET 2025, he reveals how a small shift in financial perspective can open doors to a transformed future.",
       instagramUrl: "https://www.instagram.com/stockswithmanveer/",
+      youtubeId: "https://youtu.be/cigVHtEZrhY",
     },
   ];
 

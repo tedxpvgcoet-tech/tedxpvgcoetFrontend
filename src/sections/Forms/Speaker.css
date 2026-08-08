@@ -3,26 +3,18 @@
   color: white;
   background-color: #171717;
   background-image:
-    radial-gradient(
-      circle at top left,
+    radial-gradient(circle at top left,
       rgba(255, 0, 0, 0.23) 0%,
-      transparent 17%
-    ),
-    radial-gradient(
-      circle at 95% 30%,
+      transparent 17%),
+    radial-gradient(circle at 95% 30%,
       rgba(255, 0, 0, 0.23) 0%,
-      transparent 17%
-    ),
-    radial-gradient(
-      circle at 0% 60%,
+      transparent 17%),
+    radial-gradient(circle at 0% 60%,
       rgba(255, 0, 0, 0.23) 0%,
-      transparent 17%
-    ),
-    radial-gradient(
-      circle at 90% 96%,
+      transparent 17%),
+    radial-gradient(circle at 90% 96%,
       rgba(255, 0, 0, 0.23) 0%,
-      transparent 17%
-    );
+      transparent 17%);
   background-repeat: no-repeat;
 }
 
@@ -77,6 +69,7 @@
     opacity: 0;
     transform: translateX(-50px);
   }
+
   100% {
     opacity: 1;
     transform: translateX(0);
@@ -88,6 +81,7 @@
     opacity: 0;
     transform: translateX(50px);
   }
+
   100% {
     opacity: 1;
     transform: translateX(0);
@@ -99,25 +93,31 @@
   .speaker-desktop {
     display: none;
   }
+
   .speaker-mobile {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 2rem;
   }
+
   .speaker-photo,
   .speaker-infoe {
     max-width: 400px;
   }
+
   .speaker-image {
     max-width: 350px;
   }
+
   .speaker-photo {
     animation-name: slideInFromLeft;
   }
+
   .speaker-infoe {
     animation-name: slideInFromRight;
   }
+
   .speaker-description {
     font-size: 1rem;
     line-height: 1.5;
@@ -127,6 +127,7 @@
   .speaker-socials {
     gap: 1.2rem;
   }
+
   .social-icon-link {
     font-size: 2.2rem;
   }
@@ -137,30 +138,37 @@
   .speaker-mobile {
     display: none;
   }
+
   .speaker-desktop {
     display: flex;
     justify-content: space-evenly;
     gap: 2rem;
     flex-wrap: wrap;
   }
+
   .speaker-carde {
     flex: 1 1 calc(50% - 2rem);
     max-width: 500px;
     position: relative;
   }
+
   .speaker-photo,
   .speaker-infoe {
     min-height: 450px;
   }
+
   .speaker-photo {
     animation-name: slideInFromLeft;
   }
+
   .speaker-infoe {
     animation-name: slideInFromRight;
   }
+
   .speaker-image {
     max-width: 400px;
   }
+
   .speaker-description {
     font-size: 1.2rem;
     line-height: 1.6;
@@ -172,7 +180,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1.5rem; /* Space between icons */
+  gap: 1.5rem;
+  /* Space between icons */
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
@@ -180,13 +189,110 @@
 /* --- NEW: Generic Style for ALL Social Icons --- */
 .social-icon-link {
   color: white;
-  font-size: 2.5rem; /* Default size for desktop */
+  font-size: 2.5rem;
+  /* Default size for desktop */
   transition:
     color 0.3s ease,
     transform 0.3s ease;
 }
 
 .social-icon-link:hover {
-  color: #e60023; /* TED Red */
+  color: #e60023;
+  /* TED Red */
   transform: scale(1.1);
+}
+
+/* --- NEW: YouTube Play Button and Actions Row --- */
+.speaker-actions-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.speaker-yt-play-btn {
+  margin-top: 1rem;
+  background: transparent;
+  border: 1px solid red;
+  color: red;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem; /* Matched to Learn More button */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem; /* Space between icon and text */
+}
+
+.speaker-yt-play-btn:hover {
+  background: red;
+  color: black;
+}
+
+/* --- Video Modal Overlay --- */
+.speaker-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(6px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  animation: speakerFadeIn 0.2s ease-out;
+}
+
+.speaker-modal-content {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 14px;
+  width: 100%;
+  max-width: 780px;
+  overflow: hidden;
+  position: relative;
+}
+
+.speaker-modal-close {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.8rem;
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 1.4rem;
+  cursor: pointer;
+  z-index: 1;
+  transition: color 0.2s ease;
+}
+
+.speaker-modal-close:hover {
+  color: #eb0028;
+}
+
+.speaker-modal-video {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+  overflow: hidden;
+  background: #000;
+}
+
+.speaker-modal-video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+@keyframes speakerFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
