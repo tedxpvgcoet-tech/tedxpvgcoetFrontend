@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./SpeakerForm.css";
 import bgVideo from "../assets/backgrounds/background.mp4";
+import FooterSection from "../sections/Common/FooterSection";
 
 const NotFound = () => {
   const [isBtnHovered, setIsBtnHovered] = useState(false);
@@ -19,7 +20,20 @@ const NotFound = () => {
             transform: translateY(0);
           }
         }
+
+        @media (max-width: 600px) {
+          .not-found-card {
+            width: 86% !important;
+            padding: 32px 20px !important;
+            margin: 0 auto !important;
+          }
+          .not-found-container {
+            padding-top: 100px !important;
+            padding-bottom: 40px !important;
+          }
+        }
       `}</style>
+
 
       <video
         src={bgVideo}
@@ -30,9 +44,11 @@ const NotFound = () => {
         className="hero-video1"
       />
 
-      <div className="form-page" style={styles.formPageContainer}>
-        <div style={styles.card}>
-          {/* Scaled-down 404 number */}
+      <div
+        className="form-page not-found-container"
+        style={styles.formPageContainer}
+      >
+        <div className="not-found-card" style={styles.card}>
           <h1 style={styles.code}>404</h1>
 
           <h2 style={styles.heading}>Page Not Found</h2>
@@ -54,6 +70,8 @@ const NotFound = () => {
           </Link>
         </div>
       </div>
+
+      <FooterSection />
     </div>
   );
 };
@@ -63,17 +81,22 @@ const styles = {
     minHeight: "100vh",
     backgroundColor: "transparent",
     position: "relative",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
   },
 
   formPageContainer: {
-    minHeight: "100vh",
-    paddingTop: "0",
-    paddingBottom: "0",
+    minHeight: "calc(100vh - 120px)",
+    paddingTop: "120px",
+    paddingBottom: "60px",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     position: "relative",
     zIndex: 1,
+    flexGrow: 1,
+    boxSizing: "border-box",
   },
 
   card: {
@@ -83,16 +106,17 @@ const styles = {
     padding: "44px 36px",
     textAlign: "center",
     maxWidth: "400px",
-    width: "100%",
+    width: "90%",
     backdropFilter: "blur(10px)",
     boxShadow: "0 20px 50px rgba(0, 0, 0, 0.8)",
     fontFamily: '"Inter", sans-serif',
     animation: "dropIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+    boxSizing: "border-box",
   },
 
   code: {
     fontFamily: '"Inter", sans-serif',
-    fontSize: "3.8rem", // Reduced 404 text size
+    fontSize: "3.8rem",
     fontWeight: "800",
     color: "#e81b2a",
     margin: "0",
@@ -139,3 +163,4 @@ const styles = {
 };
 
 export default NotFound;
+
