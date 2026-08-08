@@ -25,7 +25,6 @@
   color: white;
 }
 
-
 .ambient-glow {
   position: absolute;
 
@@ -41,7 +40,6 @@
   animation: ambientPulse 3s ease-in-out infinite;
 }
 
-
 .idea-animation {
   position: relative;
 
@@ -54,8 +52,6 @@
 
   margin-bottom: 25px;
 }
-
-
 
 .idea-dot {
   position: absolute;
@@ -74,8 +70,6 @@
 
   z-index: 5;
 }
-
-
 
 .idea-ring {
   position: absolute;
@@ -225,7 +219,6 @@
   color: rgba(255, 255, 255, 0.42);
 }
 
-
 .loading-track {
   position: relative;
 
@@ -251,7 +244,6 @@
 
   animation: loadingMove 0.4s ease-in-out infinite;
 }
-
 
 @keyframes ideaPulse {
   0%,
