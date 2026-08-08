@@ -13,7 +13,7 @@ const ScrollToTop = () => {
       window.scrollTo(0, 0);
       // For older browsers/Safari
       document.body.scrollTop = 0;
-      
+
       // Restore CSS-defined smooth scrolling
       document.documentElement.style.scrollBehavior = "";
     }, 0);
