@@ -67,7 +67,7 @@ const FooterSection = () => {
               <br />
               +91 8600089167
               <br />
-             omkarhokarne23@gmail.com
+              omkarhokarne23@gmail.com
             </p>
           </div>
         </div>
