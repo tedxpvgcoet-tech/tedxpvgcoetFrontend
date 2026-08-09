@@ -3,18 +3,26 @@
   color: white;
   background-color: #171717;
   background-image:
-    radial-gradient(circle at top left,
+    radial-gradient(
+      circle at top left,
       rgba(255, 0, 0, 0.23) 0%,
-      transparent 17%),
-    radial-gradient(circle at 95% 30%,
+      transparent 17%
+    ),
+    radial-gradient(
+      circle at 95% 30%,
       rgba(255, 0, 0, 0.23) 0%,
-      transparent 17%),
-    radial-gradient(circle at 0% 60%,
+      transparent 17%
+    ),
+    radial-gradient(
+      circle at 0% 60%,
       rgba(255, 0, 0, 0.23) 0%,
-      transparent 17%),
-    radial-gradient(circle at 90% 96%,
+      transparent 17%
+    ),
+    radial-gradient(
+      circle at 90% 96%,
       rgba(255, 0, 0, 0.23) 0%,
-      transparent 17%);
+      transparent 17%
+    );
   background-repeat: no-repeat;
 }
 
@@ -293,6 +301,10 @@
 }
 
 @keyframes speakerFadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

@@ -17,7 +17,8 @@ import { SiGooglescholar } from "react-icons/si";
 // Helper function to extract 11-character YouTube video ID from links or raw IDs
 const getYouTubeId = (urlOrId) => {
   if (!urlOrId) return "";
-  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+  const regExp =
+    /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
   const match = urlOrId.match(regExp);
   return match && match[2].length === 11 ? match[2] : urlOrId;
 };
@@ -25,7 +26,8 @@ const getYouTubeId = (urlOrId) => {
 // Helper function to extract Instagram Reel ID from URL
 const getInstagramReelId = (url) => {
   if (!url) return "";
-  const regExp = /(?:https?:\/\/)?(?:www\.)?instagram\.com\/reel\/([a-zA-Z0-9_-]+)/;
+  const regExp =
+    /(?:https?:\/\/)?(?:www\.)?instagram\.com\/reel\/([a-zA-Z0-9_-]+)/;
   const match = url.match(regExp);
   return match ? match[1] : "";
 };
@@ -133,9 +135,20 @@ const SpeakerCard = ({
 
       {/* Video Modal */}
       {showVideo && (
-        <div className="speaker-modal-overlay" onClick={() => setShowVideo(false)}>
-          <div className="speaker-modal-content" onClick={(e) => e.stopPropagation()}>
-            <button className="speaker-modal-close" onClick={() => setShowVideo(false)}>✕</button>
+        <div
+          className="speaker-modal-overlay"
+          onClick={() => setShowVideo(false)}
+        >
+          <div
+            className="speaker-modal-content"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              className="speaker-modal-close"
+              onClick={() => setShowVideo(false)}
+            >
+              ✕
+            </button>
             <div className="speaker-modal-video">
               {parsedYoutubeId ? (
                 <iframe
