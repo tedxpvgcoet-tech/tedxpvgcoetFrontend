@@ -22,6 +22,14 @@ const getYouTubeId = (urlOrId) => {
   return match && match[2].length === 11 ? match[2] : urlOrId;
 };
 
+// Helper function to extract Instagram Reel ID from URL
+const getInstagramReelId = (url) => {
+  if (!url) return "";
+  const regExp = /(?:https?:\/\/)?(?:www\.)?instagram\.com\/reel\/([a-zA-Z0-9_-]+)/;
+  const match = url.match(regExp);
+  return match ? match[1] : "";
+};
+
 // --- SpeakerCard Component ---
 // Now accepts all potential social URLs as props
 const SpeakerCard = ({
@@ -31,11 +39,13 @@ const SpeakerCard = ({
   linkedinUrl,
   scholarUrl,
   youtubeId,
+  reelUrl,
 }) => {
   const [showInfo, setShowInfo] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
 
   const parsedYoutubeId = getYouTubeId(youtubeId);
+  const parsedReelId = getInstagramReelId(reelUrl);
 
   return (
     <div className="speaker-carde">
@@ -48,14 +58,18 @@ const SpeakerCard = ({
             loading="lazy"
           />
           <div className="speaker-actions-row">
-            {parsedYoutubeId && (
+            {(parsedYoutubeId || parsedReelId) && (
               <button
                 className="speaker-yt-play-btn"
                 onClick={() => setShowVideo(true)}
-                title="Watch Talk"
+                title={parsedReelId ? "Watch Reel" : "Watch Talk"}
               >
-                <FaYoutube style={{ fontSize: "1.2rem" }} />
-                <span>Watch Talk</span>
+                {parsedReelId ? (
+                  <FaInstagram style={{ fontSize: "1.2rem" }} />
+                ) : (
+                  <FaYoutube style={{ fontSize: "1.2rem" }} />
+                )}
+                <span>{parsedReelId ? "Watch Reel" : "Watch Talk"}</span>
               </button>
             )}
             <button
@@ -123,12 +137,21 @@ const SpeakerCard = ({
           <div className="speaker-modal-content" onClick={(e) => e.stopPropagation()}>
             <button className="speaker-modal-close" onClick={() => setShowVideo(false)}>✕</button>
             <div className="speaker-modal-video">
-              <iframe
-                src={`https://www.youtube-nocookie.com/embed/${parsedYoutubeId}?autoplay=1`}
-                title="TEDx Talk"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
+              {parsedYoutubeId ? (
+                <iframe
+                  src={`https://www.youtube-nocookie.com/embed/${parsedYoutubeId}?autoplay=1`}
+                  title="TEDx Talk"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              ) : parsedReelId ? (
+                <iframe
+                  src={`https://www.instagram.com/reel/${parsedReelId}/embed/`}
+                  title="Instagram Reel"
+                  allow="encrypted-media"
+                  allowFullScreen
+                />
+              ) : null}
             </div>
           </div>
         </div>
@@ -189,6 +212,7 @@ const Speaker = () => {
       description:
         "Major L. S. Chaudhary , a former Indian Army officer and Rashtriya Rifles veteran, has led high-stakes counter-terror operations in Kashmir, surviving near-death situations and neutralizing heavily armed insurgent groups under his command. His journey from battlefield grit and combat injuries to mentoring future leaders and training defence aspirants is one of resilience, clarity, and purpose. Through his talks and YouTube channel, he shares battlefield-tested lessons that transcend the military. At TEDxPVGCOET 2025, he brings a soldier’s perspective that can transform how we see leadership, resilience, and life itself.",
       instagramUrl: "https://www.instagram.com/major_lsc/",
+      reelUrl: "https://www.instagram.com/reel/DN_NcTHk2QK/",
     },
     {
       id: 7,
@@ -196,6 +220,7 @@ const Speaker = () => {
       description:
         "Archit Chandak , IPS officer of the 2018 batch and SP Akola, is redefining modern policing in Maharashtra with innovation, empathy, and vision. From introducing the Garud Drishti tool as DCP Nagpur—reshaping crime prevention with data and insight—to building citizen trust through direct dialogue on Instagram, he proves that policing today is as much about connection as it is about enforcement. At TEDxPVGCOET 2025, he brings his journey where technology meets leadership, action meets empathy, and public service becomes a force for lasting change.",
       instagramUrl: "https://www.instagram.com/archit.59/",
+      reelUrl: "https://www.instagram.com/reel/DOEc0XGCM6f/",
     },
     {
       id: 8,
