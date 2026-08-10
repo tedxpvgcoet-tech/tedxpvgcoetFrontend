@@ -17,7 +17,9 @@ import { SiGooglescholar } from "react-icons/si";
 // Helper functions to extract IDs
 const getYouTubeId = (url) => {
   if (!url) return null;
-  const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([^&?]+)/);
+  const match = url.match(
+    /(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([^&?]+)/,
+  );
   return match ? match[1] : null;
 };
 
@@ -62,9 +64,13 @@ const SpeakerCard = ({
                   onClick={() => setShowVideo(true)}
                 >
                   {ytId ? (
-                    <><FaYoutube className="watch-icon" /> Watch Talk</>
+                    <>
+                      <FaYoutube className="watch-icon" /> Watch Talk
+                    </>
                   ) : (
-                    <><FaInstagram className="watch-icon" /> Watch Reel</>
+                    <>
+                      <FaInstagram className="watch-icon" /> Watch Reel
+                    </>
                   )}
                 </button>
               )}
@@ -127,9 +133,18 @@ const SpeakerCard = ({
       </div>
 
       {showVideo && (
-        <div className="speaker-video-modal" onClick={() => setShowVideo(false)}>
-          <div className="speaker-video-content" onClick={(e) => e.stopPropagation()}>
-            <button className="speaker-video-close" onClick={() => setShowVideo(false)}>
+        <div
+          className="speaker-video-modal"
+          onClick={() => setShowVideo(false)}
+        >
+          <div
+            className="speaker-video-content"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              className="speaker-video-close"
+              onClick={() => setShowVideo(false)}
+            >
               ×
             </button>
             {ytId ? (
