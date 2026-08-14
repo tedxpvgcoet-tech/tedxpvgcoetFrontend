@@ -1,9 +1,9 @@
 .footer {
   position: relative;
-  font-family: "Inter", sans-serif;
-  color: black;
   overflow: hidden;
 }
+
+
 
 /* Background wave or red section */
 .footer-background-image {
@@ -96,9 +96,6 @@
   color: #ccc;
 }
 
-/* ----------------------------- */
-/* ✅ Responsive Styles */
-/* ----------------------------- */
 
 @media (max-width: 900px) {
   .footer-content {
@@ -116,18 +113,30 @@
 }
 
 @media (max-width: 600px) {
-  .footer-content {
-    flex-direction: row; /* ❗ Stay in row, not column */
-    flex-wrap: wrap; /* ✅ Allow wrapping */
-    align-items: flex-start;
-    justify-content: space-between; /* ✅ Spread across */
-    text-align: left;
-    padding: 3rem 1.5rem 2rem;
-    gap: 2rem;
+  .footer {
+    position: relative;
+    background: #eb0028;
+    margin-top: 0;
+    overflow: hidden;
   }
 
+  /* Remove the image curve on mobile */
   .footer-background-image {
-    height: 450px; /* ✅ Increase for enough content room */
+    display: none;
+  }
+
+  .footer-content {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    text-align: left;
+
+    padding: 3rem 1.5rem 2rem;
+    gap: 2rem;
+
+    position: relative;
+    z-index: 2;
   }
 
   .footer-logo {
@@ -138,16 +147,23 @@
     font-size: 0.9rem;
   }
 
+  .footer-icons a {
+    font-size: 1.3rem;
+  }
+
   .footer-links {
-    flex-direction: row; /* ❗ Ensure side by side layout */
-    flex-wrap: nowrap; /* ✅ Wrap if needed */
+    flex-direction: column;
+    flex-wrap: nowrap;
+
     width: 100%;
-    gap: 1.5rem;
+    gap: 2rem;
+
     justify-content: space-between;
+    align-items: flex-start;
   }
 
   .footer-links div {
-    min-width: 40%; /* ✅ Keep compact but side by side */
+    min-width: 40%;
   }
 
   .footer-links a,
@@ -155,27 +171,8 @@
     font-size: 0.95rem;
   }
 
-  .footer-icons a {
-    font-size: 1.3rem;
-  }
-  .footer {
-    position: relative;
-    background: linear-gradient(
-      to bottom,
-      transparent 0%,
-      transparent 50px,
-      #eb0028 80px
-    ); /* red starts here */
-  }
-
-  .footer-links {
-    flex-direction: column;
-    gap: 2rem;
-    align-items: flex-start;
-  }
-
   .contact-card p {
-    word-break: break-word; /* Prevent email/phone from overflowing */
+    word-break: break-word;
     font-size: 0.95rem;
   }
 }
@@ -184,15 +181,6 @@
   .footer-links {
     grid-template-columns: repeat(2, auto);
   }
-  .footer {
-    position: relative;
-    background: linear-gradient(
-      to bottom,
-      transparent 0%,
-      transparent 50px,
-      #eb0028 80px
-    ); /* red starts here */
-  }
 }
 
 .contact-card {
@@ -200,6 +188,48 @@
   flex-direction: column;
   gap: 0.7rem;
   min-width: 140px;
+}
+
+@media (min-width: 601px) and (max-width: 1023px) {
+  .footer {
+    position: relative;
+    background: #eb0028;
+    margin-top: 0;
+    overflow: hidden;
+  }
+
+  .footer-background-image {
+    display: none;
+  }
+
+  .footer-content {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    padding: 5rem 2rem 3rem;
+    gap: 2rem;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    justify-content: flex-start;
+  }
+
+  .footer-links div {
+    min-width: 40%;
+  }
+
+  .contact-card p {
+    font-size: 0.95rem;
+    word-break: break-word;
+  }
 }
 
 @media (min-width: 1024px) {
