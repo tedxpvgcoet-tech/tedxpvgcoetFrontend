@@ -48,7 +48,7 @@ const Navbar = () => {
           <Link to="/">
             <img
               src={logo}
-              alt="TEDxPVGCOET Logo"
+              alt="TEDxPVGCOETM Logo"
               className="navbar-logo"
               loading="lazy"
             />

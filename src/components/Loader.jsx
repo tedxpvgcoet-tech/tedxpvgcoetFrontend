@@ -6,7 +6,7 @@ const Loader = () => {
     <div className="loader-container">
       <div className="loader-spinner"></div>
       <div className="loader-text">
-        TEDx<span className="loader-x">PVGCOET</span>
+        TEDx<span className="loader-x">PVGCOETM</span>
       </div>
     </div>
   );

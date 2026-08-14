@@ -13,7 +13,7 @@ const FooterSection = () => {
         {/* Left Section: Logo, Description, Icons */}
         <div className="footer-left">
           <h2 className="footer-logo">
-            TED<span className="highlight-red">x</span>PVGCOET
+            TED<span className="highlight-red">x</span>PVGCOETM
           </h2>
           <p className="footer-description">
             This independent TEDx event is operated under licence from TED.
