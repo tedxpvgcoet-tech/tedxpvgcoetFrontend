@@ -3,8 +3,6 @@
   overflow: hidden;
 }
 
-
-
 /* Background wave or red section */
 .footer-background-image {
   background-image: url("../../assets/backgrounds/footer-bg.webp"); /* ✅ Ensure path is correct */
@@ -95,7 +93,6 @@
 .footer-links p:hover {
   color: #ccc;
 }
-
 
 @media (max-width: 900px) {
   .footer-content {
