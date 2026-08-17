@@ -49,37 +49,32 @@ const Navbar = () => {
   };
 
   const path = location.pathname;
-  const isEventPage =
-    path === "/events" ||
-    path === "/events/TakeTheLeap" ||
-    path === "/events/AvantGarde" ||
-    path === "/events/Punarutthan";
+  const isEventPage = path.startsWith("/events");
   const isTeamPage = path === "/team";
 
+  // Scroll listener for event and team pages
   useEffect(() => {
-    if (!isTeamPage) return;
+    if (!isEventPage && !isTeamPage) {
+      setScrolled(false);
+      return;
+    }
 
-    let rafId;
-    const handleScroll = () => {
-      if (rafId) {
-        window.cancelAnimationFrame(rafId);
-      }
-      rafId = window.requestAnimationFrame(() => {
-        setScrolled(window.scrollY > 10);
-      });
-    };
+    const threshold = isTeamPage ? 10 : 50;
+    setScrolled(window.scrollY > threshold);
+
+    const handleScroll = () => setScrolled(window.scrollY > threshold);
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [isTeamPage]);
+  }, [isEventPage, isTeamPage]);
 
   return (
     <>
       <nav
         className={`navbar 
-        ${isEventPage ? "transparent-navbar" : ""}
+        ${isEventPage && !scrolled ? "transparent-navbar" : ""}
+        ${isEventPage && scrolled ? "event-scrolled" : ""}
         ${isTeamPage ? "team-navbar" : ""}
-        
         ${isTeamPage && scrolled ? "team-navbar-scrolled" : ""}
       `}
       >

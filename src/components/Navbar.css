@@ -1,5 +1,5 @@
 .navbar {
-  position: absolute;
+  position: fixed;
   top: 20px;
   left: 50%;
   transform: translateX(-50%);
@@ -23,13 +23,16 @@
 .navbar-left,
 .navbar-right {
   display: flex;
-  align-items: center; /* ✅ Perfect vertical centering */
+  align-items: center;
+  /* ✅ Perfect vertical centering */
 }
 
 .navbar-logo {
   height: 48px;
-  display: block; /* ✅ Removes inline baseline gap */
-  object-fit: contain; /* ✅ Prevents distortion */
+  display: block;
+  /* ✅ Removes inline baseline gap */
+  object-fit: contain;
+  /* ✅ Prevents distortion */
 }
 
 .navbar-right {
@@ -112,6 +115,12 @@
   z-index: 100;
 }
 
+/* Event page scrolled: same pill shape as home, but fixed to viewport top */
+.event-scrolled {
+  position: fixed;
+  z-index: 100;
+}
+
 .transparent-navbar .nav-menu-icon {
   color: red !important;
   display: block;
@@ -124,6 +133,7 @@
 .transparent-navbar .navbar-logo {
   filter: brightness(1.2);
 }
+
 .transparent-navbar .nav-icon:hover,
 .transparent-navbar .nav-menu-icon:hover {
   color: white !important;
