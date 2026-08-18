@@ -10,7 +10,7 @@ const ThemePage = () => {
   return (
     <>
       <Helmet defer={false}>
-        <title>Theme | TEDxPVGCOET</title>
+        <title>Home | TEDxPVGCOET</title>
       </Helmet>
       <Booknow />
       <DrishtiVideo />

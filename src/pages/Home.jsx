@@ -11,7 +11,7 @@ const Home = () => {
   return (
     <div id="page-top">
       <Helmet defer={false}>
-        <title>Home | TEDxPVGCOET</title>
+        <title>About | TEDxPVGCOET</title>
       </Helmet>
       <HeroSection />
       <AboutTED />
