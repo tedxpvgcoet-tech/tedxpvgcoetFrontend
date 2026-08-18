@@ -20,7 +20,10 @@
   box-sizing: border-box;
   flex-wrap: nowrap;
   font-family: "Inter", sans-serif;
-  transition: top 0.3s ease, background-color 0.3s ease, backdrop-filter 0.3s ease;
+  transition:
+    top 0.3s ease,
+    background-color 0.3s ease,
+    backdrop-filter 0.3s ease;
 }
 
 .navbar-left,
