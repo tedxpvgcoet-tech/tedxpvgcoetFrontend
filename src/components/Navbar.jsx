@@ -52,30 +52,23 @@ const Navbar = () => {
   const isEventPage = path.startsWith("/events");
   const isTeamPage = path === "/team";
 
-  // Scroll listener for event and team pages
+  // Global scroll listener for all pages
   useEffect(() => {
-    if (!isEventPage && !isTeamPage) {
-      setScrolled(false);
-      return;
-    }
-
-    const threshold = isTeamPage ? 10 : 50;
-    setScrolled(window.scrollY > threshold);
-
-    const handleScroll = () => setScrolled(window.scrollY > threshold);
-
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll, { passive: true });
+    
+    // Check initial state
+    handleScroll();
+    
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [isEventPage, isTeamPage]);
+  }, []);
 
   return (
     <>
       <nav
         className={`navbar 
+        ${scrolled ? "scrolled" : ""}
         ${isEventPage && !scrolled ? "transparent-navbar" : ""}
-        ${isEventPage && scrolled ? "event-scrolled" : ""}
-        ${isTeamPage ? "team-navbar" : ""}
-        ${isTeamPage && scrolled ? "team-navbar-scrolled" : ""}
       `}
       >
         <div className="navbar-left">
