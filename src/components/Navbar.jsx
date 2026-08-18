@@ -49,38 +49,26 @@ const Navbar = () => {
   };
 
   const path = location.pathname;
-  const isEventPage =
-    path === "/events" ||
-    path === "/events/TakeTheLeap" ||
-    path === "/events/AvantGarde" ||
-    path === "/events/Punarutthan";
+  const isEventPage = path.startsWith("/events");
   const isTeamPage = path === "/team";
 
+  // Global scroll listener for all pages
   useEffect(() => {
-    if (!isTeamPage) return;
-
-    let rafId;
-    const handleScroll = () => {
-      if (rafId) {
-        window.cancelAnimationFrame(rafId);
-      }
-      rafId = window.requestAnimationFrame(() => {
-        setScrolled(window.scrollY > 10);
-      });
-    };
-
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll, { passive: true });
+
+    // Check initial state
+    handleScroll();
+
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [isTeamPage]);
+  }, []);
 
   return (
     <>
       <nav
         className={`navbar 
-        ${isEventPage ? "transparent-navbar" : ""}
-        ${isTeamPage ? "team-navbar" : ""}
-        
-        ${isTeamPage && scrolled ? "team-navbar-scrolled" : ""}
+        ${scrolled ? "scrolled" : ""}
+        ${isEventPage && !scrolled ? "transparent-navbar" : ""}
       `}
       >
         <div className="navbar-left">
