@@ -1,0 +1,211 @@
+.internal-bills-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  color: #fff;
+  padding: 2rem;
+  font-family: inherit;
+}
+
+/* BRIDGEKEEPER STYLES */
+.bridgekeeper-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bridgekeeper-modal {
+  background: black;
+  padding: 2rem;
+  border: 2px solid #eb0028;
+  max-width: 500px;
+  text-align: center;
+}
+
+.bridgekeeper-image {
+  width: 100%;
+  margin-bottom: 2rem;
+  border: 1px solid #eb0028;
+}
+
+.bridgekeeper-title {
+  color: #eb0028;
+  font-size: 2.5rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.bridgekeeper-riddle {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  color: #fff;
+}
+
+.bridgekeeper-input {
+  width: 100%;
+  padding: 15px;
+  background: black;
+  border: 1px solid #fff;
+  color: white;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 0;
+}
+
+.bridgekeeper-input:focus {
+  outline: none;
+  border-color: #eb0028;
+}
+
+.bridgekeeper-btn {
+  width: 100%;
+  background: #eb0028;
+  color: white;
+  border: none;
+  padding: 15px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 0;
+  text-transform: uppercase;
+}
+
+.bridgekeeper-btn:hover {
+  background: #b3001e;
+}
+
+.bridgekeeper-error {
+  margin-top: 1.5rem;
+  color: #eb0028;
+  font-weight: 700;
+}
+
+/* BILLS FORM STYLES */
+.bills-form-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.bills-form-card {
+  background: black;
+  padding: 2.5rem;
+  max-width: 600px;
+  width: 100%;
+  border: 2px solid #eb0028;
+}
+
+.bills-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2.5rem;
+}
+
+.bills-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #eb0028;
+  text-transform: uppercase;
+}
+
+.bills-subtitle {
+  color: #fff;
+  margin-bottom: 0;
+}
+
+.bills-logout-btn {
+  background: transparent;
+  border: 1px solid #eb0028;
+  color: #eb0028;
+  padding: 8px 16px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 0;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+.bills-logout-btn:hover {
+  background: #eb0028;
+  color: white;
+}
+
+.bills-form .form-group {
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.bills-form label {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #fff;
+  font-size: 1rem;
+}
+
+.bills-form input, .bills-form textarea, .bills-form .file-input {
+  padding: 12px 15px;
+  background: black;
+  border: 1px solid #777;
+  color: #fff;
+  font-family: inherit;
+  border-radius: 0;
+}
+
+.bills-form input:focus, .bills-form textarea:focus {
+  outline: none;
+  border-color: #eb0028;
+}
+
+.bills-form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.bills-submit-btn {
+  width: 100%;
+  padding: 15px;
+  background: #eb0028;
+  color: white;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 1rem;
+  border-radius: 0;
+  text-transform: uppercase;
+}
+
+.bills-submit-btn:hover:not(:disabled) {
+  background: #b3001e;
+}
+
+.bills-submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.status-message {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  text-align: center;
+  font-weight: 600;
+  border: 1px solid;
+}
+
+.status-message.success {
+  color: #4ade80;
+  border-color: #4ade80;
+}
+
+.status-message.error {
+  color: #eb0028;
+  border-color: #eb0028;
+}
