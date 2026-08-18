@@ -29,10 +29,6 @@
   color: white;
 }
 
-/* ==========================================
-   Ambient Background
-   ========================================== */
-
 .ambient-glow {
   position: absolute;
 
@@ -48,10 +44,6 @@
   animation: ambientPulse 3s ease-in-out infinite;
 }
 
-/* ==========================================
-   Idea Animation
-   ========================================== */
-
 .idea-animation {
   position: relative;
 
@@ -64,8 +56,6 @@
 
   margin-bottom: 25px;
 }
-
-/* Central idea point */
 
 .idea-dot {
   position: absolute;
@@ -80,7 +70,7 @@
     0 0 12px rgba(230, 43, 30, 0.9),
     0 0 30px rgba(230, 43, 30, 0.5);
 
-  /*animation: ideaPulse 0.8s ease-in-out infinite;*/
+  /* animation: ideaPulse 0.8s ease-in-out infinite; */
 
   z-index: 5;
 }
@@ -100,15 +90,15 @@
 }
 
 .ring-1 {
-  /*animation: spreadIdea 2.4s ease-out infinite;*/
+  /* animation: spreadIdea 2.4s ease-out infinite; */
 }
 
 .ring-2 {
-  /*animation: spreadIdea 2.4s ease-out 0.7s infinite;
+  /* animation: spreadIdea 2.4s ease-out 0.7s infinite; */
 }
 
 .ring-3 {
-  /*animation: spreadIdea 2.4s ease-out 1.4s infinite;*/
+  /* animation: spreadIdea 2.4s ease-out 1.4s infinite; */
 }
 
 /* ==========================================
@@ -276,10 +266,6 @@
 
   animation: loadingMove 0.4s ease-in-out infinite;
 }
-
-/* ==========================================
-   Animations
-   ========================================== */
 
 @keyframes ideaPulse {
   0%,

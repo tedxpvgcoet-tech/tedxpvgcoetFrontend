@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import TeamHeroSection from "../sections/Team/TeamHeroSection";
 import Curation from "../sections/Team/Curation";
 import Lno from "../sections/Team/Lno";
@@ -14,6 +15,9 @@ import "./Team.css";
 const Team = () => {
   return (
     <div className="team-page" id="page-top">
+      <Helmet defer={false}>
+        <title>Team | TEDxPVGCOET</title>
+      </Helmet>
       <TeamHeroSection />
       <Core />
       <Curation />
