@@ -170,10 +170,17 @@
     flex: 1 1 calc(50% - 2rem);
     max-width: 500px;
     position: relative;
+    display: flex;
+    flex-direction: column;
   }
   .speaker-photo,
   .speaker-infoe {
     min-height: 450px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
   }
   .speaker-photo {
     animation-name: slideInFromLeft;
@@ -182,11 +189,21 @@
     animation-name: slideInFromRight;
   }
   .speaker-image {
-    max-width: 400px;
+    /*max-width: 400px;*/
+    height: 380px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    margin-bottom: 0;
   }
   .speaker-description {
     font-size: 1.2rem;
     line-height: 1.6;
+  }
+
+  .speaker-front-actions {
+    margin-top: auto;
+    padding-top: 1rem;
   }
 }
 
