@@ -26,6 +26,7 @@ const OrganizersCard = lazy(() => import("./sections/Team/OrganizersCard"));
 const TakeTheLeap = lazy(() => import("./pages/TakeTheLeap"));
 const ThemePage = lazy(() => import("./pages/ThemePage"));
 const NotFound = lazy(() => import("./pages/NotFound"));
+const InternalBillsPage = lazy(() => import("./pages/InternalBillsPage"));
 
 inject();
 
@@ -86,6 +87,8 @@ function App() {
               <Route path="/design-team" element={<DesignCard />} />
               <Route path="/technical-team" element={<TechnicalCard />} />
               <Route path="/organizers-team" element={<OrganizersCard />} />
+
+              <Route path="/bills" element={<InternalBillsPage />} />
 
               <Route path="/about" element={<Home />} />
               <Route path="/feedback" element={<FeedbackRedirect />} />
