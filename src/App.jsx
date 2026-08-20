@@ -28,7 +28,6 @@ const ThemePage = lazy(() => import("./pages/ThemePage"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const InternalBillsPage = lazy(() => import("./pages/InternalBillsPage"));
 
-
 inject();
 
 function App() {

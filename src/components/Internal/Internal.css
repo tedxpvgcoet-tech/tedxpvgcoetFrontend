@@ -150,7 +150,9 @@
   font-size: 1rem;
 }
 
-.bills-form input, .bills-form textarea, .bills-form .file-input {
+.bills-form input,
+.bills-form textarea,
+.bills-form .file-input {
   padding: 12px 15px;
   background: black;
   border: 1px solid #777;
@@ -159,7 +161,8 @@
   border-radius: 0;
 }
 
-.bills-form input:focus, .bills-form textarea:focus {
+.bills-form input:focus,
+.bills-form textarea:focus {
   outline: none;
   border-color: #eb0028;
 }
