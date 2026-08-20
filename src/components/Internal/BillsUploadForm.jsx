@@ -608,20 +608,78 @@ export default function BillsUploadForm({ secretKey }) {
     );
   };
 
+  const compressImage = (file, maxWidth, maxHeight, quality, callback) => {
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement("canvas");
+        let width = img.width;
+        let height = img.height;
+
+        if (width > height) {
+          if (width > maxWidth) {
+            height *= maxWidth / width;
+            width = maxWidth;
+          }
+        } else {
+          if (height > maxHeight) {
+            width *= maxHeight / height;
+            height = maxHeight;
+          }
+        }
+
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0, width, height);
+
+        const dataUrl = canvas.toDataURL("image/jpeg", quality);
+        
+        const base64Length = dataUrl.length - (dataUrl.indexOf(",") + 1);
+        const padding =
+          dataUrl.charAt(dataUrl.length - 2) === "=" ? 2 :
+          dataUrl.charAt(dataUrl.length - 1) === "=" ? 1 : 0;
+        const sizeBytes = base64Length * 0.75 - padding;
+        const sizeMB = sizeBytes / (1024 * 1024);
+
+        callback(dataUrl, sizeMB);
+      };
+      img.src = event.target.result;
+    };
+    reader.readAsDataURL(file);
+  };
+
   const handleFileChange = (e, uid) => {
     const file = e.target.files[0];
     if (file) {
-      const sizeMB = file.size / (1024 * 1024);
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        handleBillFieldChange(uid, "image", {
-          fileName: file.name,
-          mimeType: file.type,
-          base64: reader.result,
-          sizeMB: sizeMB,
+      if (file.type.startsWith("image/")) {
+        // Compress images (max 1920px, 80% quality)
+        compressImage(file, 1920, 1920, 0.8, (base64Data, sizeMB) => {
+          let finalName = file.name;
+          if (!finalName.toLowerCase().endsWith(".jpg") && !finalName.toLowerCase().endsWith(".jpeg")) {
+            finalName = finalName.replace(/\.[^/.]+$/, "") + ".jpg";
+          }
+          handleBillFieldChange(uid, "image", {
+            fileName: finalName,
+            mimeType: "image/jpeg",
+            base64: base64Data,
+            sizeMB: sizeMB,
+          });
         });
-      };
-      reader.readAsDataURL(file);
+      } else {
+        const sizeMB = file.size / (1024 * 1024);
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          handleBillFieldChange(uid, "image", {
+            fileName: file.name,
+            mimeType: file.type,
+            base64: reader.result,
+            sizeMB: sizeMB,
+          });
+        };
+        reader.readAsDataURL(file);
+      }
     }
   };
 
@@ -1149,6 +1207,25 @@ export default function BillsUploadForm({ secretKey }) {
                             }
                           >
                             Change Photo
+                          </div>
+                          
+                          <div
+                            style={{
+                              color: "#aaa",
+                              fontSize: "0.75rem",
+                              cursor: "pointer",
+                              fontWeight: "600",
+                            }}
+                            onClick={() => {
+                              const link = document.createElement("a");
+                              link.href = bill.image.base64;
+                              link.download = `receipt_${Date.now()}.jpg`;
+                              document.body.appendChild(link);
+                              link.click();
+                              document.body.removeChild(link);
+                            }}
+                          >
+                            Save Photo
                           </div>
                           {bill.image.sizeMB > 5 && (
                             <span
