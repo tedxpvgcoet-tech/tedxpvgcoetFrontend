@@ -51,7 +51,6 @@ const Navbar = () => {
   const path = location.pathname;
   const isEventPage = path.startsWith("/events");
 
-
   // Global scroll listener for all pages
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
