@@ -169,11 +169,11 @@ export default function BridgekeeperAuth({ onAuthorized }) {
       try {
         if (import.meta.env.VITE_BACKEND_URL)
           API_URL = import.meta.env.VITE_BACKEND_URL;
-      } catch (e) {}
+      } catch (e) { }
       try {
         if (process.env.REACT_APP_BACKEND_URL)
           API_URL = process.env.REACT_APP_BACKEND_URL;
-      } catch (e) {}
+      } catch (e) { }
 
       const res = await fetch(`${API_URL}/verify-key`, {
         method: "POST",
