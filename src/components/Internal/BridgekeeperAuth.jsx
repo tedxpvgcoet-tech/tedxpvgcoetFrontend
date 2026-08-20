@@ -169,11 +169,11 @@ export default function BridgekeeperAuth({ onAuthorized }) {
       try {
         if (import.meta.env.VITE_BACKEND_URL)
           API_URL = import.meta.env.VITE_BACKEND_URL;
-      } catch (e) {}
+      } catch (e) { }
       try {
         if (process.env.REACT_APP_BACKEND_URL)
           API_URL = process.env.REACT_APP_BACKEND_URL;
-      } catch (e) {}
+      } catch (e) { }
 
       const res = await fetch(`${API_URL}/verify-key`, {
         method: "POST",
@@ -239,7 +239,7 @@ export default function BridgekeeperAuth({ onAuthorized }) {
             />
             <p style={styles.popupText}>Into the Gorge of Eternal Peril!</p>
             <p style={styles.popupSub}>
-              That is the wrong answer. Try again...
+              {popupMsg || "That is the wrong answer. Try again..."}
             </p>
             <button
               style={styles.popupBtn}

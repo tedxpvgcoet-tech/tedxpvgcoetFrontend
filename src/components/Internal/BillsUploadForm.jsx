@@ -794,7 +794,12 @@ export default function BillsUploadForm({ secretKey }) {
         ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.3); }
 
+        .mobile-picker { display: none !important; }
+        .desktop-picker { display: flex !important; }
+
         @media (max-width: 600px) {
+            .mobile-picker { display: flex !important; }
+            .desktop-picker { display: none !important; }
             .responsive-row {
                 flex-direction: column !important;
                 gap: 20px !important;
@@ -992,43 +997,119 @@ export default function BillsUploadForm({ secretKey }) {
                     onChange={(e) => handleFileChange(e, bill.uid)}
                     style={{ display: "none" }}
                   />
+                  <input
+                    id={`file-cam-${bill.uid}`}
+                    type="file"
+                    accept="image/*"
+                    capture="environment"
+                    disabled={loading}
+                    onChange={(e) => handleFileChange(e, bill.uid)}
+                    style={{ display: "none" }}
+                  />
                   {!bill.image ? (
-                    <div
-                      style={{
-                        ...styles.fileLabel,
-                        opacity: loading ? 0.5 : 1,
-                        cursor: loading ? "not-allowed" : "pointer",
-                        ...(hoveredFileId === bill.uid && !loading
-                          ? styles.fileLabelHover
-                          : {}),
-                      }}
-                      onClick={() =>
-                        !loading &&
-                        document.getElementById(`file-${bill.uid}`).click()
-                      }
-                      onMouseEnter={() =>
-                        !loading && setHoveredFileId(bill.uid)
-                      }
-                      onMouseLeave={() => !loading && setHoveredFileId(null)}
-                    >
-                      <span
+                    <>
+                      {/* Desktop Picker: Single unified button */}
+                      <div
+                        className="desktop-picker"
                         style={{
-                          ...styles.fileBadge,
-                          background: loading ? "#666" : "#e81b2a",
+                          ...styles.fileLabel,
+                          opacity: loading ? 0.5 : 1,
+                          cursor: loading ? "not-allowed" : "pointer",
+                          ...(hoveredFileId === bill.uid && !loading
+                            ? styles.fileLabelHover
+                            : {}),
                         }}
+                        onClick={() =>
+                          !loading &&
+                          document.getElementById(`file-${bill.uid}`).click()
+                        }
+                        onMouseEnter={() =>
+                          !loading && setHoveredFileId(bill.uid)
+                        }
+                        onMouseLeave={() => !loading && setHoveredFileId(null)}
                       >
-                        Choose File
-                      </span>
-                      <span
-                        style={{
-                          overflow: "hidden",
-                          textOverflow: "ellipsis",
-                          whiteSpace: "nowrap",
-                        }}
-                      >
-                        No file selected
-                      </span>
-                    </div>
+                        <span
+                          style={{
+                            ...styles.fileBadge,
+                            background: loading ? "#666" : "#e81b2a",
+                          }}
+                        >
+                          Choose File
+                        </span>
+                        <span
+                          style={{
+                            overflow: "hidden",
+                            textOverflow: "ellipsis",
+                            whiteSpace: "nowrap",
+                          }}
+                        >
+                          No file selected
+                        </span>
+                      </div>
+
+                      {/* Mobile Picker: Split Camera and Gallery */}
+                      <div className="mobile-picker" style={{ gap: '12px' }}>
+                        <div
+                          style={{
+                            ...styles.fileLabel,
+                            flex: 1,
+                            justifyContent: 'center',
+                            opacity: loading ? 0.5 : 1,
+                            cursor: loading ? "not-allowed" : "pointer",
+                            ...(hoveredFileId === `gal-${bill.uid}` && !loading
+                              ? styles.fileLabelHover
+                              : {}),
+                          }}
+                          onClick={() =>
+                            !loading &&
+                            document.getElementById(`file-${bill.uid}`).click()
+                          }
+                          onMouseEnter={() =>
+                            !loading && setHoveredFileId(`gal-${bill.uid}`)
+                          }
+                          onMouseLeave={() => !loading && setHoveredFileId(null)}
+                        >
+                          <span
+                            style={{
+                              ...styles.fileBadge,
+                              background: loading ? "#666" : "#444",
+                            }}
+                          >
+                            Gallery
+                          </span>
+                        </div>
+                        
+                        <div
+                          style={{
+                            ...styles.fileLabel,
+                            flex: 1,
+                            justifyContent: 'center',
+                            opacity: loading ? 0.5 : 1,
+                            cursor: loading ? "not-allowed" : "pointer",
+                            ...(hoveredFileId === `cam-${bill.uid}` && !loading
+                              ? styles.fileLabelHover
+                              : {}),
+                          }}
+                          onClick={() =>
+                            !loading &&
+                            document.getElementById(`file-cam-${bill.uid}`).click()
+                          }
+                          onMouseEnter={() =>
+                            !loading && setHoveredFileId(`cam-${bill.uid}`)
+                          }
+                          onMouseLeave={() => !loading && setHoveredFileId(null)}
+                        >
+                          <span
+                            style={{
+                              ...styles.fileBadge,
+                              background: loading ? "#666" : "#e81b2a",
+                            }}
+                          >
+                            Camera
+                          </span>
+                        </div>
+                      </div>
+                    </>
                   ) : (
                     <div
                       style={{
