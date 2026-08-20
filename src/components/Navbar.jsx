@@ -50,7 +50,6 @@ const Navbar = () => {
 
   const path = location.pathname;
   const isEventPage = path.startsWith("/events");
-  const isTeamPage = path === "/team";
 
   // Global scroll listener for all pages
   useEffect(() => {
