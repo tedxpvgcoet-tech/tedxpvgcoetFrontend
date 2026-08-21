@@ -5,7 +5,7 @@ import "./EventHeroSection.css";
 const EventHeroSection = () => {
   return (
     <div className="hero-container3">
-      <video autoPlay loop muted className="hero-video3">
+      <video autoPlay loop muted playsInline className="hero-video3">
         <source src={backgroundVideo} type="video/mp4" />
         Your browser does not support the video tag.
       </video>

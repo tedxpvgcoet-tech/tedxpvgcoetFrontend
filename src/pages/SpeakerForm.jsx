@@ -95,7 +95,7 @@ const SpeakerForm = () => {
       <Helmet defer={false}>
         <title>Speaker Nomination | TEDxPVGCOET</title>
       </Helmet>
-      <video autoPlay loop muted className="hero-video1">
+      <video autoPlay loop muted playsInline className="hero-video1">
         <source src={backgroundVideo} type="video/mp4" />
         Your browser does not support the video tag.
       </video>

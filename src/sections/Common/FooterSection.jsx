@@ -20,14 +20,14 @@ const FooterSection = () => {
           </p>
           <div className="footer-icons">
             <a
-              href="https://www.instagram.com/tedxpvgcoet/?hl=en"
+              href="https://www.instagram.com/tedxpvgcoetm/?hl=en"
               target="_blank"
               rel="noreferrer"
             >
               <FaInstagram />
             </a>
             <a
-              href="https://www.linkedin.com/company/tedxpvgcoet/?originalSubdomain=in"
+              href="https://www.linkedin.com/company/tedxpvgcoetm/?originalSubdomain=in"
               target="_blank"
               rel="noreferrer"
             >
