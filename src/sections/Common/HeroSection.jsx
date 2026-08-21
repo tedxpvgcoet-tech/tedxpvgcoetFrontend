@@ -6,7 +6,7 @@ import "./HeroSection.css";
 const HeroSection = () => {
   return (
     <div className="hero-container">
-      <video autoPlay loop muted className="hero-video">
+      <video autoPlay loop muted playsInline className="hero-video">
         <source src={backgroundVideo} type="video/mp4" />
         Your browser does not support the video tag.
       </video>

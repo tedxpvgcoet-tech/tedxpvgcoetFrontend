@@ -74,7 +74,7 @@ const Navbar = () => {
           <Link to="/" onClick={handleLogoClick}>
             <img
               src={logo}
-              alt="TEDxPVGCOET Logo"
+              alt="TEDxPVGCOETM Logo"
               className="navbar-logo"
               loading="lazy"
             />
@@ -83,7 +83,7 @@ const Navbar = () => {
 
         <div className="navbar-right">
           <a
-            href="https://www.instagram.com/tedxpvgcoet/?hl=en"
+            href="https://www.instagram.com/tedxpvgcoetm/?hl=en"
             target="_blank"
             rel="noreferrer"
             className="nav-icon"
@@ -91,7 +91,7 @@ const Navbar = () => {
             <FaInstagram />
           </a>
           <a
-            href="https://www.linkedin.com/company/tedxpvgcoet/?originalSubdomain=in"
+            href="https://www.linkedin.com/company/tedxpvgcoetm/?originalSubdomain=in"
             target="_blank"
             rel="noreferrer"
             className="nav-icon"

@@ -17,7 +17,7 @@ const DristiHeroSection = () => {
 
   return (
     <div className="hero-container">
-      <video className="hero-video" autoPlay loop muted playsInline>
+      <video playsInline className="hero-video" autoPlay loop muted playsInline>
         <source src={videoSrc} type="video/mp4" />
       </video>
 

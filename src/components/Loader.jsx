@@ -20,10 +20,33 @@ const Loader = ({ forceFullIntro = false }) => {
   const loadingRef = useRef(null);
 
   useEffect(() => {
-    // On refresh/subsequent loads:
-    // don't run the full entrance animation.
+    // Subsequent loads: skip the intro animation
+    // and show the branding immediately.
     if (!showFullIntro) {
+      gsap.set(
+        [
+          tedRef.current,
+          xRef.current,
+          pvgRef.current,
+          taglineRef.current,
+          loadingRef.current,
+        ],
+        {
+          opacity: 1,
+          clearProps: "transform,filter",
+        },
+      );
+
+      if (ideaRef.current) {
+        gsap.set(ideaRef.current, { opacity: 0 });
+      }
+
       return;
+    }
+
+    // Mark intro as shown for this browser tab/session
+    if (!forceFullIntro) {
+      sessionStorage.setItem("tedxIntroShown", "true");
     }
 
     const ctx = gsap.context(() => {
@@ -128,7 +151,7 @@ const Loader = ({ forceFullIntro = false }) => {
     });
 
     return () => ctx.revert();
-  }, [showFullIntro]);
+  }, [showFullIntro, forceFullIntro]);
 
   return (
     <main className="loader-container">
@@ -136,7 +159,6 @@ const Loader = ({ forceFullIntro = false }) => {
       <div className="ambient-glow"></div>
 
       {/* Full idea animation appears only on first visit */}
-
       <div className="idea-animation" ref={ideaRef}>
         <span className="idea-ring ring-1"></span>
         <span className="idea-ring ring-2"></span>
@@ -152,7 +174,7 @@ const Loader = ({ forceFullIntro = false }) => {
         <span className="particle particle-6"></span>
       </div>
 
-      {/* TEDx branding is ALWAYS present */}
+      {/* TEDx branding */}
       <div className="brand-reveal">
         <div className="tedx-logo">
           <span className="ted" ref={tedRef}>

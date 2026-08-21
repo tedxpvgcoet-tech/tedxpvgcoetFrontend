@@ -58,7 +58,7 @@ export default function SubscribeSection() {
 
       <div className="subscribe-content">
         <h2>
-          The Best of <span className="highlight-red">TEDxPVGCOET</span>,<br />
+          The Best of <span className="highlight-red">TEDxPVGCOETM</span>,<br />
           Straight to You
         </h2>
 

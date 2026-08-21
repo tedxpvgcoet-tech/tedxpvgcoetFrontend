@@ -10,7 +10,7 @@ const SponsorForm = () => {
       <Helmet defer={false}>
         <title>Partner With Us | TEDxPVGCOET</title>
       </Helmet>
-      <video autoPlay loop muted className="hero-video-sponsor">
+      <video autoPlay loop muted playsInline className="hero-video-sponsor">
         <source src={backgroundVideo} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
