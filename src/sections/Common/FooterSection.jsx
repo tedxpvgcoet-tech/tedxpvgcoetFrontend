@@ -61,13 +61,13 @@ const FooterSection = () => {
             <p>
               <strong>Contact Us:</strong>
               <br />
-              <strong>Abhijeet Thore</strong>
+              <strong>Omkar Hokarne</strong>
               <br />
               (Licensee & Organizer)
               <br />
-              +91 70581 82571
+              +91 8600089167
               <br />
-              abhithore2704@gmail.com
+              omkarhokarne23@gmail.com
             </p>
           </div>
         </div>

@@ -2,50 +2,76 @@ import React, { useState, useEffect } from "react";
 import { FaInstagram, FaLinkedin, FaBars } from "react-icons/fa";
 import logo from "../assets/logos/tedx-logo.webp";
 import "./Navbar.css";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
-  const path = location.pathname;
-  const isEventPage =
-    path === "/events" ||
-    path === "/events/TakeTheLeap" ||
-    path === "/events/AvantGarde" ||
-    path === "/events/Punarutthan";
-  const isTeamPage = path === "/team";
+  const smoothScrollToTop = () => {
+    const startY =
+      document.documentElement.scrollTop || document.body.scrollTop;
+    if (startY === 0) return;
 
-  useEffect(() => {
-    if (!isTeamPage) return;
+    const duration = 600; // ms
+    const startTime = performance.now();
 
-    let rafId;
-    const handleScroll = () => {
-      if (rafId) {
-        window.cancelAnimationFrame(rafId);
+    const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+
+    const step = (currentTime) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = easeOutCubic(progress);
+
+      const newY = startY * (1 - eased);
+      document.documentElement.scrollTop = newY;
+      document.body.scrollTop = newY;
+
+      if (progress < 1) {
+        requestAnimationFrame(step);
       }
-      rafId = window.requestAnimationFrame(() => {
-        setScrolled(window.scrollY > 10);
-      });
     };
 
+    requestAnimationFrame(step);
+  };
+
+  const handleLogoClick = (e) => {
+    e.preventDefault();
+    if (location.pathname === "/") {
+      // Smooth animated scroll to top if already on home page
+      smoothScrollToTop();
+    } else {
+      // Navigate to "/" if we are on a different page
+      navigate("/", { replace: true });
+    }
+  };
+
+  const path = location.pathname;
+  const isEventPage = path.startsWith("/events");
+
+  // Global scroll listener for all pages
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll, { passive: true });
+
+    // Check initial state
+    handleScroll();
+
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [isTeamPage]);
+  }, []);
 
   return (
     <>
       <nav
         className={`navbar 
-        ${isEventPage ? "transparent-navbar" : ""}
-        ${isTeamPage ? "team-navbar" : ""}
-        
-        ${isTeamPage && scrolled ? "team-navbar-scrolled" : ""}
+        ${scrolled ? "scrolled" : ""}
+        ${isEventPage && !scrolled ? "transparent-navbar" : ""}
       `}
       >
         <div className="navbar-left">
-          <Link to="/">
+          <Link to="/" onClick={handleLogoClick}>
             <img
               src={logo}
               alt="TEDxPVGCOETM Logo"

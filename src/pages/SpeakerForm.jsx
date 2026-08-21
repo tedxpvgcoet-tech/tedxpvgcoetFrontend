@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Helmet } from "react-helmet";
 import backgroundVideo from "../assets/backgrounds/background.mp4";
 import "./SpeakerForm.css";
 import FooterSection from "../sections/Common/FooterSection";
@@ -91,6 +92,9 @@ const SpeakerForm = () => {
 
   return (
     <div className="hero-container1">
+      <Helmet defer={false}>
+        <title>Speaker Nomination | TEDxPVGCOET</title>
+      </Helmet>
       <video autoPlay loop muted className="hero-video1">
         <source src={backgroundVideo} type="video/mp4" />
         Your browser does not support the video tag.
