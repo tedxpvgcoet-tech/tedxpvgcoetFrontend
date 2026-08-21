@@ -39,9 +39,10 @@ const WhatWeStandFor = () => {
         <div className="tedx-box">
           <h2>What We Stand For ?</h2>
           <p>
-            Pune Vidyarthi Griha's College of Engineering, Technology and Management (PVGCOETM) carries a rich
-            culture of education and hosts a plethora of events bringing about
-            all-round development of students. The TEDxPVGCOETM (formerly TEDxPVGCOET) event is a prized
+            Pune Vidyarthi Griha's College of Engineering, Technology and
+            Management (PVGCOETM) carries a rich culture of education and hosts
+            a plethora of events bringing about all-round development of
+            students. The TEDxPVGCOETM (formerly TEDxPVGCOET) event is a prized
             gemstone hosted independently by students and faculty members under
             a University TEDx license.This event enables participants from
             different backgrounds to witness thought-provoking talks, and has

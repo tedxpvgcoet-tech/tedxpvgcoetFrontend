@@ -38,9 +38,9 @@ const Editorial = () => {
       </div>
       <div className="editorial-text">
         <p className="editorial-description">
-          The Editorial Team crafts the written voice of TEDxPVGCOETM- from theme
-          documents to speaker communications. They refine every word to ensure
-          clarity, consistency, and alignment with the event’s vision.
+          The Editorial Team crafts the written voice of TEDxPVGCOETM- from
+          theme documents to speaker communications. They refine every word to
+          ensure clarity, consistency, and alignment with the event’s vision.
         </p>
 
         <Link to="/editorial-team" className="editorial-button">
