@@ -635,11 +635,14 @@ export default function BillsUploadForm({ secretKey }) {
         ctx.drawImage(img, 0, 0, width, height);
 
         const dataUrl = canvas.toDataURL("image/jpeg", quality);
-        
+
         const base64Length = dataUrl.length - (dataUrl.indexOf(",") + 1);
         const padding =
-          dataUrl.charAt(dataUrl.length - 2) === "=" ? 2 :
-          dataUrl.charAt(dataUrl.length - 1) === "=" ? 1 : 0;
+          dataUrl.charAt(dataUrl.length - 2) === "="
+            ? 2
+            : dataUrl.charAt(dataUrl.length - 1) === "="
+              ? 1
+              : 0;
         const sizeBytes = base64Length * 0.75 - padding;
         const sizeMB = sizeBytes / (1024 * 1024);
 
@@ -657,7 +660,10 @@ export default function BillsUploadForm({ secretKey }) {
         // Compress images (max 1920px, 80% quality)
         compressImage(file, 1920, 1920, 0.8, (base64Data, sizeMB) => {
           let finalName = file.name;
-          if (!finalName.toLowerCase().endsWith(".jpg") && !finalName.toLowerCase().endsWith(".jpeg")) {
+          if (
+            !finalName.toLowerCase().endsWith(".jpg") &&
+            !finalName.toLowerCase().endsWith(".jpeg")
+          ) {
             finalName = finalName.replace(/\.[^/.]+$/, "") + ".jpg";
           }
           handleBillFieldChange(uid, "image", {
@@ -1106,12 +1112,12 @@ export default function BillsUploadForm({ secretKey }) {
                       </div>
 
                       {/* Mobile Picker: Split Camera and Gallery */}
-                      <div className="mobile-picker" style={{ gap: '12px' }}>
+                      <div className="mobile-picker" style={{ gap: "12px" }}>
                         <div
                           style={{
                             ...styles.fileLabel,
                             flex: 1,
-                            justifyContent: 'center',
+                            justifyContent: "center",
                             opacity: loading ? 0.5 : 1,
                             cursor: loading ? "not-allowed" : "pointer",
                             ...(hoveredFileId === `gal-${bill.uid}` && !loading
@@ -1125,7 +1131,9 @@ export default function BillsUploadForm({ secretKey }) {
                           onMouseEnter={() =>
                             !loading && setHoveredFileId(`gal-${bill.uid}`)
                           }
-                          onMouseLeave={() => !loading && setHoveredFileId(null)}
+                          onMouseLeave={() =>
+                            !loading && setHoveredFileId(null)
+                          }
                         >
                           <span
                             style={{
@@ -1136,12 +1144,12 @@ export default function BillsUploadForm({ secretKey }) {
                             Gallery
                           </span>
                         </div>
-                        
+
                         <div
                           style={{
                             ...styles.fileLabel,
                             flex: 1,
-                            justifyContent: 'center',
+                            justifyContent: "center",
                             opacity: loading ? 0.5 : 1,
                             cursor: loading ? "not-allowed" : "pointer",
                             ...(hoveredFileId === `cam-${bill.uid}` && !loading
@@ -1150,12 +1158,16 @@ export default function BillsUploadForm({ secretKey }) {
                           }}
                           onClick={() =>
                             !loading &&
-                            document.getElementById(`file-cam-${bill.uid}`).click()
+                            document
+                              .getElementById(`file-cam-${bill.uid}`)
+                              .click()
                           }
                           onMouseEnter={() =>
                             !loading && setHoveredFileId(`cam-${bill.uid}`)
                           }
-                          onMouseLeave={() => !loading && setHoveredFileId(null)}
+                          onMouseLeave={() =>
+                            !loading && setHoveredFileId(null)
+                          }
                         >
                           <span
                             style={{
@@ -1208,7 +1220,7 @@ export default function BillsUploadForm({ secretKey }) {
                           >
                             Change Photo
                           </div>
-                          
+
                           <div
                             style={{
                               color: "#aaa",
