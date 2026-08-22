@@ -30,7 +30,6 @@ const NotFound = lazy(() => import("./pages/NotFound"));
 inject();
 
 function App() {
-  // Full cinematic intro only once per browser session
   const [showIntro, setShowIntro] = useState(() => {
     return sessionStorage.getItem("tedxIntroShown") !== "true";
   });
@@ -40,7 +39,6 @@ function App() {
       return;
     }
 
-    // Keep the full first-visit animation visible
     const timer = setTimeout(() => {
       sessionStorage.setItem("tedxIntroShown", "true");
       setShowIntro(false);
@@ -61,12 +59,8 @@ function App() {
       <ScrollToTop />
 
       {showIntro ? (
-        // FIRST OPENING:
-        // Only render the cinematic loader
         <Loader forceFullIntro />
       ) : (
-        // AFTER INTRO / REFRESH:
-        // Render the actual website
         <>
           <Navbar />
 
