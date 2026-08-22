@@ -15,9 +15,11 @@ const FooterSection = () => {
           <h2 className="footer-logo">
             TED<span className="highlight-red">x</span>PVGCOETM
           </h2>
+
           <p className="footer-description">
             This independent TEDx event is operated under licence from TED.
           </p>
+
           <div className="footer-icons">
             <a
               href="https://www.instagram.com/tedxpvgcoetm/?hl=en"
@@ -26,6 +28,7 @@ const FooterSection = () => {
             >
               <FaInstagram />
             </a>
+
             <a
               href="https://www.linkedin.com/company/tedxpvgcoetm/?originalSubdomain=in"
               target="_blank"
@@ -33,6 +36,7 @@ const FooterSection = () => {
             >
               <FaLinkedin />
             </a>
+
             <a
               href="https://x.com/TEDxPVGCOET"
               target="_blank"

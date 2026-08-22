@@ -31,7 +31,6 @@ const InternalBillsPage = lazy(() => import("./pages/InternalBillsPage"));
 inject();
 
 function App() {
-  // Full cinematic intro only once per browser session
   const [showIntro, setShowIntro] = useState(() => {
     return sessionStorage.getItem("tedxIntroShown") !== "true";
   });
@@ -41,7 +40,6 @@ function App() {
       return;
     }
 
-    // Keep the full first-visit animation visible
     const timer = setTimeout(() => {
       sessionStorage.setItem("tedxIntroShown", "true");
       setShowIntro(false);
@@ -93,6 +91,8 @@ function App() {
               <Route path="/about" element={<Home />} />
               <Route path="/feedback" element={<FeedbackRedirect />} />
               <Route path="/cam" element={<CamRedirect />} />
+
+              {/* 404 - catch all unknown routes */}
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>
