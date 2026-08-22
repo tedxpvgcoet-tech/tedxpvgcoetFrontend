@@ -1,6 +1,8 @@
 .footer {
   position: relative;
   overflow: hidden;
+  font-family: "Inter", sans-serif;
+  color: black;
 }
 
 /* Background wave or red section */
