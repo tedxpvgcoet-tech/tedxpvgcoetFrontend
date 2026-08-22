@@ -1,7 +1,3 @@
-/* ==========================================
-   TEDxPVGCOETM Loading Screen
-   ========================================== */
-
 .loader-container {
   position: fixed;
   inset: 0;
@@ -70,12 +66,10 @@
     0 0 12px rgba(230, 43, 30, 0.9),
     0 0 30px rgba(230, 43, 30, 0.5);
 
-  /* animation: ideaPulse 0.8s ease-in-out infinite; */
+  /*animation: ideaPulse 0.8s ease-in-out infinite;*/
 
   z-index: 5;
 }
-
-/* Expanding idea waves */
 
 .idea-ring {
   position: absolute;
@@ -90,20 +84,16 @@
 }
 
 .ring-1 {
-  /* animation: spreadIdea 2.4s ease-out infinite; */
+  /*animation: spreadIdea 2.4s ease-out infinite;*/
 }
 
 .ring-2 {
-  /* animation: spreadIdea 2.4s ease-out 0.7s infinite; */
+  /*animation: spreadIdea 2.4s ease-out 0.7s infinite;*/
 }
 
 .ring-3 {
-  /* animation: spreadIdea 2.4s ease-out 1.4s infinite; */
+  /*animation: spreadIdea 2.4s ease-out 1.4s infinite;*/
 }
-
-/* ==========================================
-   Floating Idea Nodes
-   ========================================== */
 
 .particle {
   position: absolute;
@@ -154,10 +144,6 @@
   right: 30%;
   animation-delay: 2s;
 }
-
-/* ==========================================
-   TEDx Branding
-   ========================================== */
 
 .brand-reveal {
   position: relative;
@@ -222,10 +208,6 @@
   line-height: 1;
 }
 
-/* ==========================================
-   Tagline
-   ========================================== */
-
 .tagline {
   margin-top: 12px;
 
@@ -236,10 +218,6 @@
 
   color: rgba(255, 255, 255, 0.42);
 }
-
-/* ==========================================
-   Loading Indicator
-   ========================================== */
 
 .loading-track {
   position: relative;
@@ -342,10 +320,6 @@
     left: -45px;
   }
 }
-
-/* ==========================================
-   Mobile
-   ========================================== */
 
 @media (max-width: 600px) {
   .idea-animation {
