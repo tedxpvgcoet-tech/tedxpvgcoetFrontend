@@ -18,39 +18,74 @@
   --ui-radius-sm: 6px;
   --ui-radius-md: 8px;
   --ui-radius-lg: 12px;
-  --ui-font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --ui-font-family:
+    "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --ui-transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   --ui-transition-smooth: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Keyframes */
 @keyframes ui-shake {
-  0%, 100% { transform: translateX(0); }
-  15% { transform: translateX(-8px); }
-  30% { transform: translateX(8px); }
-  45% { transform: translateX(-6px); }
-  60% { transform: translateX(6px); }
-  75% { transform: translateX(-3px); }
-  90% { transform: translateX(3px); }
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  15% {
+    transform: translateX(-8px);
+  }
+  30% {
+    transform: translateX(8px);
+  }
+  45% {
+    transform: translateX(-6px);
+  }
+  60% {
+    transform: translateX(6px);
+  }
+  75% {
+    transform: translateX(-3px);
+  }
+  90% {
+    transform: translateX(3px);
+  }
 }
 
 @keyframes ui-spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes ui-fadeIn {
-  from { opacity: 0; transform: translateY(-4px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes ui-dropIn {
-  from { opacity: 0; transform: translateY(-10px) scale(0.98); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 @keyframes ui-pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.6; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
 }
 
 /* --------------------------------------------------------------------------
@@ -83,7 +118,9 @@
 .ui-form-page,
 .form-page,
 .form-page-sponsor {
-  min-height: calc(100vh - (var(--footer-height, 0px) + var(--navbar-height, 0px)));
+  min-height: calc(
+    100vh - (var(--footer-height, 0px) + var(--navbar-height, 0px))
+  );
   padding: 100px 20px 40px;
   display: flex;
   align-items: center;
@@ -208,7 +245,10 @@
   outline: none;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  transition: border-color var(--ui-transition-fast), box-shadow var(--ui-transition-fast), background var(--ui-transition-fast);
+  transition:
+    border-color var(--ui-transition-fast),
+    box-shadow var(--ui-transition-fast),
+    background var(--ui-transition-fast);
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
@@ -227,7 +267,9 @@
 .ui-textarea:focus {
   border-color: var(--ui-border-focus);
   background: rgba(20, 20, 26, 0.85);
-  box-shadow: 0 0 0 3px var(--ui-primary-glow), inset 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow:
+    0 0 0 3px var(--ui-primary-glow),
+    inset 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .ui-input:disabled,
@@ -350,7 +392,9 @@
   background: rgba(20, 20, 25, 0.96);
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: var(--ui-radius-md);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  box-shadow:
+    0 16px 36px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   max-height: 240px;
@@ -375,7 +419,9 @@
   color: #d1d5db;
   font-size: 0.92rem;
   cursor: pointer;
-  transition: background var(--ui-transition-fast), color var(--ui-transition-fast);
+  transition:
+    background var(--ui-transition-fast),
+    color var(--ui-transition-fast);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -837,7 +883,9 @@
 
 .star {
   color: #555;
-  transition: color 0.2s, transform 0.15s;
+  transition:
+    color 0.2s,
+    transform 0.15s;
 }
 
 .star:hover {

@@ -19,7 +19,8 @@ const Dropdown = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef(null);
-  const dropdownId = id || name || `dropdown-${Math.random().toString(36).substring(2, 9)}`;
+  const dropdownId =
+    id || name || `dropdown-${Math.random().toString(36).substring(2, 9)}`;
   const hasError = Boolean(error);
 
   // Normalize options to [{ value, label }]
@@ -34,7 +35,9 @@ const Dropdown = ({
   });
 
   // Selected option label
-  const selectedOption = normalizedOptions.find((opt) => String(opt.value) === String(value));
+  const selectedOption = normalizedOptions.find(
+    (opt) => String(opt.value) === String(value),
+  );
   const displayLabel = selectedOption ? selectedOption.label : "";
 
   // Close dropdown on outside click
@@ -112,7 +115,9 @@ const Dropdown = ({
           aria-expanded={isOpen}
           disabled={disabled}
         >
-          <span className={`ui-dropdown-label ${!displayLabel ? "ui-placeholder" : ""}`}>
+          <span
+            className={`ui-dropdown-label ${!displayLabel ? "ui-placeholder" : ""}`}
+          >
             {displayLabel || placeholder}
           </span>
           <span className={`ui-dropdown-chevron ${isOpen ? "ui-rotated" : ""}`}>
@@ -175,7 +180,9 @@ const Dropdown = ({
         </div>
       )}
 
-      {!hasError && helperText && <div className="ui-helper-text">{helperText}</div>}
+      {!hasError && helperText && (
+        <div className="ui-helper-text">{helperText}</div>
+      )}
     </div>
   );
 };

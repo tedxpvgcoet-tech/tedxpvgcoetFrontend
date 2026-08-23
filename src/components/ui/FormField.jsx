@@ -1,7 +1,12 @@
 import React from "react";
 import "./ui.css";
 
-export const FormGrid = ({ children, columns = 2, className = "", style = {} }) => {
+export const FormGrid = ({
+  children,
+  columns = 2,
+  className = "",
+  style = {},
+}) => {
   return (
     <div
       className={`ui-form-grid ${className}`}
@@ -56,7 +61,9 @@ export const FormField = ({
         </div>
       )}
 
-      {!hasError && helperText && <div className="ui-helper-text">{helperText}</div>}
+      {!hasError && helperText && (
+        <div className="ui-helper-text">{helperText}</div>
+      )}
     </div>
   );
 };

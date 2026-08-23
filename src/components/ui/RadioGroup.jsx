@@ -91,7 +91,9 @@ const RadioGroup = ({
         </div>
       )}
 
-      {!hasError && helperText && <div className="ui-helper-text">{helperText}</div>}
+      {!hasError && helperText && (
+        <div className="ui-helper-text">{helperText}</div>
+      )}
     </div>
   );
 };

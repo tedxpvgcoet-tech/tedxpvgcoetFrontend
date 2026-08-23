@@ -26,7 +26,8 @@ const Input = forwardRef(
     },
     ref,
   ) => {
-    const inputId = id || name || `input-${Math.random().toString(36).substring(2, 9)}`;
+    const inputId =
+      id || name || `input-${Math.random().toString(36).substring(2, 9)}`;
     const hasError = Boolean(error);
 
     const containerClasses = [
@@ -57,7 +58,9 @@ const Input = forwardRef(
         )}
 
         <div className="ui-input-wrapper">
-          {prefixIcon && <span className="ui-input-icon ui-input-prefix">{prefixIcon}</span>}
+          {prefixIcon && (
+            <span className="ui-input-icon ui-input-prefix">{prefixIcon}</span>
+          )}
           <input
             ref={ref}
             id={inputId}
@@ -72,11 +75,17 @@ const Input = forwardRef(
             style={inputStyle}
             aria-invalid={hasError}
             aria-describedby={
-              hasError ? `${inputId}-error` : helperText ? `${inputId}-helper` : undefined
+              hasError
+                ? `${inputId}-error`
+                : helperText
+                  ? `${inputId}-helper`
+                  : undefined
             }
             {...rest}
           />
-          {suffixIcon && <span className="ui-input-icon ui-input-suffix">{suffixIcon}</span>}
+          {suffixIcon && (
+            <span className="ui-input-icon ui-input-suffix">{suffixIcon}</span>
+          )}
         </div>
 
         {hasError && typeof error === "string" && (

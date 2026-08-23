@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 
-
 import logo from "../../assets/logos/Subscirbe-logo.webp";
 import { Input, Button, FormAlert } from "../../components/ui";
 
@@ -41,7 +40,8 @@ export default function SubscribeSection() {
 
       setStatus({
         type: "success",
-        message: "You're subscribed! We'll keep you updated with the latest ideas.",
+        message:
+          "You're subscribed! We'll keep you updated with the latest ideas.",
       });
 
       // Reset form on success

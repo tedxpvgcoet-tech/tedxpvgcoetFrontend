@@ -24,7 +24,8 @@ const Textarea = forwardRef(
     },
     ref,
   ) => {
-    const textareaId = id || name || `textarea-${Math.random().toString(36).substring(2, 9)}`;
+    const textareaId =
+      id || name || `textarea-${Math.random().toString(36).substring(2, 9)}`;
     const hasError = Boolean(error);
 
     const containerClasses = [
@@ -63,13 +64,21 @@ const Textarea = forwardRef(
           style={textareaStyle}
           aria-invalid={hasError}
           aria-describedby={
-            hasError ? `${textareaId}-error` : helperText ? `${textareaId}-helper` : undefined
+            hasError
+              ? `${textareaId}-error`
+              : helperText
+                ? `${textareaId}-helper`
+                : undefined
           }
           {...rest}
         />
 
         {hasError && typeof error === "string" && (
-          <div id={`${textareaId}-error`} className="ui-error-text" role="alert">
+          <div
+            id={`${textareaId}-error`}
+            className="ui-error-text"
+            role="alert"
+          >
             {error}
           </div>
         )}

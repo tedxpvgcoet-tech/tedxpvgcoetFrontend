@@ -18,11 +18,15 @@ const Checkbox = forwardRef(
     },
     ref,
   ) => {
-    const checkboxId = id || name || `checkbox-${Math.random().toString(36).substring(2, 9)}`;
+    const checkboxId =
+      id || name || `checkbox-${Math.random().toString(36).substring(2, 9)}`;
     const hasError = Boolean(error);
 
     return (
-      <div className={`ui-form-field ${hasError ? "ui-has-error" : ""} ${className}`} style={style}>
+      <div
+        className={`ui-form-field ${hasError ? "ui-has-error" : ""} ${className}`}
+        style={style}
+      >
         <label htmlFor={checkboxId} className="ui-checkbox-container">
           <input
             ref={ref}
@@ -55,7 +59,14 @@ const Checkbox = forwardRef(
           {label && (
             <span className="ui-checkbox-label">
               {label}
-              {required && <span className="ui-label-required" style={{ marginLeft: "4px" }}>*</span>}
+              {required && (
+                <span
+                  className="ui-label-required"
+                  style={{ marginLeft: "4px" }}
+                >
+                  *
+                </span>
+              )}
             </span>
           )}
         </label>

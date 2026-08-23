@@ -4,13 +4,7 @@ import backgroundVideo from "../assets/backgrounds/background.mp4";
 
 import FooterSection from "../sections/Common/FooterSection";
 import { FiExternalLink } from "react-icons/fi";
-import {
-  Input,
-  Textarea,
-  Button,
-  FormAlert,
-  FormGrid,
-} from "../components/ui";
+import { Input, Textarea, Button, FormAlert, FormGrid } from "../components/ui";
 
 const SpeakerForm = () => {
   const [formData, setFormData] = useState({
@@ -75,7 +69,8 @@ const SpeakerForm = () => {
 
       setStatus({
         type: "success",
-        message: "Thank you! Your speaker nomination has been submitted successfully.",
+        message:
+          "Thank you! Your speaker nomination has been submitted successfully.",
       });
 
       // Reset form on success
@@ -101,7 +96,8 @@ const SpeakerForm = () => {
       console.error("Submission error:", error);
       setStatus({
         type: "error",
-        message: error.message || "Failed to submit nomination. Please try again.",
+        message:
+          error.message || "Failed to submit nomination. Please try again.",
       });
     } finally {
       setSubmitting(false);
@@ -338,7 +334,13 @@ const SpeakerForm = () => {
                 value={formData.portfolio}
                 onChange={handleChange}
               />
-              <div style={{ display: "flex", alignItems: "flex-end", marginBottom: "1.25rem" }}>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "flex-end",
+                  marginBottom: "1.25rem",
+                }}
+              >
                 <Button
                   type="submit"
                   variant="primary"

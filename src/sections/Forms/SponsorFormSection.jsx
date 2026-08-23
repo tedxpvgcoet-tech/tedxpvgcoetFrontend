@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-
 import {
   Input,
   Dropdown,
@@ -74,7 +73,8 @@ const SponsorForm = () => {
 
       setStatus({
         type: "success",
-        message: "Thank you for your interest! Our sponsorship team will contact you shortly.",
+        message:
+          "Thank you for your interest! Our sponsorship team will contact you shortly.",
       });
 
       setFormData({

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { FaStar } from "react-icons/fa";
 
-
 import {
   Input,
   Textarea,
@@ -35,7 +34,8 @@ const SponsorFeedback = () => {
     if (!consent) {
       setStatus({
         type: "warning",
-        message: "Please agree to the contact consent before submitting feedback.",
+        message:
+          "Please agree to the contact consent before submitting feedback.",
       });
       return;
     }
