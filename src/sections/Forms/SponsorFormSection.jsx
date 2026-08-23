@@ -1,5 +1,15 @@
 import { useState } from "react";
-import "./SponsorFormSection.css";
+
+
+import {
+  Input,
+  Dropdown,
+  RadioGroup,
+  Checkbox,
+  Button,
+  FormAlert,
+  FormGrid,
+} from "../../components/ui";
 
 const SponsorForm = () => {
   const [formData, setFormData] = useState({
@@ -17,6 +27,7 @@ const SponsorForm = () => {
 
   const [submitting, setSubmitting] = useState(false);
   const [consentGiven, setConsentGiven] = useState(false);
+  const [status, setStatus] = useState({ type: "", message: "" });
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -36,9 +47,16 @@ const SponsorForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!consentGiven) return;
+    if (!consentGiven) {
+      setStatus({
+        type: "warning",
+        message: "Please provide consent to be contacted before submitting.",
+      });
+      return;
+    }
 
     setSubmitting(true);
+    setStatus({ type: "", message: "" });
 
     try {
       const res = await fetch("https://www.backend.tedxpvgcoet.in/sponsor", {
@@ -53,6 +71,11 @@ const SponsorForm = () => {
         const data = await res.json();
         throw new Error(data.error || "Submission failed.");
       }
+
+      setStatus({
+        type: "success",
+        message: "Thank you for your interest! Our sponsorship team will contact you shortly.",
+      });
 
       setFormData({
         name: "",
@@ -69,48 +92,79 @@ const SponsorForm = () => {
       setConsentGiven(false);
     } catch (error) {
       console.error("Submission error:", error);
+      setStatus({
+        type: "error",
+        message: error.message || "Something went wrong. Please try again.",
+      });
     } finally {
       setSubmitting(false);
     }
   };
 
+  const sponsorshipTiers = [
+    "Title Sponsor",
+    "Co-Sponsor",
+    "Gifting Partner",
+    "Media Partner",
+  ];
+
+  const rangeOptions = [
+    { label: "₹10,000 - ₹50,000", value: "10k-50k" },
+    { label: "₹50,000 - ₹1,00,000", value: "50k-1lakh" },
+    { label: "₹1,00,000+", value: "1lakh+" },
+  ];
+
   return (
     <main className="form-page-sponsor">
       <div className="form-inner-sponsor">
         <h1>Partner With Us</h1>
-        <form className="sponsor-form" onSubmit={handleSubmit}>
-          <div className="full-width-sponsor">
-            <input
-              type="text"
-              name="name"
-              placeholder="Full Name"
-              required
-              value={formData.name}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="full-width-sponsor">
-            <input
-              type="text"
-              name="organization"
-              placeholder="Organization / Company Name"
-              required
-              value={formData.organization}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="full-width-sponsor">
-            <input
-              type="text"
-              name="designation"
-              placeholder="Designation"
-              required
-              value={formData.designation}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="two-col-sponsor">
-            <input
+
+        {status.message && (
+          <FormAlert
+            type={status.type}
+            message={status.message}
+            onClose={() => setStatus({ type: "", message: "" })}
+            scrollIntoView
+          />
+        )}
+
+        <form className="sponsor-form-container" onSubmit={handleSubmit}>
+          <Input
+            label="Full Name"
+            type="text"
+            name="name"
+            placeholder="Full Name"
+            required
+            value={formData.name}
+            onChange={handleChange}
+            fullWidth
+          />
+
+          <Input
+            label="Organization / Company Name"
+            type="text"
+            name="organization"
+            placeholder="Organization / Company Name"
+            required
+            value={formData.organization}
+            onChange={handleChange}
+            fullWidth
+          />
+
+          <Input
+            label="Designation"
+            type="text"
+            name="designation"
+            placeholder="Designation"
+            required
+            value={formData.designation}
+            onChange={handleChange}
+            fullWidth
+          />
+
+          <FormGrid>
+            <Input
+              label="Email Address"
               type="email"
               name="email"
               placeholder="Email Address"
@@ -118,7 +172,8 @@ const SponsorForm = () => {
               value={formData.email}
               onChange={handleChange}
             />
-            <input
+            <Input
+              label="Phone Number"
               type="text"
               name="phone_number"
               placeholder="Phone Number"
@@ -126,90 +181,80 @@ const SponsorForm = () => {
               value={formData.phone_number}
               onChange={handleChange}
             />
-          </div>
-          <div className="full-width-sponsor">
-            <input
-              type="url"
-              name="link"
-              placeholder="Website / Social Media Links"
-              required
-              value={formData.link}
+          </FormGrid>
+
+          <Input
+            label="Website / Social Media Links"
+            type="url"
+            name="link"
+            placeholder="https://..."
+            required
+            value={formData.link}
+            onChange={handleChange}
+            fullWidth
+          />
+
+          <RadioGroup
+            label="Type of Partnership Interested In"
+            name="tier"
+            value={formData.tier}
+            onChange={handleChange}
+            options={sponsorshipTiers}
+            required
+            fullWidth
+          />
+
+          <Dropdown
+            label="Sponsorship Budget Range"
+            name="range"
+            value={formData.range}
+            onChange={handleChange}
+            options={rangeOptions}
+            placeholder="Select Sponsorship Range..."
+            required
+            fullWidth
+          />
+
+          <Input
+            label="What would you expect in return?"
+            type="text"
+            name="expectations"
+            placeholder="What would you expect in return?"
+            required
+            value={formData.expectations}
+            onChange={handleChange}
+            fullWidth
+          />
+
+          <div style={{ margin: "1rem 0" }}>
+            <Checkbox
+              name="have_sponsored_before"
+              label="Have you sponsored similar events before?"
+              checked={formData.have_sponsored_before === "Yes"}
               onChange={handleChange}
             />
-          </div>
-          <div className="full-width-sponsor checkbox-group">
-            <label>Type of Partnership Interested In:</label>
-            <div>
-              {[
-                "Title Sponsor",
-                "Co-Sponsor",
-                "Gifting Partner",
-                "Media Partner",
-              ].map((type) => (
-                <label key={type}>
-                  <input
-                    type="radio"
-                    name="tier"
-                    value={type}
-                    required
-                    checked={formData.tier === type}
-                    onChange={handleChange}
-                  />{" "}
-                  {type}
-                </label>
-              ))}
-            </div>
-          </div>
-          <div className="full-width-sponsor">
-            <select
-              name="range"
+
+            <Checkbox
+              name="consent"
+              id="sponsor-consent"
+              label="I consent to be contacted regarding sponsorship."
               required
-              value={formData.range}
-              onChange={handleChange}
-            >
-              <option value="">Select Sponsorship Range</option>
-              <option value="10k-50k">₹10,000 - ₹50,000</option>
-              <option value="50k-1lakh">₹50,000 - ₹1,00,000</option>
-              <option value="1lakh+">₹1,00,000+</option>
-            </select>
-          </div>
-          <div className="full-width-sponsor">
-            <input
-              type="text"
-              name="expectations"
-              placeholder="What would you expect in return?"
-              required
-              value={formData.expectations}
-              onChange={handleChange}
+              checked={consentGiven}
+              onChange={(e) => setConsentGiven(e.target.checked)}
             />
           </div>
 
-          <div className="full-width-sponsor checkbox-alignment-container">
-            <label className="checkbox-row">
-              <input
-                type="checkbox"
-                name="have_sponsored_before"
-                checked={formData.have_sponsored_before === "Yes"}
-                onChange={handleChange}
-              />
-              <span>Have you sponsored similar events before?</span>
-            </label>
-            <label className="checkbox-row">
-              <input
-                type="checkbox"
-                required
-                checked={consentGiven}
-                onChange={(e) => setConsentGiven(e.target.checked)}
-              />
-              <span>I consent to be contacted regarding sponsorship.</span>
-            </label>
-          </div>
-
-          <div className="full-width-sponsor">
-            <button type="submit" disabled={submitting || !consentGiven}>
-              {submitting ? "Submitting..." : "Submit"}
-            </button>
-          </div>
+          <Button
+            type="submit"
+            variant="primary"
+            size="lg"
+            fullWidth
+            loading={submitting}
+            loadingText="Submitting..."
+            disabled={submitting || !consentGiven}
+          >
+            Submit Partnership Enquiry
+          </Button>
         </form>
       </div>
     </main>

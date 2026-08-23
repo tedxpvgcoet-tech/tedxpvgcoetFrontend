@@ -1,9 +1,16 @@
 import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet";
 import backgroundVideo from "../assets/backgrounds/background.mp4";
-import "./SpeakerForm.css";
+
 import FooterSection from "../sections/Common/FooterSection";
 import { FiExternalLink } from "react-icons/fi";
+import {
+  Input,
+  Textarea,
+  Button,
+  FormAlert,
+  FormGrid,
+} from "../components/ui";
 
 const SpeakerForm = () => {
   const [formData, setFormData] = useState({
@@ -26,6 +33,7 @@ const SpeakerForm = () => {
   });
 
   const [submitting, setSubmitting] = useState(false);
+  const [status, setStatus] = useState({ type: "", message: "" });
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -48,6 +56,7 @@ const SpeakerForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitting(true);
+    setStatus({ type: "", message: "" });
 
     try {
       const res = await fetch("https://www.backend.tedxpvgcoet.in/speaker", {
@@ -63,6 +72,11 @@ const SpeakerForm = () => {
       if (!res.ok) {
         throw new Error(data.error || "Submission failed.");
       }
+
+      setStatus({
+        type: "success",
+        message: "Thank you! Your speaker nomination has been submitted successfully.",
+      });
 
       // Reset form on success
       setFormData({
@@ -85,6 +99,10 @@ const SpeakerForm = () => {
       });
     } catch (error) {
       console.error("Submission error:", error);
+      setStatus({
+        type: "error",
+        message: error.message || "Failed to submit nomination. Please try again.",
+      });
     } finally {
       setSubmitting(false);
     }
@@ -141,20 +159,31 @@ const SpeakerForm = () => {
         </div>
         <div className="form-inner">
           <h1>Registrations have been closed for TEDxPVGCOET2025</h1>
-          <form className="speaker-form" onSubmit={handleSubmit}>
-            <div className="full-width">
-              <input
-                type="text"
-                name="name"
-                placeholder="Your Full Name"
-                required
-                value={formData.name}
-                onChange={handleChange}
-              />
-            </div>
 
-            <div className="two-col">
-              <input
+          {status.message && (
+            <FormAlert
+              type={status.type}
+              message={status.message}
+              onClose={() => setStatus({ type: "", message: "" })}
+              scrollIntoView
+            />
+          )}
+
+          <form className="speaker-form-container" onSubmit={handleSubmit}>
+            <Input
+              label="Full Name"
+              type="text"
+              name="name"
+              placeholder="Your Full Name"
+              required
+              value={formData.name}
+              onChange={handleChange}
+              fullWidth
+            />
+
+            <FormGrid>
+              <Input
+                label="Age"
                 type="number"
                 name="age"
                 placeholder="Age"
@@ -162,7 +191,8 @@ const SpeakerForm = () => {
                 value={formData.age}
                 onChange={handleChange}
               />
-              <input
+              <Input
+                label="Domain"
                 type="text"
                 name="domain"
                 placeholder="Domain"
@@ -170,114 +200,98 @@ const SpeakerForm = () => {
                 value={formData.domain}
                 onChange={handleChange}
               />
-            </div>
+            </FormGrid>
 
-            <div className="full-width">
-              <input
-                type="text"
-                name="organization"
-                placeholder="Organization"
-                required
-                value={formData.organization}
-                onChange={handleChange}
-              />
-            </div>
+            <Input
+              label="Organization"
+              type="text"
+              name="organization"
+              placeholder="Organization"
+              required
+              value={formData.organization}
+              onChange={handleChange}
+              fullWidth
+            />
 
-            <div className="full-width">
-              <input
-                type="text"
-                name="current_location"
-                placeholder="Current Location/City"
-                required
-                value={formData.current_location}
-                onChange={handleChange}
-              />
-            </div>
+            <Input
+              label="Current Location / City"
+              type="text"
+              name="current_location"
+              placeholder="Current Location/City"
+              required
+              value={formData.current_location}
+              onChange={handleChange}
+              fullWidth
+            />
 
-            <div className="full-width">
-              <input
-                type="text"
-                name="professional_affiliation"
-                placeholder="Professional Affiliation/Title"
-                required
-                value={formData.professional_affiliation}
-                onChange={handleChange}
-              />
-            </div>
+            <Input
+              label="Professional Affiliation / Title"
+              type="text"
+              name="professional_affiliation"
+              placeholder="Professional Affiliation/Title"
+              required
+              value={formData.professional_affiliation}
+              onChange={handleChange}
+              fullWidth
+            />
 
-            <div className="full-width">
-              <h3>
-                How do you think your talk will impact or inspire the audience?
-              </h3>
-              <br />
-              <input
-                name="audience_impact"
-                placeholder="Answer"
-                required
-                value={formData.audience_impact}
-                onChange={handleChange}
-              />
-            </div>
+            <Textarea
+              label="How do you think your talk will impact or inspire the audience?"
+              name="audience_impact"
+              placeholder="Provide details on audience impact"
+              required
+              rows={3}
+              value={formData.audience_impact}
+              onChange={handleChange}
+              fullWidth
+            />
 
-            <div className="full-width">
-              <h3>
-                Speaker's Bio (Briefly describe your professional background and
-                current occupation)
-              </h3>
-              <br />
-              <input
-                name="speaker_bio"
-                placeholder="Answer"
-                required
-                value={formData.speaker_bio}
-                onChange={handleChange}
-              />
-            </div>
+            <Textarea
+              label="Speaker's Bio (Briefly describe your professional background and current occupation)"
+              name="speaker_bio"
+              placeholder="Brief professional biography"
+              required
+              rows={3}
+              value={formData.speaker_bio}
+              onChange={handleChange}
+              fullWidth
+            />
 
-            <div className="full-width">
-              <h3>
-                Have you given a TED or TEDx talk before? If yes, please provide
-                details.
-              </h3>
-              <br />
-              <input
-                name="previous_ted_talk"
-                placeholder="Answer"
-                required
-                value={formData.previous_ted_talk}
-                onChange={handleChange}
-              />
-            </div>
+            <Textarea
+              label="Have you given a TED or TEDx talk before? If yes, please provide details."
+              name="previous_ted_talk"
+              placeholder="Previous TED/TEDx talks or 'None'"
+              required
+              rows={2}
+              value={formData.previous_ted_talk}
+              onChange={handleChange}
+              fullWidth
+            />
 
-            <div className="full-width">
-              <h3>
-                How will your talk align with this year's TEDxPVGCOET theme
-                "Drishti"?
-              </h3>
-              <br />
-              <input
-                name="theme_alignment"
-                placeholder="Answer"
-                required
-                value={formData.theme_alignment}
-                onChange={handleChange}
-              />
-            </div>
+            <Textarea
+              label="How will your talk align with this year's TEDxPVGCOET theme 'Drishti'?"
+              name="theme_alignment"
+              placeholder="Describe theme alignment"
+              required
+              rows={3}
+              value={formData.theme_alignment}
+              onChange={handleChange}
+              fullWidth
+            />
 
-            <div className="full-width">
-              <h3>Any Additional Comments or Information:</h3>
-              <br />
-              <input
-                name="additional_info"
-                placeholder="Answer"
-                required
-                value={formData.additional_info}
-                onChange={handleChange}
-              />
-            </div>
+            <Textarea
+              label="Any Additional Comments or Information:"
+              name="additional_info"
+              placeholder="Any additional details..."
+              rows={2}
+              value={formData.additional_info}
+              onChange={handleChange}
+              fullWidth
+            />
 
-            <div className="two-col">
-              <input
+            <FormGrid>
+              <Input
+                label="Phone Number"
                 type="text"
                 name="phone_number"
                 placeholder="Phone Number"
@@ -285,7 +299,8 @@ const SpeakerForm = () => {
                 value={formData.phone_number}
                 onChange={handleChange}
               />
-              <input
+              <Input
+                label="Email Address"
                 type="email"
                 name="email"
                 placeholder="Email Address"
@@ -293,37 +308,49 @@ const SpeakerForm = () => {
                 value={formData.email}
                 onChange={handleChange}
               />
-            </div>
+            </FormGrid>
 
-            <div className="two-col">
-              <input
+            <FormGrid>
+              <Input
+                label="Instagram Profile"
                 type="url"
                 name="instagram"
-                placeholder="Instagram Profile URL"
+                placeholder="https://instagram.com/..."
                 value={formData.instagram}
                 onChange={handleChange}
               />
-              <input
+              <Input
+                label="LinkedIn Profile"
                 type="url"
                 name="linkedin"
-                placeholder="LinkedIn Profile URL"
+                placeholder="https://linkedin.com/in/..."
                 value={formData.linkedin}
                 onChange={handleChange}
               />
-            </div>
+            </FormGrid>
 
-            <div className="two-col">
-              <input
+            <FormGrid>
+              <Input
+                label="Portfolio / Website Link"
                 type="url"
                 name="portfolio"
-                placeholder="Portfolio Link"
+                placeholder="https://..."
                 value={formData.portfolio}
                 onChange={handleChange}
               />
-              <button type="submit" disabled={submitting}>
-                {submitting ? "Submitting..." : "Submit"}
-              </button>
-            </div>
+              <div style={{ display: "flex", alignItems: "flex-end", marginBottom: "1.25rem" }}>
+                <Button
+                  type="submit"
+                  variant="primary"
+                  size="md"
+                  fullWidth
+                  loading={submitting}
+                  loadingText="Submitting..."
+                >
+                  Submit Nomination
+                </Button>
+              </div>
+            </FormGrid>
           </form>
         </div>
       </main>
