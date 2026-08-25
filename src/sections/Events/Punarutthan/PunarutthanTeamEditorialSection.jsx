@@ -50,10 +50,7 @@ const teamMembers = [
 
 const PunarutthanTeamEditorialSection = () => {
   return (
-    <PunarutthanTeamGrid
-      title="Team Editorial"
-      teamMembers={teamMembers}
-    />
+    <PunarutthanTeamGrid title="Team Editorial" teamMembers={teamMembers} />
   );
 };
 

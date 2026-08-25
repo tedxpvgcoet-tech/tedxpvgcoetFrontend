@@ -20,11 +20,7 @@ const PunarutthanTeamGrid = ({ title, teamMembers }) => {
         <div className="team-grid">
           {membersToRender.map((member) => (
             <div className="team-card" key={member.name}>
-              <img
-                src={member.img}
-                alt={member.name}
-                loading="lazy"
-              />
+              <img src={member.img} alt={member.name} loading="lazy" />
 
               <div className="team-info">
                 <h3>{member.name}</h3>
