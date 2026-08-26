@@ -38,7 +38,7 @@ const Core = () => {
       </div>
       <div className="core-text">
         <p className="core-description">
-          They form the central pillar of TEDxPVGCOET. They oversee the vision,
+          They form the central pillar of TEDxPVGCOETM. They oversee the vision,
           ensure inter-team coordination, and maintain alignment with the TEDx
           philosophy. Their role is both strategic and supportive- guiding
           planning, enabling collaboration, and upholding the event’s standards.

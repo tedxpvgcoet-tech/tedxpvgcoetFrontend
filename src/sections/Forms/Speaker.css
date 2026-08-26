@@ -48,9 +48,17 @@
   border-radius: 12px;
 }
 
-.speaker-learn-btn,
-.speaker-back-btn {
+.speaker-front-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
   margin-top: 1rem;
+}
+
+.speaker-learn-btn,
+.speaker-back-btn,
+.speaker-watch-btn {
   font-size: 1rem;
   color: white;
   background: transparent;
@@ -59,11 +67,26 @@
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
 .speaker-learn-btn:hover,
-.speaker-back-btn:hover {
+.speaker-back-btn:hover,
+.speaker-watch-btn:hover {
   background: red;
+  color: black;
+}
+
+.watch-icon {
+  font-size: 1.2rem;
+  color: red;
+  transition: color 0.3s ease;
+}
+
+.speaker-watch-btn:hover .watch-icon {
   color: black;
 }
 
@@ -147,10 +170,17 @@
     flex: 1 1 calc(50% - 2rem);
     max-width: 500px;
     position: relative;
+    display: flex;
+    flex-direction: column;
   }
   .speaker-photo,
   .speaker-infoe {
     min-height: 450px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
   }
   .speaker-photo {
     animation-name: slideInFromLeft;
@@ -159,11 +189,21 @@
     animation-name: slideInFromRight;
   }
   .speaker-image {
-    max-width: 400px;
+    /*max-width: 400px;*/
+    height: 380px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    margin-bottom: 0;
   }
   .speaker-description {
     font-size: 1.2rem;
     line-height: 1.6;
+  }
+
+  .speaker-front-actions {
+    margin-top: auto;
+    padding-top: 1rem;
   }
 }
 
@@ -189,4 +229,81 @@
 .social-icon-link:hover {
   color: #e60023; /* TED Red */
   transform: scale(1.1);
+}
+
+/* --- Action Buttons --- */
+.speaker-action-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+/* --- Video Modal --- */
+.speaker-video-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: modalFadeIn 0.3s ease;
+}
+
+.speaker-video-content {
+  position: relative;
+  width: 90%;
+  max-width: 900px;
+  aspect-ratio: 16 / 9;
+  background: black;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.speaker-video-close {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.speaker-video-close:hover {
+  color: #e60023;
+}
+
+.speaker-iframe {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+}
+
+/* Specific styling for Instagram Reels (vertical aspect ratio) */
+.speaker-iframe-reel {
+  width: 100%;
+  max-width: 400px;
+  height: 100%;
+  border-radius: 8px;
+  background: white;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

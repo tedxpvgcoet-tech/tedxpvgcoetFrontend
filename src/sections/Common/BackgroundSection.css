@@ -4,6 +4,7 @@
   height: 100vh;
   overflow: hidden;
   font-family: "Inter", sans-serif;
+  z-index: 1; /* Creates a stacking context */
 }
 
 .hero-video1 {

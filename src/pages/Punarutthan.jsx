@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import PunarutthanHeroSection from "../sections/Events/Punarutthan/PunarutthanHeroSection";
 import PunarutthanTalksSection from "../sections/Events/Punarutthan/PunarutthanTalksSection";
 import PunarutthanTeamSection from "../sections/Events/Punarutthan/PunarutthanTeamSection";
@@ -12,6 +13,9 @@ import PunarutthanTeamDesignandProductionSection from "../sections/Events/Punaru
 const Punarutthan = () => {
   return (
     <>
+      <Helmet defer={false}>
+        <title>Punarutthan | TEDxPVGCOET</title>
+      </Helmet>
       <div id="page-top" />
       <PunarutthanHeroSection />
       <PunarutthanTalksSection />

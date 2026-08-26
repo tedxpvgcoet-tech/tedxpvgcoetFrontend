@@ -45,7 +45,7 @@ const Technical = () => {
       </div>
       <div className="technical-text" ref={textRef}>
         <p className="technical-description">
-          The Technical Team powers the digital infrastructure of TEDxPVGCOET.
+          The Technical Team powers the digital infrastructure of TEDxPVGCOETM.
           They manage the website, AV systems, livestreams, and real-time
           troubleshooting to ensure a smooth and glitch-free experience.{" "}
         </p>

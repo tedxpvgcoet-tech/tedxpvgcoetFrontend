@@ -13,26 +13,30 @@ const FooterSection = () => {
         {/* Left Section: Logo, Description, Icons */}
         <div className="footer-left">
           <h2 className="footer-logo">
-            TED<span className="highlight-red">x</span>PVGCOET
+            TED<span className="highlight-red">x</span>PVGCOETM
           </h2>
+
           <p className="footer-description">
             This independent TEDx event is operated under licence from TED.
           </p>
+
           <div className="footer-icons">
             <a
-              href="https://www.instagram.com/tedxpvgcoet/?hl=en"
+              href="https://www.instagram.com/tedxpvgcoetm/?hl=en"
               target="_blank"
               rel="noreferrer"
             >
               <FaInstagram />
             </a>
+
             <a
-              href="https://www.linkedin.com/company/tedxpvgcoet/?originalSubdomain=in"
+              href="https://www.linkedin.com/company/tedxpvgcoetm/?originalSubdomain=in"
               target="_blank"
               rel="noreferrer"
             >
               <FaLinkedin />
             </a>
+
             <a
               href="https://x.com/TEDxPVGCOET"
               target="_blank"
@@ -61,13 +65,13 @@ const FooterSection = () => {
             <p>
               <strong>Contact Us:</strong>
               <br />
-              <strong>Abhijeet Thore</strong>
+              <strong>Omkar Hokarne</strong>
               <br />
               (Licensee & Organizer)
               <br />
-              +91 70581 82571
+              +91 8600089167
               <br />
-              abhithore2704@gmail.com
+              omkarhokarne23@gmail.com
             </p>
           </div>
         </div>

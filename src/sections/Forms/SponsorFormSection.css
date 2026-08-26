@@ -5,6 +5,7 @@
   overflow: hidden;
   font-family: "Inter", sans-serif;
   max-width: 100%;
+  z-index: 1; /* Creates a stacking context */
 }
 
 .hero-video-sponsor {
