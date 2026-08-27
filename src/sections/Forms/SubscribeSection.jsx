@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import "./SubscribeSection.css";
+
 import logo from "../../assets/logos/Subscirbe-logo.webp";
+import { Input, Button, FormAlert } from "../../components/ui";
 
 export default function SubscribeSection() {
   const [formData, setFormData] = useState({
@@ -8,6 +9,7 @@ export default function SubscribeSection() {
     email: "",
   });
   const [submitting, setSubmitting] = useState(false);
+  const [status, setStatus] = useState({ type: "", message: "" });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,6 +22,7 @@ export default function SubscribeSection() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitting(true);
+    setStatus({ type: "", message: "" });
 
     try {
       const res = await fetch("https://www.backend.tedxpvgcoet.in/subscriber", {
@@ -35,6 +38,12 @@ export default function SubscribeSection() {
         throw new Error(data.error || "Submission failed.");
       }
 
+      setStatus({
+        type: "success",
+        message:
+          "You're subscribed! We'll keep you updated with the latest ideas.",
+      });
+
       // Reset form on success
       setFormData({
         name: "",
@@ -42,6 +51,10 @@ export default function SubscribeSection() {
       });
     } catch (err) {
       console.error("Subscription error:", err);
+      setStatus({
+        type: "error",
+        message: err.message || "Failed to subscribe. Please try again.",
+      });
     } finally {
       setSubmitting(false);
     }
@@ -62,34 +75,50 @@ export default function SubscribeSection() {
           Straight to You
         </h2>
 
+        {status.message && (
+          <FormAlert
+            type={status.type}
+            message={status.message}
+            onClose={() => setStatus({ type: "", message: "" })}
+            autoDismissMs={6000}
+          />
+        )}
+
         <form className="subscribe-form" onSubmit={handleSubmit}>
-          <input
-            type="text"
-            name="name"
-            placeholder="Enter your name"
-            className="subscribe-input"
-            required
-            value={formData.name}
-            onChange={handleChange}
-          />
+          <div className="subscribe-input-group">
+            <Input
+              type="text"
+              name="name"
+              placeholder="Enter your name"
+              required
+              value={formData.name}
+              onChange={handleChange}
+              style={{ marginBottom: 0 }}
+            />
+          </div>
 
-          <input
-            type="email"
-            name="email"
-            placeholder="Enter your email"
-            className="subscribe-input"
-            required
-            value={formData.email}
-            onChange={handleChange}
-          />
+          <div className="subscribe-input-group">
+            <Input
+              type="email"
+              name="email"
+              placeholder="Enter your email"
+              required
+              value={formData.email}
+              onChange={handleChange}
+              style={{ marginBottom: 0 }}
+            />
+          </div>
 
-          <button
+          <Button
             type="submit"
-            className="subscribe-button"
-            disabled={submitting}
+            variant="primary"
+            size="md"
+            loading={submitting}
+            loadingText="Subscribing..."
+            className="subscribe-btn-override"
           >
-            {submitting ? "Subscribing..." : "Receive Ideas"}
-          </button>
+            Receive Ideas
+          </Button>
         </form>
       </div>
     </section>
