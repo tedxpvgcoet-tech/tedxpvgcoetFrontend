@@ -87,12 +87,14 @@
   color: black;
   font-weight: 500;
   font-size: 1rem;
+}
+
+.footer-links a {
   cursor: pointer;
   transition: color 0.3s ease;
 }
 
-.footer-links a:hover,
-.footer-links p:hover {
+.footer-links a:hover {
   color: #ccc;
 }
 
