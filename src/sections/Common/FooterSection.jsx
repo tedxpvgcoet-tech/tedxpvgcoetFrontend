@@ -69,9 +69,9 @@ const FooterSection = () => {
               <br />
               (Licensee & Organizer)
               <br />
-              <a href="tel: +91 8600089167">+918600089167</a>
+              <a href="tel:+918600089167">+91 8600089167</a>
               <br />
-              <a href="mailto:omkarhokarne23@gmail.com">
+              <a href="mailto:omkarhokarne23@gmail.com" target="_blank" rel="noreferrer">
                 omkarhokarne23@gmail.com
               </a>
             </p>
