@@ -1,13 +1,10 @@
 .past-event-section {
   background-color: black;
   color: white;
+  padding: 4rem 2rem;
   position: relative;
   overflow: hidden;
   font-family: "Inter", sans-serif;
-}
-
-.past-event-section-dum {
-  padding: 4rem 2rem;
 }
 
 .past-event-content {
@@ -61,6 +58,7 @@
   text-decoration: none;
   font-weight: 600;
   transition: background-color 0.3s ease;
+  display: inline-block;
 }
 
 .see-more:hover {
@@ -77,39 +75,35 @@
   .event-details {
     max-width: 90%;
   }
-
-  .wave-text {
-    font-size: 0.9rem;
-    top: 5px;
-  }
 }
 
-@keyframes slideInLeft {
-  0% {
-    opacity: 0;
-    transform: translateX(-50px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideInRight {
-  0% {
-    opacity: 0;
-    transform: translateX(50px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
+/* Scroll Animations */
 .slide-in-left {
   animation: slideInLeft 1s ease-out forwards;
 }
 
 .slide-in-right {
   animation: slideInRight 1s ease-out forwards;
+}
+
+@keyframes slideInLeft {
+  0% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  0% {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }

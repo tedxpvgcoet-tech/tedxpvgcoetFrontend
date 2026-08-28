@@ -1,17 +1,14 @@
-// src/pages/Curation.jsx
 import React from "react";
-import "./DesignCard.css";
-import "../../pages/Team.css";
+import TeamGrid from "./TeamGrid";
 
-const curationTeam = [
+const designTeam = [
   {
     name: "Varun Tammewar",
     role: "Design & Production Head",
     image: require("../../assets/B-W Individual/dnp_varun (1)-small.webp"),
     social: {
-      linkedin:
-        "https://www.linkedin.com/in/varun-tammewar-41a191225?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-      instagram: "https://www.instagram.com/varruunnnnnn?igsh=MXVyNzlwbnZyeDMy",
+      linkedin: "https://www.linkedin.com/in/varun-tammewar-41a191225",
+      instagram: "https://www.instagram.com/varruunnnnnn",
     },
   },
   {
@@ -20,8 +17,7 @@ const curationTeam = [
     image: require("../../assets/B-W Individual/Dnp_laksh-small.webp"),
     social: {
       linkedin: "https://in.linkedin.com/in/lakshmikant-chaudhari-506453285",
-      instagram:
-        "https://www.instagram.com/laksh.me.kant_c?igsh=OG5tdW5lYXhjNGdi",
+      instagram: "https://www.instagram.com/laksh.me.kant_c",
     },
   },
   {
@@ -30,8 +26,7 @@ const curationTeam = [
     image: require("../../assets/B-W Individual/dnp_anuj-small.webp"),
     social: {
       linkedin: "https://www.linkedin.com/in/anuj-kale-672532291",
-      instagram:
-        "https://www.instagram.com/anujxkale?igsh=MTJ3emFsa200YXdlYg==",
+      instagram: "https://www.instagram.com/anujxkale",
     },
   },
   {
@@ -39,9 +34,8 @@ const curationTeam = [
     role: "Design & Production Team Member",
     image: require("../../assets/B-W Individual/Dnp_sutirth-small.webp"),
     social: {
-      linkedin:
-        "https://www.linkedin.com/in/sutirthdoshi?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-      instagram: "https://www.instagram.com/sutirthdoshi?igsh=aGVvd3F0dDYxNzBo",
+      linkedin: "https://www.linkedin.com/in/sutirthdoshi",
+      instagram: "https://www.instagram.com/sutirthdoshi",
     },
   },
   {
@@ -57,78 +51,12 @@ const curationTeam = [
     role: "Design & Production Team Member",
     image: require("../../assets/B-W Individual/Dnp_avanti-small.webp"),
     social: {
-      linkedin:
-        "https://www.linkedin.com/in/avanti-satpute-b35494317?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-      instagram: "https://www.instagram.com/ss_avantii?igsh=OWI0OTVyb3kzMzg5",
+      linkedin: "https://www.linkedin.com/in/avanti-satpute-b35494317",
+      instagram: "https://www.instagram.com/ss_avantii",
     },
   },
 ];
 
-const Design = () => {
-  return (
-    <div className="curation-page team-page">
-      <div id="page-top" />
-      <div className="title-hero">
-        <h1 className="demo">DESIGN & PRODUCTION</h1>
-      </div>
-      <div className="curation-grid">
-        {curationTeam.map((member, index) => {
-          const isEvenRow = Math.floor(index / 2) % 2 === 0;
-          const renderImage = (
-            <div className="curation-img-tile" key={`${index}-img`}>
-              <img
-                src={member.image}
-                alt={member.name}
-                className="chessboard-img"
-              />
-            </div>
-          );
-
-          const renderInfo = (
-            <div className="curation-info-tile" key={`${index}-info`}>
-              <h3>{member.name}</h3>
-              <p>{member.role}</p>
-              {member.social && (
-                <div className="social-icons">
-                  {member.social.linkedin && (
-                    <a
-                      href={member.social.linkedin}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <i className="fab fa-linkedin"></i>
-                    </a>
-                  )}
-                  {member.social.instagram && (
-                    <a
-                      href={member.social.instagram}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <i className="fab fa-instagram"></i>
-                    </a>
-                  )}
-                  {member.social.website && (
-                    <a
-                      href={member.social.website}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <i className="fas fa-user"></i>
-                    </a>
-                  )}
-                </div>
-              )}
-            </div>
-          );
-
-          return isEvenRow
-            ? [renderImage, renderInfo]
-            : [renderInfo, renderImage];
-        })}
-      </div>
-    </div>
-  );
-};
+const Design = () => <TeamGrid title="DESIGN & PRODUCTION" members={designTeam} />;
 
 export default Design;
