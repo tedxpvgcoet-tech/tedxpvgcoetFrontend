@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
-import "./SpeakerForm.css";
+import "../components/ui/ui.css";
 import bgVideo from "../assets/backgrounds/background.mp4";
 import FooterSection from "../sections/Common/FooterSection";
 

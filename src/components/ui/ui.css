@@ -1,0 +1,973 @@
+/* ==========================================================================
+   TEDx Reusable Form UI Component Styles
+   ========================================================================== */
+
+:root {
+  --ui-primary: #eb0028;
+  --ui-primary-hover: #c40020;
+  --ui-primary-active: #9e0019;
+  --ui-primary-glow: rgba(235, 0, 40, 0.25);
+  --ui-bg-input: rgba(15, 15, 20, 0.65);
+  --ui-bg-card: rgba(15, 15, 20, 0.8);
+  --ui-border-default: rgba(255, 255, 255, 0.12);
+  --ui-border-focus: #eb0028;
+  --ui-border-error: #ff4444;
+  --ui-text-main: #ffffff;
+  --ui-text-muted: #a0a0a0;
+  --ui-text-label: #e0e0e0;
+  --ui-radius-sm: 6px;
+  --ui-radius-md: 8px;
+  --ui-radius-lg: 12px;
+  --ui-font-family:
+    "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --ui-transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --ui-transition-smooth: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Keyframes */
+@keyframes ui-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  15% {
+    transform: translateX(-8px);
+  }
+  30% {
+    transform: translateX(8px);
+  }
+  45% {
+    transform: translateX(-6px);
+  }
+  60% {
+    transform: translateX(6px);
+  }
+  75% {
+    transform: translateX(-3px);
+  }
+  90% {
+    transform: translateX(3px);
+  }
+}
+
+@keyframes ui-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes ui-fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ui-dropIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes ui-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   0. Unified Form Page & Hero Layouts
+   -------------------------------------------------------------------------- */
+.ui-hero-container,
+.hero-container1,
+.hero-container-sponsor {
+  position: relative;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  font-family: var(--ui-font-family);
+  max-width: 100%;
+  z-index: 1;
+}
+
+.ui-hero-video,
+.hero-video1,
+.hero-video-sponsor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.ui-form-page,
+.form-page,
+.form-page-sponsor {
+  min-height: calc(
+    100vh - (var(--footer-height, 0px) + var(--navbar-height, 0px))
+  );
+  padding: 100px 20px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.ui-form-inner,
+.form-inner,
+.form-inner-sponsor {
+  width: 100%;
+  padding: 0 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.ui-form-title,
+.form-inner h1,
+.form-inner-sponsor h1 {
+  color: #ffffff;
+  font-family: var(--ui-font-family);
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  margin-bottom: 2rem;
+  text-align: center;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* --------------------------------------------------------------------------
+   1. Form Field & Layout Wrappers
+   -------------------------------------------------------------------------- */
+.ui-form-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.25rem;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.ui-form-field.ui-col-full {
+  grid-column: 1 / -1;
+}
+
+.ui-form-field.ui-has-error .ui-input,
+.ui-form-field.ui-has-error .ui-textarea,
+.ui-form-field.ui-has-error .ui-dropdown-trigger {
+  border-color: var(--ui-border-error) !important;
+  box-shadow: 0 0 0 3px rgba(255, 68, 68, 0.15) !important;
+  animation: ui-shake 0.4s ease;
+}
+
+.ui-label {
+  font-family: var(--ui-font-family);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--ui-text-label);
+  margin-bottom: 0.45rem;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  letter-spacing: 0.2px;
+}
+
+.ui-label-required {
+  color: var(--ui-primary);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.ui-label-optional {
+  color: var(--ui-text-muted);
+  font-size: 0.78rem;
+  font-weight: 400;
+  margin-left: auto;
+}
+
+.ui-helper-text {
+  font-family: var(--ui-font-family);
+  font-size: 0.78rem;
+  color: var(--ui-text-muted);
+  margin-top: 0.35rem;
+  line-height: 1.4;
+}
+
+.ui-error-text {
+  font-family: var(--ui-font-family);
+  font-size: 0.8rem;
+  color: var(--ui-border-error);
+  margin-top: 0.4rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  animation: ui-fadeIn 0.25s ease;
+}
+
+/* --------------------------------------------------------------------------
+   2. Input & Textarea
+   -------------------------------------------------------------------------- */
+.ui-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.ui-input,
+.ui-textarea {
+  width: 100%;
+  font-family: var(--ui-font-family);
+  font-size: 0.95rem;
+  color: var(--ui-text-main);
+  background: var(--ui-bg-input);
+  border: 1px solid var(--ui-border-default);
+  border-radius: var(--ui-radius-md);
+  padding: 0.8rem 1rem;
+  box-sizing: border-box;
+  outline: none;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition:
+    border-color var(--ui-transition-fast),
+    box-shadow var(--ui-transition-fast),
+    background var(--ui-transition-fast);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.ui-input::placeholder,
+.ui-textarea::placeholder {
+  color: #777785;
+  font-weight: 400;
+}
+
+.ui-input:hover:not(:disabled),
+.ui-textarea:hover:not(:disabled) {
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.ui-input:focus,
+.ui-textarea:focus {
+  border-color: var(--ui-border-focus);
+  background: rgba(20, 20, 26, 0.85);
+  box-shadow:
+    0 0 0 3px var(--ui-primary-glow),
+    inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.ui-input:disabled,
+.ui-textarea:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.ui-input.ui-has-prefix {
+  padding-left: 2.6rem;
+}
+
+.ui-input.ui-has-suffix {
+  padding-right: 2.6rem;
+}
+
+.ui-input-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--ui-text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  font-size: 1.1rem;
+  z-index: 2;
+}
+
+.ui-input-prefix {
+  left: 0.9rem;
+}
+
+.ui-input-suffix {
+  right: 0.9rem;
+}
+
+.ui-textarea {
+  min-height: 100px;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+/* --------------------------------------------------------------------------
+   3. Dropdown / Custom Select
+   -------------------------------------------------------------------------- */
+.ui-dropdown-container {
+  position: relative;
+  width: 100%;
+  font-family: var(--ui-font-family);
+  box-sizing: border-box;
+}
+
+.ui-dropdown-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 1rem;
+  background: var(--ui-bg-input);
+  border: 1px solid var(--ui-border-default);
+  border-radius: var(--ui-radius-md);
+  color: var(--ui-text-main);
+  font-size: 0.95rem;
+  cursor: pointer;
+  box-sizing: border-box;
+  outline: none;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all var(--ui-transition-fast);
+  user-select: none;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.ui-dropdown-trigger:hover:not(.ui-disabled) {
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.ui-dropdown-trigger.ui-open {
+  border-color: var(--ui-border-focus);
+  background: rgba(20, 20, 26, 0.9);
+  box-shadow: 0 0 0 3px var(--ui-primary-glow);
+}
+
+.ui-dropdown-trigger.ui-disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.ui-dropdown-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-right: 0.5rem;
+}
+
+.ui-dropdown-label.ui-placeholder {
+  color: #777785;
+}
+
+.ui-dropdown-chevron {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--ui-transition-smooth);
+  color: var(--ui-text-muted);
+  flex-shrink: 0;
+}
+
+.ui-dropdown-chevron.ui-rotated {
+  transform: rotate(180deg);
+  color: var(--ui-primary);
+}
+
+.ui-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background: rgba(20, 20, 25, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--ui-radius-md);
+  box-shadow:
+    0 16px 36px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  max-height: 240px;
+  overflow-y: auto;
+  z-index: 1000;
+  padding: 4px;
+  box-sizing: border-box;
+  animation: ui-dropIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ui-dropdown-menu::-webkit-scrollbar {
+  width: 6px;
+}
+.ui-dropdown-menu::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+.ui-dropdown-option {
+  padding: 0.7rem 0.9rem;
+  border-radius: var(--ui-radius-sm);
+  color: #d1d5db;
+  font-size: 0.92rem;
+  cursor: pointer;
+  transition:
+    background var(--ui-transition-fast),
+    color var(--ui-transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ui-dropdown-option:hover {
+  background: rgba(255, 255, 255, 0.07);
+  color: #ffffff;
+}
+
+.ui-dropdown-option.ui-selected {
+  background: rgba(235, 0, 40, 0.15);
+  color: #ff526b;
+  font-weight: 600;
+}
+
+.ui-dropdown-empty {
+  padding: 1rem;
+  text-align: center;
+  color: var(--ui-text-muted);
+  font-size: 0.88rem;
+}
+
+/* --------------------------------------------------------------------------
+   4. Buttons
+   -------------------------------------------------------------------------- */
+.ui-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  font-family: var(--ui-font-family);
+  font-weight: 700;
+  border-radius: var(--ui-radius-md);
+  border: none;
+  cursor: pointer;
+  box-sizing: border-box;
+  text-decoration: none;
+  outline: none;
+  user-select: none;
+  transition: all var(--ui-transition-smooth);
+  letter-spacing: 0.3px;
+  position: relative;
+  overflow: hidden;
+}
+
+.ui-btn-full {
+  width: 100%;
+}
+
+/* Button Sizes */
+.ui-btn-sm {
+  padding: 0.5rem 0.9rem;
+  font-size: 0.85rem;
+  height: 36px;
+}
+
+.ui-btn-md {
+  padding: 0.75rem 1.4rem;
+  font-size: 0.95rem;
+  height: 46px;
+}
+
+.ui-btn-lg {
+  padding: 0.95rem 1.8rem;
+  font-size: 1.05rem;
+  height: 52px;
+}
+
+/* Button Variants */
+.ui-btn-primary {
+  background-color: var(--ui-primary);
+  color: #ffffff;
+  box-shadow: 0 4px 14px var(--ui-primary-glow);
+}
+
+.ui-btn-primary:hover:not(:disabled) {
+  background-color: var(--ui-primary-hover);
+  box-shadow: 0 6px 20px rgba(235, 0, 40, 0.4);
+  transform: translateY(-2px);
+}
+
+.ui-btn-primary:active:not(:disabled) {
+  background-color: var(--ui-primary-active);
+  transform: translateY(0);
+}
+
+.ui-btn-secondary {
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+}
+
+.ui-btn-secondary:hover:not(:disabled) {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+.ui-btn-outline {
+  background: transparent;
+  color: var(--ui-primary);
+  border: 1px solid var(--ui-primary);
+}
+
+.ui-btn-outline:hover:not(:disabled) {
+  background: var(--ui-primary);
+  color: #ffffff;
+  box-shadow: 0 4px 15px var(--ui-primary-glow);
+  transform: translateY(-2px);
+}
+
+.ui-btn-ghost {
+  background: transparent;
+  color: var(--ui-text-muted);
+}
+
+.ui-btn-ghost:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.06);
+  color: #ffffff;
+}
+
+.ui-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.ui-spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: currentColor;
+  animation: ui-spin 0.8s linear infinite;
+  display: inline-block;
+}
+
+/* --------------------------------------------------------------------------
+   5. Shake Validation & Status Alert
+   -------------------------------------------------------------------------- */
+.ui-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.9rem 1.1rem;
+  border-radius: var(--ui-radius-md);
+  font-family: var(--ui-font-family);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  box-sizing: border-box;
+  margin: 1rem 0;
+  width: 100%;
+  position: relative;
+  animation: ui-fadeIn 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.ui-alert.ui-shake-active {
+  animation: ui-shake 0.5s ease;
+}
+
+.ui-alert-icon {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.ui-alert-content {
+  flex: 1;
+}
+
+.ui-alert-title {
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.ui-alert-close {
+  background: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  opacity: 0.7;
+  font-size: 1.1rem;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s;
+}
+
+.ui-alert-close:hover {
+  opacity: 1;
+}
+
+/* Alert Types */
+.ui-alert-error {
+  background: rgba(235, 0, 40, 0.12);
+  border: 1px solid rgba(235, 0, 40, 0.35);
+  color: #ff526b;
+}
+
+.ui-alert-success {
+  background: rgba(34, 197, 94, 0.12);
+  border: 1px solid rgba(34, 197, 94, 0.35);
+  color: #4ade80;
+}
+
+.ui-alert-warning {
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  color: #fbbf24;
+}
+
+.ui-alert-info {
+  background: rgba(59, 130, 246, 0.12);
+  border: 1px solid rgba(59, 130, 246, 0.35);
+  color: #60a5fa;
+}
+
+/* --------------------------------------------------------------------------
+   6. Checkbox & Radio Controls
+   -------------------------------------------------------------------------- */
+.ui-checkbox-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  cursor: pointer;
+  user-select: none;
+  font-family: var(--ui-font-family);
+  color: var(--ui-text-main);
+  font-size: 0.92rem;
+  margin: 0.5rem 0;
+}
+
+.ui-checkbox-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.ui-checkbox-box {
+  width: 18px;
+  height: 18px;
+  border-radius: var(--ui-radius-sm);
+  border: 1.5px solid var(--ui-border-default);
+  background: var(--ui-bg-input);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+  transition: all var(--ui-transition-fast);
+}
+
+.ui-checkbox-container:hover .ui-checkbox-box {
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.ui-checkbox-input:checked + .ui-checkbox-box {
+  background: var(--ui-primary);
+  border-color: var(--ui-primary);
+  box-shadow: 0 0 10px var(--ui-primary-glow);
+}
+
+.ui-checkbox-checkmark {
+  color: #ffffff;
+  font-size: 0.75rem;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: all 0.15s ease;
+}
+
+.ui-checkbox-input:checked + .ui-checkbox-box .ui-checkbox-checkmark {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Radio Group */
+.ui-radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.ui-radio-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.9rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--ui-border-default);
+  border-radius: var(--ui-radius-md);
+  color: var(--ui-text-muted);
+  cursor: pointer;
+  user-select: none;
+  font-family: var(--ui-font-family);
+  font-size: 0.9rem;
+  transition: all var(--ui-transition-fast);
+}
+
+.ui-radio-option:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--ui-text-main);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.ui-radio-option.ui-radio-selected {
+  background: rgba(235, 0, 40, 0.12);
+  border-color: var(--ui-primary);
+  color: #ffffff;
+  box-shadow: 0 0 12px rgba(235, 0, 40, 0.2);
+}
+
+.ui-radio-circle {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1.5px solid var(--ui-border-default);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--ui-transition-fast);
+}
+
+.ui-radio-option.ui-radio-selected .ui-radio-circle {
+  border-color: var(--ui-primary);
+}
+
+.ui-radio-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ui-primary);
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.15s ease;
+}
+
+.ui-radio-option.ui-radio-selected .ui-radio-dot {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* --------------------------------------------------------------------------
+   7. Form Grid System
+   -------------------------------------------------------------------------- */
+.ui-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  width: 100%;
+}
+
+@media (max-width: 680px) {
+  .ui-form-grid {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   8. Speaker Form – Theme Intro (.para)
+   -------------------------------------------------------------------------- */
+.speaker-form-container {
+  width: 100%;
+}
+
+.para {
+  font-size: 18px;
+  color: white;
+  align-items: center;
+  justify-items: center;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+@media (max-width: 501px) {
+  .para {
+    font-size: 14px;
+    padding: 25px 15px;
+    margin-bottom: 5px;
+  }
+}
+
+@media (min-width: 500px) and (max-width: 720px) {
+  .para {
+    font-size: 14px;
+    padding: 14px 15px;
+    line-height: 1.4;
+    margin-bottom: 40px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .para {
+    font-size: 18px;
+    margin-bottom: 40px;
+    padding-top: 30px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   9. Sponsor Form Section
+   -------------------------------------------------------------------------- */
+.sponsor-form-container {
+  width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   10. Sponsor Feedback Section
+   -------------------------------------------------------------------------- */
+.feedback-section {
+  margin-top: 5rem;
+  padding: 2.5rem 1.5rem;
+  background: rgba(15, 15, 20, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: white;
+  font-family: "Inter", sans-serif;
+  width: 100%;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+.feedback-section h2 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.feedback-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.star-label {
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  color: #e0e0e0;
+  font-weight: 600;
+}
+
+.star-rating {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.star {
+  color: #555;
+  transition:
+    color 0.2s,
+    transform 0.15s;
+}
+
+.star:hover {
+  transform: scale(1.15);
+}
+
+.star.filled {
+  color: #facc15;
+}
+
+/* --------------------------------------------------------------------------
+   11. Subscribe Section
+   -------------------------------------------------------------------------- */
+.subscribe-section {
+  display: grid;
+  place-items: center;
+  position: relative;
+  width: 100%;
+  min-height: 80vh;
+  background: black;
+  color: white;
+  padding: 3rem 2rem;
+  box-sizing: border-box;
+}
+
+.subscribe-logo {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 90px;
+  height: 80px;
+  padding-right: 10px;
+}
+
+.subscribe-content {
+  max-width: 1100px;
+  width: 100%;
+  padding: 0 1rem;
+  text-align: left;
+}
+
+.subscribe-content h2 {
+  margin: 0 0 2rem;
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+}
+
+.highlight-red {
+  color: #eb0028;
+}
+
+.subscribe-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.subscribe-input-group {
+  flex: 1 1 280px;
+  min-width: 200px;
+}
+
+.subscribe-btn-override {
+  height: 46px;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .subscribe-content {
+    text-align: center;
+  }
+  .subscribe-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .subscribe-input-group {
+    width: 100%;
+  }
+  .subscribe-btn-override {
+    width: 100%;
+  }
+}
