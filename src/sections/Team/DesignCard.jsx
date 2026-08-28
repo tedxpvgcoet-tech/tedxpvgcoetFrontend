@@ -57,6 +57,8 @@ const designTeam = [
   },
 ];
 
-const Design = () => <TeamGrid title="DESIGN & PRODUCTION" members={designTeam} />;
+const Design = () => (
+  <TeamGrid title="DESIGN & PRODUCTION" members={designTeam} />
+);
 
 export default Design;

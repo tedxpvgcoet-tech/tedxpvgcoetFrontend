@@ -14,7 +14,7 @@ const TeamDepartmentSection = ({ title, description, image, link }) => {
           observer.unobserve(currentContainer);
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.2 },
     );
 
     if (currentContainer) observer.observe(currentContainer);

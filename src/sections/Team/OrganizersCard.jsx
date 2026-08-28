@@ -32,7 +32,11 @@ const coreTeamMembers = [
 ];
 
 const CoreTeam = () => (
-  <TeamGrid title="TEAM ORGANIZERS" members={coreTeamMembers} isTwoColumn={true} />
+  <TeamGrid
+    title="TEAM ORGANIZERS"
+    members={coreTeamMembers}
+    isTwoColumn={true}
+  />
 );
 
 export default CoreTeam;
