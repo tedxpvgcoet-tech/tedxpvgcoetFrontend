@@ -1,0 +1,588 @@
+{
+  "organizers-team": {
+    "title": "TEAM ORGANIZERS",
+    "isTwoColumn": true,
+    "members": [
+      {
+        "name": "Abhijeet Thore",
+        "role": "Licensee, Organizer",
+        "image": "core_abhijeet-small.webp",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/abhijeet-thore-98909924a",
+          "instagram": "https://www.instagram.com/abhijeet_thore2704"
+        }
+      },
+      {
+        "name": "Avani Thakur",
+        "role": "Co Organizer",
+        "image": "core_avani-small.webp",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/avani-thakur-81b6351b2",
+          "instagram": "https://www.instagram.com/avani_thakur68"
+        }
+      },
+      {
+        "name": "Aarya Gandhe",
+        "role": "Treasurer",
+        "image": "core_aarya-small.webp",
+        "social": {
+          "linkedin": "http://linkedin.com/in/aarya-gandhe",
+          "instagram": "https://www.instagram.com/aarya_aaaaaaaa"
+        }
+      }
+    ]
+  },
+  "curation-team": {
+    "title": "CURATION",
+    "isTwoColumn": false,
+    "members": [
+      {
+        "name": "Jui Brahme",
+        "role": "Curation Lead",
+        "image": "Curation/cur_jui.webp",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/jui-brahme-7a4a18215",
+          "instagram": "https://www.instagram.com/___.juiiiib.___"
+        }
+      },
+      {
+        "name": "Radha Hardikar",
+        "role": "Curation Lead",
+        "image": "Curation/Cur_radha.webp",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/radha-hardikar-4054a323a",
+          "instagram": "https://www.instagram.com/raradha.jpg"
+        }
+      },
+      {
+        "name": "Samiksha Jadhav",
+        "role": "Curation Team Member",
+        "image": "Curation/Cur_samiksha.webp",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/samiksha-jadhav-1b2998339",
+          "instagram": "https://www.instagram.com/samikshaj._"
+        }
+      },
+      {
+        "name": "Amey Pardeshi",
+        "role": "Curation Team Member",
+        "image": "Curation/cur_amey.webp",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/amey-pardeshi-5169252b2",
+          "instagram": "https://www.instagram.com/binging._.bad"
+        }
+      },
+      {
+        "name": "Rugved Dhole",
+        "role": "Curation Team Member",
+        "image": "Curation/cur_rugveda.webp",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/rugveda-dhole-7a7052324",
+          "instagram": "https://www.instagram.com/rug_veda2020"
+        }
+      },
+      {
+        "name": "Ritika Paradkar",
+        "role": "Curation Team Member",
+        "image": "Curation/Cur_Ritika.webp",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/ritika-paradkar-6aa9b1322",
+          "instagram": "https://www.instagram.com/ritikaaa.1111"
+        }
+      },
+      {
+        "name": "Archit Sonawane",
+        "role": "Curation Team Member",
+        "image": "Curation/Cur_archit.webp",
+        "social": {
+          "linkedin": "#",
+          "instagram": "https://www.instagram.com/_archit._._"
+        }
+      },
+      {
+        "name": "Narayani Jalgaonkar",
+        "role": "Curation Team Member",
+        "image": "Curation/cur_narayani.webp",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/narayani-j-b5081936a",
+          "instagram": "https://www.instagram.com/narayani_02"
+        }
+      },
+      {
+        "name": "Ved Purohit",
+        "role": "Curation Team Member",
+        "image": "Curation/cur_ved.webp",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/ved-vivek-purohit-592802338",
+          "instagram": "https://www.instagram.com/ved_vadak04"
+        }
+      }
+    ]
+  },
+  "design-team": {
+    "title": "DESIGN & PRODUCTION",
+    "isTwoColumn": false,
+    "members": [
+      {
+        "name": "Varun Tammewar",
+        "role": "Design & Production Head",
+        "image": "dnp_varun (1)-small.webp",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/varun-tammewar-41a191225",
+          "instagram": "https://www.instagram.com/varruunnnnnn"
+        }
+      },
+      {
+        "name": "Lakshmikant Chaudhari",
+        "role": "Design & Production Head",
+        "image": "Dnp_laksh-small.webp",
+        "social": {
+          "linkedin": "https://in.linkedin.com/in/lakshmikant-chaudhari-506453285",
+          "instagram": "https://www.instagram.com/laksh.me.kant_c"
+        }
+      },
+      {
+        "name": "Anuj Kale",
+        "role": "Design & Production Team Member",
+        "image": "dnp_anuj-small.webp",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/anuj-kale-672532291",
+          "instagram": "https://www.instagram.com/anujxkale"
+        }
+      },
+      {
+        "name": "Sutirth Doshi",
+        "role": "Design & Production Team Member",
+        "image": "Dnp_sutirth-small.webp",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/sutirthdoshi",
+          "instagram": "https://www.instagram.com/sutirthdoshi"
+        }
+      },
+      {
+        "name": "Anuj Wagh",
+        "role": "Design & Production Team Member",
+        "image": "Dnp_anujw-small.webp",
+        "social": {
+          "instagram": "https://www.instagram.com/anujjjjj._2726_"
+        }
+      },
+      {
+        "name": "Avanti Satpute",
+        "role": "Design & Production Team Member",
+        "image": "Dnp_avanti-small.webp",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/avanti-satpute-b35494317",
+          "instagram": "https://www.instagram.com/ss_avantii"
+        }
+      }
+    ]
+  },
+  "editorial-team": {
+    "title": "EDITORIAL",
+    "isTwoColumn": false,
+    "members": [
+      {
+        "name": "Gargee Kulkarni",
+        "role": "Editorial Lead",
+        "image": "Edi_gargee-small.webp",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/gargeesk24",
+          "instagram": "https://www.instagram.com/shelfrighteouss"
+        }
+      },
+      {
+        "name": "Hiya Pantvaidya",
+        "role": "Editorial Lead",
+        "image": "Edi_hiya-small.webp",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/hiya-pantvaidya-8a7058332",
+          "instagram": "https://www.instagram.com/hiyaaa_007"
+        }
+      },
+      {
+        "name": "Abhishek Rangole",
+        "role": "Editorial Team Member",
+        "image": "edi_abhishek-small.webp",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/abhishek-rangole",
+          "instagram": "https://www.instagram.com/rango_abhi"
+        }
+      },
+      {
+        "name": "Sneha Ghodke",
+        "role": "Editorial Team Member",
+        "image": "Edi_sneha-small.webp",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/snehaganeshghodke",
+          "instagram": "https://www.instagram.com/the_.sg./"
+        }
+      },
+      {
+        "name": "Renuka Joshi",
+        "role": "Editorial Team Member",
+        "image": "edi_renuka-small.webp",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/renuka-joshi-430541290",
+          "instagram": "https://www.instagram.com/renuka__"
+        }
+      },
+      {
+        "name": "Raviraj Bhoge",
+        "role": "Editorial Team Member",
+        "image": "edi_raviraj-small.webp",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/raviraj-bhoge-2627722b4",
+          "instagram": "https://www.instagram.com/iamraviraj69"
+        }
+      },
+      {
+        "name": "Omkar Hokarne",
+        "role": "Editorial Team Member",
+        "image": "Edi_omkar-small.webp",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/omkar-hokarne-0a15aa224",
+          "instagram": "https://www.instagram.com/_omkar_hokarne"
+        }
+      }
+    ]
+  },
+  "finance-team": {
+    "title": "FINANCE",
+    "isTwoColumn": false,
+    "members": [
+      {
+        "name": "Sargun Kaur Gurudatta",
+        "role": "Finance Lead",
+        "image": "Fin_sargun-small.webp",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/sargun-kaur-gurudatta-2a88931a7",
+          "instagram": "https://www.instagram.com/sargun__gurudatta"
+        }
+      },
+      {
+        "name": "Darshan Pakhale",
+        "role": "Finance Team Member",
+        "image": "Fin_darshan-small.webp",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/darshan-pakhale-a97b12329"
+        }
+      },
+      {
+        "name": "Kaustabh Nalawade",
+        "role": "Finance Team Member",
+        "image": "fin_kaustubh-small.webp",
+        "social": {
+          "linkedin": "http://www.linkedin.com/in/kaustubhkn",
+          "instagram": "http://www.instagram.com/kaustubhkn"
+        }
+      },
+      {
+        "name": "Girija Awate",
+        "role": "Finance Team Member",
+        "image": "fin_girija-small.webp",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/girija-awate-6894b5217",
+          "instagram": "https://www.instagram.com/girija_awate1093"
+        }
+      },
+      {
+        "name": "Devashree Deshpande",
+        "role": "Finance Team Member",
+        "image": "fin_devashree-small.webp",
+        "social": {
+          "linkedin": "http://www.linkedin.com/in/devashree-deshpande-729b30290",
+          "instagram": "https://www.instagram.com/devashree__23"
+        }
+      },
+      {
+        "name": "Mahek Mishra",
+        "role": "Finance Team Member",
+        "image": "Fin_mahek-small.webp",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/mahek-mishra-264130340",
+          "instagram": "https://www.instagram.com/mahek.1726"
+        }
+      },
+      {
+        "name": "Aditya Bhise",
+        "role": "Finance Team Member",
+        "image": "fin_aditya-small.webp",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/aditya-bhise-899493291",
+          "instagram": "https://www.instagram.com/adityabhisepatil"
+        }
+      },
+      {
+        "name": "Sanidhi Gade",
+        "role": "Finance Team Member",
+        "image": "fin_saanidhi-small.webp",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/saanidhi-gade-431344241",
+          "instagram": "https://www.instagram.com/_.saanidhi._"
+        }
+      }
+    ]
+  },
+  "logistics-team": {
+    "title": "LOGISTIC AND OPERATION",
+    "isTwoColumn": false,
+    "members": [
+      {
+        "name": "Rudraunsh Joshi",
+        "role": "Logistics & Operations Lead",
+        "image": "lno_rudraunsh-small.webp",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/rudraunsh-joshi",
+          "instagram": "https://www.instagram.com/rudraunsh._"
+        }
+      },
+      {
+        "name": "Tanishka Ahirekar",
+        "role": "Logistics & Operations Lead",
+        "image": "Lno_tanishka-small.webp",
+        "social": {
+          "linkedin": "http://linkedin.com/in/tanishkaahirekar",
+          "instagram": "https://www.instagram.com/tanisshkkaa_"
+        }
+      },
+      {
+        "name": "Niyati Jadhav",
+        "role": "Logistics & Operations Team Member",
+        "image": "lno_niyati-small.webp",
+        "social": {
+          "instagram": "https://www.instagram.com/niyati._9"
+        }
+      },
+      {
+        "name": "Roanak Rajurkar",
+        "role": "Logistics & Operations Team Member",
+        "image": "lno_roanak-small.webp",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/roanak-rajurkar-150937341",
+          "instagram": "https://www.instagram.com/roanak.572"
+        }
+      },
+      {
+        "name": "Atharva Deshmukh",
+        "role": "Logistics & Operations Team Member",
+        "image": "lno_atharva-small.webp",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/atharva-deshmukh-b4812a290",
+          "instagram": "https://www.instagram.com/atharvad_06"
+        }
+      },
+      {
+        "name": "Alpesh Bhavar",
+        "role": "Logistics & Operations Team Member",
+        "image": "lno_alpesh-small.webp",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/alpesh-bhavar-11355428b",
+          "instagram": "https://www.instagram.com/alpesh_bhavar_patil"
+        }
+      },
+      {
+        "name": "Ayush Deshmukh",
+        "role": "Logistics & Operations Team Member",
+        "image": "lno_ayush-small.webp",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/aayush-deshmukh1248",
+          "instagram": "https://www.instagram.com/aayush.3am/"
+        }
+      },
+      {
+        "name": "Anish Kherdikar",
+        "role": "Logistics & Operations Team Member",
+        "image": "lno_anish-small.webp",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/anish-kherdikar-326085294",
+          "instagram": "https://www.instagram.com/anish_kherdikar"
+        }
+      },
+      {
+        "name": "Anushka Kanade",
+        "role": "Logistics & Operations Team Member",
+        "image": "lno_anushka-small.webp",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/anushka-kanade-415614378",
+          "instagram": "https://www.instagram.com/iwantcheesecakeee"
+        }
+      },
+      {
+        "name": "Sukrut Angal",
+        "role": "Logistics & Operations Team Member",
+        "image": "lno_sukrut-small.webp",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/sukrut-angal-a40b10290",
+          "instagram": "https://www.instagram.com/sukrut__07"
+        }
+      },
+      {
+        "name": "Fanaa Jain",
+        "role": "Logistics & Operations Team Member",
+        "image": "Lno_fana-small.webp",
+        "social": {
+          "instagram": "https://www.instagram.com/fanaajain"
+        }
+      },
+      {
+        "name": "Krishna Gandhi",
+        "role": "Logistics & Operations Team Member",
+        "image": "lno_krishna-small.webp",
+        "social": {
+          "instagram": "https://www.instagram.com/krishnagandhi_26"
+        }
+      }
+    ]
+  },
+  "media-team": {
+    "title": "MEDIA & MARKETING",
+    "isTwoColumn": false,
+    "members": [
+      {
+        "name": "Afaan Shaikh",
+        "role": "Media & Marketing Lead",
+        "image": "mnm_afaan-small.webp",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/afaanshaikh",
+          "instagram": "https://www.instagram.com/instashebang"
+        }
+      },
+      {
+        "name": "Prathamesh Jadhav",
+        "role": "Media & Marketing Lead",
+        "image": "Mnm_prathamesh_-small.webp",
+        "social": {
+          "linkedin": "http://linkedin.com/in/prathamesh-jadhav-51ba0b346",
+          "instagram": "https://www.instagram.com/prathamj_13"
+        }
+      },
+      {
+        "name": "Aryan Kanse",
+        "role": "Media & Marketing Team Member",
+        "image": "mnm_aryan-small.webp",
+        "social": {
+          "linkedin": "http://linkedin.com/in/aryan-kanse-684618256",
+          "instagram": "https://www.instagram.com/aryankanse_14"
+        }
+      },
+      {
+        "name": "Soham Kale",
+        "role": "Media & Marketing Team Member",
+        "image": "mnm_sohamk-small.webp",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/sohamkale",
+          "instagram": "https://www.instagram.com/limbu.paani.clicks",
+          "website": "https://drive.google.com/file/d/1oREASEBx7OhCGXGA44ckbVIbpreJvFu_/view?usp=drivesdk"
+        }
+      },
+      {
+        "name": "Soham Patwardhan",
+        "role": "Media & Marketing Team Member",
+        "image": "mnm_sohamp-small.webp",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/soham-patwardhan-180b12270",
+          "instagram": "https://www.instagram.com/soham_0804"
+        }
+      },
+      {
+        "name": "Ishika Dhorajkar",
+        "role": "Media & Marketing Team Member",
+        "image": "mnm_ishika-small.webp",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/ishika-dhorajkar-a47863303",
+          "instagram": "https://www.instagram.com/ishika_dhorajkar"
+        }
+      },
+      {
+        "name": "Janhavi Salunkhe",
+        "role": "Media & Marketing Team Member",
+        "image": "Mnm_janhvi-small.webp",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/janhavi-s-49736536b",
+          "instagram": "https://www.instagram.com/janhaviii_salunkhe"
+        }
+      },
+      {
+        "name": "Rohan Naik",
+        "role": "Media & Marketing Team Member",
+        "image": "mnm_rohan-small.webp",
+        "social": {
+          "linkedin": "http://www.linkedin.com/in/rohann23",
+          "instagram": "https://www.instagram.com/rrrrohan_n/"
+        }
+      },
+      {
+        "name": "Yash Garve",
+        "role": "Media & Marketing Team Member",
+        "image": "mnm_yash-small.webp",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/yash-garve-b63492248",
+          "instagram": "https://www.instagram.com/fantasticyash"
+        }
+      },
+      {
+        "name": "Atharva Joshi",
+        "role": "Media & Marketing Team Member",
+        "image": "mnm_atharva-small.webp",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/atharva-joshi-786200290",
+          "instagram": "https://www.instagram.com/ajcliks",
+          "website": "https://atharvaportfolio.carrd.co/"
+        }
+      }
+    ]
+  },
+  "technical-team": {
+    "title": "TECHNICAL",
+    "isTwoColumn": false,
+    "members": [
+      {
+        "name": "Tanushka Bankar",
+        "role": "Technical Lead",
+        "image": "tech_tanushka-small.webp",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/tanushka-bankar-93727731a",
+          "instagram": "https://www.instagram.com/tanushka_bankar"
+        }
+      },
+      {
+        "name": "Jagdish Prajapati",
+        "role": "Technical Team Member",
+        "image": "tech_jagdish-small.webp",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/jagdish-15-prajapati/",
+          "instagram": "https://www.instagram.com/jagdish15p/",
+          "website": "https://exercism.org/profiles/jagdishdrp"
+        }
+      },
+      {
+        "name": "Hussain Patanwala",
+        "role": "Technical Team Member",
+        "image": "tech_hussain-small.webp",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/hussain-patanwala-9881b6328/",
+          "instagram": "https://www.instagram.com/hussainn_53/",
+          "website": "https://hussain053.github.io/Updated_Modern_Portfolio_2025/"
+        }
+      },
+      {
+        "name": "Shrikant Mhaske",
+        "role": "Technical Team Member",
+        "image": "Tech_shrikant-small.webp",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/shrikant-mhaske-920ab9290"
+        }
+      },
+      {
+        "name": "Atharva Kamble",
+        "role": "Technical Team Member",
+        "image": "tech_atharva-small.webp",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/atharva-kamble-10685928b/",
+          "instagram": "https://www.instagram.com/atharva_kamble.09/"
+        }
+      }
+    ]
+  }
+}

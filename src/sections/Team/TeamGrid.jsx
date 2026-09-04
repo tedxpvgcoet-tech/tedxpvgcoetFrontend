@@ -1,8 +1,33 @@
 import React from "react";
+import { useLocation, useParams } from "react-router-dom";
+import teamData from "./team.json";
 import "./TeamGrid.css";
 import "../../pages/Team.css";
 
-const TeamGrid = ({ title, members = [], isTwoColumn = false }) => {
+const getImage = (imgPath) => {
+  try {
+    return require(`../../assets/B-W Individual/${imgPath}`);
+  } catch (err) {
+    console.error(`Image not found: ${imgPath}`, err);
+    return "";
+  }
+};
+
+const TeamGrid = ({ teamKey }) => {
+  const location = useLocation();
+  const params = useParams();
+
+  const resolvedKey =
+    teamKey || params.teamName || location.pathname.replace(/^\//, "");
+
+  const currentTeam = teamData[resolvedKey];
+
+  if (!currentTeam) {
+    return null;
+  }
+
+  const { title, isTwoColumn, members = [] } = currentTeam;
+
   return (
     <div className="team-grid-page team-page">
       <div id="page-top" />
@@ -16,7 +41,7 @@ const TeamGrid = ({ title, members = [], isTwoColumn = false }) => {
           const renderImage = (
             <div className="team-img-tile" key={`${index}-img`}>
               <img
-                src={member.image}
+                src={getImage(member.image)}
                 alt={member.name}
                 className="chessboard-img"
                 loading="lazy"
