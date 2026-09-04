@@ -1,43 +1,45 @@
-.curation {
+.team-dept-section {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 4rem 2rem;
-  background: transparent;
+  background-color: transparent;
   color: white;
   flex-wrap: wrap;
   gap: 2rem;
 }
 
-.curation-left {
+.team-dept-left {
   flex: 1;
   display: flex;
   justify-content: center;
-  min-height: 400px;
   opacity: 0;
-  transform: translateX(-50px);
-  transition: all 0.8s ease-out;
+  transform: translateX(-60px);
+  transition:
+    opacity 0.8s ease-out,
+    transform 0.8s ease-out;
 }
 
-.curation-left.animate {
+.team-dept-left.animate-image {
   opacity: 1;
   transform: translateX(0);
 }
 
-.curation-left img {
+.team-dept-left img,
+.team-dept-image {
   width: 100%;
   max-width: 500px;
   height: auto;
   border-radius: 10px;
+  display: block;
 }
 
-.curation-right {
+.team-dept-right {
   flex: 1;
   max-width: 600px;
-  text-align: left;
 }
 
-.curation-desc {
+.team-dept-desc {
   font-size: 1.2rem;
   font-style: italic;
   line-height: 1.6;
@@ -46,7 +48,7 @@
   color: white;
 }
 
-.curation-btn {
+.team-dept-btn {
   font-size: 1rem;
   color: white;
   text-decoration: none;
@@ -56,66 +58,51 @@
   font-family: "Kantumruy Pro", sans-serif;
 }
 
-.curation-btn:hover {
+.team-dept-btn:hover {
   color: red;
 }
 
-/* ✅ Responsive Design */
 @media (max-width: 600px) {
-  .curation {
+  .team-dept-section {
     flex-direction: column;
     text-align: center;
   }
-
-  .curation-right {
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
+  .team-dept-right {
+    max-width: 100%;
   }
-
-  .curation-desc {
-    display: block;
-    font-size: 1rem;
-    padding: 1rem 0;
-  }
-
-  .curation-btn {
+  .team-dept-desc {
     font-size: 1rem;
   }
 }
 
 @media (min-width: 601px) and (max-width: 992px) {
-  .curation-desc {
-    padding-top: 40px;
+  .team-dept-desc {
+    padding-top: 60px;
     font-size: 1.1rem;
   }
 }
 
 @media (min-width: 993px) {
-  .curation-desc {
-    padding-top: 40px;
+  .team-dept-desc {
+    padding-top: 60px;
     font-size: 1.3rem;
   }
 }
 
 @media (min-width: 1300px) {
-  .curation {
+  .team-dept-section {
     padding: 6rem 8rem;
   }
-
-  .curation-left img {
+  .team-dept-left img,
+  .team-dept-image {
     max-width: 700px;
   }
-
-  .curation-desc {
+  .team-dept-desc {
     font-size: 1.7rem;
     line-height: 1.8;
-    padding-top: 60px;
+    padding-top: 80px;
   }
-
-  .curation-btn {
+  .team-dept-btn {
     font-size: 1.2rem;
   }
 }

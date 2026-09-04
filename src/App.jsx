@@ -15,14 +15,7 @@ const Event = lazy(() => import("./pages/Event"));
 const Punarutthan = lazy(() => import("./pages/Punarutthan"));
 const AvantGarde = lazy(() => import("./pages/AvantGarde"));
 const Team = lazy(() => import("./pages/Team"));
-const CurationCard = lazy(() => import("./sections/Team/CurationCard"));
-const LogisticsCard = lazy(() => import("./sections/Team/LogisticsCard"));
-const MediaCard = lazy(() => import("./sections/Team/MediaCard"));
-const EditorialCard = lazy(() => import("./sections/Team/EditorialCard"));
-const FinanceCard = lazy(() => import("./sections/Team/FinanceCard"));
-const DesignCard = lazy(() => import("./sections/Team/DesignCard"));
-const TechnicalCard = lazy(() => import("./sections/Team/TechnicalCard"));
-const OrganizersCard = lazy(() => import("./sections/Team/OrganizersCard"));
+const TeamGrid = lazy(() => import("./sections/Team/TeamGrid"));
 const TakeTheLeap = lazy(() => import("./pages/TakeTheLeap"));
 const ThemePage = lazy(() => import("./pages/ThemePage"));
 const NotFound = lazy(() => import("./pages/NotFound"));
@@ -77,14 +70,38 @@ function App() {
               <Route path="/events/TakeTheLeap" element={<TakeTheLeap />} />
 
               <Route path="/team" element={<Team />} />
-              <Route path="/curation-team" element={<CurationCard />} />
-              <Route path="/logistics-team" element={<LogisticsCard />} />
-              <Route path="/media-team" element={<MediaCard />} />
-              <Route path="/editorial-team" element={<EditorialCard />} />
-              <Route path="/finance-team" element={<FinanceCard />} />
-              <Route path="/design-team" element={<DesignCard />} />
-              <Route path="/technical-team" element={<TechnicalCard />} />
-              <Route path="/organizers-team" element={<OrganizersCard />} />
+              <Route
+                path="/curation-team"
+                element={<TeamGrid teamKey="curation-team" />}
+              />
+              <Route
+                path="/logistics-team"
+                element={<TeamGrid teamKey="logistics-team" />}
+              />
+              <Route
+                path="/media-team"
+                element={<TeamGrid teamKey="media-team" />}
+              />
+              <Route
+                path="/editorial-team"
+                element={<TeamGrid teamKey="editorial-team" />}
+              />
+              <Route
+                path="/finance-team"
+                element={<TeamGrid teamKey="finance-team" />}
+              />
+              <Route
+                path="/design-team"
+                element={<TeamGrid teamKey="design-team" />}
+              />
+              <Route
+                path="/technical-team"
+                element={<TeamGrid teamKey="technical-team" />}
+              />
+              <Route
+                path="/organizers-team"
+                element={<TeamGrid teamKey="organizers-team" />}
+              />
 
               <Route path="/bills" element={<InternalBillsPage />} />
 
