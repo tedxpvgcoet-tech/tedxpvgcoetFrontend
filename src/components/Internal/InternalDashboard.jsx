@@ -133,7 +133,12 @@ const styles = {
   },
 };
 
-export default function InternalDashboard({ name, team, onNavigate, onLogout }) {
+export default function InternalDashboard({
+  name,
+  team,
+  onNavigate,
+  onLogout,
+}) {
   const [hoveredCard, setHoveredCard] = useState(null);
 
   return (

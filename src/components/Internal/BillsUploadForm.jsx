@@ -444,10 +444,13 @@ const CustomSelect = ({
   );
 };
 
-
-
-export default function BillsUploadForm({ authToken, name, team, onBack, onLogout }) {
-
+export default function BillsUploadForm({
+  authToken,
+  name,
+  team,
+  onBack,
+  onLogout,
+}) {
   const initialBillState = () => ({
     uid: Date.now() + Math.random(),
     amount: "",
@@ -488,8 +491,6 @@ export default function BillsUploadForm({ authToken, name, team, onBack, onLogou
       }
     }, 50);
   };
-
-
 
   const handleAddBill = () => {
     setBills((prev) => [...prev, initialBillState()]);
@@ -659,7 +660,7 @@ export default function BillsUploadForm({ authToken, name, team, onBack, onLogou
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${authToken}`,
+            Authorization: `Bearer ${authToken}`,
           },
           body: JSON.stringify(payload),
         });
@@ -699,8 +700,6 @@ export default function BillsUploadForm({ authToken, name, team, onBack, onLogou
       });
     }
   };
-
-
 
   return (
     <div style={styles.wrapper}>
@@ -832,56 +831,63 @@ export default function BillsUploadForm({ authToken, name, team, onBack, onLogou
           </div>
 
           {/* Locked user info */}
-          <div style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "12px",
-            padding: "14px 18px",
-            background: "rgba(232, 27, 42, 0.06)",
-            border: "1px solid rgba(232, 27, 42, 0.15)",
-            borderRadius: "10px",
-            marginBottom: "24px",
-          }}>
-            <div style={{
-              width: "36px",
-              height: "36px",
-              borderRadius: "50%",
-              background: "rgba(232, 27, 42, 0.15)",
+          <div
+            style={{
               display: "flex",
               alignItems: "center",
-              justifyContent: "center",
-              fontSize: "1rem",
-              flexShrink: 0,
-            }}>
+              gap: "12px",
+              padding: "14px 18px",
+              background: "rgba(232, 27, 42, 0.06)",
+              border: "1px solid rgba(232, 27, 42, 0.15)",
+              borderRadius: "10px",
+              marginBottom: "24px",
+            }}
+          >
+            <div
+              style={{
+                width: "36px",
+                height: "36px",
+                borderRadius: "50%",
+                background: "rgba(232, 27, 42, 0.15)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: "1rem",
+                flexShrink: 0,
+              }}
+            >
               🔒
             </div>
             <div style={{ overflow: "hidden" }}>
-              <div style={{
-                color: "#fff",
-                fontSize: "0.95rem",
-                fontWeight: "700",
-                fontFamily: '"Inter", sans-serif',
-                whiteSpace: "nowrap",
-                overflow: "hidden",
-                textOverflow: "ellipsis",
-              }}>
+              <div
+                style={{
+                  color: "#fff",
+                  fontSize: "0.95rem",
+                  fontWeight: "700",
+                  fontFamily: '"Inter", sans-serif',
+                  whiteSpace: "nowrap",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                }}
+              >
                 {name}
               </div>
-              <div style={{
-                color: "#e81b2a",
-                fontSize: "0.78rem",
-                fontWeight: "600",
-                fontFamily: '"Inter", sans-serif',
-                textTransform: "uppercase",
-                letterSpacing: "0.5px",
-              }}>
+              <div
+                style={{
+                  color: "#e81b2a",
+                  fontSize: "0.78rem",
+                  fontWeight: "600",
+                  fontFamily: '"Inter", sans-serif',
+                  textTransform: "uppercase",
+                  letterSpacing: "0.5px",
+                }}
+              >
                 {team}
               </div>
             </div>
           </div>
 
           <form onSubmit={handleSubmit} noValidate>
-
             <div
               style={{
                 margin: "30px 0 25px",

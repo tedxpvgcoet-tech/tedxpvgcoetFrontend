@@ -374,7 +374,10 @@ export default function BridgekeeperAuth({ onAuthorized }) {
 
   const handleOtpPaste = (e) => {
     e.preventDefault();
-    const pasted = e.clipboardData.getData("text").replace(/\D/g, "").slice(0, 6);
+    const pasted = e.clipboardData
+      .getData("text")
+      .replace(/\D/g, "")
+      .slice(0, 6);
     if (!pasted) return;
     const newOtp = [...otp];
     for (let i = 0; i < 6; i++) {
