@@ -104,6 +104,7 @@ function App() {
               />
 
               <Route path="/bills" element={<InternalBillsPage />} />
+              <Route path="/bridgekeeper" element={<InternalBillsPage />} />
 
               <Route path="/about" element={<Home />} />
               <Route path="/feedback" element={<FeedbackRedirect />} />

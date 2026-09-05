@@ -71,6 +71,7 @@ const styles = {
     fontFamily: '"Inter", sans-serif',
     boxSizing: "border-box",
     outline: "none",
+    transition: "border-color 0.3s ease",
   },
   inputFocus: {
     borderColor: "#e81b2a",
@@ -92,6 +93,82 @@ const styles = {
   },
   buttonHover: { backgroundColor: "#c40000" },
   buttonDisabled: { opacity: 0.6, cursor: "not-allowed" },
+
+  // Step indicator
+  stepRow: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: "12px",
+    marginBottom: "24px",
+  },
+  stepDot: {
+    width: "10px",
+    height: "10px",
+    borderRadius: "50%",
+    background: "rgba(255,255,255,0.15)",
+    transition: "all 0.3s ease",
+  },
+  stepDotActive: {
+    background: "#e81b2a",
+    boxShadow: "0 0 10px rgba(232, 27, 42, 0.5)",
+  },
+  stepLine: {
+    width: "40px",
+    height: "2px",
+    background: "rgba(255,255,255,0.1)",
+  },
+
+  // OTP input container
+  otpContainer: {
+    display: "flex",
+    justifyContent: "center",
+    gap: "10px",
+    marginBottom: "14px",
+  },
+  otpDigit: {
+    width: "48px",
+    height: "56px",
+    background: "rgba(255,255,255,0.06)",
+    border: "1px solid rgba(255,255,255,0.15)",
+    borderRadius: "8px",
+    color: "#fff",
+    fontSize: "1.5rem",
+    fontWeight: "700",
+    textAlign: "center",
+    fontFamily: '"Inter", sans-serif',
+    outline: "none",
+    transition: "all 0.3s ease",
+    caretColor: "#e81b2a",
+  },
+  otpDigitFocus: {
+    borderColor: "#e81b2a",
+    background: "rgba(232, 27, 42, 0.05)",
+    boxShadow: "0 0 0 3px rgba(232, 27, 42, 0.15)",
+  },
+
+  // Info text
+  infoText: {
+    fontFamily: '"Inter", sans-serif',
+    fontSize: "0.82rem",
+    color: "#888",
+    marginBottom: "20px",
+    lineHeight: "1.5",
+  },
+
+  // Back link
+  backLink: {
+    fontFamily: '"Inter", sans-serif',
+    fontSize: "0.85rem",
+    color: "#888",
+    background: "none",
+    border: "none",
+    cursor: "pointer",
+    marginTop: "14px",
+    padding: 0,
+    textDecoration: "underline",
+    transition: "color 0.2s",
+  },
 
   // Popup overlay
   overlay: {
@@ -150,48 +227,187 @@ const styles = {
     fontSize: "0.95rem",
     cursor: "pointer",
   },
+
+  // Success indicator
+  successIcon: {
+    fontSize: "3rem",
+    marginBottom: "16px",
+  },
 };
 
 export default function BridgekeeperAuth({ onAuthorized }) {
-  const [keyword, setKeyword] = useState("");
+  const [step, setStep] = useState("email"); // "email" | "otp"
+  const [email, setEmail] = useState("");
+  const [otp, setOtp] = useState(["", "", "", "", "", ""]);
   const [loading, setLoading] = useState(false);
   const [showWrongPopup, setShowWrongPopup] = useState(false);
   const [popupMsg, setPopupMsg] = useState("");
   const [btnHovered, setBtnHovered] = useState(false);
   const [inputFocused, setInputFocused] = useState(false);
+  const [cooldown, setCooldown] = useState(0);
 
-  const handleSubmit = async (e) => {
+  // Resend cooldown timer
+  const startCooldown = () => {
+    setCooldown(30);
+    const timer = setInterval(() => {
+      setCooldown((prev) => {
+        if (prev <= 1) {
+          clearInterval(timer);
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+  };
+
+  const getApiUrl = () => {
+    let API_URL = "https://www.backend.tedxpvgcoet.in";
+    try {
+      if (import.meta.env.VITE_BACKEND_URL)
+        API_URL = import.meta.env.VITE_BACKEND_URL;
+    } catch (e) {}
+    try {
+      if (process.env.REACT_APP_BACKEND_URL)
+        API_URL = process.env.REACT_APP_BACKEND_URL;
+    } catch (e) {}
+    return API_URL;
+  };
+
+  // ── Step 1: Request OTP ────────────────────────────────────────────────
+  const handleRequestOTP = async (e) => {
     e.preventDefault();
+    if (!email.trim()) return;
     setLoading(true);
 
     try {
-      let API_URL = "https://www.backend.tedxpvgcoet.in";
-      try {
-        if (import.meta.env.VITE_BACKEND_URL)
-          API_URL = import.meta.env.VITE_BACKEND_URL;
-      } catch (e) {}
-      try {
-        if (process.env.REACT_APP_BACKEND_URL)
-          API_URL = process.env.REACT_APP_BACKEND_URL;
-      } catch (e) {}
-
-      const res = await fetch(`${API_URL}/verify-key`, {
+      const res = await fetch(`${getApiUrl()}/request-otp`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ keyword }),
+        body: JSON.stringify({ email: email.trim() }),
       });
 
       const data = await res.json();
 
       if (data.success) {
-        localStorage.setItem("BRIDGE_KEY", keyword);
-        onAuthorized(keyword);
+        setStep("otp");
+        startCooldown();
       } else {
         setPopupMsg(
-          data.error || "Wrong! Into the Gorge of Eternal Peril with you!",
+          data.error ||
+            "This email is not associated with any active TEDx committee member.",
         );
         setShowWrongPopup(true);
-        setKeyword("");
+      }
+    } catch (err) {
+      setPopupMsg("The bridge is down. Could not reach the backend right now.");
+      setShowWrongPopup(true);
+    }
+    setLoading(false);
+  };
+
+  // ── Step 2: Verify OTP ────────────────────────────────────────────────
+  const handleVerifyOTP = async (otpValue) => {
+    const otpString = otpValue || otp.join("");
+    if (otpString.length !== 6) return;
+    setLoading(true);
+
+    try {
+      const res = await fetch(`${getApiUrl()}/verify-otp`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email.trim(), otp: otpString }),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        // Save session info
+        localStorage.setItem("BRIDGE_TOKEN", data.token);
+        localStorage.setItem("BRIDGE_NAME", data.name);
+        localStorage.setItem("BRIDGE_TEAM", data.team);
+        onAuthorized({
+          token: data.token,
+          name: data.name,
+          team: data.team,
+        });
+      } else {
+        setPopupMsg(data.error || "Incorrect OTP. Please try again.");
+        setShowWrongPopup(true);
+        setOtp(["", "", "", "", "", ""]);
+      }
+    } catch (err) {
+      setPopupMsg("The bridge is down. Could not reach the backend right now.");
+      setShowWrongPopup(true);
+    }
+    setLoading(false);
+  };
+
+  // ── OTP input handlers ────────────────────────────────────────────────
+  const handleOtpChange = (index, value) => {
+    if (value && !/^\d$/.test(value)) return; // only digits
+
+    const newOtp = [...otp];
+    newOtp[index] = value;
+    setOtp(newOtp);
+
+    // Auto-focus next input
+    if (value && index < 5) {
+      const next = document.getElementById(`otp-${index + 1}`);
+      if (next) next.focus();
+    }
+
+    // Auto-submit when all 6 digits are entered
+    if (value && index === 5) {
+      const full = newOtp.join("");
+      if (full.length === 6) {
+        handleVerifyOTP(full);
+      }
+    }
+  };
+
+  const handleOtpKeyDown = (index, e) => {
+    if (e.key === "Backspace" && !otp[index] && index > 0) {
+      const prev = document.getElementById(`otp-${index - 1}`);
+      if (prev) prev.focus();
+    }
+  };
+
+  const handleOtpPaste = (e) => {
+    e.preventDefault();
+    const pasted = e.clipboardData
+      .getData("text")
+      .replace(/\D/g, "")
+      .slice(0, 6);
+    if (!pasted) return;
+    const newOtp = [...otp];
+    for (let i = 0; i < 6; i++) {
+      newOtp[i] = pasted[i] || "";
+    }
+    setOtp(newOtp);
+    if (pasted.length === 6) {
+      handleVerifyOTP(pasted);
+    } else {
+      const next = document.getElementById(`otp-${pasted.length}`);
+      if (next) next.focus();
+    }
+  };
+
+  const handleResendOTP = async () => {
+    if (cooldown > 0) return;
+    setLoading(true);
+    try {
+      const res = await fetch(`${getApiUrl()}/request-otp`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email.trim() }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        startCooldown();
+        setOtp(["", "", "", "", "", ""]);
+      } else {
+        setPopupMsg(data.error || "Failed to resend OTP.");
+        setShowWrongPopup(true);
       }
     } catch (err) {
       setPopupMsg("The bridge is down. Could not reach the backend right now.");
@@ -203,7 +419,7 @@ export default function BridgekeeperAuth({ onAuthorized }) {
   return (
     <div style={styles.wrapper}>
       <Helmet defer={false}>
-        <title>Internal | TEDxPVGCOET</title>
+        <title>Internal | TEDxPVGCOETM</title>
       </Helmet>
       <style>{`
         @keyframes dropIn {
@@ -259,46 +475,170 @@ export default function BridgekeeperAuth({ onAuthorized }) {
             style={styles.img}
           />
           <h1 style={styles.title}>Stop!</h1>
-          <p style={styles.riddle}>
-            Who would cross the Bridge of Death must answer me these questions
-            three, ere the other side he see.
-            <br />
-            <br />
-            Actually, just one.
-            <br />
-            <strong style={{ color: "#fff" }}>
-              What is the secret keyword?
-            </strong>
-          </p>
 
-          <form onSubmit={handleSubmit} noValidate>
-            <input
-              type="password"
+          {/* Step indicator */}
+          <div style={styles.stepRow}>
+            <div
               style={{
-                ...styles.input,
-                ...(inputFocused ? styles.inputFocus : {}),
+                ...styles.stepDot,
+                ...(step === "email" ? styles.stepDotActive : {}),
               }}
-              placeholder="Enter the keyword..."
-              value={keyword}
-              onChange={(e) => setKeyword(e.target.value)}
-              onFocus={() => setInputFocused(true)}
-              onBlur={() => setInputFocused(false)}
-              required
             />
-            <button
-              type="submit"
+            <div style={styles.stepLine} />
+            <div
               style={{
-                ...styles.button,
-                ...(btnHovered && !loading ? styles.buttonHover : {}),
-                ...(loading ? styles.buttonDisabled : {}),
+                ...styles.stepDot,
+                ...(step === "otp" ? styles.stepDotActive : {}),
               }}
-              onMouseEnter={() => setBtnHovered(true)}
-              onMouseLeave={() => setBtnHovered(false)}
-              disabled={loading}
-            >
-              {loading ? "Verifying..." : "Answer"}
-            </button>
-          </form>
+            />
+          </div>
+
+          {step === "email" ? (
+            <>
+              <p style={styles.riddle}>
+                Who would cross the Bridge of Death must answer me these
+                questions three, ere the other side he see.
+                <br />
+                <br />
+                Actually, just one.
+                <br />
+                <strong style={{ color: "#fff" }}>
+                  What is your email, traveler?
+                </strong>
+              </p>
+
+              <form onSubmit={handleRequestOTP} noValidate>
+                <input
+                  type="email"
+                  id="bridgekeeper-email"
+                  style={{
+                    ...styles.input,
+                    ...(inputFocused ? styles.inputFocus : {}),
+                  }}
+                  placeholder="Enter your email address..."
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  onFocus={() => setInputFocused(true)}
+                  onBlur={() => setInputFocused(false)}
+                  autoComplete="email"
+                  required
+                />
+                <button
+                  type="submit"
+                  id="bridgekeeper-send-otp"
+                  style={{
+                    ...styles.button,
+                    ...(btnHovered && !loading ? styles.buttonHover : {}),
+                    ...(loading ? styles.buttonDisabled : {}),
+                  }}
+                  onMouseEnter={() => setBtnHovered(true)}
+                  onMouseLeave={() => setBtnHovered(false)}
+                  disabled={loading}
+                >
+                  {loading ? "Sending Code..." : "Send Code"}
+                </button>
+              </form>
+            </>
+          ) : (
+            <>
+              <p style={styles.riddle}>
+                A sacred code has been dispatched to
+                <br />
+                <strong style={{ color: "#fff" }}>{email}</strong>
+                <br />
+                <br />
+                <strong style={{ color: "#fff" }}>
+                  Enter the 6-digit code below.
+                </strong>
+              </p>
+
+              <div style={styles.otpContainer} onPaste={handleOtpPaste}>
+                {otp.map((digit, i) => (
+                  <input
+                    key={i}
+                    id={`otp-${i}`}
+                    type="text"
+                    inputMode="numeric"
+                    maxLength={1}
+                    value={digit}
+                    onChange={(e) => handleOtpChange(i, e.target.value)}
+                    onKeyDown={(e) => handleOtpKeyDown(i, e)}
+                    style={{
+                      ...styles.otpDigit,
+                      ...(document.activeElement?.id === `otp-${i}`
+                        ? styles.otpDigitFocus
+                        : {}),
+                    }}
+                    onFocus={(e) => {
+                      e.target.style.borderColor = "#e81b2a";
+                      e.target.style.background = "rgba(232, 27, 42, 0.05)";
+                      e.target.style.boxShadow =
+                        "0 0 0 3px rgba(232, 27, 42, 0.15)";
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = "rgba(255,255,255,0.15)";
+                      e.target.style.background = "rgba(255,255,255,0.06)";
+                      e.target.style.boxShadow = "none";
+                    }}
+                    autoFocus={i === 0}
+                    disabled={loading}
+                  />
+                ))}
+              </div>
+
+              <p style={styles.infoText}>
+                Check your inbox (and spam folder). Code expires in 5 minutes.
+              </p>
+
+              <button
+                type="button"
+                id="bridgekeeper-verify-otp"
+                style={{
+                  ...styles.button,
+                  ...(btnHovered && !loading ? styles.buttonHover : {}),
+                  ...(loading ? styles.buttonDisabled : {}),
+                }}
+                onMouseEnter={() => setBtnHovered(true)}
+                onMouseLeave={() => setBtnHovered(false)}
+                disabled={loading || otp.join("").length !== 6}
+                onClick={() => handleVerifyOTP()}
+              >
+                {loading ? "Verifying..." : "Verify Code"}
+              </button>
+
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  gap: "20px",
+                  marginTop: "14px",
+                }}
+              >
+                <button
+                  type="button"
+                  style={{
+                    ...styles.backLink,
+                    opacity: cooldown > 0 ? 0.4 : 1,
+                    cursor: cooldown > 0 ? "not-allowed" : "pointer",
+                  }}
+                  onClick={handleResendOTP}
+                  disabled={cooldown > 0 || loading}
+                >
+                  {cooldown > 0 ? `Resend in ${cooldown}s` : "Resend Code"}
+                </button>
+                <button
+                  type="button"
+                  style={styles.backLink}
+                  onClick={() => {
+                    setStep("email");
+                    setOtp(["", "", "", "", "", ""]);
+                  }}
+                >
+                  Change Email
+                </button>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </div>
