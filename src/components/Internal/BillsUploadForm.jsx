@@ -444,92 +444,9 @@ const CustomSelect = ({
   );
 };
 
-const committeeMembers = {
-  Organisers: ["Omkar Hokarne", "Lakshmikant Chaudhari", "Afaan Shaikh"],
-  "Logistics & Operations": [
-    "Sukrut Angal (Lead)",
-    "Anuj Wagh",
-    "Anushka Kanade",
-    "Ayusha Firke",
-    "Shreeya Nene",
-    "Ayush Janunkar",
-    "Atharva Gore",
-    "Varad Mogle",
-    "Pushkar Shingate",
-    "Prajwal Adasul",
-    "Samiha Aserkar",
-    "Rushikesh Kandalkar",
-    "Maitreyee Prayag",
-  ],
-  "Finance & Sponsorship": [
-    "Ritika Paradkar",
-    "Durga Gunjal",
-    "Siddhi Patil",
-    "Mayuresh Shevlikar",
-    "Varad Athalye",
-    "Nawaz Patel",
-    "Avadhoot Amrale",
-    "Pratham Verma",
-    "Swaraj Awad",
-  ],
-  "Design & Production": [
-    "Avanti Satpute (Lead)",
-    "Sutirth Doshi",
-    "Priya Rangapure",
-    "Hridaya Khare",
-    "Prachi Sonawane",
-    "Devesh Bhavsar",
-    "Abhishek Chopade",
-    "Parth Devi",
-  ],
-  "Media & Marketing": [
-    "Atharva Joshi (Lead)",
-    "Rohan Naik",
-    "Janhavi Salunkhe",
-    "Aariya Vora",
-    "Neeraj Chaini",
-    "Gaurav Gore",
-    "Siddhant Pawar",
-    "Sumedh Kuchanwar",
-    "Krutika Devare",
-  ],
-  Curation: [
-    "Narayani Jalgaonkar (Lead)",
-    "Rugveda Dhole",
-    "Fanaa Jain",
-    "Samiksha Jadhav",
-    "Nachiket Bedekar",
-    "Shrinand Joshi",
-    "Hardik Mhetre",
-    "Ved Purohit",
-    "Sakshi Thange",
-    "Tanushree Makam",
-  ],
-  Technical: [
-    "Jagdish Prajapati (Lead)",
-    "Aditya Kulkarni",
-    "Saanidhi Gade",
-    "Vedant Yeole",
-    "Soham Katkar",
-  ],
-  Editorial: [
-    "Hiya Pantvaidya (Lead)",
-    "Renuka Joshi",
-    "Maitreyee Bhave",
-    "Yashashri Rajput",
-    "Lavanya Kurapati",
-    "Swara Kulkarni",
-    "Siddhi Munot",
-  ],
-};
 
-export default function BillsUploadForm({ secretKey }) {
-  const [team, setTeam] = useState(
-    () => localStorage.getItem("bills_team") || "",
-  );
-  const [name, setName] = useState(
-    () => localStorage.getItem("bills_name") || "",
-  );
+
+export default function BillsUploadForm({ authToken, name, team, onBack, onLogout }) {
 
   const initialBillState = () => ({
     uid: Date.now() + Math.random(),
@@ -572,17 +489,7 @@ export default function BillsUploadForm({ secretKey }) {
     }, 50);
   };
 
-  const handleTeamChange = (val) => {
-    setTeam(val);
-    setName("");
-    localStorage.setItem("bills_team", val);
-    localStorage.removeItem("bills_name");
-  };
 
-  const handleNameChange = (val) => {
-    setName(val);
-    localStorage.setItem("bills_name", val);
-  };
 
   const handleAddBill = () => {
     setBills((prev) => [...prev, initialBillState()]);
@@ -691,13 +598,6 @@ export default function BillsUploadForm({ secretKey }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!team || !name) {
-      setAutoStatus({
-        type: "error",
-        message: "Please select both your Team and Name.",
-      });
-      return;
-    }
 
     for (let i = 0; i < bills.length; i++) {
       const b = bills[i];
@@ -745,7 +645,6 @@ export default function BillsUploadForm({ secretKey }) {
       const bill = bills[i];
       try {
         const payload = {
-          keyword: secretKey,
           team: team,
           name: name,
           amount: bill.amount,
@@ -758,7 +657,10 @@ export default function BillsUploadForm({ secretKey }) {
 
         const res = await fetch(`${API_URL}/bills`, {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${authToken}`,
+          },
           body: JSON.stringify(payload),
         });
 
@@ -798,10 +700,7 @@ export default function BillsUploadForm({ secretKey }) {
     }
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem("BRIDGE_KEY");
-    window.location.reload();
-  };
+
 
   return (
     <div style={styles.wrapper}>
@@ -892,57 +791,96 @@ export default function BillsUploadForm({ secretKey }) {
                 Submit your purchase receipts seamlessly
               </p>
             </div>
-            <button
-              type="button"
-              style={styles.resetBtn}
-              onClick={handleLogout}
-              onMouseEnter={(e) => {
-                e.target.style.background = "rgba(255,255,255,0.1)";
-                e.target.style.color = "#fff";
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.background = "rgba(255, 255, 255, 0.05)";
-                e.target.style.color = "#ccc";
-              }}
-              title="Sign out and re-enter keyword"
-            >
-              Sign Out
-            </button>
+            <div style={{ display: "flex", gap: "8px" }}>
+              {onBack && (
+                <button
+                  type="button"
+                  style={styles.resetBtn}
+                  onClick={onBack}
+                  onMouseEnter={(e) => {
+                    e.target.style.background = "rgba(255,255,255,0.1)";
+                    e.target.style.color = "#fff";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.background = "rgba(255, 255, 255, 0.05)";
+                    e.target.style.color = "#ccc";
+                  }}
+                  title="Back to dashboard"
+                >
+                  ← Back
+                </button>
+              )}
+              {onLogout && (
+                <button
+                  type="button"
+                  style={styles.resetBtn}
+                  onClick={onLogout}
+                  onMouseEnter={(e) => {
+                    e.target.style.background = "rgba(255,255,255,0.1)";
+                    e.target.style.color = "#fff";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.background = "rgba(255, 255, 255, 0.05)";
+                    e.target.style.color = "#ccc";
+                  }}
+                  title="Sign out"
+                >
+                  Sign Out
+                </button>
+              )}
+            </div>
+          </div>
+
+          {/* Locked user info */}
+          <div style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "12px",
+            padding: "14px 18px",
+            background: "rgba(232, 27, 42, 0.06)",
+            border: "1px solid rgba(232, 27, 42, 0.15)",
+            borderRadius: "10px",
+            marginBottom: "24px",
+          }}>
+            <div style={{
+              width: "36px",
+              height: "36px",
+              borderRadius: "50%",
+              background: "rgba(232, 27, 42, 0.15)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontSize: "1rem",
+              flexShrink: 0,
+            }}>
+              🔒
+            </div>
+            <div style={{ overflow: "hidden" }}>
+              <div style={{
+                color: "#fff",
+                fontSize: "0.95rem",
+                fontWeight: "700",
+                fontFamily: '"Inter", sans-serif',
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+              }}>
+                {name}
+              </div>
+              <div style={{
+                color: "#e81b2a",
+                fontSize: "0.78rem",
+                fontWeight: "600",
+                fontFamily: '"Inter", sans-serif',
+                textTransform: "uppercase",
+                letterSpacing: "0.5px",
+              }}>
+                {team}
+              </div>
+            </div>
           </div>
 
           <form onSubmit={handleSubmit} noValidate>
-            <div style={styles.rowGroup} className="responsive-row">
-              <div style={styles.col}>
-                <label style={styles.label}>Team</label>
-                <CustomSelect
-                  value={team}
-                  onChange={handleTeamChange}
-                  options={Object.keys(committeeMembers).map((t) => ({
-                    label: t,
-                    value: t,
-                  }))}
-                  placeholder="Select Team..."
-                  disabled={loading}
-                />
-              </div>
-              <div style={styles.col}>
-                <label style={styles.label}>Name</label>
-                <CustomSelect
-                  value={name}
-                  onChange={handleNameChange}
-                  options={
-                    team && committeeMembers[team]
-                      ? committeeMembers[team].map((n) => ({
-                          label: n,
-                          value: n,
-                        }))
-                      : []
-                  }
-                  placeholder={team ? "Select Name..." : "Select Team First"}
-                  disabled={loading || !team}
-                />
-              </div>
-            </div>
 
             <div
               style={{
