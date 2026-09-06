@@ -6,7 +6,7 @@ import "./PunarutthanTeamSection.css";
 const imageContext = require.context(
   "../../../assets/team",
   false,
-  /\.(webp|png|jpe?g)$/
+  /\.(webp|png|jpe?g)$/,
 );
 
 const getTeamImage = (imageName) => {
