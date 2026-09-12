@@ -3,12 +3,6 @@ import { Helmet } from "react-helmet";
 import PunarutthanHeroSection from "../sections/Events/Punarutthan/PunarutthanHeroSection";
 import PunarutthanTalksSection from "../sections/Events/Punarutthan/PunarutthanTalksSection";
 import PunarutthanTeamSection from "../sections/Events/Punarutthan/PunarutthanTeamSection";
-import PunarutthanTeamLogicticsandOperationSection from "../sections/Events/Punarutthan/PunaratthanTeamLogisticsandOperationSection";
-import PunarutthanTeamMediaandCommunicationSection from "../sections/Events/Punarutthan/PunarutthanTeamMediaandCommunicationSection";
-import PunarutthanTeamFinanceandSponsorshipSection from "../sections/Events/Punarutthan/PunarutthanTeamFinanceandSponsorshipSection";
-import PunarutthanTeamEditorialSection from "../sections/Events/Punarutthan/PunarutthanTeamEditorialSection";
-import PunarutthanTeamCurationSection from "../sections/Events/Punarutthan/PunarutthanTeamCurationSection";
-import PunarutthanTeamDesignandProductionSection from "../sections/Events/Punarutthan/PunarutthanTeamDesignandProductionSection";
 
 const Punarutthan = () => {
   return (
@@ -20,12 +14,6 @@ const Punarutthan = () => {
       <PunarutthanHeroSection />
       <PunarutthanTalksSection />
       <PunarutthanTeamSection />
-      <PunarutthanTeamLogicticsandOperationSection />
-      <PunarutthanTeamMediaandCommunicationSection />
-      <PunarutthanTeamFinanceandSponsorshipSection />
-      <PunarutthanTeamEditorialSection />
-      <PunarutthanTeamCurationSection />
-      <PunarutthanTeamDesignandProductionSection />
     </>
   );
 };

@@ -1,0 +1,301 @@
+{
+  "Team Punaratthan": [
+    {
+      "name": "Nisarg Kudgunti",
+      "role": "Licensee & Organizer",
+      "img": "Licencee_Nisarg_Kudgunti.webp"
+    },
+    {
+      "name": "Vaishnavi Habbu",
+      "role": "Co-organizer",
+      "img": "Co-organizer_Vaishnavi_Habbu.webp"
+    },
+    {
+      "name": "Atharva Ostwal",
+      "role": "Treasurer",
+      "img": "Treasurer_Atharva_Ostwal.webp"
+    }
+  ],
+  "Team Logistics & Operation": [
+    {
+      "name": "Ayushi Chougule",
+      "role": "Logistics and Operation Lead",
+      "img": "L&O_Ayushi_Chougule.webp"
+    },
+    {
+      "name": "Kasturi Bhandare",
+      "role": "Logistics and Operation Lead",
+      "img": "L&O_Kasturi_Bhandare.webp"
+    },
+    {
+      "name": "Omkar Kalburgi",
+      "role": "Member",
+      "img": "L&O_Omkar_Kalburge.webp"
+    },
+    {
+      "name": "Gaurav Dhande",
+      "role": "Member",
+      "img": "L&O_Gaurav_Dhande.webp"
+    },
+    {
+      "name": "Varad Ghumare",
+      "role": "Member",
+      "img": "L&O_Varad_Ghumare.webp"
+    },
+    {
+      "name": "Shruti Khumbar",
+      "role": "Member",
+      "img": "L&O_Shruti_Kumbhar.webp"
+    },
+    {
+      "name": "Akash Lohar",
+      "role": "Member",
+      "img": "L&O_Akash_Lohar.webp"
+    },
+    {
+      "name": "Apurv Kochar",
+      "role": "Member",
+      "img": "L&O_Apurv_Kochar.webp"
+    },
+    {
+      "name": "Janhavi Shinde",
+      "role": "Member",
+      "img": "L&O_Janhavi_Shinde.webp"
+    },
+    {
+      "name": "Jui Bramhe",
+      "role": "Member",
+      "img": "L&O_Jui_Bramhe.webp"
+    },
+    {
+      "name": "Abhijeet Thore",
+      "role": "Member",
+      "img": "L&O_Abhijeet_Thore.webp"
+    },
+    {
+      "name": "Rudraunsh Joshi",
+      "role": "Member",
+      "img": "L&O_Rudraunsh_Joshi.webp"
+    }
+  ],
+  "Team Media & Communication": [
+    {
+      "name": "Dhrushti Chilveri",
+      "role": "Media and Communication Lead",
+      "img": "M&C_Dhrushti_Chilveri.webp"
+    },
+    {
+      "name": "Komal Pathare",
+      "role": "Media and Communication Lead",
+      "img": "M&C_Komal_Pathare.webp"
+    },
+    {
+      "name": "Tanmay Mare",
+      "role": "Member",
+      "img": "M&C_Tanmay_Mare.webp"
+    },
+    {
+      "name": "Yash Garve",
+      "role": "Member",
+      "img": "M&C_Yash_Garve.webp"
+    },
+    {
+      "name": "Afaan Shaikh",
+      "role": "Member",
+      "img": "M&C_Afaan_Shaikh.webp"
+    },
+    {
+      "name": "Ishika Dhorajkar",
+      "role": "Member",
+      "img": "M&C_Ishika_Dhorajkar.webp"
+    },
+    {
+      "name": "Varun Tammewar",
+      "role": "Member",
+      "img": "M&C_Varun_Tammewar.webp"
+    }
+  ],
+  "Team Finance & Sponsorship": [
+    {
+      "name": "Ved Dalvi",
+      "role": "Finance & Sponsorship Lead",
+      "img": "F&S_Ved_Dalvi.webp"
+    },
+    {
+      "name": "Aarya Gandhe",
+      "role": "Member",
+      "img": "F&S_Aarya_Gandhe.webp"
+    },
+    {
+      "name": "Arav Petkar",
+      "role": "Member",
+      "img": "F&S_Arav_Petkar.webp"
+    },
+    {
+      "name": "Nishikant Toshiwal",
+      "role": "Member",
+      "img": "F&S_Nishikant_Toshniwal.webp"
+    },
+    {
+      "name": "Rugved Bopardikar",
+      "role": "Member",
+      "img": "F&S_Rugved_Bopardikar.webp"
+    },
+    {
+      "name": "Hemil Shah",
+      "role": "Member",
+      "img": "F&S_Hemil_Shah.webp"
+    },
+    {
+      "name": "Nachiket Kulkarni",
+      "role": "Member",
+      "img": "F&S_Nachiket_Kulkarni.webp"
+    }
+  ],
+  "Team Editorial": [
+    {
+      "name": "Aditya Bhambe",
+      "role": "Editorial Lead",
+      "img": "ED_Aditya_Bhambe.webp"
+    },
+    {
+      "name": "Saniya Deshpande",
+      "role": "Member",
+      "img": "ED_Saniya_Deshpande.webp"
+    },
+    {
+      "name": "Pratik Limbekar",
+      "role": "Member",
+      "img": "ED_Pratik_Limbekar.webp"
+    },
+    {
+      "name": "Vaidehi Deshpande",
+      "role": "Member",
+      "img": "ED_Vaidehi_Deshpande.webp"
+    },
+    {
+      "name": "Prajakta Khaty",
+      "role": "Member",
+      "img": "ED_Prajakta_Khaty.webp"
+    },
+    {
+      "name": "Aarya Joshi",
+      "role": "Member",
+      "img": "ED_Aarya_Joshi.webp"
+    },
+    {
+      "name": "Vedaant Deshpande",
+      "role": "Member",
+      "img": "ED_Vedaant_Deshpande.webp"
+    },
+    {
+      "name": "Maitrayee Bhave",
+      "role": "Member",
+      "img": "ED_Maitrayee_Bhave.webp"
+    },
+    {
+      "name": "Sanidhya Adhau",
+      "role": "Member",
+      "img": "F&S_Sanidhya_Adhau.webp"
+    }
+  ],
+  "Team Curation": [
+    {
+      "name": "Aniket Gaudgaul",
+      "role": "Curation Lead",
+      "img": "Curation_Aniket_Gaudgal.webp"
+    },
+    {
+      "name": "Ankita Renuse",
+      "role": "Curation Lead",
+      "img": "Curation_Ankita_Renuse.webp"
+    },
+    {
+      "name": "Girija Awate",
+      "role": "Member",
+      "img": "Curation_Girija_Awate.webp"
+    },
+    {
+      "name": "Pushkar Tipre",
+      "role": "Member",
+      "img": "Curation_Pushkar_Tipre.webp"
+    },
+    {
+      "name": "Monisha Aurora",
+      "role": "Member",
+      "img": "Curation_Monisha_Aurora.webp"
+    },
+    {
+      "name": "Aakash Joshi",
+      "role": "Member",
+      "img": "Curation_Aakash_Joshi.webp"
+    },
+    {
+      "name": "Sanavi Sonwane",
+      "role": "Member",
+      "img": "Curation_Sanavi_Sonwane.webp"
+    },
+    {
+      "name": "Yuvraj Yadav",
+      "role": "Member",
+      "img": "Curation_Yuvraj_Yadav.webp"
+    },
+    {
+      "name": "Swanand Nalawade",
+      "role": "Member",
+      "img": "Curation_Swanand_Nalawade.webp"
+    },
+    {
+      "name": "Pratik Damani",
+      "role": "Member",
+      "img": "Curation_Pratik_Damani.webp"
+    }
+  ],
+  "Team Design & Production": [
+    {
+      "name": "Nirjara Mhaskar",
+      "role": "Design & Production Lead",
+      "img": "D&P_Nirjara_Mhaskar.webp"
+    },
+    {
+      "name": "Ayush Koparde",
+      "role": "Design & Production Lead",
+      "img": "D&P_Ayush_Koparde.webp"
+    },
+    {
+      "name": "Sahil Batgeri",
+      "role": "Member",
+      "img": "D&P_Sahil_Batgeri.webp"
+    },
+    {
+      "name": "Avani Thakur",
+      "role": "Member",
+      "img": "D&P_Avani_Thakur.webp"
+    },
+    {
+      "name": "Vishwajit Sherkar",
+      "role": "Member",
+      "img": "D&P_Vishwajit_Sherkar.webp"
+    },
+    {
+      "name": "Shreenidhi Bedarkar",
+      "role": "Member",
+      "img": "D&P_Shreenidhi_Bedarkar.webp"
+    },
+    {
+      "name": "Vedant Joshi",
+      "role": "Member",
+      "img": "D&P_Vedant_Joshi.webp"
+    },
+    {
+      "name": "Shruti Natekar",
+      "role": "Member",
+      "img": "D&P_Shruti_Natekar.webp"
+    },
+    {
+      "name": "Rutvij Deo",
+      "role": "Member",
+      "img": "D&P_Rutvij_Deo.webp"
+    }
+  ]
+}
