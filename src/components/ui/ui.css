@@ -1370,7 +1370,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 7px;
   background: linear-gradient(
     135deg,
     rgba(235, 0, 40, 0.14) 0%,
@@ -1414,6 +1414,7 @@
 
 .ui-brochure-btn .ui-brochure-icon {
   color: #ff4d4d;
+  flex-shrink: 0;
   transition: transform 0.2s ease;
 }
 

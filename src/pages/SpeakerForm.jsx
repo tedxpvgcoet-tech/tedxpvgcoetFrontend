@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Helmet } from "react-helmet";
 import backgroundVideo from "../assets/backgrounds/background.mp4";
 
@@ -41,16 +41,6 @@ const SpeakerForm = () => {
 
   const [submitting, setSubmitting] = useState(false);
   const [status, setStatus] = useState({ type: "", message: "" });
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      alert(
-        "🚫 Speaker nominations for Drishti (TEDxPVGCOET 2025) are now closed.\nThank you for your interest in being part of our journey.\nWe look forward to your application next time.\nStay connected, and keep spreading Ideas Worth Spreading!",
-      );
-    }, 1000);
-
-    return () => clearTimeout(timer);
-  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -139,45 +129,6 @@ const SpeakerForm = () => {
             </div>
             <span className="ui-badge">TEDxPVGCOET 2026</span>
           </div>
-
-          {/* Theme Briefing Card */}
-          <div className="ui-theme-card">
-            <div className="ui-theme-card-header">
-              <h2 className="ui-theme-card-title">Theme: Drishti (दृष्टि)</h2>
-              <a
-                href="https://docs.google.com/document/d/1Sw1Fh00eBpIFEEyjzYP6uHSiJABevaSqhiyfg0tmFh8/edit?usp=drivesdk"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="ui-link-btn"
-              >
-                Theme Document&nbsp;
-                <FiExternalLink size={13} />
-              </a>
-            </div>
-            <p>
-              The theme for <strong>TEDxPVGCOET 2025</strong> is{" "}
-              <strong>"Drishti (दृष्टि)"</strong>, a Sanskrit word meaning
-              vision or perspective. It is about shifting perspective, finding
-              insight in unexpected places, and discovering new ways of
-              thinking, feeling, and acting.
-            </p>
-            <div className="ui-theme-tags">
-              <span className="ui-tag">
-                <FiCalendar size={14} /> <strong>Date:</strong> Sep 13th, 2025
-              </span>
-              <span className="ui-tag">
-                <FiMapPin size={14} /> <strong>Location:</strong> PVGCOET, Pune
-              </span>
-            </div>
-          </div>
-
-          {/* Registrations Closed Notice */}
-          <FormAlert
-            type="warning"
-            title="Registrations Closed"
-            message="Speaker nominations for TEDxPVGCOET 2025 (Drishti) are officially closed. Submissions will be reviewed for upcoming editions or waitlist."
-            style={{ marginBottom: "24px" }}
-          />
 
           {status.message && (
             <FormAlert

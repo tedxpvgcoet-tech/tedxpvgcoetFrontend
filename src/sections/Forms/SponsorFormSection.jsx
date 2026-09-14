@@ -174,7 +174,7 @@ const SponsorForm = () => {
               className="ui-brochure-btn"
               title="Download Sponsorship Brochure"
             >
-              <FiDownload size={13} className="ui-brochure-icon" />
+              <FiDownload size={16} className="ui-brochure-icon" />
               <span>Download Brochure</span>
             </a>
           </div>
