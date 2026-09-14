@@ -1,9 +1,22 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Helmet } from "react-helmet";
 import backgroundVideo from "../assets/backgrounds/background.mp4";
 
 import FooterSection from "../sections/Common/FooterSection";
-import { FiExternalLink } from "react-icons/fi";
+import {
+  FiExternalLink,
+  FiUser,
+  FiBriefcase,
+  FiMapPin,
+  FiMic,
+  FiShare2,
+  FiMail,
+  FiPhone,
+  FiLinkedin,
+  FiInstagram,
+  FiGlobe,
+  FiCalendar,
+} from "react-icons/fi";
 import { Input, Textarea, Button, FormAlert, FormGrid } from "../components/ui";
 
 const SpeakerForm = () => {
@@ -17,7 +30,6 @@ const SpeakerForm = () => {
     professional_affiliation: "",
     speaker_bio: "",
     previous_ted_talk: "",
-    theme_alignment: "",
     additional_info: "",
     linkedin: "",
     instagram: "",
@@ -28,16 +40,6 @@ const SpeakerForm = () => {
 
   const [submitting, setSubmitting] = useState(false);
   const [status, setStatus] = useState({ type: "", message: "" });
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      alert(
-        "🚫 Speaker nominations for Drishti (TEDxPVGCOET 2025) are now closed.\nThank you for your interest in being part of our journey.\nWe look forward to your application next time.\nStay connected, and keep spreading Ideas Worth Spreading!",
-      );
-    }, 1000);
-
-    return () => clearTimeout(timer);
-  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -84,7 +86,6 @@ const SpeakerForm = () => {
         professional_affiliation: "",
         speaker_bio: "",
         previous_ted_talk: "",
-        theme_alignment: "",
         additional_info: "",
         linkedin: "",
         instagram: "",
@@ -113,48 +114,19 @@ const SpeakerForm = () => {
         <source src={backgroundVideo} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
-      <main className="form-page">
-        <div className="para">
-          <h2>Theme for TEDxPVGCOET 2025-2026:</h2>
-          <br />
-          <br />
 
-          <p>
-            The theme for <strong>TEDxPVGCOET 2025</strong> is{" "}
-            <strong>"Drishti (दृष्टि)"</strong>, a Sanskrit word that means
-            vision or perspective. But this isn’t just about what we see with
-            our eyes—it’s about how we understand, interpret, and connect with
-            the world around us. Drishti is about looking beyond the surface to
-            find deeper meaning and clarity.
-            <br />
-            <br />
-            In a fast-paced world full of noise and distraction, Drishti asks us
-            to slow down, reflect, and truly see—ourselves, others, and the
-            challenges we face. It’s about shifting perspective, finding insight
-            in unexpected places, and discovering new ways of thinking, feeling,
-            and acting.
-            <br />
-            <br />
-            For more details about the theme check out this document:
-            <br />
-            <a
-              href="https://docs.google.com/document/d/1Sw1Fh00eBpIFEEyjzYP6uHSiJABevaSqhiyfg0tmFh8/edit?usp=drivesdk"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ color: "white" }}
-            >
-              Theme Document&nbsp;
-              <FiExternalLink size={12} />
-            </a>
-            <br />
-            <br />
-            <strong> Date:</strong> September 13th, 2025&nbsp;&nbsp;
-            <strong> Location:</strong> PVGCOET, Pune, Maharashtra, India
-            <br />
-          </p>
-        </div>
-        <div className="form-inner">
-          <h1>Registrations have been closed for TEDxPVGCOET2025</h1>
+      <main className="form-page" style={{ padding: "120px 20px 80px" }}>
+        <div className="ui-glass-card">
+          {/* Header Row */}
+          <div className="ui-header-row">
+            <div>
+              <h1 className="ui-gradient-title">Speaker Nomination</h1>
+              <p className="ui-subtitle">
+                Share your voice and ideas worth spreading on the TEDx stage
+              </p>
+            </div>
+            <span className="ui-badge">TEDxPVGCOET 2026</span>
+          </div>
 
           {status.message && (
             <FormAlert
@@ -162,200 +134,222 @@ const SpeakerForm = () => {
               message={status.message}
               onClose={() => setStatus({ type: "", message: "" })}
               scrollIntoView
+              style={{ marginBottom: "24px" }}
             />
           )}
 
-          <form className="speaker-form-container" onSubmit={handleSubmit}>
-            <Input
-              label="Full Name"
-              type="text"
-              name="name"
-              placeholder="Your Full Name"
-              required
-              value={formData.name}
-              onChange={handleChange}
-              fullWidth
-            />
+          <form onSubmit={handleSubmit} noValidate>
+            {/* Section 1: Speaker Information */}
+            <div className="ui-subcard">
+              <div className="ui-subcard-header">
+                <span className="ui-subcard-number">01</span>
+                <FiUser size={16} color="#eb0028" />
+                <h3 className="ui-subcard-title">Speaker Information</h3>
+              </div>
 
-            <FormGrid>
               <Input
-                label="Age"
-                type="number"
-                name="age"
-                placeholder="Age"
-                required
-                value={formData.age}
-                onChange={handleChange}
-              />
-              <Input
-                label="Domain"
+                label="Full Name"
                 type="text"
-                name="domain"
-                placeholder="Domain"
+                name="name"
+                placeholder="Your Full Name"
+                prefixIcon={<FiUser size={16} />}
                 required
-                value={formData.domain}
+                value={formData.name}
                 onChange={handleChange}
+                fullWidth
               />
-            </FormGrid>
 
-            <Input
-              label="Organization"
-              type="text"
-              name="organization"
-              placeholder="Organization"
-              required
-              value={formData.organization}
-              onChange={handleChange}
-              fullWidth
-            />
+              <FormGrid>
+                <Input
+                  label="Age"
+                  type="number"
+                  name="age"
+                  placeholder="Age"
+                  required
+                  value={formData.age}
+                  onChange={handleChange}
+                />
+                <Input
+                  label="Domain / Field"
+                  type="text"
+                  name="domain"
+                  placeholder="e.g. Technology, Art, Science"
+                  required
+                  value={formData.domain}
+                  onChange={handleChange}
+                />
+              </FormGrid>
 
-            <Input
-              label="Current Location / City"
-              type="text"
-              name="current_location"
-              placeholder="Current Location/City"
-              required
-              value={formData.current_location}
-              onChange={handleChange}
-              fullWidth
-            />
-
-            <Input
-              label="Professional Affiliation / Title"
-              type="text"
-              name="professional_affiliation"
-              placeholder="Professional Affiliation/Title"
-              required
-              value={formData.professional_affiliation}
-              onChange={handleChange}
-              fullWidth
-            />
-
-            <Textarea
-              label="How do you think your talk will impact or inspire the audience?"
-              name="audience_impact"
-              placeholder="Provide details on audience impact"
-              required
-              rows={3}
-              value={formData.audience_impact}
-              onChange={handleChange}
-              fullWidth
-            />
-
-            <Textarea
-              label="Speaker's Bio (Briefly describe your professional background and current occupation)"
-              name="speaker_bio"
-              placeholder="Brief professional biography"
-              required
-              rows={3}
-              value={formData.speaker_bio}
-              onChange={handleChange}
-              fullWidth
-            />
-
-            <Textarea
-              label="Have you given a TED or TEDx talk before? If yes, please provide details."
-              name="previous_ted_talk"
-              placeholder="Previous TED/TEDx talks or 'None'"
-              required
-              rows={2}
-              value={formData.previous_ted_talk}
-              onChange={handleChange}
-              fullWidth
-            />
-
-            <Textarea
-              label="How will your talk align with this year's TEDxPVGCOET theme 'Drishti'?"
-              name="theme_alignment"
-              placeholder="Describe theme alignment"
-              required
-              rows={3}
-              value={formData.theme_alignment}
-              onChange={handleChange}
-              fullWidth
-            />
-
-            <Textarea
-              label="Any Additional Comments or Information:"
-              name="additional_info"
-              placeholder="Any additional details..."
-              rows={2}
-              value={formData.additional_info}
-              onChange={handleChange}
-              fullWidth
-            />
-
-            <FormGrid>
               <Input
-                label="Phone Number"
+                label="Organization / Institute"
                 type="text"
-                name="phone_number"
-                placeholder="Phone Number"
+                name="organization"
+                placeholder="Current Organization or University"
+                prefixIcon={<FiBriefcase size={16} />}
                 required
-                value={formData.phone_number}
+                value={formData.organization}
                 onChange={handleChange}
+                fullWidth
               />
-              <Input
-                label="Email Address"
-                type="email"
-                name="email"
-                placeholder="Email Address"
+
+              <FormGrid>
+                <Input
+                  label="Current Location / City"
+                  type="text"
+                  name="current_location"
+                  placeholder="e.g. Pune, Maharashtra"
+                  prefixIcon={<FiMapPin size={16} />}
+                  required
+                  value={formData.current_location}
+                  onChange={handleChange}
+                />
+                <Input
+                  label="Professional Designation / Title"
+                  type="text"
+                  name="professional_affiliation"
+                  placeholder="e.g. Founder, Researcher, Architect"
+                  required
+                  value={formData.professional_affiliation}
+                  onChange={handleChange}
+                />
+              </FormGrid>
+            </div>
+
+            {/* Section 2: Talk & Experience */}
+            <div className="ui-subcard">
+              <div className="ui-subcard-header">
+                <span className="ui-subcard-number">02</span>
+                <FiMic size={16} color="#eb0028" />
+                <h3 className="ui-subcard-title">Talk & Experience</h3>
+              </div>
+
+              <Textarea
+                label="Audience Impact"
+                helperText="How do you think your talk will impact or inspire the audience?"
+                name="audience_impact"
+                placeholder="Describe key takeaways and the core inspirational message..."
                 required
-                value={formData.email}
+                rows={3}
+                value={formData.audience_impact}
                 onChange={handleChange}
+                fullWidth
               />
-            </FormGrid>
 
-            <FormGrid>
-              <Input
-                label="Instagram Profile"
-                type="url"
-                name="instagram"
-                placeholder="https://instagram.com/..."
-                value={formData.instagram}
+              <Textarea
+                label="Speaker's Bio"
+                helperText="Briefly describe your professional background, milestones, and current occupation."
+                name="speaker_bio"
+                placeholder="Concise professional biography..."
+                required
+                rows={3}
+                value={formData.speaker_bio}
                 onChange={handleChange}
+                fullWidth
               />
-              <Input
-                label="LinkedIn Profile"
-                type="url"
-                name="linkedin"
-                placeholder="https://linkedin.com/in/..."
-                value={formData.linkedin}
-                onChange={handleChange}
-              />
-            </FormGrid>
 
-            <FormGrid>
+              <Textarea
+                label="Previous Speaking Experience"
+                helperText="Have you given a TED or TEDx talk before? (Mention 'None' if first time)"
+                name="previous_ted_talk"
+                placeholder="Details of previous talks or 'None'..."
+                required
+                rows={2}
+                value={formData.previous_ted_talk}
+                onChange={handleChange}
+                fullWidth
+              />
+
+              <Textarea
+                label="Additional Comments or Information"
+                name="additional_info"
+                placeholder="Any additional context, special requirements, or links..."
+                rows={2}
+                value={formData.additional_info}
+                onChange={handleChange}
+                fullWidth
+              />
+            </div>
+
+            {/* Section 3: Contact & Social Profiles */}
+            <div className="ui-subcard">
+              <div className="ui-subcard-header">
+                <span className="ui-subcard-number">03</span>
+                <FiShare2 size={16} color="#eb0028" />
+                <h3 className="ui-subcard-title">Contact & Social Profiles</h3>
+              </div>
+
+              <FormGrid>
+                <Input
+                  label="Email Address"
+                  type="email"
+                  name="email"
+                  placeholder="name@domain.com"
+                  prefixIcon={<FiMail size={16} />}
+                  required
+                  value={formData.email}
+                  onChange={handleChange}
+                />
+                <Input
+                  label="Phone Number"
+                  type="tel"
+                  name="phone_number"
+                  placeholder="+91 98765 43210"
+                  prefixIcon={<FiPhone size={16} />}
+                  required
+                  value={formData.phone_number}
+                  onChange={handleChange}
+                />
+              </FormGrid>
+
+              <FormGrid>
+                <Input
+                  label="LinkedIn Profile"
+                  type="url"
+                  name="linkedin"
+                  placeholder="https://linkedin.com/in/..."
+                  prefixIcon={<FiLinkedin size={16} />}
+                  value={formData.linkedin}
+                  onChange={handleChange}
+                />
+                <Input
+                  label="Instagram Profile"
+                  type="url"
+                  name="instagram"
+                  placeholder="https://instagram.com/..."
+                  prefixIcon={<FiInstagram size={16} />}
+                  value={formData.instagram}
+                  onChange={handleChange}
+                />
+              </FormGrid>
+
               <Input
                 label="Portfolio / Website Link"
                 type="url"
                 name="portfolio"
-                placeholder="https://..."
+                placeholder="https://yourportfolio.com"
+                prefixIcon={<FiGlobe size={16} />}
                 value={formData.portfolio}
                 onChange={handleChange}
+                fullWidth
               />
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "flex-end",
-                  marginBottom: "1.25rem",
-                }}
+            </div>
+
+            <div style={{ marginTop: "28px" }}>
+              <Button
+                type="submit"
+                variant="primary"
+                size="lg"
+                fullWidth
+                loading={submitting}
+                loadingText="Submitting Nomination..."
               >
-                <Button
-                  type="submit"
-                  variant="primary"
-                  size="md"
-                  fullWidth
-                  loading={submitting}
-                  loadingText="Submitting..."
-                >
-                  Submit Nomination
-                </Button>
-              </div>
-            </FormGrid>
+                Submit Speaker Nomination
+              </Button>
+            </div>
           </form>
         </div>
       </main>
+
       <FooterSection />
     </div>
   );

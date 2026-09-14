@@ -30,10 +30,12 @@ const RadioGroup = ({
   const handleSelect = (optValue) => {
     if (disabled) return;
     if (onChange) {
+      const nextValue =
+        !required && String(value) === String(optValue) ? "" : optValue;
       onChange({
         target: {
           name: name,
-          value: optValue,
+          value: nextValue,
           type: "radio",
         },
       });

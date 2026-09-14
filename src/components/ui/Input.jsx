@@ -16,6 +16,7 @@ const Input = forwardRef(
       helperText,
       prefixIcon,
       suffixIcon,
+      icon,
       fullWidth = false,
       className = "",
       inputClassName = "",
@@ -29,6 +30,7 @@ const Input = forwardRef(
     const inputId =
       id || name || `input-${Math.random().toString(36).substring(2, 9)}`;
     const hasError = Boolean(error);
+    const activePrefixIcon = prefixIcon || icon;
 
     const containerClasses = [
       "ui-form-field",
@@ -41,7 +43,7 @@ const Input = forwardRef(
 
     const inputClasses = [
       "ui-input",
-      prefixIcon ? "ui-has-prefix" : "",
+      activePrefixIcon ? "ui-has-prefix" : "",
       suffixIcon ? "ui-has-suffix" : "",
       inputClassName,
     ]
@@ -58,8 +60,10 @@ const Input = forwardRef(
         )}
 
         <div className="ui-input-wrapper">
-          {prefixIcon && (
-            <span className="ui-input-icon ui-input-prefix">{prefixIcon}</span>
+          {activePrefixIcon && (
+            <span className="ui-input-icon ui-input-prefix">
+              {activePrefixIcon}
+            </span>
           )}
           <input
             ref={ref}

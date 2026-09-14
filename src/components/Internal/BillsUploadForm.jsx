@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { Helmet } from "react-helmet";
 import bgVideo from "../../assets/backgrounds/background.mp4";
+import { Input, Textarea, Dropdown, Button, FormAlert, FormGrid } from "../ui";
 
 const styles = {
   wrapper: {
@@ -308,142 +309,6 @@ const styles = {
   },
 };
 
-const CustomSelect = ({
-  value,
-  onChange,
-  options,
-  placeholder,
-  disabled,
-  hasError,
-}) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const containerRef = useRef(null);
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (containerRef.current && !containerRef.current.contains(event.target))
-        setIsOpen(false);
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-
-  return (
-    <div ref={containerRef} style={{ position: "relative" }}>
-      <div
-        onClick={() => !disabled && setIsOpen(!isOpen)}
-        style={{
-          ...styles.select,
-          opacity: disabled ? 0.5 : 1,
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          cursor: disabled ? "not-allowed" : "pointer",
-          borderColor: hasError
-            ? "#e81b2a"
-            : isOpen
-              ? "#e81b2a"
-              : "rgba(255,255,255,0.1)",
-          background: hasError
-            ? "rgba(232, 27, 42, 0.05)"
-            : isOpen
-              ? "rgba(232, 27, 42, 0.03)"
-              : "rgba(0, 0, 0, 0.2)",
-          boxShadow: isOpen
-            ? "0 0 0 3px rgba(232, 27, 42, 0.15)"
-            : "inset 0 2px 4px rgba(0,0,0,0.1)",
-        }}
-      >
-        <span style={{ color: value ? "#fff" : "#888" }}>
-          {value
-            ? options.find((o) => o.value === value)?.label || value
-            : placeholder}
-        </span>
-        <svg
-          width="12"
-          height="12"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke={isOpen ? "#e81b2a" : "#999"}
-          strokeWidth="3"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          style={{
-            transition: "transform 0.3s ease",
-            transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
-          }}
-        >
-          <polyline points="6 9 12 15 18 9"></polyline>
-        </svg>
-      </div>
-
-      {isOpen && !disabled && (
-        <div
-          style={{
-            position: "absolute",
-            top: "100%",
-            left: 0,
-            right: 0,
-            marginTop: "8px",
-            background: "rgba(25, 25, 30, 0.95)",
-            border: "1px solid rgba(255,255,255,0.1)",
-            borderRadius: "8px",
-            zIndex: 100,
-            maxHeight: "220px",
-            overflowY: "auto",
-            boxShadow: "0 15px 40px rgba(0,0,0,0.6)",
-            WebkitBackdropFilter: "blur(15px)",
-            backdropFilter: "blur(15px)",
-          }}
-        >
-          {options.map((opt) => (
-            <div
-              key={opt.value}
-              onClick={() => {
-                onChange(opt.value);
-                setIsOpen(false);
-              }}
-              style={{
-                padding: "12px 16px",
-                color: value === opt.value ? "#ff4d4d" : "#ddd",
-                cursor: "pointer",
-                borderBottom: "1px solid rgba(255,255,255,0.03)",
-                background:
-                  value === opt.value
-                    ? "rgba(232, 27, 42, 0.1)"
-                    : "transparent",
-                transition: "background 0.2s",
-                fontSize: "0.95rem",
-              }}
-              onMouseEnter={(e) => {
-                if (value !== opt.value)
-                  e.target.style.background = "rgba(255, 255, 255, 0.05)";
-              }}
-              onMouseLeave={(e) => {
-                if (value !== opt.value)
-                  e.target.style.background = "transparent";
-              }}
-            >
-              {opt.label}
-            </div>
-          ))}
-          {options.length === 0 && (
-            <div
-              style={{
-                padding: "12px 16px",
-                color: "#666",
-                fontSize: "0.9rem",
-              }}
-            >
-              No options available
-            </div>
-          )}
-        </div>
-      )}
-    </div>
-  );
-};
-
 export default function BillsUploadForm({
   authToken,
   name,
@@ -467,9 +332,7 @@ export default function BillsUploadForm({
   const statusTimerRef = useRef(null);
   const statusRef = useRef(null);
 
-  const [btnHovered, setBtnHovered] = useState(false);
   const [addBtnHovered, setAddBtnHovered] = useState(false);
-  const [focused, setFocused] = useState("");
   const [hoveredFileId, setHoveredFileId] = useState(null);
 
   const setAutoStatus = (statusObj, autoDismissMs = 0) => {
@@ -927,71 +790,49 @@ export default function BillsUploadForm({
                   )}
                 </div>
 
-                <div style={styles.rowGroup} className="responsive-row">
-                  <div style={styles.col}>
-                    <label style={styles.label}>Amount (₹) *</label>
-                    <input
-                      type="number"
-                      required
-                      value={bill.amount}
-                      disabled={loading}
-                      style={{
-                        ...styles.input,
-                        opacity: loading ? 0.5 : 1,
-                        ...(focused === `amount-${bill.uid}` && !loading
-                          ? styles.inputFocus
-                          : {}),
-                      }}
-                      onFocus={() => setFocused(`amount-${bill.uid}`)}
-                      onBlur={() => setFocused("")}
-                      onChange={(e) =>
-                        handleBillFieldChange(
-                          bill.uid,
-                          "amount",
-                          e.target.value,
-                        )
-                      }
-                      onWheel={(e) => e.target.blur()}
-                      placeholder="e.g. 500"
-                    />
-                  </div>
-                  <div style={styles.col}>
-                    <label style={styles.label}>Category</label>
-                    <CustomSelect
-                      value={bill.gstCategory}
-                      onChange={(val) =>
-                        handleBillFieldChange(bill.uid, "gstCategory", val)
-                      }
-                      options={[
-                        { label: "GST", value: "GST" },
-                        { label: "Non-GST", value: "Non-GST" },
-                      ]}
-                      placeholder="Category"
-                      disabled={loading}
-                    />
-                  </div>
-                </div>
+                <FormGrid>
+                  <Input
+                    label="Amount (₹)"
+                    type="number"
+                    required
+                    value={bill.amount}
+                    disabled={loading}
+                    onChange={(e) =>
+                      handleBillFieldChange(bill.uid, "amount", e.target.value)
+                    }
+                    onWheel={(e) => e.target.blur()}
+                    placeholder="e.g. 500"
+                  />
+                  <Dropdown
+                    label="Category"
+                    value={bill.gstCategory}
+                    onChange={(e) =>
+                      handleBillFieldChange(
+                        bill.uid,
+                        "gstCategory",
+                        e.target ? e.target.value : e,
+                      )
+                    }
+                    options={[
+                      { label: "GST", value: "GST" },
+                      { label: "Non-GST", value: "Non-GST" },
+                    ]}
+                    placeholder="Category"
+                    disabled={loading}
+                  />
+                </FormGrid>
 
-                <div style={styles.formGroup}>
-                  <label style={styles.label}>
-                    Reason / Description (Optional)
-                  </label>
-                  <textarea
+                <div style={{ marginBottom: "20px" }}>
+                  <Textarea
+                    label="Reason / Description (Optional)"
                     value={bill.reason}
                     disabled={loading}
-                    style={{
-                      ...styles.textarea,
-                      opacity: loading ? 0.5 : 1,
-                      ...(focused === `reason-${bill.uid}` && !loading
-                        ? styles.inputFocus
-                        : {}),
-                    }}
-                    onFocus={() => setFocused(`reason-${bill.uid}`)}
-                    onBlur={() => setFocused("")}
                     onChange={(e) =>
                       handleBillFieldChange(bill.uid, "reason", e.target.value)
                     }
                     placeholder="What was purchased and for what purpose?"
+                    rows={3}
+                    fullWidth
                   />
                 </div>
 
@@ -1268,62 +1109,29 @@ export default function BillsUploadForm({
               return null;
             })()}
 
-            <button
+            <Button
               type="submit"
-              style={{
-                ...styles.submitBtn,
-                ...(btnHovered && !loading ? styles.submitBtnHover : {}),
-                ...(loading ? styles.submitBtnDisabled : {}),
-              }}
-              onMouseEnter={() => setBtnHovered(true)}
-              onMouseLeave={() => setBtnHovered(false)}
+              variant="primary"
+              size="lg"
+              fullWidth
+              loading={loading}
+              loadingText={uploadProgress || "Uploading..."}
               disabled={loading}
             >
-              {loading ? (
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    gap: "10px",
-                  }}
-                >
-                  <div className="spinner"></div>{" "}
-                  {uploadProgress || "Uploading..."}
-                </div>
-              ) : bills.length > 1 ? (
-                `Submit All ${bills.length} Bills`
-              ) : (
-                "Submit Bill"
-              )}
-            </button>
+              {bills.length > 1
+                ? `Submit All ${bills.length} Bills`
+                : "Submit Bill"}
+            </Button>
           </form>
 
           {status.message && (
-            <div
-              key={statusKey}
-              ref={statusRef}
-              style={{
-                ...styles.statusContainer,
-                animation:
-                  status.type === "error"
-                    ? "shakeError 0.5s ease, fadeText 0.3s ease"
-                    : "fadeText 0.3s ease",
-                ...(status.type === "success"
-                  ? styles.statusSuccess
-                  : status.type === "error"
-                    ? styles.statusError
-                    : {
-                        background: "rgba(255,255,255,0.1)",
-                        color: "#fff",
-                        border: "1px solid rgba(255,255,255,0.2)",
-                      }),
-              }}
-            >
-              <span
-                dangerouslySetInnerHTML={{
-                  __html: status.message.replace(/\n/g, "<br/>"),
-                }}
+            <div ref={statusRef} style={{ marginTop: "20px" }}>
+              <FormAlert
+                key={statusKey}
+                type={status.type || "info"}
+                message={status.message}
+                onClose={() => setStatus({ type: "", message: "" })}
+                scrollIntoView
               />
             </div>
           )}

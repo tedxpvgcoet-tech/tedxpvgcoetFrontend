@@ -1,7 +1,6 @@
 import backgroundVideo from "../assets/backgrounds/background.mp4";
 import { Helmet } from "react-helmet";
 import SponsorFormSection from "../sections/Forms/SponsorFormSection";
-import SponsorFeedback from "../sections/Forms/SponsorFeedback";
 import FooterSection from "../sections/Common/FooterSection";
 
 const SponsorForm = () => {
@@ -16,7 +15,6 @@ const SponsorForm = () => {
       </video>
 
       <SponsorFormSection />
-      <SponsorFeedback />
       <FooterSection />
     </div>
   );
