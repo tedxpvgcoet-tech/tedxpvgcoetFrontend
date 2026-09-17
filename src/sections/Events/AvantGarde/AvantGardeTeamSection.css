@@ -21,12 +21,11 @@
 }
 
 .team-grid3 > .team-card3 {
-  margin: 0 auto; /* centers cards in their columns */
+  margin: 0 auto;
 }
 
-/* Team Card Styles */
 .team-card3 {
-  max-width: 400px; /* Decrease width */
+  max-width: 400px;
   max-height: 500px;
   border-radius: 10px;
   overflow: hidden;
@@ -60,9 +59,6 @@
   font-size: 0.95rem;
 }
 
-/* Responsive Grid */
-
-/* Default: 1 card per row */
 @media (max-width: 767px) {
   .team-grid3 {
     grid-template-columns: 1fr;
@@ -73,14 +69,13 @@
   }
 }
 
-/* Medium: 2 cards per row */
 @media (min-width: 768px) and (max-width: 1023px) {
   .team-grid3 {
     grid-template-columns: repeat(2, 1fr);
   }
 
   .team-card3 {
-    max-width: 250px; /* Decrease width */
+    max-width: 250px;
     max-height: 350px;
   }
 
@@ -90,14 +85,13 @@
   }
 }
 
-/* Large: 3 cards per row */
 @media (min-width: 1024px) {
   .team-grid3 {
     grid-template-columns: repeat(3, 1fr);
   }
 
   .team-card3 {
-    max-width: 250px; /* Decrease width */
+    max-width: 250px;
     max-height: 350px;
   }
 

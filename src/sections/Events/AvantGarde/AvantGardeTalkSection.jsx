@@ -60,8 +60,10 @@ const AvantGardeTalksSection = () => {
           <div className="speaker-card2" key={index}>
             <img src={speaker.img} alt={speaker.name} loading="lazy" />
             <div className="speaker-info2">
-              <h3>{speaker.name}</h3>
-              <p>{speaker.desc}</p>
+              <div className="speaker-text2">
+                <h3>{speaker.name}</h3>
+                <p>{speaker.desc}</p>
+              </div>
               <div className="speaker-action-buttons">
                 <a
                   href={speaker.link}
