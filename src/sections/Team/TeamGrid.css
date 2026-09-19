@@ -10,6 +10,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .team-grid-title {
@@ -132,5 +133,31 @@
 @media (max-width: 480px) {
   .team-grid-title {
     font-size: 3rem;
+  }
+}
+
+.back-to-team-btn {
+  position: absolute;
+  top: 2rem;
+  left: 3rem;
+  color: #eb0028;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+.back-to-team-btn:hover {
+  color: #ff2040;
+  transform: translateX(-5px);
+}
+@media (max-width: 768px) {
+  .back-to-team-btn {
+    top: 1.5rem;
+    left: 1.5rem;
+    font-size: 1rem;
   }
 }
