@@ -2,6 +2,7 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import AvantGardeHeroSection from "../sections/Events/AvantGarde/AvantGardeHeroSection";
 import AvantGardeTalksSection from "../sections/Events/AvantGarde/AvantGardeTalkSection";
+import AvantGardeSponsorsSection from "../sections/Events/AvantGarde/AvantGardeSponsorsSection";
 import AvantGardeTeamSection from "../sections/Events/AvantGarde/AvantGardeTeamSection";
 
 const AvantGarde = () => {
@@ -12,8 +13,9 @@ const AvantGarde = () => {
       </Helmet>
       <div id="page-top" />
       <AvantGardeHeroSection />
-      <AvantGardeTalksSection />
-      <AvantGardeTeamSection />
+<AvantGardeTalksSection />
+<AvantGardeSponsorsSection />
+<AvantGardeTeamSection />
     </>
   );
 };
