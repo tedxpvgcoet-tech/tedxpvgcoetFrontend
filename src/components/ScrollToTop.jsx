@@ -11,9 +11,15 @@ const ScrollToTop = () => {
       // Temporarily overwrite global smooth scrolling
       document.documentElement.style.scrollBehavior = "auto";
 
-      if (pathname === "/team" && sessionStorage.getItem("restoreTeamScroll") === "true") {
+      if (
+        pathname === "/team" &&
+        sessionStorage.getItem("restoreTeamScroll") === "true"
+      ) {
         sessionStorage.removeItem("restoreTeamScroll");
-        const scrollY = parseInt(sessionStorage.getItem("teamPageScrollY") || "0", 10);
+        const scrollY = parseInt(
+          sessionStorage.getItem("teamPageScrollY") || "0",
+          10,
+        );
         window.scrollTo(0, scrollY);
         document.body.scrollTop = scrollY;
       } else {

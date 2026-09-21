@@ -35,10 +35,12 @@ const TeamDepartmentSection = ({ title, description, image, link }) => {
       </div>
       <div className="team-dept-right">
         <p className="team-dept-desc">{description}</p>
-        <Link 
-          to={link} 
+        <Link
+          to={link}
           className="team-dept-btn"
-          onClick={() => sessionStorage.setItem("teamPageScrollY", window.scrollY)}
+          onClick={() =>
+            sessionStorage.setItem("teamPageScrollY", window.scrollY)
+          }
         >
           Learn More →
         </Link>
