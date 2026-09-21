@@ -13,9 +13,9 @@ const AvantGarde = () => {
       </Helmet>
       <div id="page-top" />
       <AvantGardeHeroSection />
-<AvantGardeTalksSection />
-<AvantGardeSponsorsSection />
-<AvantGardeTeamSection />
+      <AvantGardeTalksSection />
+      <AvantGardeSponsorsSection />
+      <AvantGardeTeamSection />
     </>
   );
 };
