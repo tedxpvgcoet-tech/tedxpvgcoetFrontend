@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useParams, Link } from "react-router-dom";
 import teamData from "./team.json";
 import "./TeamGrid.css";
 import "../../pages/Team.css";
@@ -32,6 +32,13 @@ const TeamGrid = ({ teamKey }) => {
     <div className="team-grid-page team-page">
       <div id="page-top" />
       <div className="title-hero">
+        <Link 
+          to="/team" 
+          className="back-to-team-btn"
+          onClick={() => sessionStorage.setItem("restoreTeamScroll", "true")}
+        >
+          <i className="fas fa-arrow-left"></i> Back to Teams
+        </Link>
         <h1 className="team-grid-title">{title}</h1>
       </div>
       <div className={`team-chessboard-grid ${isTwoColumn ? "two-col" : ""}`}>
