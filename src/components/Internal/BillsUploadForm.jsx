@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { Helmet } from "react-helmet";
 import bgVideo from "../../assets/backgrounds/background.mp4";
-import { Input, Textarea, Dropdown, Button, FormAlert, FormGrid } from "../ui";
+import { Input, Textarea, Dropdown, Button, FormAlert, FormGrid, FormField } from "../ui";
 
 const styles = {
   wrapper: {
@@ -717,8 +717,7 @@ export default function BillsUploadForm({
                   />
                 </div>
 
-                <div style={styles.formGroup}>
-                  <label style={styles.label}>Bill Receipt Photo *</label>
+                <FormField label="Bill Receipt Photo" required>
                   <input
                     id={`file-${bill.uid}`}
                     type="file"
@@ -920,7 +919,7 @@ export default function BillsUploadForm({
                       </div>
                     </div>
                   )}
-                </div>
+                </FormField>
               </div>
             ))}
 
