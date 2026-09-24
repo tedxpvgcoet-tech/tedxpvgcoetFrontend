@@ -10,13 +10,27 @@ const ScrollToTop = () => {
     setTimeout(() => {
       // Temporarily overwrite global smooth scrolling
       document.documentElement.style.scrollBehavior = "auto";
-      window.scrollTo(0, 0);
-      // For older browsers/Safari
-      document.body.scrollTop = 0;
+
+      if (
+        pathname === "/team" &&
+        sessionStorage.getItem("restoreTeamScroll") === "true"
+      ) {
+        sessionStorage.removeItem("restoreTeamScroll");
+        const scrollY = parseInt(
+          sessionStorage.getItem("teamPageScrollY") || "0",
+          10,
+        );
+        window.scrollTo(0, scrollY);
+        document.body.scrollTop = scrollY;
+      } else {
+        window.scrollTo(0, 0);
+        // For older browsers/Safari
+        document.body.scrollTop = 0;
+      }
 
       // Restore CSS-defined smooth scrolling
       document.documentElement.style.scrollBehavior = "";
-    }, 0);
+    }, 10);
   }, [pathname]);
 
   return null;
