@@ -22,7 +22,7 @@ const sponsorFeedback = [
       "TEDxPVGCOETM helped us put our brand in front of a young, relevant audience, increasing our visibility and helping us reach potential new customers.",
   },
   {
-    name: " Budhani Bros. Wafers",
+    name: "Budhani Bros. Wafers",
     logo: budhaniLogo,
     feedback:
       "Smooth coordination and timely communication throughout the event. The team handled the sponsorship requirements efficiently.",
@@ -68,12 +68,8 @@ const SponsorFeedbackSection = () => {
         </div>
 
         <div className="sponsor-feedback-list">
-          {sponsorFeedback.map((sponsor, index) => (
+          {sponsorFeedback.map((sponsor) => (
             <article className="ui-subcard sponsor-feedback-item" key={sponsor.name}>
-              <div className="ui-subcard-header">
-                <h3 className="ui-subcard-title">{sponsor.name}</h3>
-              </div>
-
               <div className="sponsor-feedback-content">
                 <div className="sponsor-feedback-logo-wrapper">
                   <img

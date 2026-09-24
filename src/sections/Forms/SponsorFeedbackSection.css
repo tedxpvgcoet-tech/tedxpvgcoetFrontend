@@ -7,36 +7,96 @@
 }
 
 .sponsor-feedback-card {
-  max-width: 900px;
+  max-width: 1100px;
+  width: 100%;
   animation-delay: 0.1s;
 }
 
-.sponsor-feedback-list {
+.sponsor-feedback-card .ui-header-row {
+  justify-content: center;
+  text-align: center;
+}
+
+.sponsor-feedback-card .ui-header-title-group {
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  align-items: center;
+}
+
+.sponsor-feedback-card .ui-subtitle {
+  text-align: center;
+}
+
+/* 2 - 3 - 2 sponsor layout */
+.sponsor-feedback-list {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 20px;
+  align-items: stretch;
 }
 
 .sponsor-feedback-item {
-  margin-bottom: 0;
+  margin: 0;
+  padding: 20px;
+  min-width: 0;
 }
 
+/* First row: 2 cards, centered */
+.sponsor-feedback-item:nth-child(1) {
+  grid-column: 2 / span 2;
+}
+
+.sponsor-feedback-item:nth-child(2) {
+  grid-column: 4 / span 2;
+}
+
+/* Second row: 3 cards */
+.sponsor-feedback-item:nth-child(3) {
+  grid-column: 1 / span 2;
+}
+
+.sponsor-feedback-item:nth-child(4) {
+  grid-column: 3 / span 2;
+}
+
+.sponsor-feedback-item:nth-child(5) {
+  grid-column: 5 / span 2;
+}
+
+/* Third row: 2 cards, centered */
+.sponsor-feedback-item:nth-child(6) {
+  grid-column: 2 / span 2;
+}
+
+.sponsor-feedback-item:nth-child(7) {
+  grid-column: 4 / span 2;
+}
+
+/* Remove the old sponsor-name header visually */
+.sponsor-feedback-item .ui-subcard-header {
+  display: none;
+}
+
+/* Logo + testimonial */
 .sponsor-feedback-content {
   display: flex;
-  align-items: center;
-  gap: 28px;
-  padding: 4px 4px 18px;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 18px;
+  padding: 0;
+  height: 100%;
 }
 
+/* Logo */
 .sponsor-feedback-logo-wrapper {
-  flex: 0 0 180px;
-  height: 110px;
+  width: 100%;
+  height: 90px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: #ffffff;
   border-radius: 8px;
-  padding: 12px;
+  padding: 10px;
   box-sizing: border-box;
 }
 
@@ -49,68 +109,75 @@
   display: block;
 }
 
+/* Testimonial */
 .sponsor-feedback-quote {
   position: relative;
   flex: 1;
   margin: 0;
-  padding: 8px 18px;
+  padding: 8px 12px 4px;
   border-left: 2px solid rgba(232, 27, 42, 0.7);
 }
 
 .sponsor-feedback-quote p {
   font-family: var(--ui-font-family);
-  font-size: 0.95rem;
-  line-height: 1.65;
+  font-size: 0.88rem;
+  line-height: 1.55;
   color: #d0d0d0;
   margin: 0;
 }
 
 .sponsor-feedback-quote-mark {
   font-family: Georgia, serif;
-  font-size: 2.2rem;
+  font-size: 1.8rem;
   line-height: 0;
   color: #e81b2a;
-  vertical-align: -0.35rem;
-  margin-right: 4px;
+  vertical-align: -0.25rem;
+  margin-right: 3px;
 }
 
 .sponsor-feedback-quote-mark.closing {
-  margin-left: 4px;
+  margin-left: 3px;
   margin-right: 0;
-  vertical-align: -0.7rem;
+  vertical-align: -0.55rem;
 }
 
 /* Tablet */
-@media (max-width: 700px) {
-  .sponsor-feedback-section {
-    padding: 0 16px 60px;
+@media (max-width: 900px) {
+  .sponsor-feedback-card {
+    max-width: 760px;
   }
 
-  .sponsor-feedback-content {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 20px;
+  .sponsor-feedback-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .sponsor-feedback-logo-wrapper {
-    flex: none;
-    width: 100%;
-    height: 120px;
-  }
-
-  .sponsor-feedback-quote {
-    padding: 8px 14px;
+  /* Reset desktop positioning */
+  .sponsor-feedback-item:nth-child(n) {
+    grid-column: auto;
   }
 }
 
 /* Mobile */
-@media (max-width: 480px) {
-  .sponsor-feedback-card {
-    padding: 28px 20px;
+@media (max-width: 600px) {
+  .sponsor-feedback-section {
+    padding: 0 12px 60px;
   }
 
-  .sponsor-feedback-section {
-    padding: 0 10px 50px;
+  .sponsor-feedback-card {
+    padding: 28px 18px;
+  }
+
+  .sponsor-feedback-list {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .sponsor-feedback-item:nth-child(n) {
+    grid-column: auto;
+  }
+
+  .sponsor-feedback-item {
+    padding: 18px;
   }
 
   .sponsor-feedback-logo-wrapper {
@@ -119,18 +186,6 @@
 
   .sponsor-feedback-quote p {
     font-size: 0.88rem;
-    line-height: 1.55;
-  }
-
-  .sponsor-feedback-item {
-    padding: 20px 16px 14px;
-  }
-
-  .sponsor-feedback-item .ui-subcard-header {
-    gap: 8px;
-  }
-
-  .sponsor-feedback-item .ui-subcard-title {
-    font-size: 0.95rem;
+    line-height: 1.5;
   }
 }
