@@ -123,7 +123,7 @@ const SpeakerForm = () => {
                 Share your voice and ideas worth spreading on the TEDx stage
               </p>
             </div>
-            <span className="ui-badge">TEDxPVGCOET 2026</span>
+            <span className="ui-badge">TEDxPVGCOETM 2026</span>
           </div>
 
           {status.message && (
