@@ -4,7 +4,6 @@ import backgroundVideo from "../assets/backgrounds/background.mp4";
 
 import FooterSection from "../sections/Common/FooterSection";
 import {
-  FiExternalLink,
   FiUser,
   FiBriefcase,
   FiMapPin,
@@ -15,7 +14,6 @@ import {
   FiLinkedin,
   FiInstagram,
   FiGlobe,
-  FiCalendar,
 } from "react-icons/fi";
 import { Input, Textarea, Button, FormAlert, FormGrid } from "../components/ui";
 

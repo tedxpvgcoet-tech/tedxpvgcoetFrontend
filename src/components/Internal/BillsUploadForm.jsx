@@ -1,7 +1,15 @@
 import React, { useState, useRef } from "react";
 import { Helmet } from "react-helmet";
 import bgVideo from "../../assets/backgrounds/background.mp4";
-import { Input, Textarea, Dropdown, Button, FormAlert, FormGrid } from "../ui";
+import {
+  Input,
+  Textarea,
+  Dropdown,
+  Button,
+  FormAlert,
+  FormGrid,
+  FormField,
+} from "../ui";
 
 const styles = {
   wrapper: {
@@ -73,77 +81,6 @@ const styles = {
     fontWeight: "600",
     transition: "all 0.3s ease",
     whiteSpace: "nowrap",
-  },
-  formGroup: {
-    marginBottom: "20px",
-    display: "flex",
-    flexDirection: "column",
-    textAlign: "left",
-  },
-  rowGroup: {
-    display: "flex",
-    gap: "20px",
-    marginBottom: "20px",
-  },
-  col: {
-    flex: 1,
-    display: "flex",
-    flexDirection: "column",
-  },
-  label: {
-    fontFamily: '"Inter", sans-serif',
-    fontSize: "0.8rem",
-    fontWeight: "700",
-    color: "#b3b3b3",
-    marginBottom: "8px",
-    textTransform: "uppercase",
-    letterSpacing: "0.8px",
-  },
-  input: {
-    padding: "12px 16px",
-    background: "rgba(0, 0, 0, 0.2)",
-    border: "1px solid rgba(255,255,255,0.1)",
-    borderRadius: "8px",
-    color: "#fff",
-    fontSize: "0.95rem",
-    fontFamily: '"Inter", sans-serif',
-    boxSizing: "border-box",
-    outline: "none",
-    transition: "all 0.3s ease",
-    boxShadow: "inset 0 2px 4px rgba(0,0,0,0.1)",
-  },
-  inputFocus: {
-    borderColor: "#e81b2a",
-    background: "rgba(232, 27, 42, 0.03)",
-    boxShadow: "0 0 0 3px rgba(232, 27, 42, 0.15)",
-  },
-  select: {
-    padding: "12px 16px",
-    background: "rgba(0, 0, 0, 0.2)",
-    border: "1px solid rgba(255,255,255,0.1)",
-    borderRadius: "8px",
-    color: "#fff",
-    fontSize: "0.95rem",
-    fontFamily: '"Inter", sans-serif',
-    boxSizing: "border-box",
-    outline: "none",
-    transition: "all 0.3s ease",
-    cursor: "pointer",
-  },
-  textarea: {
-    padding: "12px 16px",
-    background: "rgba(0, 0, 0, 0.2)",
-    border: "1px solid rgba(255,255,255,0.1)",
-    borderRadius: "8px",
-    color: "#fff",
-    fontSize: "0.95rem",
-    fontFamily: '"Inter", sans-serif',
-    boxSizing: "border-box",
-    outline: "none",
-    minHeight: "80px",
-    resize: "vertical",
-    transition: "all 0.3s ease",
-    boxShadow: "inset 0 2px 4px rgba(0,0,0,0.1)",
   },
   fileLabel: {
     display: "flex",
@@ -233,54 +170,6 @@ const styles = {
   addBtnHover: {
     backgroundColor: "rgba(255, 255, 255, 0.08)",
     borderColor: "#fff",
-  },
-  submitBtn: {
-    display: "block",
-    width: "100%",
-    fontFamily: '"Inter", sans-serif',
-    backgroundColor: "#e81b2a",
-    color: "#ffffff",
-    padding: "16px",
-    borderRadius: "8px",
-    border: "none",
-    fontWeight: "700",
-    fontSize: "1.05rem",
-    cursor: "pointer",
-    boxShadow: "0 10px 20px rgba(232, 27, 42, 0.3)",
-    transition: "all 0.3s ease",
-    textTransform: "uppercase",
-    letterSpacing: "0.5px",
-  },
-  submitBtnHover: {
-    backgroundColor: "#c40000",
-    boxShadow: "0 15px 25px rgba(232, 27, 42, 0.4)",
-    transform: "translateY(-2px)",
-  },
-  submitBtnDisabled: {
-    opacity: 0.6,
-    cursor: "not-allowed",
-    transform: "none",
-    boxShadow: "none",
-  },
-  statusContainer: {
-    marginTop: "20px",
-    padding: "16px",
-    borderRadius: "8px",
-    fontFamily: '"Inter", sans-serif',
-    fontSize: "0.95rem",
-    fontWeight: "600",
-    lineHeight: "1.5",
-    textAlign: "center",
-  },
-  statusSuccess: {
-    background: "rgba(34, 197, 94, 0.1)",
-    color: "#4ade80",
-    border: "1px solid rgba(34, 197, 94, 0.25)",
-  },
-  statusError: {
-    background: "rgba(232, 27, 42, 0.1)",
-    color: "#ff4d4d",
-    border: "1px solid rgba(232, 27, 42, 0.25)",
   },
   imageThumbWrapper: {
     display: "flex",
@@ -836,8 +725,7 @@ export default function BillsUploadForm({
                   />
                 </div>
 
-                <div style={styles.formGroup}>
-                  <label style={styles.label}>Bill Receipt Photo *</label>
+                <FormField label="Bill Receipt Photo" required>
                   <input
                     id={`file-${bill.uid}`}
                     type="file"
@@ -1039,7 +927,7 @@ export default function BillsUploadForm({
                       </div>
                     </div>
                   )}
-                </div>
+                </FormField>
               </div>
             ))}
 
