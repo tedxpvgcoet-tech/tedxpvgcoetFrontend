@@ -11,6 +11,7 @@
   justify-content: center;
   align-items: center;
   position: relative;
+  z-index: 2;
 }
 
 .team-grid-title {
@@ -23,48 +24,35 @@
   font-style: normal;
 }
 
-.back-to-team-btn {
+.back-icon-btn-minimal {
   position: absolute;
-  top: 1.5rem;
-  left: 2rem;
-  display: inline-flex;
+  left: 3rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #eb0028;
+  display: flex;
   align-items: center;
-  gap: 0.65rem;
-  padding: 0.55rem 1.25rem;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  color: #e6e6e6;
-  font-family: "Inter", sans-serif;
-  font-size: 0.88rem;
-  font-weight: 500;
-  letter-spacing: 0.3px;
+  justify-content: center;
   text-decoration: none;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 20;
+  padding: 0.5rem;
+  z-index: 3;
 }
 
-.back-to-team-btn .back-arrow-icon {
-  font-size: 0.85rem;
-  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+.back-icon-btn-minimal .back-arrow-icon {
+  font-size: 2.2rem;
+  transition:
+    transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    filter 0.25s ease;
 }
 
-.back-to-team-btn:hover {
-  background: rgba(235, 0, 40, 0.14);
-  border-color: #eb0028;
-  color: #ffffff;
-  box-shadow: 0 0 18px rgba(235, 0, 40, 0.35);
+.back-icon-btn-minimal:hover .back-arrow-icon {
+  transform: translateX(-5px);
+  filter: drop-shadow(0 0 10px rgba(235, 0, 40, 0.7));
 }
 
-.back-to-team-btn:hover .back-arrow-icon {
-  transform: translateX(-4px);
-}
-
-.back-to-team-btn:active {
-  transform: scale(0.97);
+.back-icon-btn-minimal:active {
+  transform: translateY(-50%) scale(0.92);
 }
 
 .team-chessboard-grid {
@@ -156,6 +144,12 @@
   .team-grid-title {
     font-size: 4.5rem;
   }
+  .back-icon-btn-minimal {
+    left: 1.5rem;
+  }
+  .back-icon-btn-minimal .back-arrow-icon {
+    font-size: 1.8rem;
+  }
   .team-chessboard-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -172,17 +166,16 @@
     font-size: 1rem;
     margin: 0 0.3rem;
   }
-
-  .back-to-team-btn {
-    top: 1rem;
-    left: 1rem;
-    padding: 0.45rem 1rem;
-    font-size: 0.82rem;
-  }
 }
 
 @media (max-width: 480px) {
   .team-grid-title {
     font-size: 3rem;
+  }
+  .back-icon-btn-minimal {
+    left: 1rem;
+  }
+  .back-icon-btn-minimal .back-arrow-icon {
+    font-size: 1.4rem;
   }
 }

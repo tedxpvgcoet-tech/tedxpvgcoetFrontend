@@ -32,17 +32,19 @@ const TeamGrid = ({ teamKey }) => {
   return (
     <div className="team-grid-page team-page">
       <div id="page-top" />
+
       <div className="title-hero">
         <Link
           to="/team"
-          className="back-to-team-btn"
+          className="back-icon-btn-minimal"
+          aria-label="Back to Teams"
           onClick={() => sessionStorage.setItem("restoreTeamScroll", "true")}
         >
           <FaArrowLeft className="back-arrow-icon" />
-          <span>Back to Teams</span>
         </Link>
         <h1 className="team-grid-title">{title}</h1>
       </div>
+
       <div className={`team-chessboard-grid ${isTwoColumn ? "two-col" : ""}`}>
         {members.map((member, index) => {
           const isEvenRow = Math.floor(index / 2) % 2 === 0;
