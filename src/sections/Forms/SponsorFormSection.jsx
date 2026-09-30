@@ -37,9 +37,9 @@ const SponsorForm = () => {
   const [status, setStatus] = useState({ type: "", message: "" });
 
   const contributionOptions = [
-    { label: "Cash", value: "Cash" },
+    { label: "In-Cash", value: "Cash" },
     { label: "In-Kind", value: "In-Kind" },
-    { label: "Both (Cash & In-Kind)", value: "Both" },
+    { label: "Both (In-Cash & In-Kind)", value: "Both" },
   ];
 
   const getAmountPlaceholder = () => {
