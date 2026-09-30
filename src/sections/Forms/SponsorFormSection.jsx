@@ -133,7 +133,8 @@ const SponsorForm = () => {
           <div className="ui-header-title-group">
             <h1 className="ui-gradient-title">Partner With Us</h1>
             <p className="ui-subtitle">
-              Collaborate with TEDxPVGCOETM to spark innovation and empower ideas
+              Collaborate with TEDxPVGCOETM to spark innovation and empower
+              ideas
             </p>
           </div>
           <div className="ui-header-actions">
