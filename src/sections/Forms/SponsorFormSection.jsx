@@ -44,12 +44,12 @@ const SponsorForm = () => {
 
   const getAmountPlaceholder = () => {
     if (formData.tier === "In-Kind") {
-      return "Enter estimated valuation of goods or services (e.g. ₹25,000)";
+      return "Enter estimated valuation of goods or services (e.g. ₹30,000)";
     }
     if (formData.tier === "Both") {
       return "Enter combined monetary and in-kind valuation (e.g. ₹50,000)";
     }
-    return "Enter proposed contribution amount (e.g. ₹25,000)";
+    return "Enter proposed contribution amount (e.g. ₹30,000)";
   };
 
   const handleChange = (e) => {
