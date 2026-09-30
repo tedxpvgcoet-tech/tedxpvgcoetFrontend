@@ -223,7 +223,6 @@ const SpeakerForm = () => {
 
               <Textarea
                 label="Audience Impact"
-                helperText="How do you think your talk will impact or inspire the audience?"
                 name="audience_impact"
                 placeholder="Describe key takeaways and the core inspirational message..."
                 required
@@ -235,7 +234,6 @@ const SpeakerForm = () => {
 
               <Textarea
                 label="Speaker's Bio"
-                helperText="Briefly describe your professional background, milestones, and current occupation."
                 name="speaker_bio"
                 placeholder="Concise professional biography..."
                 required
@@ -247,7 +245,6 @@ const SpeakerForm = () => {
 
               <Textarea
                 label="Previous Speaking Experience"
-                helperText="Have you given a TED or TEDx talk before? (Mention 'None' if first time)"
                 name="previous_ted_talk"
                 placeholder="Details of previous talks or 'None'..."
                 required
