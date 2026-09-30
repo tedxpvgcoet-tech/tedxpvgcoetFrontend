@@ -7,8 +7,6 @@ import {
   FiMail,
   FiPhone,
   FiLayers,
-  FiLock,
-  FiUnlock,
   FiDownload,
 } from "react-icons/fi";
 import {
@@ -38,19 +36,20 @@ const SponsorForm = () => {
   const [consentGiven, setConsentGiven] = useState(false);
   const [status, setStatus] = useState({ type: "", message: "" });
 
-  const tierPackages = {
-    Bronze: "₹10,000",
-    Silver: "₹20,000",
-    Gold: "₹40,000",
-    Platinum: "₹60,000",
-  };
+  const contributionOptions = [
+    { label: "In-Cash", value: "Cash" },
+    { label: "In-Kind", value: "In-Kind" },
+    { label: "Both (In-Cash & In-Kind)", value: "Both" },
+  ];
 
-  const handleClearTier = () => {
-    setFormData((prev) => ({
-      ...prev,
-      tier: "",
-      range: "",
-    }));
+  const getAmountPlaceholder = () => {
+    if (formData.tier === "In-Kind") {
+      return "Enter estimated valuation of goods or services (e.g. ₹30,000)";
+    }
+    if (formData.tier === "Both") {
+      return "Enter combined monetary and in-kind valuation (e.g. ₹50,000)";
+    }
+    return "Enter proposed contribution amount (e.g. ₹30,000)";
   };
 
   const handleChange = (e) => {
@@ -60,26 +59,6 @@ const SponsorForm = () => {
       setFormData((prev) => ({
         ...prev,
         have_sponsored_before: checked ? "Yes" : "No",
-      }));
-    } else if (name === "tier") {
-      if (value) {
-        const lockedAmount = tierPackages[value] || "";
-        setFormData((prev) => ({
-          ...prev,
-          tier: value,
-          range: lockedAmount,
-        }));
-      } else {
-        setFormData((prev) => ({
-          ...prev,
-          tier: "",
-          range: "",
-        }));
-      }
-    } else if (name === "range") {
-      setFormData((prev) => ({
-        ...prev,
-        range: value,
       }));
     } else {
       setFormData((prev) => ({
@@ -146,13 +125,6 @@ const SponsorForm = () => {
     }
   };
 
-  const sponsorshipTiers = [
-    { label: "Bronze (₹10,000)", value: "Bronze" },
-    { label: "Silver (₹20,000)", value: "Silver" },
-    { label: "Gold (₹40,000)", value: "Gold" },
-    { label: "Platinum (₹60,000)", value: "Platinum" },
-  ];
-
   return (
     <main className="form-page-sponsor" style={{ padding: "120px 20px 80px" }}>
       <div className="ui-glass-card">
@@ -161,11 +133,12 @@ const SponsorForm = () => {
           <div className="ui-header-title-group">
             <h1 className="ui-gradient-title">Partner With Us</h1>
             <p className="ui-subtitle">
-              Collaborate with TEDxPVGCOET to spark innovation and empower ideas
+              Collaborate with TEDxPVGCOETM to spark innovation and empower
+              ideas
             </p>
           </div>
           <div className="ui-header-actions">
-            <span className="ui-badge">TEDxPVGCOET 2026</span>
+            <span className="ui-badge">TEDxPVGCOETM 2026</span>
             <a
               href="/Sponsorship_Brochure.pdf"
               download="TEDxPVGCOET_Sponsorship_Brochure.pdf"
@@ -290,71 +263,25 @@ const SponsorForm = () => {
             </div>
 
             <RadioGroup
-              label="Sponsorship Tier"
+              label="How would you like to contribute?"
               name="tier"
               value={formData.tier}
               onChange={handleChange}
-              options={sponsorshipTiers}
+              options={contributionOptions}
+              required
               fullWidth
             />
 
             <div style={{ marginTop: "1.25rem" }}>
               <Input
-                label={
-                  formData.tier
-                    ? `Sponsorship Amount (${formData.tier} Tier - Fixed)`
-                    : "Sponsorship Amount / Custom Budget"
-                }
+                label="What amount are you willing to contribute?"
                 type="text"
                 name="range"
                 value={formData.range}
                 onChange={handleChange}
-                placeholder="Enter custom sponsorship amount (e.g. ₹25,000)"
-                readOnly={Boolean(formData.tier)}
+                placeholder={getAmountPlaceholder()}
                 required
                 fullWidth
-                className={`ui-tier-field ${formData.tier ? `has-tier ui-tier-${formData.tier.toLowerCase()}` : ""}`}
-                suffixIcon={
-                  formData.tier ? (
-                    <FiLock
-                      size={16}
-                      color="currentColor"
-                      title={`Amount locked to ${formData.tier} tier`}
-                    />
-                  ) : (
-                    <FiUnlock
-                      size={16}
-                      color="#9ca3af"
-                      title="Custom amount unlocked"
-                    />
-                  )
-                }
-                helperText={
-                  formData.tier ? (
-                    <span>
-                      Amount is locked to the <strong>{formData.tier}</strong>{" "}
-                      tier.{" "}
-                      <button
-                        type="button"
-                        onClick={handleClearTier}
-                        style={{
-                          background: "none",
-                          border: "none",
-                          color: "#ff4d4d",
-                          cursor: "pointer",
-                          textDecoration: "underline",
-                          padding: 0,
-                          fontSize: "inherit",
-                          fontWeight: 600,
-                        }}
-                      >
-                        Switch to custom amount
-                      </button>
-                    </span>
-                  ) : (
-                    "No tier selected. Enter your custom sponsorship budget."
-                  )
-                }
               />
             </div>
 
@@ -386,7 +313,7 @@ const SponsorForm = () => {
             <Checkbox
               name="consent"
               id="sponsor-consent"
-              label="I consent to be contacted regarding TEDxPVGCOET sponsorship opportunities."
+              label="I consent to be contacted regarding TEDxPVGCOETM sponsorship opportunities."
               required
               checked={consentGiven}
               onChange={(e) => setConsentGiven(e.target.checked)}
