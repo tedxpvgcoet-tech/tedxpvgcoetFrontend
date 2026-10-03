@@ -1,0 +1,99 @@
+.avant-garde-sponsors {
+  background-color: #000;
+  color: #fff;
+  padding: 5rem 2rem 2rem;
+  font-family: "Inter", sans-serif;
+}
+
+.avant-garde-sponsors-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.avant-garde-sponsors-container h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+}
+
+.sponsor-card {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  background-color: #1a1a1a;
+  border-radius: 10px;
+  box-shadow: 0 0 0 3px red;
+}
+
+.sponsor-logo {
+  flex: 0 0 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sponsor-logo img {
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.sponsor-content {
+  flex: 1;
+}
+
+.sponsor-name {
+  color: #fff;
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.sponsor-name:hover {
+  text-decoration: underline;
+}
+
+.sponsor-category {
+  margin: 0.75rem 0;
+  color: #aaa;
+  font-size: 0.95rem;
+}
+
+.sponsor-description {
+  margin: 0;
+  color: #ddd;
+  line-height: 1.7;
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .avant-garde-sponsors {
+    padding: 4rem 1.5rem;
+  }
+
+  .avant-garde-sponsors-container h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .sponsor-card {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+    padding: 1.5rem;
+  }
+
+  .sponsor-logo {
+    flex: none;
+    width: 100%;
+  }
+
+  .sponsor-logo img {
+    max-width: 220px;
+  }
+}
