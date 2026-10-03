@@ -84,7 +84,7 @@ const SponsorFeedbackSection = () => {
 
                 <blockquote className="sponsor-feedback-quote">
                   <span className="sponsor-feedback-quote-mark">“</span>
-                  <p>{sponsor.feedback}</p> 
+                  <p>{sponsor.feedback}</p>
                 </blockquote>
               </div>
             </article>
