@@ -6,29 +6,38 @@
 }
 
 .title-hero {
-  height: 50vh;
+  height: 40vh;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
   z-index: 2;
+  padding: 0 1rem;
+}
+
+.title-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  width: 100%;
+  max-width: 1200px;
 }
 
 .team-grid-title {
-  font-size: 8rem;
-  color: red;
+  font-size: 7rem;
+  color: #eb0028;
   font-weight: 900;
   text-align: center;
   font-family: "Alfa Slab One", serif;
   font-weight: 400;
   font-style: normal;
+  margin: 0;
+  line-height: 1.1;
+  text-transform: uppercase;
 }
 
 .back-icon-btn-minimal {
-  position: absolute;
-  left: 3rem;
-  top: 50%;
-  transform: translateY(-50%);
   color: #eb0028;
   display: flex;
   align-items: center;
@@ -36,23 +45,23 @@
   text-decoration: none;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   padding: 0.5rem;
-  z-index: 3;
+  flex-shrink: 0;
 }
 
 .back-icon-btn-minimal .back-arrow-icon {
-  font-size: 2.2rem;
+  font-size: 3.5rem;
   transition:
     transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
     filter 0.25s ease;
 }
 
 .back-icon-btn-minimal:hover .back-arrow-icon {
-  transform: translateX(-5px);
+  transform: translateX(-6px);
   filter: drop-shadow(0 0 10px rgba(235, 0, 40, 0.7));
 }
 
 .back-icon-btn-minimal:active {
-  transform: translateY(-50%) scale(0.92);
+  transform: scale(0.92);
 }
 
 .team-chessboard-grid {
@@ -127,28 +136,32 @@
   color: red;
 }
 
+/* Responsive Styles */
 @media (max-width: 1200px) {
   .team-chessboard-grid {
     grid-template-columns: repeat(2, 1fr);
     padding: 1rem;
   }
   .team-grid-title {
-    font-size: 6rem;
+    font-size: 5rem;
+  }
+  .back-icon-btn-minimal .back-arrow-icon {
+    font-size: 2.8rem;
   }
 }
 
 @media (max-width: 768px) {
   .title-hero {
-    height: 40vh;
+    height: 30vh;
+  }
+  .title-container {
+    gap: 1.2rem;
   }
   .team-grid-title {
-    font-size: 4.5rem;
-  }
-  .back-icon-btn-minimal {
-    left: 1.5rem;
+    font-size: 3.2rem;
   }
   .back-icon-btn-minimal .back-arrow-icon {
-    font-size: 1.8rem;
+    font-size: 2.2rem;
   }
   .team-chessboard-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -169,13 +182,17 @@
 }
 
 @media (max-width: 480px) {
-  .team-grid-title {
-    font-size: 3rem;
+  .title-hero {
+    height: 25vh;
   }
-  .back-icon-btn-minimal {
-    left: 1rem;
+  .title-container {
+    flex-direction: row;
+    gap: 0.8rem;
+  }
+  .team-grid-title {
+    font-size: 2.2rem;
   }
   .back-icon-btn-minimal .back-arrow-icon {
-    font-size: 1.4rem;
+    font-size: 1.8rem;
   }
 }

@@ -34,15 +34,17 @@ const TeamGrid = ({ teamKey }) => {
       <div id="page-top" />
 
       <div className="title-hero">
-        <Link
-          to="/team"
-          className="back-icon-btn-minimal"
-          aria-label="Back to Teams"
-          onClick={() => sessionStorage.setItem("restoreTeamScroll", "true")}
-        >
-          <FaArrowLeft className="back-arrow-icon" />
-        </Link>
-        <h1 className="team-grid-title">{title}</h1>
+        <div className="title-container">
+          <Link
+            to="/team"
+            className="back-icon-btn-minimal"
+            aria-label="Back to Teams"
+            onClick={() => sessionStorage.setItem("restoreTeamScroll", "true")}
+          >
+            <FaArrowLeft className="back-arrow-icon" />
+          </Link>
+          <h1 className="team-grid-title">{title}</h1>
+        </div>
       </div>
 
       <div className={`team-chessboard-grid ${isTwoColumn ? "two-col" : ""}`}>
