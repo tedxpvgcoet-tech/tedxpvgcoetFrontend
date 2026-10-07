@@ -146,7 +146,6 @@ function ColorPickerField({ label, value, onChange, placeholder = "#000000" }) {
   );
 }
 
-
 const styles = {
   card: {
     backgroundColor: "rgba(15, 15, 20, 0.75)",
@@ -263,7 +262,8 @@ const styles = {
     alignItems: "center",
     justifyContent: "center",
     padding: "24px 20px",
-    background: "radial-gradient(circle at center, rgba(235, 0, 40, 0.04) 0%, rgba(10, 10, 14, 0.6) 100%)",
+    background:
+      "radial-gradient(circle at center, rgba(235, 0, 40, 0.04) 0%, rgba(10, 10, 14, 0.6) 100%)",
     border: "1px solid rgba(255, 255, 255, 0.08)",
     borderRadius: "14px",
     margin: "20px 0",
@@ -530,7 +530,10 @@ export default function QRCodeGenerator({ onLogout, name, team }) {
       });
     } catch (err) {
       console.error(err);
-      setStatus({ type: "error", message: "Download failed. Please try again." });
+      setStatus({
+        type: "error",
+        message: "Download failed. Please try again.",
+      });
     }
   };
 
@@ -577,7 +580,9 @@ export default function QRCodeGenerator({ onLogout, name, team }) {
         }
       }
 
-      const blob = new Blob([svgString], { type: "image/svg+xml;charset=utf-8" });
+      const blob = new Blob([svgString], {
+        type: "image/svg+xml;charset=utf-8",
+      });
       const link = document.createElement("a");
       link.download = `TEDxPVGCOETM_QR_${activeType}_${Date.now()}.svg`;
       link.href = URL.createObjectURL(blob);
@@ -614,7 +619,10 @@ export default function QRCodeGenerator({ onLogout, name, team }) {
         setCopied(true);
         setTimeout(() => setCopied(false), 2500);
       } catch (e) {
-        setStatus({ type: "error", message: "Clipboard copy not supported by browser." });
+        setStatus({
+          type: "error",
+          message: "Clipboard copy not supported by browser.",
+        });
       }
     }
   };
@@ -658,7 +666,14 @@ export default function QRCodeGenerator({ onLogout, name, team }) {
             </span>
           )}
         </div>
-        <div style={{ display: "flex", gap: "8px", flexWrap: "wrap", alignItems: "center" }}>
+        <div
+          style={{
+            display: "flex",
+            gap: "8px",
+            flexWrap: "wrap",
+            alignItems: "center",
+          }}
+        >
           <button
             type="button"
             style={styles.navBtn}
@@ -760,7 +775,13 @@ export default function QRCodeGenerator({ onLogout, name, team }) {
         {/* 3. UPI Pay */}
         {activeType === "upi" && (
           <div>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                gap: "12px",
+              }}
+            >
               <Input
                 label="UPI ID / VPA *"
                 type="text"
@@ -773,23 +794,36 @@ export default function QRCodeGenerator({ onLogout, name, team }) {
                 type="text"
                 placeholder="TEDxPVGCOETM"
                 value={upiData.name}
-                onChange={(e) => setUpiData({ ...upiData, name: e.target.value })}
+                onChange={(e) =>
+                  setUpiData({ ...upiData, name: e.target.value })
+                }
               />
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px", marginTop: "12px" }}>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                gap: "12px",
+                marginTop: "12px",
+              }}
+            >
               <Input
                 label="Amount in ₹ (Optional)"
                 type="number"
                 placeholder="e.g. 500"
                 value={upiData.amount}
-                onChange={(e) => setUpiData({ ...upiData, amount: e.target.value })}
+                onChange={(e) =>
+                  setUpiData({ ...upiData, amount: e.target.value })
+                }
               />
               <Input
                 label="Payment Note"
                 type="text"
                 placeholder="Registration / Pass"
                 value={upiData.note}
-                onChange={(e) => setUpiData({ ...upiData, note: e.target.value })}
+                onChange={(e) =>
+                  setUpiData({ ...upiData, note: e.target.value })
+                }
               />
             </div>
           </div>
@@ -812,7 +846,9 @@ export default function QRCodeGenerator({ onLogout, name, team }) {
                 placeholder="Message that opens in chat..."
                 rows={2}
                 value={waData.message}
-                onChange={(e) => setWaData({ ...waData, message: e.target.value })}
+                onChange={(e) =>
+                  setWaData({ ...waData, message: e.target.value })
+                }
                 fullWidth
               />
             </div>
@@ -827,7 +863,9 @@ export default function QRCodeGenerator({ onLogout, name, team }) {
               type="email"
               placeholder="team@tedxpvgcoet.in"
               value={emailData.email}
-              onChange={(e) => setEmailData({ ...emailData, email: e.target.value })}
+              onChange={(e) =>
+                setEmailData({ ...emailData, email: e.target.value })
+              }
               fullWidth
             />
             <div style={{ marginTop: "12px" }}>
@@ -836,7 +874,9 @@ export default function QRCodeGenerator({ onLogout, name, team }) {
                 type="text"
                 placeholder="Event Inquiry"
                 value={emailData.subject}
-                onChange={(e) => setEmailData({ ...emailData, subject: e.target.value })}
+                onChange={(e) =>
+                  setEmailData({ ...emailData, subject: e.target.value })
+                }
                 fullWidth
               />
             </div>
@@ -846,7 +886,9 @@ export default function QRCodeGenerator({ onLogout, name, team }) {
                 placeholder="Default message text..."
                 rows={2}
                 value={emailData.body}
-                onChange={(e) => setEmailData({ ...emailData, body: e.target.value })}
+                onChange={(e) =>
+                  setEmailData({ ...emailData, body: e.target.value })
+                }
                 fullWidth
               />
             </div>
@@ -856,18 +898,28 @@ export default function QRCodeGenerator({ onLogout, name, team }) {
         {/* 6. Wi-Fi */}
         {activeType === "wifi" && (
           <div>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                gap: "12px",
+              }}
+            >
               <Input
                 label="Network SSID *"
                 type="text"
                 placeholder="Network Name"
                 value={wifiData.ssid}
-                onChange={(e) => setWifiData({ ...wifiData, ssid: e.target.value })}
+                onChange={(e) =>
+                  setWifiData({ ...wifiData, ssid: e.target.value })
+                }
               />
               <Dropdown
                 label="Security"
                 value={wifiData.encryption}
-                onChange={(e) => setWifiData({ ...wifiData, encryption: e.target.value })}
+                onChange={(e) =>
+                  setWifiData({ ...wifiData, encryption: e.target.value })
+                }
                 options={[
                   { label: "WPA/WPA2", value: "WPA" },
                   { label: "WEP", value: "WEP" },
@@ -881,7 +933,9 @@ export default function QRCodeGenerator({ onLogout, name, team }) {
                 type="text"
                 placeholder="Password"
                 value={wifiData.password}
-                onChange={(e) => setWifiData({ ...wifiData, password: e.target.value })}
+                onChange={(e) =>
+                  setWifiData({ ...wifiData, password: e.target.value })
+                }
                 fullWidth
               />
             </div>
@@ -892,7 +946,11 @@ export default function QRCodeGenerator({ onLogout, name, team }) {
       {/* Customization Toggle & Controls */}
       <div style={styles.subcard}>
         <div
-          style={{ ...styles.subcardTitle, cursor: "pointer", marginBottom: showOptions ? "14px" : "0" }}
+          style={{
+            ...styles.subcardTitle,
+            cursor: "pointer",
+            marginBottom: showOptions ? "14px" : "0",
+          }}
           onClick={() => setShowOptions(!showOptions)}
         >
           <span style={{ display: "flex", alignItems: "center", gap: "8px" }}>
@@ -958,11 +1016,21 @@ export default function QRCodeGenerator({ onLogout, name, team }) {
                     type="checkbox"
                     checked={includeLogo}
                     onChange={(e) => setIncludeLogo(e.target.checked)}
-                    style={{ accentColor: "#eb0028", width: "16px", height: "16px" }}
+                    style={{
+                      accentColor: "#eb0028",
+                      width: "16px",
+                      height: "16px",
+                    }}
                   />
                   <span>Center TEDx Logo</span>
                 </label>
-                <p style={{ margin: "4px 0 0 24px", fontSize: "0.72rem", color: "#888" }}>
+                <p
+                  style={{
+                    margin: "4px 0 0 24px",
+                    fontSize: "0.72rem",
+                    color: "#888",
+                  }}
+                >
                   Adds official TEDx logo in the center (scans reliably)
                 </p>
               </div>
@@ -987,9 +1055,24 @@ export default function QRCodeGenerator({ onLogout, name, team }) {
 
       {/* Live Preview Card */}
       <div style={styles.previewContainer}>
-        <div style={{ display: "flex", alignItems: "center", gap: "6px", marginBottom: "14px" }}>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "6px",
+            marginBottom: "14px",
+          }}
+        >
           <FiEye size={14} color="#eb0028" />
-          <span style={{ fontSize: "0.8rem", color: "#aaa", fontWeight: 600, letterSpacing: "0.5px", textTransform: "uppercase" }}>
+          <span
+            style={{
+              fontSize: "0.8rem",
+              color: "#aaa",
+              fontWeight: 600,
+              letterSpacing: "0.5px",
+              textTransform: "uppercase",
+            }}
+          >
             Live QR Preview
           </span>
         </div>
@@ -1036,7 +1119,13 @@ export default function QRCodeGenerator({ onLogout, name, team }) {
           size="md"
           fullWidth
           onClick={handleCopyImage}
-          icon={copied ? <FiCheck size={15} color="#10b981" /> : <FiCopy size={15} />}
+          icon={
+            copied ? (
+              <FiCheck size={15} color="#10b981" />
+            ) : (
+              <FiCopy size={15} />
+            )
+          }
         >
           {copied ? "Copied!" : "Copy Image"}
         </Button>
