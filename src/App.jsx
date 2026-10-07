@@ -20,6 +20,7 @@ const TakeTheLeap = lazy(() => import("./pages/TakeTheLeap"));
 const ThemePage = lazy(() => import("./pages/ThemePage"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const InternalBillsPage = lazy(() => import("./pages/InternalBillsPage"));
+const NewTeam = lazy(() => import("./pages/NewTeam"));
 
 inject();
 
@@ -102,6 +103,8 @@ function App() {
                 path="/organizers-team"
                 element={<TeamGrid teamKey="organizers-team" />}
               />
+
+              <Route path="/new-committee" element={<NewTeam />} />
 
               <Route path="/bills" element={<InternalBillsPage />} />
               <Route path="/bridgekeeper" element={<InternalBillsPage />} />
