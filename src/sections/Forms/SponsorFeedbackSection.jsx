@@ -61,15 +61,18 @@ const SponsorFeedbackSection = () => {
           <div className="ui-header-title-group">
             <h2 className="ui-gradient-title">Our Previous Sponsors</h2>
             <p className="ui-subtitle">
-              Hear what our previous sponsors have to say about their
-              experience with TEDxPVGCOET.
+              Hear what our previous sponsors have to say about their experience
+              with TEDxPVGCOET.
             </p>
           </div>
         </div>
 
         <div className="sponsor-feedback-list">
           {sponsorFeedback.map((sponsor) => (
-            <article className="ui-subcard sponsor-feedback-item" key={sponsor.name}>
+            <article
+              className="ui-subcard sponsor-feedback-item"
+              key={sponsor.name}
+            >
               <div className="sponsor-feedback-content">
                 <div className="sponsor-feedback-logo-wrapper">
                   <img

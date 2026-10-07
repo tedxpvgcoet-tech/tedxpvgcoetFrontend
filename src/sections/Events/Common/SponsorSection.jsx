@@ -24,9 +24,7 @@ const SponsorsSection = ({ sponsors, className }) => {
 
               <p className="sponsor-category">{sponsor.category}</p>
 
-              <p className="sponsor-description">
-                {sponsor.description}
-              </p>
+              <p className="sponsor-description">{sponsor.description}</p>
             </div>
           </div>
         ))}
