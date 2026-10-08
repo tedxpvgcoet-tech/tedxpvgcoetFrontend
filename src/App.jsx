@@ -21,6 +21,8 @@ const ThemePage = lazy(() => import("./pages/ThemePage"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const InternalBillsPage = lazy(() => import("./pages/InternalBillsPage"));
 
+const NewTeam = lazy(() => import("./pages/NewTeam"));
+
 inject();
 
 function App() {
@@ -103,8 +105,11 @@ function App() {
                 element={<TeamGrid teamKey="organizers-team" />}
               />
 
+              <Route path="/new-committee" element={<NewTeam />} />
+
               <Route path="/bills" element={<InternalBillsPage />} />
               <Route path="/bridgekeeper" element={<InternalBillsPage />} />
+              <Route path="/qr" element={<InternalBillsPage />} />
 
               <Route path="/about" element={<Home />} />
               <Route path="/feedback" element={<FeedbackRedirect />} />

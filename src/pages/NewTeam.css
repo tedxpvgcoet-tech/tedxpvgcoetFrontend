@@ -1,0 +1,278 @@
+/* src/pages/NewTeam.css */
+
+.new-committee-page {
+  position: relative;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  color: white;
+  background-color: transparent !important;
+}
+
+/* Background image that stays fixed */
+.new-committee-bg-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Responsive Background Logic */
+.bg-mobile-view {
+  display: none;
+}
+.bg-desktop-view {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .bg-desktop-view {
+    display: none;
+  }
+  .bg-mobile-view {
+    display: block;
+  }
+}
+
+/* Adding a slight dim to the background image so it's not blindingly bright */
+.bg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(
+    0,
+    0,
+    0,
+    0.4
+  ); /* 40% dim so the white images stand out more */
+}
+
+/* Dark fade overlay - starts solid #171717 and fades to transparent */
+.new-committee-scroll-fade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 300vh; /* Gradient stretches over the first 3 viewports for a gradual transition */
+  z-index: 1;
+  background: linear-gradient(
+    to bottom,
+    #171717 0%,
+    #171717 35vh,
+    rgba(23, 23, 23, 0.95) 75vh,
+    rgba(23, 23, 23, 0.5) 150vh,
+    rgba(23, 23, 23, 0) 250vh
+  );
+  pointer-events: none;
+}
+
+/* Hero Section */
+.new-committee-hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-text {
+  font-size: min(10vw, 6rem);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+  font-weight: 900; /* Extra bold */
+  text-transform: uppercase;
+  line-height: 1.05;
+  letter-spacing: -2px; /* Tight modern tracking */
+  margin: 0;
+  opacity: 0;
+  animation: explodeUpHero 2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation-delay: 0.3s; /* Wait briefly for page load */
+}
+
+/* Metallic/Burgundy Gradients */
+.hero-line1 {
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #ffffff 50%,
+    #9c1515 85%,
+    #420000 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+  padding-bottom: 5px; /* Prevent clipping */
+}
+
+.hero-line2 {
+  background: linear-gradient(135deg, #ffffff 0%, #e62b1e 40%, #520000 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+@keyframes explodeUpHero {
+  0% {
+    opacity: 0;
+    transform: translateY(60px) scale(0.9);
+    filter: blur(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* Container for all the team images */
+.new-committee-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem 1rem 8rem 1rem;
+  gap: 8rem;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* Individual Image Container with Mask Wipe Reconstruction */
+.new-committee-img-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(40px);
+
+  /* Mask Wipe-in Setup */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    black 40%,
+    rgba(0, 0, 0, 0.1) 60%,
+    transparent 80%
+  );
+  -webkit-mask-size: 300% 100%;
+  -webkit-mask-position: 100% 0;
+  mask-image: linear-gradient(
+    to right,
+    black 40%,
+    rgba(0, 0, 0, 0.1) 60%,
+    transparent 80%
+  );
+  mask-size: 300% 100%;
+  mask-position: 100% 0;
+
+  transition:
+    opacity 1.5s cubic-bezier(0.2, 0.8, 0.2, 1),
+    transform 1.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.new-committee-img-container.animate-fade-in {
+  opacity: 1;
+  transform: translateY(0);
+  animation: reconstructWipe 3s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes reconstructWipe {
+  0% {
+    -webkit-mask-position: 100% 0;
+    mask-position: 100% 0;
+  }
+  100% {
+    -webkit-mask-position: 0% 0;
+    mask-position: 0% 0;
+  }
+}
+
+.new-committee-img {
+  width: 100%;
+  max-width: 1200px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow:
+    0 35px 70px rgba(0, 0, 0, 0.6),
+    0 10px 25px rgba(0, 0, 0, 0.3);
+  /* Sepia to Vibrant "Dual Identity" feature */
+  filter: sepia(0.8) brightness(0.85) contrast(0.95);
+  transition:
+    box-shadow 0.8s cubic-bezier(0.2, 0.8, 0.2, 1),
+    filter 0.8s ease;
+}
+
+.new-committee-img:hover {
+  box-shadow:
+    0 45px 85px rgba(0, 0, 0, 0.7),
+    0 15px 35px rgba(255, 0, 0, 0.15); /* very subtle red accent on shadow */
+  filter: sepia(0) brightness(1) contrast(1);
+}
+
+/* Responsive Tweaks */
+@media (max-width: 1024px) {
+  .hero-text {
+    font-size: 3.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-text {
+    font-size: 2.2rem;
+  }
+  .new-committee-list {
+    gap: 5rem;
+    padding-top: 2rem;
+  }
+  .new-committee-img {
+    border-radius: 8px;
+  }
+}
+
+/* Floating Dust Particles */
+.dust-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh; /* Fixed across viewport */
+  overflow: hidden;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.dust-particle {
+  position: absolute;
+  background: #dabc98; /* Dusty sepia/brown color */
+  border-radius: 50%;
+  box-shadow: 0 0 5px 2px rgba(218, 188, 152, 0.15); /* Softer, dustier blur */
+  filter: blur(1.5px); /* Less sharp than stars */
+  animation-name: floatParticle;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes floatParticle {
+  0% {
+    transform: translateY(110vh) translateX(0);
+  }
+  50% {
+    transform: translateY(40vh) translateX(30px);
+  }
+  100% {
+    transform: translateY(-20vh) translateX(-20px);
+  }
+}

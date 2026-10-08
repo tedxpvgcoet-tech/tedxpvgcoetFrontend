@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet";
 import bgVideo from "../../assets/backgrounds/background.mp4";
 import bridgekeeperImg from "../../assets/bridgekeeper.webp";
 import wrongAnswerImg from "../../assets/Gatekeeper-MontyPython.webp";
+import PwaInstallButton from "./PwaInstallButton";
 
 const styles = {
   wrapper: {
@@ -641,6 +642,13 @@ export default function BridgekeeperAuth({ onAuthorized }) {
               </div>
             </>
           )}
+
+          {/* PWA Install Button with Bridgekeeper Lore */}
+          <PwaInstallButton
+            text="Summon the App"
+            icon="fa-solid fa-scroll"
+            bridgekeeperLore={true}
+          />
         </div>
       </div>
     </div>
