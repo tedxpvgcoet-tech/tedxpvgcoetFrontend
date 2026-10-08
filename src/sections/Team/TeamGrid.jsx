@@ -18,7 +18,6 @@ const TeamGrid = ({ teamKey }) => {
   const location = useLocation();
   const params = useParams();
 
- 
   const [isMobile, setIsMobile] = useState(
     typeof window !== "undefined" ? window.innerWidth <= 768 : false,
   );
