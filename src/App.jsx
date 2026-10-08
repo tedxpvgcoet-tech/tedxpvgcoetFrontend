@@ -20,7 +20,7 @@ const TakeTheLeap = lazy(() => import("./pages/TakeTheLeap"));
 const ThemePage = lazy(() => import("./pages/ThemePage"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const InternalBillsPage = lazy(() => import("./pages/InternalBillsPage"));
-const InternalQRPage = lazy(() => import("./pages/InternalQRPage"));
+
 const NewTeam = lazy(() => import("./pages/NewTeam"));
 
 inject();
@@ -109,7 +109,7 @@ function App() {
 
               <Route path="/bills" element={<InternalBillsPage />} />
               <Route path="/bridgekeeper" element={<InternalBillsPage />} />
-              <Route path="/qr" element={<InternalQRPage />} />
+              <Route path="/qr" element={<InternalBillsPage />} />
 
               <Route path="/about" element={<Home />} />
               <Route path="/feedback" element={<FeedbackRedirect />} />

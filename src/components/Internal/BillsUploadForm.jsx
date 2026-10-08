@@ -29,13 +29,13 @@ const styles = {
     position: "relative",
     zIndex: 1,
     boxSizing: "border-box",
-    padding: "140px 20px 80px",
+    padding: "clamp(90px, 12vw, 140px) clamp(10px, 3vw, 20px) 40px",
   },
   card: {
     backgroundColor: "rgba(15, 15, 20, 0.75)",
     border: "1px solid rgba(255, 255, 255, 0.1)",
     borderRadius: "16px",
-    padding: "40px 36px",
+    padding: "clamp(20px, 4vw, 40px) clamp(16px, 3.5vw, 36px)",
     maxWidth: "650px",
     width: "100%",
     backdropFilter: "blur(20px)",
@@ -545,8 +545,7 @@ export default function BillsUploadForm({
                 Submit your purchase receipts seamlessly
               </p>
             </div>
-            <div style={{ display: "flex", gap: "8px" }}>
-              <PwaInstallButton />
+            <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
               {onBack && (
                 <button
                   type="button"
@@ -562,7 +561,7 @@ export default function BillsUploadForm({
                   }}
                   title="Back to dashboard"
                 >
-                  ← Back
+                  Back
                 </button>
               )}
               {onLogout && (
@@ -583,6 +582,7 @@ export default function BillsUploadForm({
                   Sign Out
                 </button>
               )}
+              <PwaInstallButton />
             </div>
           </div>
 

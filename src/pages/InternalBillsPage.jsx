@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Helmet } from "react-helmet";
-import bgVideo from "../../assets/backgrounds/background.mp4";
+import bgVideo from "../assets/backgrounds/background.mp4";
 import BridgekeeperAuth from "../components/Internal/BridgekeeperAuth";
 import BillsUploadForm from "../components/Internal/BillsUploadForm";
 import QRCodeGenerator from "../components/Internal/QRCodeGenerator";
+import PwaInstallButton from "../components/Internal/PwaInstallButton";
 
 const dashboardStyles = {
   wrapper: {
@@ -22,13 +23,13 @@ const dashboardStyles = {
     position: "relative",
     zIndex: 1,
     boxSizing: "border-box",
-    padding: "20px",
+    padding: "clamp(90px, 12vw, 120px) clamp(10px, 3vw, 20px) 40px",
   },
   card: {
     backgroundColor: "rgba(15, 15, 20, 0.75)",
     border: "1px solid rgba(255, 255, 255, 0.1)",
     borderRadius: "16px",
-    padding: "40px",
+    padding: "clamp(24px, 5vw, 40px)",
     maxWidth: "500px",
     width: "100%",
     backdropFilter: "blur(20px)",
@@ -142,6 +143,9 @@ export default function InternalBillsPage() {
             >
               Sign Out
             </button>
+            <div style={{ marginTop: "10px", display: "flex", justifyContent: "center" }}>
+              <PwaInstallButton text="Summon the App" icon="fa-solid fa-scroll" bridgekeeperLore={true} />
+            </div>
           </div>
         </div>
       </div>
@@ -162,12 +166,18 @@ export default function InternalBillsPage() {
 
   if (view === "qrcode") {
     return (
-      <QRCodeGenerator
-        name={session.name}
-        team={session.team}
-        onBack={() => setView("dashboard")}
-        onLogout={handleLogout}
-      />
+      <div className="ui-hero-container">
+        <Helmet defer={false}><title>QR Generator | TEDxPVGCOETM</title></Helmet>
+        <video src={bgVideo} autoPlay loop muted playsInline className="hero-video1" />
+        <div style={{ minHeight: "100vh", display: "flex", alignItems: "flex-start", justifyContent: "center", position: "relative", zIndex: 1, boxSizing: "border-box", padding: "clamp(90px, 12vw, 120px) clamp(10px, 3vw, 20px) 40px" }}>
+          <QRCodeGenerator
+            name={session.name}
+            team={session.team}
+            onBack={() => setView("dashboard")}
+            onLogout={handleLogout}
+          />
+        </div>
+      </div>
     );
   }
 

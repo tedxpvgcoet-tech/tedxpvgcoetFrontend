@@ -37,8 +37,8 @@ export default function PwaInstallButton({
     };
   }, []);
 
-  if (isStandalone) return null; // already installed
-  if (!deferredPrompt && !isIOS) return null; // Can't install
+  // Instead of early returning null here, we decide rendering below so we can keep the lore visible
+  const isReady = !isStandalone && (deferredPrompt || isIOS);
 
   const handleInstallClick = async () => {
     if (isIOS) {
@@ -115,10 +115,16 @@ export default function PwaInstallButton({
         <p style={{ color: "#aaa", fontSize: "0.85rem", marginBottom: "14px", fontFamily: '"Inter", sans-serif', textAlign: "center", lineHeight: "1.5" }}>
           Weary traveler...<br/>do you wish to carry this Bridge in thy pocket?
         </p>
-        {buttonElement}
+        {isReady ? buttonElement : (
+          <p style={{ color: "#e81b2a", fontSize: "0.8rem", marginTop: "5px", fontStyle: "italic", opacity: 0.8 }}>
+            (Thy pocket already bears the Bridge, or this device restricts it)
+          </p>
+        )}
       </div>
     );
   }
+
+  if (!isReady) return null; // Fallback behavior for generic buttons
 
   return buttonElement;
 }

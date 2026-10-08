@@ -151,7 +151,7 @@ const styles = {
     backgroundColor: "rgba(15, 15, 20, 0.75)",
     border: "1px solid rgba(255, 255, 255, 0.1)",
     borderRadius: "16px",
-    padding: "40px 36px",
+    padding: "clamp(20px, 4vw, 40px) clamp(16px, 3.5vw, 36px)",
     maxWidth: "650px",
     width: "100%",
     backdropFilter: "blur(20px)",
@@ -277,10 +277,13 @@ const styles = {
     alignItems: "center",
     justifyContent: "center",
     transition: "all 0.3s ease",
+    maxWidth: "100%",
+    boxSizing: "border-box",
+    overflow: "hidden",
   },
   actionRow: {
     display: "grid",
-    gridTemplateColumns: "1fr 1fr",
+    gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))",
     gap: "10px",
     marginTop: "16px",
   },
@@ -674,14 +677,6 @@ export default function QRCodeGenerator({ onLogout, name, team, onBack }) {
             alignItems: "center",
           }}
         >
-          <button
-            type="button"
-            style={styles.navBtn}
-            onClick={handleReset}
-            title="Reset fields to defaults"
-          >
-            <FiRefreshCw size={13} /> Reset
-          </button>
           {onBack && (
             <button
               type="button"
@@ -692,6 +687,14 @@ export default function QRCodeGenerator({ onLogout, name, team, onBack }) {
               Back
             </button>
           )}
+          <button
+            type="button"
+            style={styles.navBtn}
+            onClick={handleReset}
+            title="Reset fields to defaults"
+          >
+            <FiRefreshCw size={13} /> Reset
+          </button>
           {onLogout && (
             <button
               type="button"
@@ -979,7 +982,7 @@ export default function QRCodeGenerator({ onLogout, name, team, onBack }) {
               <div
                 style={{
                   display: "grid",
-                  gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))",
                   gap: "14px",
                 }}
               >
@@ -1002,7 +1005,7 @@ export default function QRCodeGenerator({ onLogout, name, team, onBack }) {
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: "1fr 1fr",
+                gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))",
                 gap: "14px",
                 marginTop: "14px",
                 paddingTop: "14px",
@@ -1093,7 +1096,7 @@ export default function QRCodeGenerator({ onLogout, name, team, onBack }) {
             background: safeLight,
           }}
         >
-          <canvas ref={canvasRef} style={{ display: "block" }} />
+          <canvas ref={canvasRef} style={{ display: "block", maxWidth: "100%", height: "auto" }} />
         </div>
 
         <p
