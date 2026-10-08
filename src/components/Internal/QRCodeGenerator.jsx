@@ -1096,7 +1096,10 @@ export default function QRCodeGenerator({ onLogout, name, team, onBack }) {
             background: safeLight,
           }}
         >
-          <canvas ref={canvasRef} style={{ display: "block", maxWidth: "100%", height: "auto" }} />
+          <canvas
+            ref={canvasRef}
+            style={{ display: "block", maxWidth: "100%", height: "auto" }}
+          />
         </div>
 
         <p

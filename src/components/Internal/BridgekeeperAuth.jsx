@@ -644,10 +644,10 @@ export default function BridgekeeperAuth({ onAuthorized }) {
           )}
 
           {/* PWA Install Button with Bridgekeeper Lore */}
-          <PwaInstallButton 
-            text="Summon the App" 
-            icon="fa-solid fa-scroll" 
-            bridgekeeperLore={true} 
+          <PwaInstallButton
+            text="Summon the App"
+            icon="fa-solid fa-scroll"
+            bridgekeeperLore={true}
           />
         </div>
       </div>

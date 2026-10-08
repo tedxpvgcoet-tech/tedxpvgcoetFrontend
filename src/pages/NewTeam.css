@@ -46,7 +46,12 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.4); /* 40% dim so the white images stand out more */
+  background: rgba(
+    0,
+    0,
+    0,
+    0.4
+  ); /* 40% dim so the white images stand out more */
 }
 
 /* Dark fade overlay - starts solid #171717 and fades to transparent */
@@ -82,7 +87,9 @@
 
 .hero-text {
   font-size: min(10vw, 6rem);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
   font-weight: 900; /* Extra bold */
   text-transform: uppercase;
   line-height: 1.05;
@@ -95,7 +102,13 @@
 
 /* Metallic/Burgundy Gradients */
 .hero-line1 {
-  background: linear-gradient(135deg, #ffffff 0%, #ffffff 50%, #9c1515 85%, #420000 100%);
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #ffffff 50%,
+    #9c1515 85%,
+    #420000 100%
+  );
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -146,17 +159,28 @@
   justify-content: center;
   opacity: 0;
   transform: translateY(40px);
-  
+
   /* Mask Wipe-in Setup */
-  -webkit-mask-image: linear-gradient(to right, black 40%, rgba(0,0,0,0.1) 60%, transparent 80%);
+  -webkit-mask-image: linear-gradient(
+    to right,
+    black 40%,
+    rgba(0, 0, 0, 0.1) 60%,
+    transparent 80%
+  );
   -webkit-mask-size: 300% 100%;
   -webkit-mask-position: 100% 0;
-  mask-image: linear-gradient(to right, black 40%, rgba(0,0,0,0.1) 60%, transparent 80%);
+  mask-image: linear-gradient(
+    to right,
+    black 40%,
+    rgba(0, 0, 0, 0.1) 60%,
+    transparent 80%
+  );
   mask-size: 300% 100%;
   mask-position: 100% 0;
 
-  transition: opacity 1.5s cubic-bezier(0.2, 0.8, 0.2, 1), 
-              transform 1.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition:
+    opacity 1.5s cubic-bezier(0.2, 0.8, 0.2, 1),
+    transform 1.5s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .new-committee-img-container.animate-fade-in {
@@ -181,17 +205,20 @@
   max-width: 1200px;
   height: auto;
   border-radius: 12px;
-  box-shadow: 0 35px 70px rgba(0, 0, 0, 0.6), 
-              0 10px 25px rgba(0, 0, 0, 0.3);
+  box-shadow:
+    0 35px 70px rgba(0, 0, 0, 0.6),
+    0 10px 25px rgba(0, 0, 0, 0.3);
   /* Sepia to Vibrant "Dual Identity" feature */
   filter: sepia(0.8) brightness(0.85) contrast(0.95);
-  transition: box-shadow 0.8s cubic-bezier(0.2, 0.8, 0.2, 1),
-              filter 0.8s ease;
+  transition:
+    box-shadow 0.8s cubic-bezier(0.2, 0.8, 0.2, 1),
+    filter 0.8s ease;
 }
 
 .new-committee-img:hover {
-  box-shadow: 0 45px 85px rgba(0, 0, 0, 0.7), 
-              0 15px 35px rgba(255, 0, 0, 0.15); /* very subtle red accent on shadow */
+  box-shadow:
+    0 45px 85px rgba(0, 0, 0, 0.7),
+    0 15px 35px rgba(255, 0, 0, 0.15); /* very subtle red accent on shadow */
   filter: sepia(0) brightness(1) contrast(1);
 }
 

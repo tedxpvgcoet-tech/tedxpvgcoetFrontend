@@ -52,7 +52,7 @@ const styles = {
     alignItems: "flex-start",
     marginBottom: "32px",
     flexWrap: "wrap",
-    gap: "20px"
+    gap: "20px",
   },
   title: {
     fontFamily: '"Inter", sans-serif',

@@ -25,7 +25,7 @@ const teamImages = [
   { id: "fns", src: fnsImg, alt: "Finance and Sponsorship" },
   { id: "mnm", src: mnmImg, alt: "Media and Marketing" },
   { id: "curation", src: curImg, alt: "Curation" },
-  { id: "technical", src: techImg, alt: "Technical" }
+  { id: "technical", src: techImg, alt: "Technical" },
 ];
 
 const DustParticles = () => {
@@ -43,7 +43,7 @@ const DustParticles = () => {
             animationDelay: `-${Math.random() * 20}s`,
             width: `${Math.random() * 4 + 1}px`,
             height: `${Math.random() * 4 + 1}px`,
-            opacity: Math.random() * 0.4 + 0.1
+            opacity: Math.random() * 0.4 + 0.1,
           }}
         ></div>
       ))}
@@ -67,7 +67,7 @@ const NewTeam = () => {
           }
         });
       },
-      { threshold: 0.15, rootMargin: "0px 0px -50px 0px" }
+      { threshold: 0.15, rootMargin: "0px 0px -50px 0px" },
     );
 
     currentRefs.forEach((el) => {
@@ -112,7 +112,8 @@ const NewTeam = () => {
       {/* Hero section */}
       <section className="new-committee-hero">
         <h1 className="hero-text animate-text">
-          <span className="hero-line1">The pieces that</span><br />
+          <span className="hero-line1">The pieces that</span>
+          <br />
           <span className="hero-line2">make the whole</span>
         </h1>
       </section>
