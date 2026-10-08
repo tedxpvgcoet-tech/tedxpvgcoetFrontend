@@ -49,7 +49,9 @@ const TeamGrid = ({ teamKey }) => {
 
       <div className={`team-chessboard-grid ${isTwoColumn ? "two-col" : ""}`}>
         {members.map((member, index) => {
-          const isEvenRow = Math.floor(index / 2) % 2 === 0;
+          const isEvenRow = isTwoColumn
+            ? index % 2 === 0
+            : Math.floor(index / 2) % 2 === 0;
 
           const renderImage = (
             <div className="team-img-tile" key={`${index}-img`}>
