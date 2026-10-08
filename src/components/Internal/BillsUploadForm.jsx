@@ -10,6 +10,7 @@ import {
   FormGrid,
   FormField,
 } from "../ui";
+import PwaInstallButton from "./PwaInstallButton";
 
 const styles = {
   wrapper: {
@@ -50,6 +51,8 @@ const styles = {
     justifyContent: "space-between",
     alignItems: "flex-start",
     marginBottom: "32px",
+    flexWrap: "wrap",
+    gap: "20px"
   },
   title: {
     fontFamily: '"Inter", sans-serif',
@@ -543,6 +546,7 @@ export default function BillsUploadForm({
               </p>
             </div>
             <div style={{ display: "flex", gap: "8px" }}>
+              <PwaInstallButton />
               {onBack && (
                 <button
                   type="button"
