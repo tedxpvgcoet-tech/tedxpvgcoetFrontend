@@ -1,11 +1,19 @@
 import React, { useState, useEffect } from "react";
 
-export default function PwaInstallButton({
+// Capture the install prompt globally so it's never missed,
+// even if the React component hasn't mounted yet
+let globalDeferredPrompt = null;
+window.addEventListener("beforeinstallprompt", (e) => {
+  e.preventDefault();
+  globalDeferredPrompt = e;
+});
+
+export default function PwaInstallButton({ 
   text = "Install App",
   icon = "fa-solid fa-download",
-  bridgekeeperLore = false,
+  bridgekeeperLore = false
 }) {
-  const [deferredPrompt, setDeferredPrompt] = useState(null);
+  const [deferredPrompt, setDeferredPrompt] = useState(globalDeferredPrompt);
   const [isIOS, setIsIOS] = useState(false);
   const [isStandalone, setIsStandalone] = useState(false);
   const [showIOSPrompt, setShowIOSPrompt] = useState(false);
@@ -13,10 +21,7 @@ export default function PwaInstallButton({
 
   useEffect(() => {
     // Check if installed
-    if (
-      window.matchMedia("(display-mode: standalone)").matches ||
-      window.navigator.standalone === true
-    ) {
+    if (window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone === true) {
       setIsStandalone(true);
       return;
     }
@@ -24,22 +29,26 @@ export default function PwaInstallButton({
     // Detect iOS
     const ua = window.navigator.userAgent;
     const isIOSDevice = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
-    const isMacSafari = /Macintosh/.test(ua) && navigator.maxTouchPoints > 1; // iPad on Mac Safari
+    const isMacSafari = /Macintosh/.test(ua) && navigator.maxTouchPoints > 1;
     if (isIOSDevice || isMacSafari) {
       setIsIOS(true);
     }
 
+    // If a prompt was captured globally before mount, grab it
+    if (globalDeferredPrompt) {
+      setDeferredPrompt(globalDeferredPrompt);
+    }
+
+    // Also listen for future events (e.g. if user dismisses and browser re-fires)
     const handleBeforeInstallPrompt = (e) => {
       e.preventDefault();
+      globalDeferredPrompt = e;
       setDeferredPrompt(e);
     };
 
     window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
     return () => {
-      window.removeEventListener(
-        "beforeinstallprompt",
-        handleBeforeInstallPrompt,
-      );
+      window.removeEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
     };
   }, []);
 
@@ -53,7 +62,7 @@ export default function PwaInstallButton({
     } else if (deferredPrompt) {
       deferredPrompt.prompt();
       const { outcome } = await deferredPrompt.userChoice;
-      if (outcome === "accepted") {
+      if (outcome === 'accepted') {
         setDeferredPrompt(null);
       }
     }
@@ -74,23 +83,14 @@ export default function PwaInstallButton({
     display: "flex",
     alignItems: "center",
     gap: "6px",
-    position: "relative",
+    position: "relative"
   };
 
   const buttonElement = (
     <div style={{ position: "relative" }}>
       <button
         type="button"
-        style={
-          hovered
-            ? {
-                ...btnStyle,
-                background: "rgba(255,255,255,0.1)",
-                borderColor: "#fff",
-                color: "#fff",
-              }
-            : btnStyle
-        }
+        style={hovered ? { ...btnStyle, background: "rgba(255,255,255,0.1)", borderColor: "#fff", color: "#fff" } : btnStyle}
         onClick={handleInstallClick}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
@@ -100,29 +100,25 @@ export default function PwaInstallButton({
       </button>
 
       {showIOSPrompt && (
-        <div
-          style={{
-            position: "absolute",
-            top: "100%",
-            right: "0",
-            marginTop: "10px",
-            width: "200px",
-            backgroundColor: "rgba(15, 15, 20, 0.98)",
-            border: "1px solid rgba(255,255,255,0.15)",
-            borderRadius: "8px",
-            padding: "12px",
-            zIndex: 100,
-            boxShadow: "0 10px 30px rgba(0,0,0,0.5)",
-            color: "#eee",
-            fontSize: "0.85rem",
-            lineHeight: "1.5",
-            fontFamily: '"Inter", sans-serif',
-            textAlign: "left",
-          }}
-        >
-          To install on iOS: tap the{" "}
-          <strong style={{ color: "#fff" }}>Share</strong> icon below, then
-          select <strong style={{ color: "#fff" }}>Add to Home Screen</strong>.
+        <div style={{
+          position: "absolute",
+          top: "100%",
+          right: "0",
+          marginTop: "10px",
+          width: "200px",
+          backgroundColor: "rgba(15, 15, 20, 0.98)",
+          border: "1px solid rgba(255,255,255,0.15)",
+          borderRadius: "8px",
+          padding: "12px",
+          zIndex: 100,
+          boxShadow: "0 10px 30px rgba(0,0,0,0.5)",
+          color: "#eee",
+          fontSize: "0.85rem",
+          lineHeight: "1.5",
+          fontFamily: '"Inter", sans-serif',
+          textAlign: "left"
+        }}>
+          To install on iOS: tap the <strong style={{ color: "#fff" }}>Share</strong> icon below, then select <strong style={{ color: "#fff" }}>Add to Home Screen</strong>.
         </div>
       )}
     </div>
@@ -130,42 +126,12 @@ export default function PwaInstallButton({
 
   if (bridgekeeperLore) {
     return (
-      <div
-        style={{
-          marginTop: "34px",
-          paddingTop: "20px",
-          borderTop: "1px dashed rgba(255,255,255,0.15)",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        <p
-          style={{
-            color: "#aaa",
-            fontSize: "0.85rem",
-            marginBottom: "14px",
-            fontFamily: '"Inter", sans-serif',
-            textAlign: "center",
-            lineHeight: "1.5",
-          }}
-        >
-          Weary traveler...
-          <br />
-          do you wish to carry this Bridge in thy pocket?
+      <div style={{ marginTop: "34px", paddingTop: "20px", borderTop: "1px dashed rgba(255,255,255,0.15)", display: "flex", flexDirection: "column", alignItems: "center" }}>
+        <p style={{ color: "#aaa", fontSize: "0.85rem", marginBottom: "14px", fontFamily: '"Inter", sans-serif', textAlign: "center", lineHeight: "1.5" }}>
+          Weary traveler...<br/>do you wish to carry this Bridge in thy pocket?
         </p>
-        {isReady ? (
-          buttonElement
-        ) : (
-          <p
-            style={{
-              color: "#e81b2a",
-              fontSize: "0.8rem",
-              marginTop: "5px",
-              fontStyle: "italic",
-              opacity: 0.8,
-            }}
-          >
+        {isReady ? buttonElement : (
+          <p style={{ color: "#e81b2a", fontSize: "0.8rem", marginTop: "5px", fontStyle: "italic", opacity: 0.8 }}>
             (Thy pocket already bears the Bridge, or this device restricts it)
           </p>
         )}
