@@ -286,7 +286,7 @@ const styles = {
   },
 };
 
-export default function QRCodeGenerator({ onLogout, name, team }) {
+export default function QRCodeGenerator({ onLogout, name, team, onBack }) {
   const [activeType, setActiveType] = useState("url");
 
   // Form states per type
@@ -682,6 +682,16 @@ export default function QRCodeGenerator({ onLogout, name, team }) {
           >
             <FiRefreshCw size={13} /> Reset
           </button>
+          {onBack && (
+            <button
+              type="button"
+              style={styles.navBtn}
+              onClick={onBack}
+              title="Back to portal"
+            >
+              Back
+            </button>
+          )}
           {onLogout && (
             <button
               type="button"
