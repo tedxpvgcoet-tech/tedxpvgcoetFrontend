@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation, useParams, Link } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
 import teamData from "./team.json";
@@ -17,6 +17,18 @@ const getImage = (imgPath) => {
 const TeamGrid = ({ teamKey }) => {
   const location = useLocation();
   const params = useParams();
+
+  const [isMobile, setIsMobile] = useState(
+    typeof window !== "undefined" ? window.innerWidth <= 768 : false,
+  );
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const resolvedKey =
     teamKey || params.teamName || location.pathname.replace(/^\//, "");
@@ -49,7 +61,10 @@ const TeamGrid = ({ teamKey }) => {
 
       <div className={`team-chessboard-grid ${isTwoColumn ? "two-col" : ""}`}>
         {members.map((member, index) => {
-          const isEvenRow = Math.floor(index / 2) % 2 === 0;
+          const isEvenRow =
+            isTwoColumn || isMobile
+              ? index % 2 === 0
+              : Math.floor(index / 2) % 2 === 0;
 
           const renderImage = (
             <div className="team-img-tile" key={`${index}-img`}>
