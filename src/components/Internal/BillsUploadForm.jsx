@@ -10,6 +10,7 @@ import {
   FormGrid,
   FormField,
 } from "../ui";
+import PwaInstallButton from "./PwaInstallButton";
 
 const styles = {
   wrapper: {
@@ -525,6 +526,11 @@ export default function BillsUploadForm({
             .bills-card {
                 padding: 24px 16px !important;
             }
+            .bills-header {
+                flex-direction: column !important;
+                gap: 16px !important;
+                align-items: flex-start !important;
+            }
         }
       `}</style>
 
@@ -539,14 +545,14 @@ export default function BillsUploadForm({
 
       <div style={styles.pageContainer}>
         <div style={styles.card} className="bills-card">
-          <div style={styles.headerRow}>
+          <div style={styles.headerRow} className="bills-header">
             <div>
               <h1 style={styles.title}>Internal Bills</h1>
               <p style={styles.subtitle}>
                 Submit your purchase receipts seamlessly
               </p>
             </div>
-            <div style={{ display: "flex", gap: "8px" }}>
+            <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
               {onBack && (
                 <button
                   type="button"
@@ -562,7 +568,7 @@ export default function BillsUploadForm({
                   }}
                   title="Back to dashboard"
                 >
-                  ← Back
+                  Back
                 </button>
               )}
               {onLogout && (
@@ -583,6 +589,7 @@ export default function BillsUploadForm({
                   Sign Out
                 </button>
               )}
+              <PwaInstallButton />
             </div>
           </div>
 
