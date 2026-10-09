@@ -406,7 +406,10 @@ export default function BillsUploadForm({
           imageFile: bill.image.base64,
           fileName: bill.image.fileName,
           mimeType: bill.image.mimeType,
-          batchTitle: bills.length > 1 ? `Multiple Bills Uploaded by ${name} (${team})` : null,
+          batchTitle:
+            bills.length > 1
+              ? `Multiple Bills Uploaded by ${name} (${team})`
+              : null,
         };
 
         const res = await fetch(`${API_URL}/bills`, {
