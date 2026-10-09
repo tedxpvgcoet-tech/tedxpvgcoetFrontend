@@ -381,6 +381,10 @@ export default function BillsUploadForm({
 
     let successCount = 0;
     let failMsgs = [];
+    const batchTimestamp = new Date().toLocaleTimeString("en-US", {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
 
     let API_URL = "https://www.backend.tedxpvgcoet.in";
     try {
@@ -409,7 +413,7 @@ export default function BillsUploadForm({
           mimeType: bill.image.mimeType,
           batchTitle:
             bills.length > 1
-              ? `Multiple Bills Uploaded by ${name} (${team})`
+              ? `Multiple Bills Uploaded by ${name} (${team}) at ${batchTimestamp}`
               : null,
         };
 
