@@ -10,7 +10,6 @@ import {
   FormGrid,
   FormField,
 } from "../ui";
-import PwaInstallButton from "./PwaInstallButton";
 
 const styles = {
   wrapper: {
@@ -29,13 +28,13 @@ const styles = {
     position: "relative",
     zIndex: 1,
     boxSizing: "border-box",
-    padding: "clamp(90px, 12vw, 140px) clamp(10px, 3vw, 20px) 40px",
+    padding: "140px 20px 80px",
   },
   card: {
     backgroundColor: "rgba(15, 15, 20, 0.75)",
     border: "1px solid rgba(255, 255, 255, 0.1)",
     borderRadius: "16px",
-    padding: "clamp(20px, 4vw, 40px) clamp(16px, 3.5vw, 36px)",
+    padding: "40px 36px",
     maxWidth: "650px",
     width: "100%",
     backdropFilter: "blur(20px)",
@@ -51,8 +50,6 @@ const styles = {
     justifyContent: "space-between",
     alignItems: "flex-start",
     marginBottom: "32px",
-    flexWrap: "wrap",
-    gap: "20px",
   },
   title: {
     fontFamily: '"Inter", sans-serif',
@@ -409,6 +406,7 @@ export default function BillsUploadForm({
           imageFile: bill.image.base64,
           fileName: bill.image.fileName,
           mimeType: bill.image.mimeType,
+          batchTitle: bills.length > 1 ? `Multiple Bills Uploaded by ${name} (${team})` : null,
         };
 
         const res = await fetch(`${API_URL}/bills`, {
@@ -545,7 +543,7 @@ export default function BillsUploadForm({
                 Submit your purchase receipts seamlessly
               </p>
             </div>
-            <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
+            <div style={{ display: "flex", gap: "8px" }}>
               {onBack && (
                 <button
                   type="button"
@@ -561,7 +559,7 @@ export default function BillsUploadForm({
                   }}
                   title="Back to dashboard"
                 >
-                  Back
+                  ← Back
                 </button>
               )}
               {onLogout && (
@@ -582,7 +580,6 @@ export default function BillsUploadForm({
                   Sign Out
                 </button>
               )}
-              <PwaInstallButton />
             </div>
           </div>
 
