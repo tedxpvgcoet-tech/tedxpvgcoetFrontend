@@ -381,10 +381,11 @@ export default function BillsUploadForm({
 
     let successCount = 0;
     let failMsgs = [];
-    const batchTimestamp = new Date().toLocaleTimeString("en-US", {
-      hour: "2-digit",
-      minute: "2-digit",
-    });
+    
+    const d = new Date();
+    const timeString = d.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" });
+    const dateString = d.toLocaleDateString("en-GB", { day: "2-digit", month: "short" });
+    const batchTimestamp = `${timeString}, ${dateString}`;
 
     let API_URL = "https://www.backend.tedxpvgcoet.in";
     try {
