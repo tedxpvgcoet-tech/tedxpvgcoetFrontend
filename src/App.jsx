@@ -20,8 +20,8 @@ const TakeTheLeap = lazy(() => import("./pages/TakeTheLeap"));
 const ThemePage = lazy(() => import("./pages/ThemePage"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const InternalBillsPage = lazy(() => import("./pages/InternalBillsPage"));
-
 const NewTeam = lazy(() => import("./pages/NewTeam"));
+const PastTalks = lazy(() => import("./pages/PastTalks"));
 
 inject();
 
@@ -114,6 +114,8 @@ function App() {
               <Route path="/about" element={<Home />} />
               <Route path="/feedback" element={<FeedbackRedirect />} />
               <Route path="/cam" element={<CamRedirect />} />
+
+              <Route path="/past-talks" element={<PastTalks />} />
 
               {/* 404 - catch all unknown routes */}
               <Route path="*" element={<NotFound />} />

@@ -40,10 +40,8 @@ const Navbar = () => {
   const handleLogoClick = (e) => {
     e.preventDefault();
     if (location.pathname === "/") {
-      // Smooth animated scroll to top if already on home page
       smoothScrollToTop();
     } else {
-      // Navigate to "/" if we are on a different page
       navigate("/", { replace: true });
     }
   };
@@ -51,12 +49,9 @@ const Navbar = () => {
   const path = location.pathname;
   const isEventPage = path.startsWith("/events");
 
-  // Global scroll listener for all pages
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll, { passive: true });
-
-    // Check initial state
     handleScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);
@@ -138,6 +133,13 @@ const Navbar = () => {
           onClick={() => setMenuOpen(false)}
         >
           Events
+        </Link>
+        <Link
+          to="/past-talks"
+          className="nav-dropdown-item"
+          onClick={() => setMenuOpen(false)}
+        >
+          Past Talks
         </Link>
         <Link
           to="/speaker"
