@@ -20,7 +20,7 @@ const PastTalks = () => {
       </video>
 
       <div className="past-talks-container">
-        <h1 className="past-talks-heading">Past talks</h1>
+        <h1 className="past-talks-heading">Past Talks</h1>
 
         {/* Filter Bar */}
         <div className="talks-filter-bar">
