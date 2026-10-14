@@ -118,15 +118,6 @@ const Navbar = () => {
         >
           About
         </Link>
-
-        <Link
-          to="https://tedxpvgcoet.substack.com/"
-          className="nav-dropdown-item"
-          onClick={() => setMenuOpen(false)}
-        >
-          News letter
-        </Link>
-
         <Link
           to="/events"
           className="nav-dropdown-item"
