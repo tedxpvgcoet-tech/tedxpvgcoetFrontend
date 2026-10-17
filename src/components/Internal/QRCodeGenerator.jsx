@@ -149,13 +149,13 @@ function StyleIconButton({ active, onClick, title, children }) {
         border: active
           ? "2px solid #eb0028"
           : hovered
-          ? "1px solid rgba(255, 255, 255, 0.28)"
-          : "1px solid rgba(255, 255, 255, 0.1)",
+            ? "1px solid rgba(255, 255, 255, 0.28)"
+            : "1px solid rgba(255, 255, 255, 0.1)",
         background: active
           ? "#141419"
           : hovered
-          ? "rgba(255, 255, 255, 0.08)"
-          : "rgba(255, 255, 255, 0.03)",
+            ? "rgba(255, 255, 255, 0.08)"
+            : "rgba(255, 255, 255, 0.03)",
         color: active ? "#ffffff" : hovered ? "#e5e7eb" : "#888890",
         display: "flex",
         alignItems: "center",
@@ -231,7 +231,13 @@ function DotsCircleIcon() {
 // 4. Marker Border Square Icon
 function MarkerBorderSquareIcon() {
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+    >
       <rect x="3.5" y="3.5" width="17" height="17" rx="3.5" strokeWidth="2.5" />
     </svg>
   );
@@ -240,7 +246,13 @@ function MarkerBorderSquareIcon() {
 // 5. Marker Border Rounded Icon
 function MarkerBorderRoundedIcon() {
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+    >
       <rect x="3.5" y="3.5" width="17" height="17" rx="8" strokeWidth="2.5" />
     </svg>
   );
@@ -250,7 +262,17 @@ function MarkerBorderRoundedIcon() {
 function MarkerCenterSquareIcon() {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24">
-      <rect x="3.5" y="3.5" width="17" height="17" rx="3.5" fill="none" stroke="currentColor" strokeWidth="2" opacity="0.35" />
+      <rect
+        x="3.5"
+        y="3.5"
+        width="17"
+        height="17"
+        rx="3.5"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        opacity="0.35"
+      />
       <rect x="8.5" y="8.5" width="7" height="7" rx="1.5" fill="currentColor" />
     </svg>
   );
@@ -260,7 +282,17 @@ function MarkerCenterSquareIcon() {
 function MarkerCenterDotIcon() {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24">
-      <rect x="3.5" y="3.5" width="17" height="17" rx="3.5" fill="none" stroke="currentColor" strokeWidth="2" opacity="0.35" />
+      <rect
+        x="3.5"
+        y="3.5"
+        width="17"
+        height="17"
+        rx="3.5"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        opacity="0.35"
+      />
       <circle cx="12" cy="12" r="3.8" fill="currentColor" />
     </svg>
   );
@@ -465,7 +497,7 @@ export default function QRCodeGenerator({ onLogout, name, team, onBack }) {
             offset,
             offset + badgeSize,
             offset + radius,
-            radius
+            radius,
           );
           ctx.lineTo(offset + badgeSize, offset + badgeSize - radius);
           ctx.arcTo(
@@ -473,7 +505,7 @@ export default function QRCodeGenerator({ onLogout, name, team, onBack }) {
             offset + badgeSize,
             offset + badgeSize - radius,
             offset + badgeSize,
-            radius
+            radius,
           );
           ctx.lineTo(offset + radius, offset + badgeSize);
           ctx.arcTo(
@@ -481,7 +513,7 @@ export default function QRCodeGenerator({ onLogout, name, team, onBack }) {
             offset + badgeSize,
             offset,
             offset + badgeSize - radius,
-            radius
+            radius,
           );
           ctx.lineTo(offset, offset + radius);
           ctx.arcTo(offset, offset, offset + radius, offset, radius);
@@ -502,7 +534,7 @@ export default function QRCodeGenerator({ onLogout, name, team, onBack }) {
           innerPad,
           innerPad,
           size - innerPad * 2,
-          size - innerPad * 2
+          size - innerPad * 2,
         );
         ctx.restore();
 
@@ -583,7 +615,7 @@ export default function QRCodeGenerator({ onLogout, name, team, onBack }) {
       cornerSquareStyle,
       cornerDotStyle,
       safeLight,
-    ]
+    ],
   );
 
   // Render QR Code onto DOM container
@@ -882,7 +914,9 @@ export default function QRCodeGenerator({ onLogout, name, team, onBack }) {
                 {/* 1. Dots Pattern */}
                 <div>
                   <div style={styles.styleGroupTitle}>Dots</div>
-                  <div style={{ display: "flex", gap: "8px", marginTop: "8px" }}>
+                  <div
+                    style={{ display: "flex", gap: "8px", marginTop: "8px" }}
+                  >
                     <StyleIconButton
                       active={dotStyle === "square"}
                       onClick={() => setDotStyle("square")}
@@ -910,7 +944,9 @@ export default function QRCodeGenerator({ onLogout, name, team, onBack }) {
                 {/* 2. Marker Border */}
                 <div>
                   <div style={styles.styleGroupTitle}>Marker border</div>
-                  <div style={{ display: "flex", gap: "8px", marginTop: "8px" }}>
+                  <div
+                    style={{ display: "flex", gap: "8px", marginTop: "8px" }}
+                  >
                     <StyleIconButton
                       active={cornerSquareStyle === "square"}
                       onClick={() => setCornerSquareStyle("square")}
@@ -931,7 +967,9 @@ export default function QRCodeGenerator({ onLogout, name, team, onBack }) {
                 {/* 3. Marker Center */}
                 <div>
                   <div style={styles.styleGroupTitle}>Marker center</div>
-                  <div style={{ display: "flex", gap: "8px", marginTop: "8px" }}>
+                  <div
+                    style={{ display: "flex", gap: "8px", marginTop: "8px" }}
+                  >
                     <StyleIconButton
                       active={cornerDotStyle === "square"}
                       onClick={() => setCornerDotStyle("square")}
