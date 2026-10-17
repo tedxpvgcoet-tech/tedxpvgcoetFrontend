@@ -1,12 +1,7 @@
-import React, { useState, useEffect, useRef } from "react";
-import QRCode from "qrcode";
+import React, { useState, useEffect, useRef, useCallback } from "react";
+import QRCodeStyling from "qr-code-styling";
 import {
   FiLink,
-  FiFileText,
-  FiCreditCard,
-  FiMessageSquare,
-  FiMail,
-  FiWifi,
   FiDownload,
   FiCopy,
   FiCheck,
@@ -15,16 +10,7 @@ import {
   FiEye,
   FiLogOut,
 } from "react-icons/fi";
-import { Input, Textarea, Dropdown, Button, FormAlert } from "../ui";
-
-const QR_TYPES = [
-  { id: "url", label: "Link / URL", icon: <FiLink size={14} /> },
-  { id: "text", label: "Plain Text", icon: <FiFileText size={14} /> },
-  { id: "upi", label: "UPI Pay", icon: <FiCreditCard size={14} /> },
-  { id: "whatsapp", label: "WhatsApp", icon: <FiMessageSquare size={14} /> },
-  { id: "email", label: "Email", icon: <FiMail size={14} /> },
-  { id: "wifi", label: "Wi-Fi", icon: <FiWifi size={14} /> },
-];
+import { Input, Dropdown, Button, FormAlert } from "../ui";
 
 const isValidHex = (hex) => {
   if (typeof hex !== "string") return false;
@@ -146,6 +132,140 @@ function ColorPickerField({ label, value, onChange, placeholder = "#000000" }) {
   );
 }
 
+// Custom Shape Selector Icon Button
+function StyleIconButton({ active, onClick, title, children }) {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <button
+      type="button"
+      title={title}
+      onClick={onClick}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{
+        width: "50px",
+        height: "50px",
+        borderRadius: "12px",
+        border: active
+          ? "2px solid #eb0028"
+          : hovered
+          ? "1px solid rgba(255, 255, 255, 0.28)"
+          : "1px solid rgba(255, 255, 255, 0.1)",
+        background: active
+          ? "#141419"
+          : hovered
+          ? "rgba(255, 255, 255, 0.08)"
+          : "rgba(255, 255, 255, 0.03)",
+        color: active ? "#ffffff" : hovered ? "#e5e7eb" : "#888890",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        cursor: "pointer",
+        transition: "all 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
+        padding: 0,
+        boxShadow: active
+          ? "0 0 14px rgba(235, 0, 40, 0.35), inset 0 0 8px rgba(235, 0, 40, 0.15)"
+          : "none",
+        transform: hovered ? "translateY(-1px)" : "none",
+      }}
+    >
+      {children}
+    </button>
+  );
+}
+
+// 1. Dots Square Icon
+function DotsSquareIcon() {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+      <rect x="2.5" y="3" width="7" height="4" />
+      <rect x="14.5" y="3" width="7" height="4" />
+      <rect x="6" y="7" width="4" height="4" />
+      <rect x="6" y="11" width="9" height="4" />
+      <rect x="11" y="7" width="4" height="4" />
+      <rect x="15" y="11" width="4" height="4" />
+      <rect x="2.5" y="17" width="12" height="4" />
+      <rect x="17.5" y="17" width="4" height="4" />
+    </svg>
+  );
+}
+
+// 2. Dots Rounded Icon
+function DotsRoundedIcon() {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+      <rect x="2.5" y="3" width="7" height="4" rx="2" />
+      <rect x="14.5" y="3" width="7" height="4" rx="2" />
+      <rect x="6" y="7" width="4" height="4" rx="1.5" />
+      <rect x="6" y="11" width="9" height="4" rx="2" />
+      <rect x="11" y="7" width="4" height="4" rx="1.5" />
+      <rect x="15" y="11" width="4" height="4" rx="1.5" />
+      <rect x="2.5" y="17" width="12" height="4" rx="2" />
+      <rect x="17.5" y="17" width="4" height="4" rx="2" />
+    </svg>
+  );
+}
+
+// 3. Dots Circles Icon
+function DotsCircleIcon() {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+      <circle cx="4.5" cy="5" r="1.6" />
+      <circle cx="8.5" cy="5" r="1.6" />
+      <circle cx="15.5" cy="5" r="1.6" />
+      <circle cx="19.5" cy="5" r="1.6" />
+      <circle cx="7" cy="9" r="1.6" />
+      <circle cx="13" cy="9" r="1.6" />
+      <circle cx="7" cy="13" r="1.6" />
+      <circle cx="11" cy="13" r="1.6" />
+      <circle cx="15" cy="13" r="1.6" />
+      <circle cx="18" cy="13" r="1.6" />
+      <circle cx="4.5" cy="19" r="1.6" />
+      <circle cx="8.5" cy="19" r="1.6" />
+      <circle cx="12.5" cy="19" r="1.6" />
+      <circle cx="19.5" cy="19" r="1.6" />
+    </svg>
+  );
+}
+
+// 4. Marker Border Square Icon
+function MarkerBorderSquareIcon() {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <rect x="3.5" y="3.5" width="17" height="17" rx="3.5" strokeWidth="2.5" />
+    </svg>
+  );
+}
+
+// 5. Marker Border Rounded Icon
+function MarkerBorderRoundedIcon() {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <rect x="3.5" y="3.5" width="17" height="17" rx="8" strokeWidth="2.5" />
+    </svg>
+  );
+}
+
+// 6. Marker Center Square Icon
+function MarkerCenterSquareIcon() {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24">
+      <rect x="3.5" y="3.5" width="17" height="17" rx="3.5" fill="none" stroke="currentColor" strokeWidth="2" opacity="0.35" />
+      <rect x="8.5" y="8.5" width="7" height="7" rx="1.5" fill="currentColor" />
+    </svg>
+  );
+}
+
+// 7. Marker Center Dot Icon
+function MarkerCenterDotIcon() {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24">
+      <rect x="3.5" y="3.5" width="17" height="17" rx="3.5" fill="none" stroke="currentColor" strokeWidth="2" opacity="0.35" />
+      <circle cx="12" cy="12" r="3.8" fill="currentColor" />
+    </svg>
+  );
+}
+
 const styles = {
   card: {
     backgroundColor: "rgba(15, 15, 20, 0.75)",
@@ -206,36 +326,7 @@ const styles = {
     gap: "6px",
     whiteSpace: "nowrap",
   },
-  typeGrid: {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(90px, 1fr))",
-    gap: "8px",
-    marginBottom: "24px",
-  },
-  typeBtn: {
-    fontFamily: '"Inter", sans-serif',
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: "6px",
-    padding: "10px 6px",
-    borderRadius: "10px",
-    border: "1px solid rgba(255, 255, 255, 0.08)",
-    background: "rgba(255, 255, 255, 0.03)",
-    color: "#aaa",
-    fontSize: "0.78rem",
-    fontWeight: "600",
-    cursor: "pointer",
-    transition: "all 0.25s ease",
-    userSelect: "none",
-  },
-  typeBtnActive: {
-    background: "rgba(235, 0, 40, 0.15)",
-    borderColor: "rgba(235, 0, 40, 0.5)",
-    color: "#ffffff",
-    boxShadow: "0 0 14px rgba(235, 0, 40, 0.25)",
-  },
+
   subcard: {
     background: "rgba(255, 255, 255, 0.03)",
     border: "1px solid rgba(255, 255, 255, 0.08)",
@@ -287,41 +378,30 @@ const styles = {
     gap: "10px",
     marginTop: "16px",
   },
+  styleGroupTitle: {
+    fontFamily: '"Inter", sans-serif',
+    fontSize: "0.82rem",
+    fontWeight: "600",
+    color: "#d0d4dc",
+    letterSpacing: "0.2px",
+    marginBottom: "8px",
+  },
 };
 
 export default function QRCodeGenerator({ onLogout, name, team, onBack }) {
-  const [activeType, setActiveType] = useState("url");
-
-  // Form states per type
+  // Destination URL
   const [url, setUrl] = useState("https://www.tedxpvgcoet.in/");
-  const [plainText, setPlainText] = useState("");
-  const [upiData, setUpiData] = useState({
-    id: "tedxpvgcoet@okhdfcbank",
-    name: "TEDxPVGCOETM",
-    amount: "",
-    note: "Event Registration",
-  });
-  const [waData, setWaData] = useState({
-    phone: "919876543210",
-    message: "Hi! I am interested in TEDxPVGCOETM.",
-  });
-  const [emailData, setEmailData] = useState({
-    email: "tedx@pvgcoet.ac.in",
-    subject: "TEDxPVGCOETM Enquiry",
-    body: "Hello Team,",
-  });
-  const [wifiData, setWifiData] = useState({
-    ssid: "TEDx_Guest",
-    password: "",
-    encryption: "WPA",
-  });
 
   // Customization options (colors match reference style)
   const [qrColor, setQrColor] = useState("#000000");
   const [bgColor, setBgColor] = useState("#ffffff");
   const [includeLogo, setIncludeLogo] = useState(true);
-  const errorCorrection = "H";
   const [exportSize, setExportSize] = useState(512);
+
+  // Shape & Style States
+  const [dotStyle, setDotStyle] = useState("square"); // "square" | "rounded" | "dots"
+  const [cornerSquareStyle, setCornerSquareStyle] = useState("square"); // "square" | "extra-rounded"
+  const [cornerDotStyle, setCornerDotStyle] = useState("square"); // "square" | "dot"
 
   const safeDark = isValidHex(qrColor) ? qrColor : "#000000";
   const safeLight = isValidHex(bgColor) ? bgColor : "#ffffff";
@@ -340,193 +420,204 @@ export default function QRCodeGenerator({ onLogout, name, team, onBack }) {
   const [showOptions, setShowOptions] = useState(true);
 
   const canvasRef = useRef(null);
+  const qrCodeRef = useRef(null);
 
-  // Compute final QR payload string based on active type
+  // Compute final QR payload string (URL only)
   const computePayload = () => {
-    switch (activeType) {
-      case "url":
-        return url.trim() || "https://www.tedxpvgcoet.in/";
-      case "text":
-        return plainText.trim() || "TEDxPVGCOETM - Ideas Worth Spreading";
-      case "upi": {
-        const vpa = upiData.id.trim();
-        const pn = encodeURIComponent(upiData.name.trim() || "TEDxPVGCOETM");
-        const am = upiData.amount.trim();
-        const tn = encodeURIComponent(upiData.note.trim() || "Payment");
-        let upiUri = `upi://pay?pa=${vpa}&pn=${pn}&tn=${tn}`;
-        if (am && Number(am) > 0) upiUri += `&am=${am}`;
-        return upiUri;
-      }
-      case "whatsapp": {
-        const cleanPhone = waData.phone.replace(/[^0-9]/g, "");
-        const textParam = encodeURIComponent(waData.message.trim());
-        return `https://wa.me/${cleanPhone}?text=${textParam}`;
-      }
-      case "email": {
-        const mailTo = emailData.email.trim();
-        const sub = encodeURIComponent(emailData.subject.trim());
-        const body = encodeURIComponent(emailData.body.trim());
-        return `mailto:${mailTo}?subject=${sub}&body=${body}`;
-      }
-      case "wifi": {
-        const { ssid, password, encryption } = wifiData;
-        return `WIFI:T:${encryption};S:${ssid};P:${password};;`;
-      }
-      default:
-        return "https://www.tedxpvgcoet.in/";
-    }
+    return url.trim() || "https://www.tedxpvgcoet.in/";
   };
 
   const payload = computePayload();
 
-  // Cache and load public/tedx-logo.png
-  const loadLogoImage = () => {
-    return new Promise((resolve, reject) => {
-      const img = new Image();
-      img.src = `${process.env.PUBLIC_URL || ""}/tedx-logo.png`;
-      if (img.complete) {
-        resolve(img);
-      } else {
-        img.onload = () => resolve(img);
-        img.onerror = (e) => reject(e);
-      }
-    });
-  };
+  // Curved badge data URL for center TEDx logo
+  const [curvedLogoUrl, setCurvedLogoUrl] = useState("");
 
-  // Helper to draw rounded rect on canvas
-  const drawRoundedRect = (ctx, x, y, width, height, radius) => {
-    ctx.beginPath();
-    ctx.moveTo(x + radius, y);
-    ctx.lineTo(x + width - radius, y);
-    ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
-    ctx.lineTo(x + width, y + height - radius);
-    ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
-    ctx.lineTo(x + radius, y + height);
-    ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
-    ctx.lineTo(x, y + radius);
-    ctx.quadraticCurveTo(x, y, x + radius, y);
-    ctx.closePath();
-  };
-
-  // Draw QR onto canvas
   useEffect(() => {
     let isCancelled = false;
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+    const img = new Image();
+    img.crossOrigin = "anonymous";
+    img.src = `${process.env.PUBLIC_URL || ""}/tedx-logo.png`;
 
-    const renderQR = async () => {
+    const generateCurvedBadge = () => {
       try {
-        await QRCode.toCanvas(canvas, payload, {
-          width: 260,
-          margin: 2,
-          errorCorrectionLevel: includeLogo ? "H" : errorCorrection,
-          color: {
-            dark: safeDark,
-            light: safeLight,
-          },
-        });
+        const size = 512;
+        const canvas = document.createElement("canvas");
+        canvas.width = size;
+        canvas.height = size;
+        const ctx = canvas.getContext("2d");
+        if (!ctx) return;
 
-        if (isCancelled) return;
+        const borderW = 12;
+        const offset = borderW / 2;
+        const badgeSize = size - borderW;
+        const radius = badgeSize * 0.24; // Smooth curved corners
+        const innerPad = size * 0.14; // Padding inside curved border
 
-        // Draw central tedx-logo.png badge if enabled
-        if (includeLogo) {
-          const img = await loadLogoImage();
-          if (isCancelled) return;
+        ctx.clearRect(0, 0, size, size);
 
-          const ctx = canvas.getContext("2d");
-          const size = canvas.width;
-          const badgeSize = size * 0.24;
-          const badgeX = (size - badgeSize) / 2;
-          const badgeY = (size - badgeSize) / 2;
-          const radius = badgeSize * 0.2;
-
-          ctx.save();
-          // Clean background plate matching QR background
-          ctx.fillStyle = safeLight;
-          ctx.strokeStyle = "rgba(235, 0, 40, 0.45)";
-          ctx.lineWidth = 2;
-
-          drawRoundedRect(ctx, badgeX, badgeY, badgeSize, badgeSize, radius);
-          ctx.fill();
-          ctx.stroke();
-
-          // Draw tedx-logo.png in the center
-          const innerPad = badgeSize * 0.12;
-          ctx.drawImage(
-            img,
-            badgeX + innerPad,
-            badgeY + innerPad,
-            badgeSize - innerPad * 2,
-            badgeSize - innerPad * 2,
+        // Path generator for curved corners
+        const makeCurvedPath = () => {
+          ctx.beginPath();
+          ctx.moveTo(offset + radius, offset);
+          ctx.lineTo(offset + badgeSize - radius, offset);
+          ctx.arcTo(
+            offset + badgeSize,
+            offset,
+            offset + badgeSize,
+            offset + radius,
+            radius
           );
-          ctx.restore();
-        }
-      } catch (error) {
+          ctx.lineTo(offset + badgeSize, offset + badgeSize - radius);
+          ctx.arcTo(
+            offset + badgeSize,
+            offset + badgeSize,
+            offset + badgeSize - radius,
+            offset + badgeSize,
+            radius
+          );
+          ctx.lineTo(offset + radius, offset + badgeSize);
+          ctx.arcTo(
+            offset,
+            offset + badgeSize,
+            offset,
+            offset + badgeSize - radius,
+            radius
+          );
+          ctx.lineTo(offset, offset + radius);
+          ctx.arcTo(offset, offset, offset + radius, offset, radius);
+          ctx.closePath();
+        };
+
+        // Fill background plate matching QR background
+        makeCurvedPath();
+        ctx.fillStyle = safeLight;
+        ctx.fill();
+
+        // Clip to curved shape and draw logo centered
+        ctx.save();
+        makeCurvedPath();
+        ctx.clip();
+        ctx.drawImage(
+          img,
+          innerPad,
+          innerPad,
+          size - innerPad * 2,
+          size - innerPad * 2
+        );
+        ctx.restore();
+
+        // Draw curved border with TEDx red accent
+        makeCurvedPath();
+        ctx.strokeStyle = "rgba(235, 0, 40, 0.55)";
+        ctx.lineWidth = borderW;
+        ctx.stroke();
+
         if (!isCancelled) {
-          console.error("QR Code generation error:", error);
-          setStatus({
-            type: "error",
-            message: "Failed to generate QR code for this content.",
-          });
+          setCurvedLogoUrl(canvas.toDataURL("image/png"));
+        }
+      } catch (err) {
+        console.error("Error creating curved logo badge:", err);
+        if (!isCancelled) {
+          setCurvedLogoUrl(`${process.env.PUBLIC_URL || ""}/tedx-logo.png`);
         }
       }
     };
 
-    renderQR();
+    if (img.complete) {
+      generateCurvedBadge();
+    } else {
+      img.onload = generateCurvedBadge;
+      img.onerror = () => {
+        if (!isCancelled) {
+          setCurvedLogoUrl(`${process.env.PUBLIC_URL || ""}/tedx-logo.png`);
+        }
+      };
+    }
 
     return () => {
       isCancelled = true;
     };
-  }, [payload, safeDark, safeLight, includeLogo, errorCorrection]);
+  }, [safeLight]);
+
+  // Helper to generate QRCodeStyling options
+  const getQRConfig = useCallback(
+    (size, type = "canvas") => ({
+      width: size,
+      height: size,
+      type,
+      data: payload,
+      image: includeLogo
+        ? curvedLogoUrl || `${process.env.PUBLIC_URL || ""}/tedx-logo.png`
+        : "",
+      dotsOptions: {
+        color: safeDark,
+        type: dotStyle,
+      },
+      cornersSquareOptions: {
+        color: safeDark,
+        type: cornerSquareStyle,
+      },
+      cornersDotOptions: {
+        color: safeDark,
+        type: cornerDotStyle,
+      },
+      backgroundOptions: {
+        color: safeLight,
+      },
+      imageOptions: {
+        crossOrigin: "anonymous",
+        margin: Math.max(3, Math.round(size * 0.012)),
+        imageSize: 0.35,
+        hideBackgroundDots: true,
+      },
+      qrOptions: {
+        errorCorrectionLevel: "H",
+      },
+    }),
+    [
+      payload,
+      includeLogo,
+      curvedLogoUrl,
+      safeDark,
+      dotStyle,
+      cornerSquareStyle,
+      cornerDotStyle,
+      safeLight,
+    ]
+  );
+
+  // Render QR Code onto DOM container
+  useEffect(() => {
+    if (!canvasRef.current) return;
+    try {
+      const qrCode = new QRCodeStyling(getQRConfig(260, "canvas"));
+      canvasRef.current.innerHTML = "";
+      qrCode.append(canvasRef.current);
+      qrCodeRef.current = qrCode;
+
+      const canvasEl = canvasRef.current.querySelector("canvas");
+      if (canvasEl) {
+        canvasEl.style.maxWidth = "100%";
+        canvasEl.style.height = "auto";
+        canvasEl.style.display = "block";
+      }
+    } catch (err) {
+      console.error("QR Code styling render error:", err);
+      setStatus({
+        type: "error",
+        message: "Failed to render QR Code preview.",
+      });
+    }
+  }, [getQRConfig]);
 
   // Download high-resolution PNG
   const handleDownloadPNG = async () => {
     try {
-      const tempCanvas = document.createElement("canvas");
-      await QRCode.toCanvas(tempCanvas, payload, {
-        width: exportSize,
-        margin: 2,
-        errorCorrectionLevel: includeLogo ? "H" : errorCorrection,
-        color: {
-          dark: safeDark,
-          light: safeLight,
-        },
+      const qrExport = new QRCodeStyling(getQRConfig(exportSize, "canvas"));
+      await qrExport.download({
+        name: `TEDxPVGCOETM_QR_${Date.now()}`,
+        extension: "png",
       });
-
-      if (includeLogo) {
-        const img = await loadLogoImage();
-        const ctx = tempCanvas.getContext("2d");
-        const size = tempCanvas.width;
-        const badgeSize = size * 0.24;
-        const badgeX = (size - badgeSize) / 2;
-        const badgeY = (size - badgeSize) / 2;
-        const radius = badgeSize * 0.2;
-
-        ctx.save();
-        ctx.fillStyle = safeLight;
-        ctx.strokeStyle = "rgba(235, 0, 40, 0.45)";
-        ctx.lineWidth = Math.max(2, size * 0.006);
-
-        drawRoundedRect(ctx, badgeX, badgeY, badgeSize, badgeSize, radius);
-        ctx.fill();
-        ctx.stroke();
-
-        const innerPad = badgeSize * 0.12;
-        ctx.drawImage(
-          img,
-          badgeX + innerPad,
-          badgeY + innerPad,
-          badgeSize - innerPad * 2,
-          badgeSize - innerPad * 2,
-        );
-        ctx.restore();
-      }
-
-      const link = document.createElement("a");
-      link.download = `TEDxPVGCOETM_QR_${activeType}_${Date.now()}.png`;
-      link.href = tempCanvas.toDataURL("image/png");
-      link.click();
-
       setStatus({
         type: "success",
         message: "High-resolution PNG downloaded successfully!",
@@ -543,54 +634,11 @@ export default function QRCodeGenerator({ onLogout, name, team, onBack }) {
   // Download SVG format
   const handleDownloadSVG = async () => {
     try {
-      let svgString = await QRCode.toString(payload, {
-        type: "svg",
-        margin: 2,
-        errorCorrectionLevel: includeLogo ? "H" : errorCorrection,
-        color: {
-          dark: safeDark,
-          light: safeLight,
-        },
+      const qrExport = new QRCodeStyling(getQRConfig(exportSize, "svg"));
+      await qrExport.download({
+        name: `TEDxPVGCOETM_QR_${Date.now()}`,
+        extension: "svg",
       });
-
-      if (includeLogo) {
-        const img = await loadLogoImage();
-        const c = document.createElement("canvas");
-        c.width = img.naturalWidth || 200;
-        c.height = img.naturalHeight || 200;
-        const cCtx = c.getContext("2d");
-        cCtx.drawImage(img, 0, 0);
-        const logoDataUrl = c.toDataURL("image/png");
-
-        const viewBoxMatch = svgString.match(/viewBox="0 0 (\d+) (\d+)"/);
-        if (viewBoxMatch) {
-          const svgDim = Number(viewBoxMatch[1]);
-          const badgeSize = svgDim * 0.24;
-          const badgeX = (svgDim - badgeSize) / 2;
-          const badgeY = (svgDim - badgeSize) / 2;
-          const bgFill = safeLight;
-          const radius = badgeSize * 0.2;
-          const innerPad = badgeSize * 0.12;
-          const imgSize = badgeSize - innerPad * 2;
-          const imgX = badgeX + innerPad;
-          const imgY = badgeY + innerPad;
-
-          const centerBadgeSvg = `
-            <rect x="${badgeX}" y="${badgeY}" width="${badgeSize}" height="${badgeSize}" rx="${radius}" fill="${bgFill}" stroke="#eb0028" stroke-width="${Math.max(0.5, svgDim * 0.005)}" />
-            <image href="${logoDataUrl}" x="${imgX}" y="${imgY}" width="${imgSize}" height="${imgSize}" />
-          `;
-          svgString = svgString.replace("</svg>", `${centerBadgeSvg}</svg>`);
-        }
-      }
-
-      const blob = new Blob([svgString], {
-        type: "image/svg+xml;charset=utf-8",
-      });
-      const link = document.createElement("a");
-      link.download = `TEDxPVGCOETM_QR_${activeType}_${Date.now()}.svg`;
-      link.href = URL.createObjectURL(blob);
-      link.click();
-
       setStatus({
         type: "success",
         message: "Vector SVG downloaded successfully!",
@@ -604,23 +652,46 @@ export default function QRCodeGenerator({ onLogout, name, team, onBack }) {
   // Copy Image to Clipboard
   const handleCopyImage = async () => {
     try {
-      const canvas = canvasRef.current;
-      if (!canvas) return;
-
-      canvas.toBlob(async (blob) => {
-        if (!blob) return;
-        await navigator.clipboard.write([
-          new ClipboardItem({ "image/png": blob }),
-        ]);
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2500);
-      });
+      if (qrCodeRef.current) {
+        const blob = await qrCodeRef.current.getRawData("png");
+        if (blob) {
+          await navigator.clipboard.write([
+            new ClipboardItem({ "image/png": blob }),
+          ]);
+          setCopied(true);
+          setTimeout(() => setCopied(false), 2500);
+          setStatus({
+            type: "success",
+            message: "QR code image copied to clipboard!",
+          });
+          return;
+        }
+      }
+      const canvasEl = canvasRef.current?.querySelector("canvas");
+      if (canvasEl) {
+        canvasEl.toBlob(async (blob) => {
+          if (!blob) return;
+          await navigator.clipboard.write([
+            new ClipboardItem({ "image/png": blob }),
+          ]);
+          setCopied(true);
+          setTimeout(() => setCopied(false), 2500);
+          setStatus({
+            type: "success",
+            message: "QR code image copied to clipboard!",
+          });
+        });
+        return;
+      }
     } catch (err) {
-      // Fallback: Copy raw payload text
       try {
         await navigator.clipboard.writeText(payload);
         setCopied(true);
         setTimeout(() => setCopied(false), 2500);
+        setStatus({
+          type: "success",
+          message: "URL copied to clipboard!",
+        });
       } catch (e) {
         setStatus({
           type: "error",
@@ -631,17 +702,12 @@ export default function QRCodeGenerator({ onLogout, name, team, onBack }) {
   };
 
   const handleReset = () => {
-    setActiveType("url");
     setUrl("https://www.tedxpvgcoet.in/");
-    setPlainText("");
-    setUpiData({
-      id: "tedxpvgcoet@okhdfcbank",
-      name: "TEDxPVGCOETM",
-      amount: "",
-      note: "Event Registration",
-    });
     setQrColor("#000000");
     setBgColor("#ffffff");
+    setDotStyle("square");
+    setCornerSquareStyle("square");
+    setCornerDotStyle("square");
     setIncludeLogo(true);
     setStatus({ type: "", message: "" });
   };
@@ -729,231 +795,28 @@ export default function QRCodeGenerator({ onLogout, name, team, onBack }) {
         </div>
       )}
 
-      {/* Type Selector Pills */}
-      <div style={styles.typeGrid}>
-        {QR_TYPES.map((t) => {
-          const isActive = activeType === t.id;
-          return (
-            <button
-              key={t.id}
-              type="button"
-              style={{
-                ...styles.typeBtn,
-                ...(isActive ? styles.typeBtnActive : {}),
-              }}
-              onClick={() => setActiveType(t.id)}
-            >
-              <span>{t.icon}</span>
-              <span>{t.label}</span>
-            </button>
-          );
-        })}
-      </div>
-
-      {/* Content Inputs per Type */}
+      {/* Content Input */}
       <div style={styles.subcard}>
         <div style={styles.subcardTitle}>
-          <span>Content Details</span>
+          <span style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+            <FiLink size={14} color="#eb0028" />
+            <span>Destination Link / URL</span>
+          </span>
           <span style={{ fontSize: "0.75rem", color: "#888", fontWeight: 400 }}>
             {payload.length} chars
           </span>
         </div>
 
-        {/* 1. URL */}
-        {activeType === "url" && (
-          <div>
-            <Input
-              label="Website or Destination URL"
-              type="url"
-              placeholder="https://tedxpvgcoet.in/..."
-              value={url}
-              onChange={(e) => setUrl(e.target.value)}
-              fullWidth
-            />
-          </div>
-        )}
-
-        {/* 2. Plain Text */}
-        {activeType === "text" && (
-          <Textarea
-            label="Plain Text / Announcement"
-            placeholder="Enter announcement text, quote, or details..."
-            rows={4}
-            value={plainText}
-            onChange={(e) => setPlainText(e.target.value)}
+        <div>
+          <Input
+            label="Website or Destination URL"
+            type="url"
+            placeholder="https://tedxpvgcoet.in/..."
+            value={url}
+            onChange={(e) => setUrl(e.target.value)}
             fullWidth
           />
-        )}
-
-        {/* 3. UPI Pay */}
-        {activeType === "upi" && (
-          <div>
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "1fr 1fr",
-                gap: "12px",
-              }}
-            >
-              <Input
-                label="UPI ID / VPA *"
-                type="text"
-                placeholder="name@upi"
-                value={upiData.id}
-                onChange={(e) => setUpiData({ ...upiData, id: e.target.value })}
-              />
-              <Input
-                label="Payee Name"
-                type="text"
-                placeholder="TEDxPVGCOETM"
-                value={upiData.name}
-                onChange={(e) =>
-                  setUpiData({ ...upiData, name: e.target.value })
-                }
-              />
-            </div>
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "1fr 1fr",
-                gap: "12px",
-                marginTop: "12px",
-              }}
-            >
-              <Input
-                label="Amount in ₹ (Optional)"
-                type="number"
-                placeholder="e.g. 500"
-                value={upiData.amount}
-                onChange={(e) =>
-                  setUpiData({ ...upiData, amount: e.target.value })
-                }
-              />
-              <Input
-                label="Payment Note"
-                type="text"
-                placeholder="Registration / Pass"
-                value={upiData.note}
-                onChange={(e) =>
-                  setUpiData({ ...upiData, note: e.target.value })
-                }
-              />
-            </div>
-          </div>
-        )}
-
-        {/* 4. WhatsApp */}
-        {activeType === "whatsapp" && (
-          <div>
-            <Input
-              label="Phone Number (With Country Code) *"
-              type="tel"
-              placeholder="e.g. 919876543210"
-              value={waData.phone}
-              onChange={(e) => setWaData({ ...waData, phone: e.target.value })}
-              fullWidth
-            />
-            <div style={{ marginTop: "12px" }}>
-              <Textarea
-                label="Pre-filled Message"
-                placeholder="Message that opens in chat..."
-                rows={2}
-                value={waData.message}
-                onChange={(e) =>
-                  setWaData({ ...waData, message: e.target.value })
-                }
-                fullWidth
-              />
-            </div>
-          </div>
-        )}
-
-        {/* 5. Email */}
-        {activeType === "email" && (
-          <div>
-            <Input
-              label="Recipient Email Address *"
-              type="email"
-              placeholder="team@tedxpvgcoet.in"
-              value={emailData.email}
-              onChange={(e) =>
-                setEmailData({ ...emailData, email: e.target.value })
-              }
-              fullWidth
-            />
-            <div style={{ marginTop: "12px" }}>
-              <Input
-                label="Subject"
-                type="text"
-                placeholder="Event Inquiry"
-                value={emailData.subject}
-                onChange={(e) =>
-                  setEmailData({ ...emailData, subject: e.target.value })
-                }
-                fullWidth
-              />
-            </div>
-            <div style={{ marginTop: "12px" }}>
-              <Textarea
-                label="Email Body"
-                placeholder="Default message text..."
-                rows={2}
-                value={emailData.body}
-                onChange={(e) =>
-                  setEmailData({ ...emailData, body: e.target.value })
-                }
-                fullWidth
-              />
-            </div>
-          </div>
-        )}
-
-        {/* 6. Wi-Fi */}
-        {activeType === "wifi" && (
-          <div>
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "1fr 1fr",
-                gap: "12px",
-              }}
-            >
-              <Input
-                label="Network SSID *"
-                type="text"
-                placeholder="Network Name"
-                value={wifiData.ssid}
-                onChange={(e) =>
-                  setWifiData({ ...wifiData, ssid: e.target.value })
-                }
-              />
-              <Dropdown
-                label="Security"
-                value={wifiData.encryption}
-                onChange={(e) =>
-                  setWifiData({ ...wifiData, encryption: e.target.value })
-                }
-                options={[
-                  { label: "WPA/WPA2", value: "WPA" },
-                  { label: "WEP", value: "WEP" },
-                  { label: "None / Open", value: "nopass" },
-                ]}
-              />
-            </div>
-            <div style={{ marginTop: "12px" }}>
-              <Input
-                label="Wi-Fi Password"
-                type="text"
-                placeholder="Password"
-                value={wifiData.password}
-                onChange={(e) =>
-                  setWifiData({ ...wifiData, password: e.target.value })
-                }
-                fullWidth
-              />
-            </div>
-          </div>
-        )}
+        </div>
       </div>
 
       {/* Customization Toggle & Controls */}
@@ -998,6 +861,93 @@ export default function QRCodeGenerator({ onLogout, name, team, onBack }) {
                   onChange={handleColorChange(setBgColor)}
                   placeholder="#ffffff"
                 />
+              </div>
+            </div>
+
+            {/* Shape Customization Options (Dots, Marker Border, Marker Center) */}
+            <div
+              style={{
+                marginTop: "16px",
+                paddingTop: "16px",
+                borderTop: "1px solid rgba(255,255,255,0.06)",
+              }}
+            >
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))",
+                  gap: "18px",
+                }}
+              >
+                {/* 1. Dots Pattern */}
+                <div>
+                  <div style={styles.styleGroupTitle}>Dots</div>
+                  <div style={{ display: "flex", gap: "8px", marginTop: "8px" }}>
+                    <StyleIconButton
+                      active={dotStyle === "square"}
+                      onClick={() => setDotStyle("square")}
+                      title="Square Dots"
+                    >
+                      <DotsSquareIcon />
+                    </StyleIconButton>
+                    <StyleIconButton
+                      active={dotStyle === "rounded"}
+                      onClick={() => setDotStyle("rounded")}
+                      title="Rounded Dots"
+                    >
+                      <DotsRoundedIcon />
+                    </StyleIconButton>
+                    <StyleIconButton
+                      active={dotStyle === "dots"}
+                      onClick={() => setDotStyle("dots")}
+                      title="Circular Dots"
+                    >
+                      <DotsCircleIcon />
+                    </StyleIconButton>
+                  </div>
+                </div>
+
+                {/* 2. Marker Border */}
+                <div>
+                  <div style={styles.styleGroupTitle}>Marker border</div>
+                  <div style={{ display: "flex", gap: "8px", marginTop: "8px" }}>
+                    <StyleIconButton
+                      active={cornerSquareStyle === "square"}
+                      onClick={() => setCornerSquareStyle("square")}
+                      title="Square Marker Border"
+                    >
+                      <MarkerBorderSquareIcon />
+                    </StyleIconButton>
+                    <StyleIconButton
+                      active={cornerSquareStyle === "extra-rounded"}
+                      onClick={() => setCornerSquareStyle("extra-rounded")}
+                      title="Rounded Marker Border"
+                    >
+                      <MarkerBorderRoundedIcon />
+                    </StyleIconButton>
+                  </div>
+                </div>
+
+                {/* 3. Marker Center */}
+                <div>
+                  <div style={styles.styleGroupTitle}>Marker center</div>
+                  <div style={{ display: "flex", gap: "8px", marginTop: "8px" }}>
+                    <StyleIconButton
+                      active={cornerDotStyle === "square"}
+                      onClick={() => setCornerDotStyle("square")}
+                      title="Square Marker Center"
+                    >
+                      <MarkerCenterSquareIcon />
+                    </StyleIconButton>
+                    <StyleIconButton
+                      active={cornerDotStyle === "dot"}
+                      onClick={() => setCornerDotStyle("dot")}
+                      title="Circle Marker Center"
+                    >
+                      <MarkerCenterDotIcon />
+                    </StyleIconButton>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -1096,9 +1046,15 @@ export default function QRCodeGenerator({ onLogout, name, team, onBack }) {
             background: safeLight,
           }}
         >
-          <canvas
+          <div
             ref={canvasRef}
-            style={{ display: "block", maxWidth: "100%", height: "auto" }}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              maxWidth: "100%",
+              height: "auto",
+            }}
           />
         </div>
 
