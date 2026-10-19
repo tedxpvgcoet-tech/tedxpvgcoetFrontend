@@ -1,0 +1,245 @@
+
+.partners-page {
+  --partners-red: #eb0028;
+  background: #080808;
+  color: #fff;
+  min-height: 100vh;
+  font-family: "Inter", sans-serif;
+}
+
+.partners-hero {
+  min-height: 70vh;
+  padding: 150px 24px 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background:
+    radial-gradient(ellipse at 50% 20%, rgba(235, 0, 40, 0.16), transparent 55%),
+    #080808;
+}
+
+.partners-eyebrow {
+  color: var(--partners-red);
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.partners-hero h1 {
+  max-width: 900px;
+  margin: 0;
+  font-size: clamp(2.6rem, 6vw, 5.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+}
+
+.partners-hero > p:not(.partners-eyebrow) {
+  max-width: 680px;
+  margin: 24px auto 0;
+  color: #c5c5c5;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  line-height: 1.8;
+}
+
+.partners-hero-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 36px;
+}
+
+.partners-button {
+  min-height: 52px;
+  padding: 15px 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--partners-red);
+  border-radius: 6px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 700;
+  transition: transform 180ms ease, background 180ms ease;
+}
+
+.partners-button:hover {
+  transform: translateY(-2px);
+}
+
+.partners-button-primary {
+  background: var(--partners-red);
+  color: #fff;
+}
+
+.partners-button-primary:hover {
+  background: #c90022;
+}
+
+.partners-button-secondary {
+  background: transparent;
+  color: #fff;
+}
+
+.partners-button-secondary:hover {
+  background: rgba(235, 0, 40, 0.12);
+}
+
+.partners-content {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 20px 24px 80px;
+}
+
+.partners-sponsor-section {
+  padding: 60px 0;
+  scroll-margin-top: 90px;
+}
+
+.partners-sponsor-section h2 {
+  margin: 0 0 36px;
+  text-align: center;
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: -0.03em;
+}
+
+.partners-sponsor-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.partners-sponsor-card {
+  min-width: 0;
+  padding: 22px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 18px;
+  border: 1px solid #292929;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #181818, #101010);
+  transition: transform 180ms ease, border-color 180ms ease;
+}
+
+.partners-sponsor-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(235, 0, 40, 0.7);
+}
+
+.partners-logo-wrap {
+  width: 100%;
+  height: 150px;
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.partners-logo-wrap img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.partners-sponsor-card h3 {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.45;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+#previous-sponsor-feedback {
+  scroll-margin-top: 90px;
+}
+
+#previous-sponsor-feedback .sponsor-feedback-section {
+  padding-top: 20px;
+  padding-bottom: 70px;
+}
+
+@media (max-width: 1000px) {
+  .partners-sponsor-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .partners-hero {
+    min-height: auto;
+    padding: 130px 20px 70px;
+  }
+
+  .partners-hero-actions {
+    width: 100%;
+    max-width: 420px;
+    flex-direction: column;
+  }
+
+  .partners-button {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .partners-content {
+    padding: 10px 18px 50px;
+  }
+
+  .partners-sponsor-section {
+    padding: 42px 0;
+  }
+
+  .partners-sponsor-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .partners-sponsor-card {
+    padding: 14px 10px;
+    gap: 12px;
+  }
+
+  .partners-logo-wrap {
+    height: 115px;
+    padding: 10px;
+  }
+
+  .partners-sponsor-card h3 {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .partners-sponsor-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .partners-logo-wrap {
+    height: 140px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .partners-button,
+  .partners-sponsor-card {
+    transition: none;
+  }
+
+  .partners-button:hover,
+  .partners-sponsor-card:hover {
+    transform: none;
+  }
+}
