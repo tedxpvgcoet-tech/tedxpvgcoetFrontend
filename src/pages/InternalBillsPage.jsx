@@ -4,6 +4,7 @@ import bgVideo from "../assets/backgrounds/background.mp4";
 import BridgekeeperAuth from "../components/Internal/BridgekeeperAuth";
 import BillsUploadForm from "../components/Internal/BillsUploadForm";
 import QRCodeGenerator from "../components/Internal/QRCodeGenerator";
+import PortalForm from "../components/Internal/PortalForm";
 import PwaInstallButton from "../components/Internal/PwaInstallButton";
 
 const dashboardStyles = {
@@ -161,6 +162,19 @@ export default function InternalBillsPage() {
               onMouseLeave={(e) =>
                 (e.target.style.backgroundColor = "rgba(255,255,255,0.05)")
               }
+              onClick={() => setView("profile")}
+            >
+              Team Profile
+            </button>
+            <button
+              type="button"
+              style={dashboardStyles.btn}
+              onMouseEnter={(e) =>
+                (e.target.style.backgroundColor = "rgba(235,0,40,0.15)")
+              }
+              onMouseLeave={(e) =>
+                (e.target.style.backgroundColor = "rgba(255,255,255,0.05)")
+              }
               onClick={() => setView("qrcode")}
             >
               QR Code Generator
@@ -244,6 +258,44 @@ export default function InternalBillsPage() {
           />
         </div>
       </div>
+    );
+  }
+
+  if (view === "profile") {
+    return (
+      <PortalForm
+        title="Team Profile"
+        subtitle="Submit your social links for the website team page"
+        fields={[
+          {
+            key: "instagram",
+            label: "Instagram",
+            type: "text",
+            placeholder: "URL or handle",
+          },
+          {
+            key: "linkedin",
+            label: "LinkedIn",
+            type: "text",
+            placeholder: "URL or handle",
+          },
+          {
+            key: "portfolio",
+            label: "Portfolio / Website",
+            type: "text",
+            placeholder: "URL or any link",
+            note: "Personal website, Behance, GitHub, Dribbble, etc. (if any)",
+          },
+        ]}
+        endpoint="/profile"
+        submitLabel="Submit Profile"
+        successMsg="Profile submitted successfully! 🎉"
+        authToken={session.token}
+        name={session.name}
+        team={session.team}
+        onBack={() => setView("dashboard")}
+        onLogout={handleLogout}
+      />
     );
   }
 

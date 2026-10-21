@@ -48,8 +48,8 @@ const styles = {
   },
   headerRow: {
     display: "flex",
-    justifyContent: "space-between",
-    alignItems: "flex-start",
+    flexDirection: "column",
+    gap: "16px",
     marginBottom: "32px",
   },
   title: {
