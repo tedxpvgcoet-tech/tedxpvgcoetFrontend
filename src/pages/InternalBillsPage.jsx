@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet";
 import bgVideo from "../assets/backgrounds/background.mp4";
 import BridgekeeperAuth from "../components/Internal/BridgekeeperAuth";
 import BillsUploadForm from "../components/Internal/BillsUploadForm";
+import BillsHistory from "../components/Internal/BillsHistory";
 import QRCodeGenerator from "../components/Internal/QRCodeGenerator";
 import PortalForm from "../components/Internal/PortalForm";
 import PwaInstallButton from "../components/Internal/PwaInstallButton";
@@ -162,6 +163,19 @@ export default function InternalBillsPage() {
               onMouseLeave={(e) =>
                 (e.target.style.backgroundColor = "rgba(255,255,255,0.05)")
               }
+              onClick={() => setView("history")}
+            >
+              Previously Uploaded Bills
+            </button>
+            <button
+              type="button"
+              style={dashboardStyles.btn}
+              onMouseEnter={(e) =>
+                (e.target.style.backgroundColor = "rgba(235,0,40,0.15)")
+              }
+              onMouseLeave={(e) =>
+                (e.target.style.backgroundColor = "rgba(255,255,255,0.05)")
+              }
               onClick={() => setView("profile")}
             >
               Team Profile
@@ -218,6 +232,16 @@ export default function InternalBillsPage() {
         authToken={session.token}
         name={session.name}
         team={session.team}
+        onBack={() => setView("dashboard")}
+        onLogout={handleLogout}
+      />
+    );
+  }
+
+  if (view === "history") {
+    return (
+      <BillsHistory
+        authToken={session.token}
         onBack={() => setView("dashboard")}
         onLogout={handleLogout}
       />
