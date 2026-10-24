@@ -1,5 +1,5 @@
 import React, { Suspense, lazy, useEffect, useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import ScrollToTop from "./components/ScrollToTop";
 import Loader from "./components/Loader";
@@ -20,18 +20,22 @@ const TakeTheLeap = lazy(() => import("./pages/TakeTheLeap"));
 const ThemePage = lazy(() => import("./pages/ThemePage"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const InternalBillsPage = lazy(() => import("./pages/InternalBillsPage"));
+const ShipExperience = lazy(() => import("./pages/ShipExperience"));
+
 const NewTeam = lazy(() => import("./pages/NewTeam"));
 const PastTalks = lazy(() => import("./pages/PastTalks"));
 
 inject();
 
 function App() {
+  const location = useLocation();
+  const isShipRoute = location.pathname === "/ship";
   const [showIntro, setShowIntro] = useState(() => {
     return sessionStorage.getItem("tedxIntroShown") !== "true";
   });
 
   useEffect(() => {
-    if (!showIntro) {
+    if (!showIntro || isShipRoute) {
       return;
     }
 
@@ -41,7 +45,7 @@ function App() {
     }, 3500);
 
     return () => clearTimeout(timer);
-  }, [showIntro]);
+  }, [showIntro, isShipRoute]);
 
   return (
     <>
@@ -54,7 +58,7 @@ function App() {
 
       <ScrollToTop />
 
-      {showIntro ? (
+      {showIntro && !isShipRoute ? (
         <Loader forceFullIntro />
       ) : (
         <>
@@ -113,6 +117,7 @@ function App() {
               <Route path="/app" element={<InternalBillsPage />} />
 
               <Route path="/about" element={<Home />} />
+              <Route path="/ship" element={<ShipExperience />} />
               <Route path="/feedback" element={<FeedbackRedirect />} />
               <Route path="/cam" element={<CamRedirect />} />
 
