@@ -909,18 +909,38 @@
 }
 
 @media (max-width: 768px) {
+  .subscribe-section {
+    padding: 1rem 1.25rem 2.5rem;
+    min-height: auto;
+  }
+  .subscribe-logo {
+    position: static;
+    margin: 0 auto 1rem;
+    display: block;
+    width: 60px;
+    height: 53px;
+    padding-right: 0;
+  }
   .subscribe-content {
     text-align: center;
+    padding: 0;
+  }
+  .subscribe-content h2 {
+    margin: 0 0 1.5rem;
   }
   .subscribe-form {
     flex-direction: column;
     align-items: stretch;
+    gap: 0.85rem;
   }
   .subscribe-input-group {
+    flex: none;
     width: 100%;
+    min-width: 0;
   }
   .subscribe-btn-override {
     width: 100%;
+    margin-top: 0.25rem;
   }
 }
 

@@ -23,6 +23,7 @@ const InternalBillsPage = lazy(() => import("./pages/InternalBillsPage"));
 const ShipExperience = lazy(() => import("./pages/ShipExperience"));
 
 const NewTeam = lazy(() => import("./pages/NewTeam"));
+const PastTalks = lazy(() => import("./pages/PastTalks"));
 
 inject();
 
@@ -113,11 +114,14 @@ function App() {
               <Route path="/bills" element={<InternalBillsPage />} />
               <Route path="/bridgekeeper" element={<InternalBillsPage />} />
               <Route path="/qr" element={<InternalBillsPage />} />
+              <Route path="/app" element={<InternalBillsPage />} />
 
               <Route path="/about" element={<Home />} />
               <Route path="/ship" element={<ShipExperience />} />
               <Route path="/feedback" element={<FeedbackRedirect />} />
               <Route path="/cam" element={<CamRedirect />} />
+
+              <Route path="/past-talks" element={<PastTalks />} />
 
               {/* 404 - catch all unknown routes */}
               <Route path="*" element={<NotFound />} />

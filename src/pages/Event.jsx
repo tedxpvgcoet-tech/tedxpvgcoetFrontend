@@ -32,7 +32,7 @@ const pastEvents = [
   {
     id: "punarutthan",
     title: "Punarutthan",
-    year: "2023",
+    year: "2024",
     desc: "“Punarutthan” stands for revival and renewal, drawing from deep cultural roots. It invites us to rethink, rebuild, and reimagine a better future.",
     image: punarutthanImg,
     link: "/events/Punarutthan",
