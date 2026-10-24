@@ -6,7 +6,6 @@ import AvantGardeTeamSection from "../sections/Events/AvantGarde/AvantGardeTeamS
 import SponsorsSection from "../sections/Events/Common/SponsorSection";
 import "../sections/Events/AvantGarde/AvantGardeSponsorSection.css";
 
-
 const avantGardeSponsors = [
   {
     name: "Muellners",

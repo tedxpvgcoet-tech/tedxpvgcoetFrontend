@@ -42,7 +42,9 @@ export function releasePreviewMaterials(scene, ownsMaterials) {
   if (!ownsMaterials) return;
   scene?.traverse((object) => {
     if (!object.isMesh) return;
-    const materials = Array.isArray(object.material) ? object.material : [object.material];
+    const materials = Array.isArray(object.material)
+      ? object.material
+      : [object.material];
     materials.filter(Boolean).forEach((material) => material.dispose());
   });
 }

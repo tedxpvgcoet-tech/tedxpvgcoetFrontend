@@ -1,4 +1,3 @@
-
 .partners-page {
   --partners-red: #eb0028;
   background: #080808;
@@ -16,7 +15,11 @@
   justify-content: center;
   text-align: center;
   background:
-    radial-gradient(ellipse at 50% 20%, rgba(235, 0, 40, 0.16), transparent 55%),
+    radial-gradient(
+      ellipse at 50% 20%,
+      rgba(235, 0, 40, 0.16),
+      transparent 55%
+    ),
     #080808;
 }
 
@@ -65,7 +68,9 @@
   text-decoration: none;
   font-size: 0.95rem;
   font-weight: 700;
-  transition: transform 180ms ease, background 180ms ease;
+  transition:
+    transform 180ms ease,
+    background 180ms ease;
 }
 
 .partners-button:hover {
@@ -125,7 +130,9 @@
   border: 1px solid #292929;
   border-radius: 12px;
   background: linear-gradient(145deg, #181818, #101010);
-  transition: transform 180ms ease, border-color 180ms ease;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease;
 }
 
 .partners-sponsor-card:hover {

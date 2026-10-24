@@ -1,14 +1,69 @@
 import React, { useMemo, useRef } from "react";
-import { BackSide, BufferAttribute, BufferGeometry, Color, FrontSide, ShaderMaterial } from "three";
+import {
+  BackSide,
+  BufferAttribute,
+  BufferGeometry,
+  Color,
+  FrontSide,
+  ShaderMaterial,
+} from "three";
 import { useFrame } from "@react-three/fiber";
 
 const OCEAN_WAVES = [
-  { dx: 0.95, dz: 0.31, waveNumber: 0.22, amplitude: 0.34, speed: 1.25, gustPhase: 0.35, phase: 0.6 },
-  { dx: -0.42, dz: 0.91, waveNumber: 0.37, amplitude: 0.24, speed: -1.45, gustPhase: 0.55, phase: 1.4 },
-  { dx: 0.72, dz: -0.69, waveNumber: 0.78, amplitude: 0.12, speed: 2.2, gustPhase: 0.85, phase: 2.6 },
-  { dx: -0.88, dz: -0.48, waveNumber: 1.24, amplitude: 0.065, speed: -2.9, gustPhase: 1.1, phase: 0.4 },
-  { dx: 0.22, dz: 0.97, waveNumber: 1.85, amplitude: 0.025, speed: 3.5, gustPhase: 0.7, phase: 2.1 },
-  { dx: 0.12, dz: -0.99, waveNumber: 0.5, amplitude: 0.11, speed: -1.8, gustPhase: 0.4, phase: 4.7 },
+  {
+    dx: 0.95,
+    dz: 0.31,
+    waveNumber: 0.22,
+    amplitude: 0.34,
+    speed: 1.25,
+    gustPhase: 0.35,
+    phase: 0.6,
+  },
+  {
+    dx: -0.42,
+    dz: 0.91,
+    waveNumber: 0.37,
+    amplitude: 0.24,
+    speed: -1.45,
+    gustPhase: 0.55,
+    phase: 1.4,
+  },
+  {
+    dx: 0.72,
+    dz: -0.69,
+    waveNumber: 0.78,
+    amplitude: 0.12,
+    speed: 2.2,
+    gustPhase: 0.85,
+    phase: 2.6,
+  },
+  {
+    dx: -0.88,
+    dz: -0.48,
+    waveNumber: 1.24,
+    amplitude: 0.065,
+    speed: -2.9,
+    gustPhase: 1.1,
+    phase: 0.4,
+  },
+  {
+    dx: 0.22,
+    dz: 0.97,
+    waveNumber: 1.85,
+    amplitude: 0.025,
+    speed: 3.5,
+    gustPhase: 0.7,
+    phase: 2.1,
+  },
+  {
+    dx: 0.12,
+    dz: -0.99,
+    waveNumber: 0.5,
+    amplitude: 0.11,
+    speed: -1.8,
+    gustPhase: 0.4,
+    phase: 4.7,
+  },
 ];
 // Applied by both the GLSL displacement and JavaScript buoyancy sampler so
 // visible wave travel and ship response stay synchronized.
@@ -33,13 +88,23 @@ export function getStoryEnvironment(progress = 0) {
   };
 }
 
-export function sampleStormWave(x, z, time = 0, gust = getWindGust(time), scale = 1, target = {}) {
+export function sampleStormWave(
+  x,
+  z,
+  time = 0,
+  gust = getWindGust(time),
+  scale = 1,
+  target = {},
+) {
   let height = 0;
   let slopeX = 0;
   let slopeZ = 0;
   for (const wave of OCEAN_WAVES) {
-    const phase = (x * wave.dx + z * wave.dz) * wave.waveNumber +
-      time * WAVE_TIME_SCALE * wave.speed + gust * wave.gustPhase + wave.phase;
+    const phase =
+      (x * wave.dx + z * wave.dz) * wave.waveNumber +
+      time * WAVE_TIME_SCALE * wave.speed +
+      gust * wave.gustPhase +
+      wave.phase;
     height += Math.sin(phase) * wave.amplitude;
     const slope = Math.cos(phase) * wave.amplitude * wave.waveNumber;
     slopeX += slope * wave.dx;
@@ -305,20 +370,24 @@ const rainFragmentShader = `
 `;
 
 function StormSky({ stormUniforms }) {
-  const material = useMemo(() => new ShaderMaterial({
-    vertexShader: skyVertexShader,
-    fragmentShader: skyFragmentShader,
-    uniforms: {
-      uTime: stormUniforms.uTime,
-      uGust: stormUniforms.uGust,
-      uLightning: stormUniforms.uLightning,
-      uStorm: stormUniforms.uStorm,
-      uSunset: stormUniforms.uSunset,
-    },
-    side: BackSide,
-    depthWrite: false,
-    fog: false,
-  }), [stormUniforms]);
+  const material = useMemo(
+    () =>
+      new ShaderMaterial({
+        vertexShader: skyVertexShader,
+        fragmentShader: skyFragmentShader,
+        uniforms: {
+          uTime: stormUniforms.uTime,
+          uGust: stormUniforms.uGust,
+          uLightning: stormUniforms.uLightning,
+          uStorm: stormUniforms.uStorm,
+          uSunset: stormUniforms.uSunset,
+        },
+        side: BackSide,
+        depthWrite: false,
+        fog: false,
+      }),
+    [stormUniforms],
+  );
 
   return (
     <mesh frustumCulled={false} renderOrder={-10}>
@@ -329,14 +398,17 @@ function StormSky({ stormUniforms }) {
 }
 
 function OceanSurface({ reducedMotion, lowPower = false, stormUniforms }) {
-  const uniforms = useMemo(() => ({
-    uTime: stormUniforms.uTime,
-    uGust: stormUniforms.uGust,
-    uLightning: stormUniforms.uLightning,
-    uSeaScale: stormUniforms.uSeaScale,
-    uSunset: stormUniforms.uSunset,
-    uStorm: stormUniforms.uStorm,
-  }), [stormUniforms]);
+  const uniforms = useMemo(
+    () => ({
+      uTime: stormUniforms.uTime,
+      uGust: stormUniforms.uGust,
+      uLightning: stormUniforms.uLightning,
+      uSeaScale: stormUniforms.uSeaScale,
+      uSunset: stormUniforms.uSunset,
+      uStorm: stormUniforms.uStorm,
+    }),
+    [stormUniforms],
+  );
 
   const subdivisions = reducedMotion ? 96 : lowPower ? 176 : 256;
   return (
@@ -357,7 +429,13 @@ function OceanSurface({ reducedMotion, lowPower = false, stormUniforms }) {
 function Rain({ lowPower = false, reducedMotion = false, stormUniforms }) {
   const points = useRef(null);
   const geometry = useMemo(() => {
-    const count = reducedMotion ? (lowPower ? 300 : 480) : (lowPower ? 1650 : 3000);
+    const count = reducedMotion
+      ? lowPower
+        ? 300
+        : 480
+      : lowPower
+        ? 1650
+        : 3000;
     const positions = new Float32Array(count * 3);
     const seeds = new Float32Array(count);
     const lengths = new Float32Array(count);
@@ -383,12 +461,15 @@ function Rain({ lowPower = false, reducedMotion = false, stormUniforms }) {
     cloud.setAttribute("aLayer", new BufferAttribute(layers, 1));
     return cloud;
   }, [lowPower, reducedMotion]);
-  const uniforms = useMemo(() => ({
-    uTime: { value: 0 },
-    uGust: stormUniforms.uGust,
-    uReducedMotion: { value: reducedMotion ? 1 : 0 },
-    uStorm: stormUniforms.uStorm,
-  }), [reducedMotion, stormUniforms]);
+  const uniforms = useMemo(
+    () => ({
+      uTime: { value: 0 },
+      uGust: stormUniforms.uGust,
+      uReducedMotion: { value: reducedMotion ? 1 : 0 },
+      uStorm: stormUniforms.uStorm,
+    }),
+    [reducedMotion, stormUniforms],
+  );
 
   useFrame((_, delta) => {
     // Rain runs on a private delta clock: wave phase multipliers can change the
@@ -434,10 +515,19 @@ function LightningFlash({ stormUniforms, reducedMotion, progressRef }) {
     const storm = stormUniforms.uStorm.value;
     const sunset = stormUniforms.uSunset.value;
     const storyProgress = progressRef?.current ?? 0;
-    const firstChange = Math.max(0, Math.min(1, (storyProgress - 0.24) / (0.42 - 0.24)));
-    const finalChange = Math.max(0, Math.min(1, (storyProgress - 0.59) / (0.75 - 0.59)));
-    const middleStage = firstChange * firstChange * (3 - 2 * firstChange)
-      * (1 - finalChange * finalChange * (3 - 2 * finalChange));
+    const firstChange = Math.max(
+      0,
+      Math.min(1, (storyProgress - 0.24) / (0.42 - 0.24)),
+    );
+    const finalChange = Math.max(
+      0,
+      Math.min(1, (storyProgress - 0.59) / (0.75 - 0.59)),
+    );
+    const middleStage =
+      firstChange *
+      firstChange *
+      (3 - 2 * firstChange) *
+      (1 - finalChange * finalChange * (3 - 2 * finalChange));
     if (storm < 0.005) {
       state.startedAt = -1;
       state.nextAt = time + 4.5;
@@ -451,18 +541,32 @@ function LightningFlash({ stormUniforms, reducedMotion, progressRef }) {
     }
 
     const progress = (time - state.startedAt) / state.duration;
-    const intensity = !reducedMotion && storm >= 0.005 && progress >= 0 && progress <= 1
-      ? state.strength * Math.pow(Math.sin(Math.PI * progress), 2.4) * storm
-      : 0;
+    const intensity =
+      !reducedMotion && storm >= 0.005 && progress >= 0 && progress <= 1
+        ? state.strength * Math.pow(Math.sin(Math.PI * progress), 2.4) * storm
+        : 0;
     stormUniforms.uLightning.value = intensity;
     if (moonLight.current) {
-      moonLight.current.intensity = 2.05 * (1 - sunset) + 0.22 * sunset + intensity * 3.2 + middleStage * 1.05;
+      moonLight.current.intensity =
+        2.05 * (1 - sunset) +
+        0.22 * sunset +
+        intensity * 3.2 +
+        middleStage * 1.05;
       moonLight.current.color.lerpColors(moonBaseColor, sunsetColor, sunset);
     }
-    if (rimLight.current) rimLight.current.intensity = 0.82 * (1 - sunset) + middleStage * 0.72;
+    if (rimLight.current)
+      rimLight.current.intensity = 0.82 * (1 - sunset) + middleStage * 0.72;
     if (ambientFill.current) {
-      ambientFill.current.intensity = 0.42 * (1 - sunset) + 0.54 * sunset + intensity * 0.62 + middleStage * 0.14;
-      ambientFill.current.color.lerpColors(ambientBaseColor, ambientSunsetColor, sunset);
+      ambientFill.current.intensity =
+        0.42 * (1 - sunset) +
+        0.54 * sunset +
+        intensity * 0.62 +
+        middleStage * 0.14;
+      ambientFill.current.color.lerpColors(
+        ambientBaseColor,
+        ambientSunsetColor,
+        sunset,
+      );
     }
     if (sunsetLight.current) sunsetLight.current.intensity = sunset * 2.0;
     if (moonMaterial.current) moonMaterial.current.opacity = 1 - sunset;
@@ -470,13 +574,34 @@ function LightningFlash({ stormUniforms, reducedMotion, progressRef }) {
 
   return (
     <>
-      <directionalLight ref={moonLight} position={[-8, 15, 8]} intensity={2.05} color="#b9d2e8" />
-      <directionalLight ref={rimLight} position={[8, 8, -12]} intensity={0.82} color="#829db8" />
+      <directionalLight
+        ref={moonLight}
+        position={[-8, 15, 8]}
+        intensity={2.05}
+        color="#b9d2e8"
+      />
+      <directionalLight
+        ref={rimLight}
+        position={[8, 8, -12]}
+        intensity={0.82}
+        color="#829db8"
+      />
       <ambientLight ref={ambientFill} intensity={0.42} color="#9aadc0" />
-      <directionalLight ref={sunsetLight} position={[-8, 5, -24]} intensity={0} color="#ffb36f" />
+      <directionalLight
+        ref={sunsetLight}
+        position={[-8, 5, -24]}
+        intensity={0}
+        color="#ffb36f"
+      />
       <mesh position={[-20, 21, -55]}>
         <sphereGeometry args={[1.55, 20, 16]} />
-        <meshBasicMaterial ref={moonMaterial} color={moonBaseColor} transparent opacity={1} toneMapped={false} />
+        <meshBasicMaterial
+          ref={moonMaterial}
+          color={moonBaseColor}
+          transparent
+          opacity={1}
+          toneMapped={false}
+        />
       </mesh>
     </>
   );
@@ -516,7 +641,11 @@ function AtmosphereMood({ stormUniforms }) {
     }
     if (hemisphere.current) {
       hemisphere.current.color.lerpColors(stormSkyColor, duskSkyColor, sunset);
-      hemisphere.current.groundColor.lerpColors(stormGroundColor, duskGroundColor, sunset);
+      hemisphere.current.groundColor.lerpColors(
+        stormGroundColor,
+        duskGroundColor,
+        sunset,
+      );
     }
     if (frontFill.current) {
       frontFill.current.color.lerpColors(coolFillColor, warmFillColor, sunset);
@@ -526,30 +655,63 @@ function AtmosphereMood({ stormUniforms }) {
   return (
     <>
       <hemisphereLight ref={hemisphere} args={["#5d7892", "#071019", 0.55]} />
-      <directionalLight ref={frontFill} position={[7, 4, 8]} intensity={0.38} color="#71879a" />
+      <directionalLight
+        ref={frontFill}
+        position={[7, 4, 8]}
+        intensity={0.38}
+        color="#71879a"
+      />
     </>
   );
 }
 
-export default function ShipAtmosphere({ reducedMotion, lowPower = false, progressRef }) {
-  const stormUniforms = useMemo(() => ({
-    uTime: { value: 0 },
-    uGust: { value: 0 },
-    uLightning: { value: 0 },
-    uStorm: { value: 1 },
-    uSunset: { value: 0 },
-    uSeaScale: { value: 1 },
-  }), []);
+export default function ShipAtmosphere({
+  reducedMotion,
+  lowPower = false,
+  progressRef,
+}) {
+  const stormUniforms = useMemo(
+    () => ({
+      uTime: { value: 0 },
+      uGust: { value: 0 },
+      uLightning: { value: 0 },
+      uStorm: { value: 1 },
+      uSunset: { value: 0 },
+      uSeaScale: { value: 1 },
+    }),
+    [],
+  );
   return (
     <>
-      <StormClock stormUniforms={stormUniforms} reducedMotion={reducedMotion} progressRef={progressRef} />
+      <StormClock
+        stormUniforms={stormUniforms}
+        reducedMotion={reducedMotion}
+        progressRef={progressRef}
+      />
       <StormSky stormUniforms={stormUniforms} />
       <fogExp2 attach="fog" args={["#07111a", 0.012]} />
       <AtmosphereMood stormUniforms={stormUniforms} />
-      <LightningFlash stormUniforms={stormUniforms} reducedMotion={reducedMotion} progressRef={progressRef} />
-      <pointLight position={[0, -0.4, 0]} intensity={0.8} distance={9} color="#d09258" />
-      <OceanSurface reducedMotion={reducedMotion} lowPower={lowPower} stormUniforms={stormUniforms} />
-      <Rain lowPower={lowPower} reducedMotion={reducedMotion} stormUniforms={stormUniforms} />
+      <LightningFlash
+        stormUniforms={stormUniforms}
+        reducedMotion={reducedMotion}
+        progressRef={progressRef}
+      />
+      <pointLight
+        position={[0, -0.4, 0]}
+        intensity={0.8}
+        distance={9}
+        color="#d09258"
+      />
+      <OceanSurface
+        reducedMotion={reducedMotion}
+        lowPower={lowPower}
+        stormUniforms={stormUniforms}
+      />
+      <Rain
+        lowPower={lowPower}
+        reducedMotion={reducedMotion}
+        stormUniforms={stormUniforms}
+      />
     </>
   );
 }

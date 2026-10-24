@@ -30,9 +30,24 @@
 
 .ship-experience-vignette {
   background:
-    linear-gradient(90deg, rgba(3, 7, 10, 0.72) 0%, rgba(3, 7, 10, 0.3) 36%, transparent 70%),
-    linear-gradient(180deg, rgba(3, 7, 10, 0.22) 0%, transparent 27%, transparent 63%, rgba(3, 7, 10, 0.66) 100%),
-    radial-gradient(ellipse at 52% 47%, transparent 26%, rgba(1, 4, 7, 0.38) 100%);
+    linear-gradient(
+      90deg,
+      rgba(3, 7, 10, 0.72) 0%,
+      rgba(3, 7, 10, 0.3) 36%,
+      transparent 70%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(3, 7, 10, 0.22) 0%,
+      transparent 27%,
+      transparent 63%,
+      rgba(3, 7, 10, 0.66) 100%
+    ),
+    radial-gradient(
+      ellipse at 52% 47%,
+      transparent 26%,
+      rgba(1, 4, 7, 0.38) 100%
+    );
 }
 
 .ship-experience-fallback {
@@ -43,7 +58,9 @@
   padding: 10vw;
   color: #dedbd3;
   background: #080e14;
-  font: 15px/1.6 "Inter", sans-serif;
+  font:
+    15px/1.6 "Inter",
+    sans-serif;
   text-align: center;
 }
 
@@ -84,7 +101,11 @@
   inset: 0;
   display: grid;
   place-items: center;
-  background: radial-gradient(ellipse at center, rgba(4, 10, 15, 0.52), rgba(3, 7, 11, 0.78));
+  background: radial-gradient(
+    ellipse at center,
+    rgba(4, 10, 15, 0.52),
+    rgba(3, 7, 11, 0.78)
+  );
   pointer-events: none;
 }
 
@@ -107,14 +128,18 @@
 .ship-experience-loading-panel h2 {
   margin: 0 0 10px;
   color: #f1eee7;
-  font: 400 clamp(24px, 4vw, 34px)/1.1 Georgia, serif;
+  font:
+    400 clamp(24px, 4vw, 34px)/1.1 Georgia,
+    serif;
 }
 
 .ship-experience-loading-panel > span,
 .ship-experience-loading-panel small {
   display: block;
   color: rgba(237, 234, 226, 0.66);
-  font: 12px/1.55 Georgia, serif;
+  font:
+    12px/1.55 Georgia,
+    serif;
 }
 
 .ship-experience-loading-track {
@@ -139,8 +164,12 @@
 }
 
 @keyframes ship-load-progress {
-  from { transform: translateX(-100%); }
-  to { transform: translateX(280%); }
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(280%);
+  }
 }
 
 .ship-story {
@@ -339,7 +368,9 @@
   font-size: 10px;
   letter-spacing: 0.08em;
   text-decoration: none;
-  transition: background 180ms ease, border-color 180ms ease;
+  transition:
+    background 180ms ease,
+    border-color 180ms ease;
   cursor: pointer;
 }
 
@@ -388,7 +419,9 @@
   width: 13px;
   height: 1px;
   background: rgba(235, 230, 218, 0.35);
-  transition: width 200ms ease, background 200ms ease;
+  transition:
+    width 200ms ease,
+    background 200ms ease;
 }
 
 .ship-experience-chapters button.active {

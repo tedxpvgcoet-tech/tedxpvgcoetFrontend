@@ -1,19 +1,40 @@
-import React, { Suspense, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import React, {
+  Suspense,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import { Color, Vector3 } from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Link } from "react-router-dom";
-import ShipAtmosphere, { getStoryEnvironment, getWindGust, sampleStormWave } from "./ShipAtmosphere";
+import ShipAtmosphere, {
+  getStoryEnvironment,
+  getWindGust,
+  sampleStormWave,
+} from "./ShipAtmosphere";
 import { makePreviewScene, releasePreviewMaterials } from "./ShipModelUtils";
 import "./ShipExperience.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const stages = [
-  { id: "origin", assetId: "origin", url: "/models/ships/origin/boat_48.glb", title: "Origin" },
-  { id: "revelation", assetId: "change", url: "/models/ships/change/queen_annes_revenge_free.glb", title: "Revelation" },
+  {
+    id: "origin",
+    assetId: "origin",
+    url: "/models/ships/origin/boat_48.glb",
+    title: "Origin",
+  },
+  {
+    id: "revelation",
+    assetId: "change",
+    url: "/models/ships/change/queen_annes_revenge_free.glb",
+    title: "Revelation",
+  },
 ];
 const storyLabels = ["Origin", "Change", "Revelation"];
 
@@ -24,40 +45,66 @@ const smoothRange = (start, end, value) => {
 };
 
 function getStageWeights(progress) {
-  const transformation = smoothRange(0.30, 0.74, progress);
+  const transformation = smoothRange(0.3, 0.74, progress);
   return [1 - transformation, transformation];
 }
 
 function StoryFleet({ progressRef, gltfs, reducedMotion }) {
   const groups = useRef([]);
-  const responses = useRef(stages.map(() => ({
-    height: 0, pitch: 0, roll: 0,
-    centerWave: {}, foreWave: {}, aftWave: {}, portWave: {}, starboardWave: {},
-  })));
-  const scratch = useMemo(() => ({
-    camera: new Vector3(),
-    target: new Vector3(0, 0, 0),
-  }), []);
+  const responses = useRef(
+    stages.map(() => ({
+      height: 0,
+      pitch: 0,
+      roll: 0,
+      centerWave: {},
+      foreWave: {},
+      aftWave: {},
+      portWave: {},
+      starboardWave: {},
+    })),
+  );
+  const scratch = useMemo(
+    () => ({
+      camera: new Vector3(),
+      target: new Vector3(0, 0, 0),
+    }),
+    [],
+  );
   const previews = useMemo(
-    () => gltfs.map((gltf, index) => gltf ? makePreviewScene(gltf, stages[index].assetId, { transition: true }) : null),
+    () =>
+      gltfs.map((gltf, index) =>
+        gltf
+          ? makePreviewScene(gltf, stages[index].assetId, { transition: true })
+          : null,
+      ),
     [gltfs],
   );
-  const materialLists = useMemo(() => previews.map((preview) => {
-    if (!preview) return [];
-    const materials = new Set();
-    preview.scene.traverse((object) => {
-      if (!object.isMesh) return;
-      const list = Array.isArray(object.material) ? object.material : [object.material];
-      list.forEach((material) => material && materials.add(material));
-    });
-    return [...materials];
-  }), [previews]);
+  const materialLists = useMemo(
+    () =>
+      previews.map((preview) => {
+        if (!preview) return [];
+        const materials = new Set();
+        preview.scene.traverse((object) => {
+          if (!object.isMesh) return;
+          const list = Array.isArray(object.material)
+            ? object.material
+            : [object.material];
+          list.forEach((material) => material && materials.add(material));
+        });
+        return [...materials];
+      }),
+    [previews],
+  );
 
-  useEffect(() => () => {
-    previews.forEach((preview) => {
-      if (preview) releasePreviewMaterials(preview.scene, preview.ownsMaterials);
-    });
-  }, [previews]);
+  useEffect(
+    () => () => {
+      previews.forEach((preview) => {
+        if (preview)
+          releasePreviewMaterials(preview.scene, preview.ownsMaterials);
+      });
+    },
+    [previews],
+  );
 
   const simulationTime = useRef(0);
   const lastWeights = useRef(stages.map(() => -1));
@@ -73,16 +120,23 @@ function StoryFleet({ progressRef, gltfs, reducedMotion }) {
     const pathX = -Math.cos(storyProgress * Math.PI * 2) * pathAmplitude;
     const pathZ = -(storyProgress - 0.5) * (reducedMotion ? 0.38 : 0.9);
     const weights = getStageWeights(storyProgress);
-    const renderWeights = weights.map((weight, index) => previews[index] ? weight : 0);
-    const unrenderedWeight = 1 - renderWeights.reduce((total, weight) => total + weight, 0);
+    const renderWeights = weights.map((weight, index) =>
+      previews[index] ? weight : 0,
+    );
+    const unrenderedWeight =
+      1 - renderWeights.reduce((total, weight) => total + weight, 0);
     if (unrenderedWeight > 0) {
       let fallbackIndex = -1;
       for (let index = 0; index < previews.length; index += 1) {
-        if (previews[index] && (fallbackIndex < 0 || weights[index] > weights[fallbackIndex])) fallbackIndex = index;
+        if (
+          previews[index] &&
+          (fallbackIndex < 0 || weights[index] > weights[fallbackIndex])
+        )
+          fallbackIndex = index;
       }
       if (fallbackIndex >= 0) renderWeights[fallbackIndex] += unrenderedWeight;
     }
-    const transformation = smoothRange(0.30, 0.74, storyProgress);
+    const transformation = smoothRange(0.3, 0.74, storyProgress);
     const modelScales = [
       0.78 + (1.08 * 0.92 - 0.78) * transformation,
       1.08 * 0.9 + (1.25 - 1.08 * 0.9) * transformation,
@@ -97,30 +151,107 @@ function StoryFleet({ progressRef, gltfs, reducedMotion }) {
       const weight = renderWeights[index];
       group.visible = weight > 0.002;
       const incoming = index === 0 ? 0 : renderWeights[index - 1];
-      const outgoing = index === stages.length - 1 ? 0 : renderWeights[index + 1];
+      const outgoing =
+        index === stages.length - 1 ? 0 : renderWeights[index + 1];
       const isRiggedFinal = stages[index].assetId === "final";
       const state = responses.current[index];
-      const wave = sampleStormWave(pathX, pathZ, time, gust, environment.seaScale, state.centerWave);
-      const heave = reducedMotion ? 0 : Math.max(-0.34, Math.min(0.34, wave.height * 0.42));
+      const wave = sampleStormWave(
+        pathX,
+        pathZ,
+        time,
+        gust,
+        environment.seaScale,
+        state.centerWave,
+      );
+      const heave = reducedMotion
+        ? 0
+        : Math.max(-0.34, Math.min(0.34, wave.height * 0.42));
       const fore = isRiggedFinal
-        ? sampleStormWave(pathX, pathZ + 1.45, time, gust, environment.seaScale, state.foreWave).height
-        : sampleStormWave(pathX + 1.45, pathZ, time, gust, environment.seaScale, state.foreWave).height;
+        ? sampleStormWave(
+            pathX,
+            pathZ + 1.45,
+            time,
+            gust,
+            environment.seaScale,
+            state.foreWave,
+          ).height
+        : sampleStormWave(
+            pathX + 1.45,
+            pathZ,
+            time,
+            gust,
+            environment.seaScale,
+            state.foreWave,
+          ).height;
       const aft = isRiggedFinal
-        ? sampleStormWave(pathX, pathZ - 1.45, time, gust, environment.seaScale, state.aftWave).height
-        : sampleStormWave(pathX - 1.45, pathZ, time, gust, environment.seaScale, state.aftWave).height;
+        ? sampleStormWave(
+            pathX,
+            pathZ - 1.45,
+            time,
+            gust,
+            environment.seaScale,
+            state.aftWave,
+          ).height
+        : sampleStormWave(
+            pathX - 1.45,
+            pathZ,
+            time,
+            gust,
+            environment.seaScale,
+            state.aftWave,
+          ).height;
       const port = isRiggedFinal
-        ? sampleStormWave(pathX - 0.62, pathZ, time, gust, environment.seaScale, state.portWave).height
-        : sampleStormWave(pathX, pathZ - 0.62, time, gust, environment.seaScale, state.portWave).height;
+        ? sampleStormWave(
+            pathX - 0.62,
+            pathZ,
+            time,
+            gust,
+            environment.seaScale,
+            state.portWave,
+          ).height
+        : sampleStormWave(
+            pathX,
+            pathZ - 0.62,
+            time,
+            gust,
+            environment.seaScale,
+            state.portWave,
+          ).height;
       const starboard = isRiggedFinal
-        ? sampleStormWave(pathX + 0.62, pathZ, time, gust, environment.seaScale, state.starboardWave).height
-        : sampleStormWave(pathX, pathZ + 0.62, time, gust, environment.seaScale, state.starboardWave).height;
+        ? sampleStormWave(
+            pathX + 0.62,
+            pathZ,
+            time,
+            gust,
+            environment.seaScale,
+            state.starboardWave,
+          ).height
+        : sampleStormWave(
+            pathX,
+            pathZ + 0.62,
+            time,
+            gust,
+            environment.seaScale,
+            state.starboardWave,
+          ).height;
       state.height += (heave - state.height) * responseAlpha;
-      const pitchTarget = reducedMotion ? 0 : Math.max(-0.07, Math.min(0.07, Math.atan2(fore - aft, 2.9) * 0.4));
-      const rollTarget = reducedMotion ? 0 : Math.max(-0.065, Math.min(0.065, Math.atan2(port - starboard, 1.24) * 0.4));
+      const pitchTarget = reducedMotion
+        ? 0
+        : Math.max(-0.07, Math.min(0.07, Math.atan2(fore - aft, 2.9) * 0.4));
+      const rollTarget = reducedMotion
+        ? 0
+        : Math.max(
+            -0.065,
+            Math.min(0.065, Math.atan2(port - starboard, 1.24) * 0.4),
+          );
       state.pitch += (pitchTarget - state.pitch) * responseAlpha;
       state.roll += (rollTarget - state.roll) * responseAlpha;
 
-      group.position.set(pathX + (incoming - outgoing) * 0.18, 0.12 + state.height, pathZ);
+      group.position.set(
+        pathX + (incoming - outgoing) * 0.18,
+        0.12 + state.height,
+        pathZ,
+      );
       group.scale.setScalar(modelScales[index]);
       if (isRiggedFinal) group.rotation.set(-state.pitch, 0, state.roll);
       else group.rotation.set(state.roll, 0, state.pitch);
@@ -129,7 +260,8 @@ function StoryFleet({ progressRef, gltfs, reducedMotion }) {
         materialLists[index].forEach((material) => {
           if (!material.transparent) return;
           material.opacity = weight;
-          material.depthWrite = weight > 0.985 ? material.userData.shipOriginalDepthWrite : false;
+          material.depthWrite =
+            weight > 0.985 ? material.userData.shipOriginalDepthWrite : false;
         });
         lastWeights.current[index] = weight;
       }
@@ -144,17 +276,29 @@ function StoryFleet({ progressRef, gltfs, reducedMotion }) {
       cameraHeight,
       pathZ + cameraDistance,
     );
-    camera.position.lerp(scratch.camera, reducedMotion ? 1 : 1 - Math.exp(-Math.min(delta, 0.05) * 2.4));
+    camera.position.lerp(
+      scratch.camera,
+      reducedMotion ? 1 : 1 - Math.exp(-Math.min(delta, 0.05) * 2.4),
+    );
     camera.lookAt(scratch.target);
   });
 
-  return previews.map((preview, index) => preview && (
-    <group key={stages[index].id} ref={(node) => { groups.current[index] = node; }} visible={index === 0}>
-      <group position={preview.center} scale={preview.scale}>
-        <primitive object={preview.scene} dispose={null} />
-      </group>
-    </group>
-  ));
+  return previews.map(
+    (preview, index) =>
+      preview && (
+        <group
+          key={stages[index].id}
+          ref={(node) => {
+            groups.current[index] = node;
+          }}
+          visible={index === 0}
+        >
+          <group position={preview.center} scale={preview.scale}>
+            <primitive object={preview.scene} dispose={null} />
+          </group>
+        </group>
+      ),
+  );
 }
 
 class SceneLoadBoundary extends React.Component {
@@ -174,39 +318,91 @@ class SceneLoadBoundary extends React.Component {
 }
 
 function AssetLoader({ index, onLoaded, onProgress }) {
-  const reportProgress = useCallback((event) => onProgress(index, event), [index, onProgress]);
-  const gltf = useLoader(GLTFLoader, stages[index].url, undefined, reportProgress);
+  const reportProgress = useCallback(
+    (event) => onProgress(index, event),
+    [index, onProgress],
+  );
+  const gltf = useLoader(
+    GLTFLoader,
+    stages[index].url,
+    undefined,
+    reportProgress,
+  );
   useEffect(() => onLoaded(index, gltf), [gltf, index, onLoaded]);
   return null;
 }
 
-function LoadedScene({ progressRef, gltfs, assetErrors, requestedAssets, requestAsset, onAssetLoaded, onAssetProgress, onAssetError, reducedMotion }) {
+function LoadedScene({
+  progressRef,
+  gltfs,
+  assetErrors,
+  requestedAssets,
+  requestAsset,
+  onAssetLoaded,
+  onAssetProgress,
+  onAssetError,
+  reducedMotion,
+}) {
   const originGltf = gltfs[0];
   useEffect(() => {
     if (originGltf) requestAsset(1);
   }, [originGltf, requestAsset]);
 
-  const errorHandlers = useMemo(() => stages.map((_, index) => (error) => onAssetError(index, error)), [onAssetError]);
+  const errorHandlers = useMemo(
+    () => stages.map((_, index) => (error) => onAssetError(index, error)),
+    [onAssetError],
+  );
   return (
     <>
-      {gltfs.some(Boolean) && <StoryFleet progressRef={progressRef} gltfs={gltfs} reducedMotion={reducedMotion} />}
-      {stages.map((stage, index) => requestedAssets[index] && !gltfs[index] && !assetErrors[index] && (
-        <SceneLoadBoundary key={stage.id} onError={errorHandlers[index]}>
-          <Suspense fallback={null}>
-            <AssetLoader index={index} onLoaded={onAssetLoaded} onProgress={onAssetProgress} />
-          </Suspense>
-        </SceneLoadBoundary>
-      ))}
+      {gltfs.some(Boolean) && (
+        <StoryFleet
+          progressRef={progressRef}
+          gltfs={gltfs}
+          reducedMotion={reducedMotion}
+        />
+      )}
+      {stages.map(
+        (stage, index) =>
+          requestedAssets[index] &&
+          !gltfs[index] &&
+          !assetErrors[index] && (
+            <SceneLoadBoundary key={stage.id} onError={errorHandlers[index]}>
+              <Suspense fallback={null}>
+                <AssetLoader
+                  index={index}
+                  onLoaded={onAssetLoaded}
+                  onProgress={onAssetProgress}
+                />
+              </Suspense>
+            </SceneLoadBoundary>
+          ),
+      )}
     </>
   );
 }
 
-function ExperienceCanvas({ progressRef, reducedMotion, lowPower, gltfs, assetErrors, requestedAssets, requestAsset, onAssetLoaded, onAssetProgress, onAssetError }) {
-  const [pageVisible, setPageVisible] = useState(() => typeof document === "undefined" || document.visibilityState !== "hidden");
+function ExperienceCanvas({
+  progressRef,
+  reducedMotion,
+  lowPower,
+  gltfs,
+  assetErrors,
+  requestedAssets,
+  requestAsset,
+  onAssetLoaded,
+  onAssetProgress,
+  onAssetError,
+}) {
+  const [pageVisible, setPageVisible] = useState(
+    () =>
+      typeof document === "undefined" || document.visibilityState !== "hidden",
+  );
   useEffect(() => {
-    const updateVisibility = () => setPageVisible(document.visibilityState !== "hidden");
+    const updateVisibility = () =>
+      setPageVisible(document.visibilityState !== "hidden");
     document.addEventListener("visibilitychange", updateVisibility);
-    return () => document.removeEventListener("visibilitychange", updateVisibility);
+    return () =>
+      document.removeEventListener("visibilitychange", updateVisibility);
   }, []);
 
   return (
@@ -215,16 +411,29 @@ function ExperienceCanvas({ progressRef, reducedMotion, lowPower, gltfs, assetEr
       camera={{ position: [0.7, 2.65, 10.4], fov: 42, near: 0.01, far: 1200 }}
       dpr={[1, lowPower ? 1 : 1.5]}
       frameloop={pageVisible ? "always" : "never"}
-      gl={{ antialias: !lowPower, powerPreference: lowPower ? "low-power" : "high-performance", alpha: true }}
-      fallback={(
+      gl={{
+        antialias: !lowPower,
+        powerPreference: lowPower ? "low-power" : "high-performance",
+        alpha: true,
+      }}
+      fallback={
         <div className="ship-experience-fallback" role="status">
-          This cinematic ship experience needs WebGL. Enable hardware acceleration or open it in a WebGL-capable browser.
+          This cinematic ship experience needs WebGL. Enable hardware
+          acceleration or open it in a WebGL-capable browser.
         </div>
-      )}
-      onCreated={({ gl }) => gl.setPixelRatio(Math.min(window.devicePixelRatio || 1, lowPower ? 1 : 1.5))}
+      }
+      onCreated={({ gl }) =>
+        gl.setPixelRatio(
+          Math.min(window.devicePixelRatio || 1, lowPower ? 1 : 1.5),
+        )
+      }
     >
       <color attach="background" args={[new Color("#050b12")]} />
-      <ShipAtmosphere reducedMotion={reducedMotion} lowPower={lowPower} progressRef={progressRef} />
+      <ShipAtmosphere
+        reducedMotion={reducedMotion}
+        lowPower={lowPower}
+        progressRef={progressRef}
+      />
       <LoadedScene
         progressRef={progressRef}
         gltfs={gltfs}
@@ -254,32 +463,55 @@ export default function ShipExperience() {
       ? window.matchMedia("(prefers-reduced-motion: reduce)").matches
       : false,
   );
-  const [lowPower] = useState(() => typeof navigator !== "undefined" && (
-    (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4) ||
-    (navigator.deviceMemory && navigator.deviceMemory <= 4) ||
-    Boolean(navigator.connection?.saveData)
-  ));
+  const [lowPower] = useState(
+    () =>
+      typeof navigator !== "undefined" &&
+      ((navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4) ||
+        (navigator.deviceMemory && navigator.deviceMemory <= 4) ||
+        Boolean(navigator.connection?.saveData)),
+  );
   const requestAsset = useCallback((index) => {
-    setRequestedAssets((current) => current[index] ? current : current.map((requested, item) => requested || item === index));
+    setRequestedAssets((current) =>
+      current[index]
+        ? current
+        : current.map((requested, item) => requested || item === index),
+    );
   }, []);
   const markAssetLoaded = useCallback((index, gltf) => {
-    setGltfs((current) => current[index] === gltf ? current : current.map((item, slot) => slot === index ? gltf : item));
-    setAssetProgress((current) => current.map((value, slot) => slot === index ? 1 : value));
-    setAssetErrors((current) => current.map((value, slot) => slot === index ? "" : value));
+    setGltfs((current) =>
+      current[index] === gltf
+        ? current
+        : current.map((item, slot) => (slot === index ? gltf : item)),
+    );
+    setAssetProgress((current) =>
+      current.map((value, slot) => (slot === index ? 1 : value)),
+    );
+    setAssetErrors((current) =>
+      current.map((value, slot) => (slot === index ? "" : value)),
+    );
   }, []);
   const markAssetProgress = useCallback((index, event) => {
     if (!event.lengthComputable || !event.total) return;
     const progress = Math.min(0.99, event.loaded / event.total);
-    setAssetProgress((current) => current[index] >= progress || progress - current[index] < 0.035
-      ? current
-      : current.map((value, slot) => slot === index ? progress : value));
+    setAssetProgress((current) =>
+      current[index] >= progress || progress - current[index] < 0.035
+        ? current
+        : current.map((value, slot) => (slot === index ? progress : value)),
+    );
   }, []);
-  const markAssetError = useCallback((index, error) => {
-    setAssetErrors((current) => current.map((value, slot) => slot === index
-      ? (error?.message || "The model could not be parsed.")
-      : value));
-    if (index < stages.length - 1) requestAsset(index + 1);
-  }, [requestAsset]);
+  const markAssetError = useCallback(
+    (index, error) => {
+      setAssetErrors((current) =>
+        current.map((value, slot) =>
+          slot === index
+            ? error?.message || "The model could not be parsed."
+            : value,
+        ),
+      );
+      if (index < stages.length - 1) requestAsset(index + 1);
+    },
+    [requestAsset],
+  );
 
   useEffect(() => {
     const query = window.matchMedia?.("(prefers-reduced-motion: reduce)");
@@ -295,16 +527,34 @@ export default function ShipExperience() {
     if (!root) return undefined;
     const context = gsap.context(() => {
       if (!reducedMotion) {
-        gsap.fromTo(".ship-story-title", { opacity: 0, y: 26, letterSpacing: "0.16em" }, {
-          opacity: 1, y: 0, letterSpacing: "0.04em", duration: 1.8, delay: 0.2, ease: "power2.out",
-        });
-        gsap.utils.toArray("[data-story-reveal]").forEach((element) => {
-          gsap.fromTo(element, { opacity: 0.25, y: 22 }, {
+        gsap.fromTo(
+          ".ship-story-title",
+          { opacity: 0, y: 26, letterSpacing: "0.16em" },
+          {
             opacity: 1,
             y: 0,
-            ease: "none",
-            scrollTrigger: { trigger: element, start: "top 82%", end: "top 45%", scrub: true },
-          });
+            letterSpacing: "0.04em",
+            duration: 1.8,
+            delay: 0.2,
+            ease: "power2.out",
+          },
+        );
+        gsap.utils.toArray("[data-story-reveal]").forEach((element) => {
+          gsap.fromTo(
+            element,
+            { opacity: 0.25, y: 22 },
+            {
+              opacity: 1,
+              y: 0,
+              ease: "none",
+              scrollTrigger: {
+                trigger: element,
+                start: "top 82%",
+                end: "top 45%",
+                scrub: true,
+              },
+            },
+          );
         });
       }
       ScrollTrigger.create({
@@ -313,9 +563,13 @@ export default function ShipExperience() {
         end: "bottom bottom",
         onUpdate: (self) => {
           progressRef.current = self.progress;
-          if (progressFillRef.current) gsap.set(progressFillRef.current, { scaleX: self.progress });
-          const chapter = self.progress < 0.24 ? 0 : self.progress < 0.59 ? 1 : 2;
-          setActiveChapter((current) => current === chapter ? current : chapter);
+          if (progressFillRef.current)
+            gsap.set(progressFillRef.current, { scaleX: self.progress });
+          const chapter =
+            self.progress < 0.24 ? 0 : self.progress < 0.59 ? 1 : 2;
+          setActiveChapter((current) =>
+            current === chapter ? current : chapter,
+          );
         },
       });
     }, root);
@@ -330,16 +584,26 @@ export default function ShipExperience() {
   }, [reducedMotion]);
 
   const ready = gltfs.every(Boolean);
-  const loadingIndex = stages.findIndex((_, index) => requestedAssets[index] && !gltfs[index] && !assetErrors[index]);
-  const pendingIndex = loadingIndex >= 0 ? loadingIndex : stages.findIndex((_, index) => !gltfs[index] && !assetErrors[index]);
+  const loadingIndex = stages.findIndex(
+    (_, index) =>
+      requestedAssets[index] && !gltfs[index] && !assetErrors[index],
+  );
+  const pendingIndex =
+    loadingIndex >= 0
+      ? loadingIndex
+      : stages.findIndex((_, index) => !gltfs[index] && !assetErrors[index]);
   const status = ready
     ? "The crossing is ready"
     : assetErrors.some(Boolean)
       ? `${stages[assetErrors.findIndex(Boolean)].title} could not load; the available ships remain visible`
       : pendingIndex >= 0
-        ? `${stages[pendingIndex].title} loading${requestedAssets[pendingIndex]
-          ? (assetProgress[pendingIndex] > 0 ? ` · ${Math.round(assetProgress[pendingIndex] * 100)}%` : " · preparing")
-          : " next"}`
+        ? `${stages[pendingIndex].title} loading${
+            requestedAssets[pendingIndex]
+              ? assetProgress[pendingIndex] > 0
+                ? ` · ${Math.round(assetProgress[pendingIndex] * 100)}%`
+                : " · preparing"
+              : " next"
+          }`
         : "Preparing the vessels…";
 
   const goToSection = (id) => {
@@ -348,10 +612,11 @@ export default function ShipExperience() {
       block: "start",
     });
   };
-  const replay = () => window.scrollTo({
-    top: storyRef.current?.offsetTop || 0,
-    behavior: reducedMotion ? "auto" : "smooth",
-  });
+  const replay = () =>
+    window.scrollTo({
+      top: storyRef.current?.offsetTop || 0,
+      behavior: reducedMotion ? "auto" : "smooth",
+    });
 
   return (
     <main className="ship-experience-page">
@@ -373,22 +638,50 @@ export default function ShipExperience() {
       </div>
 
       <div className="ship-experience-status" role="status" aria-live="polite">
-        <span className={ready || assetErrors.some(Boolean) ? "status-dot ready" : "status-dot"} />
+        <span
+          className={
+            ready || assetErrors.some(Boolean)
+              ? "status-dot ready"
+              : "status-dot"
+          }
+        />
         {status}
       </div>
 
       {!gltfs.some(Boolean) && (
-        <div className="ship-experience-loading" role="status" aria-live="polite">
+        <div
+          className="ship-experience-loading"
+          role="status"
+          aria-live="polite"
+        >
           <div className="ship-experience-loading-panel">
             <p>THE SHIP OF THESEUS</p>
-            <h2>{assetErrors[0] ? "The vessel could not be prepared" : "Preparing the voyage"}</h2>
-            <span>{assetErrors[0] ? assetErrors[0] : assetProgress[0] > 0
-              ? `Loading Origin · ${Math.round(assetProgress[0] * 100)}%`
-              : "Preparing the first ship model"}</span>
+            <h2>
+              {assetErrors[0]
+                ? "The vessel could not be prepared"
+                : "Preparing the voyage"}
+            </h2>
+            <span>
+              {assetErrors[0]
+                ? assetErrors[0]
+                : assetProgress[0] > 0
+                  ? `Loading Origin · ${Math.round(assetProgress[0] * 100)}%`
+                  : "Preparing the first ship model"}
+            </span>
             <div className="ship-experience-loading-track">
-              <i className={assetProgress[0] > 0 ? "" : "indeterminate"} style={{ transform: assetProgress[0] > 0 ? `scaleX(${assetProgress[0]})` : undefined }} />
+              <i
+                className={assetProgress[0] > 0 ? "" : "indeterminate"}
+                style={{
+                  transform:
+                    assetProgress[0] > 0
+                      ? `scaleX(${assetProgress[0]})`
+                      : undefined,
+                }}
+              />
             </div>
-            <small>The story and storm are ready while the first model arrives.</small>
+            <small>
+              The story and storm are ready while the first model arrives.
+            </small>
           </div>
         </div>
       )}
@@ -401,72 +694,140 @@ export default function ShipExperience() {
             type="button"
             aria-label={`Go to ${label} chapter`}
             aria-current={activeChapter === index ? "step" : undefined}
-            onClick={() => goToSection(["chapter-origin", "chapter-change", "chapter-revelation"][index])}
+            onClick={() =>
+              goToSection(
+                ["chapter-origin", "chapter-change", "chapter-revelation"][
+                  index
+                ],
+              )
+            }
           >
-            <span>0{index + 1}</span><i />
+            <span>0{index + 1}</span>
+            <i />
           </button>
         ))}
       </nav>
-      <button className="ship-experience-replay" type="button" onClick={replay}>↺ <span>Replay</span></button>
+      <button className="ship-experience-replay" type="button" onClick={replay}>
+        ↺ <span>Replay</span>
+      </button>
 
       <div className="ship-experience-progress" aria-hidden="true">
         <span ref={progressFillRef} />
       </div>
 
       <div className="ship-story" ref={storyRef}>
-        <section className="ship-story-section ship-story-cover" id="story-beginning">
+        <section
+          className="ship-story-section ship-story-cover"
+          id="story-beginning"
+        >
           <div className="ship-story-cover-copy">
-            <p className="ship-story-kicker" data-story-reveal>AN OPEN QUESTION, CARRIED BY THE SEA</p>
-            <h1 className="ship-story-title">SHIP <span>OF</span><br />THESEUS</h1>
-            <p className="ship-story-intro" data-story-reveal>
-              A vessel leaves the shore. The years begin to change it.
-              What, then, keeps it itself?
+            <p className="ship-story-kicker" data-story-reveal>
+              AN OPEN QUESTION, CARRIED BY THE SEA
             </p>
-            <button className="ship-story-scroll" type="button" onClick={() => goToSection("chapter-origin")}>
+            <h1 className="ship-story-title">
+              SHIP <span>OF</span>
+              <br />
+              THESEUS
+            </h1>
+            <p className="ship-story-intro" data-story-reveal>
+              A vessel leaves the shore. The years begin to change it. What,
+              then, keeps it itself?
+            </p>
+            <button
+              className="ship-story-scroll"
+              type="button"
+              onClick={() => goToSection("chapter-origin")}
+            >
               <span className="scroll-mark" /> Scroll to begin
             </button>
           </div>
         </section>
 
-        <section className="ship-story-section ship-story-chapter chapter-origin" id="chapter-origin">
+        <section
+          className="ship-story-section ship-story-chapter chapter-origin"
+          id="chapter-origin"
+        >
           <div className="ship-story-copy" data-story-reveal>
             <p className="ship-story-kicker">01 / ORIGIN</p>
             <h2>At first, it is simply a boat.</h2>
-            <p>Wood, canvas, a mast against the dark. It has a name, a maker, and a first voyage.</p>
-            <p className="ship-story-question">If it changes, when does it stop being the same vessel?</p>
+            <p>
+              Wood, canvas, a mast against the dark. It has a name, a maker, and
+              a first voyage.
+            </p>
+            <p className="ship-story-question">
+              If it changes, when does it stop being the same vessel?
+            </p>
           </div>
-          <span className="ship-story-coordinate">A beginning is easy to name.</span>
+          <span className="ship-story-coordinate">
+            A beginning is easy to name.
+          </span>
         </section>
 
-        <section className="ship-story-section ship-story-chapter chapter-change" id="chapter-change">
+        <section
+          className="ship-story-section ship-story-chapter chapter-change"
+          id="chapter-change"
+        >
           <div className="ship-story-copy" data-story-reveal>
             <p className="ship-story-kicker">02 / CHANGE</p>
             <h2>One part at a time.</h2>
-            <p>A plank gives way. A sail is mended. The hull grows, the rigging multiplies, and the sea keeps its own account.</p>
-            <p className="ship-story-question">Is continuity held in the pieces, or in the passage between them?</p>
+            <p>
+              A plank gives way. A sail is mended. The hull grows, the rigging
+              multiplies, and the sea keeps its own account.
+            </p>
+            <p className="ship-story-question">
+              Is continuity held in the pieces, or in the passage between them?
+            </p>
           </div>
           <span className="ship-story-coordinate">The voyage continues.</span>
         </section>
 
-        <section className="ship-story-section ship-story-chapter chapter-revelation" id="chapter-revelation">
+        <section
+          className="ship-story-section ship-story-chapter chapter-revelation"
+          id="chapter-revelation"
+        >
           <div className="ship-story-copy" data-story-reveal>
             <p className="ship-story-kicker">03 / REVELATION</p>
-            <h2>Everything can be different.<br /><em>Something still carries through.</em></h2>
-            <p>The vessel that arrives bears little resemblance to the one that left. Yet its story has not broken.</p>
-            <p className="ship-story-question">Perhaps identity is not what remains untouched, but what remains connected.</p>
+            <h2>
+              Everything can be different.
+              <br />
+              <em>Something still carries through.</em>
+            </h2>
+            <p>
+              The vessel that arrives bears little resemblance to the one that
+              left. Yet its story has not broken.
+            </p>
+            <p className="ship-story-question">
+              Perhaps identity is not what remains untouched, but what remains
+              connected.
+            </p>
           </div>
-          <span className="ship-story-coordinate">A name, weathered into a promise.</span>
+          <span className="ship-story-coordinate">
+            A name, weathered into a promise.
+          </span>
         </section>
 
-        <section className="ship-story-section ship-story-ending" id="story-ending">
+        <section
+          className="ship-story-section ship-story-ending"
+          id="story-ending"
+        >
           <div className="ship-story-ending-copy" data-story-reveal>
             <p className="ship-story-kicker">THE SHIP OF THESEUS</p>
-            <h2>Changed by the journey.<br /><em>Made whole by continuing.</em></h2>
+            <h2>
+              Changed by the journey.
+              <br />
+              <em>Made whole by continuing.</em>
+            </h2>
             <div className="ship-story-actions">
-              <button type="button" onClick={replay}>Replay the voyage <span>↺</span></button>
-              <Link to="/">Continue to event details <span>↗</span></Link>
+              <button type="button" onClick={replay}>
+                Replay the voyage <span>↺</span>
+              </button>
+              <Link to="/">
+                Continue to event details <span>↗</span>
+              </Link>
             </div>
-            <p className="ship-story-signoff">TEDxPVGCOET · IDEAS THAT KEEP MOVING</p>
+            <p className="ship-story-signoff">
+              TEDxPVGCOET · IDEAS THAT KEEP MOVING
+            </p>
           </div>
         </section>
       </div>

@@ -10,28 +10,32 @@ const punarutthanSponsors = [
   {
     name: "North 37",
     category: "Sponsor",
-    description: "Supporting TEDxPVGCOET and contributing to a vibrant event experience.",
+    description:
+      "Supporting TEDxPVGCOET and contributing to a vibrant event experience.",
     website: "#",
-   logo: require("../assets/sponsors/north37.png.png"),
+    logo: require("../assets/sponsors/north37.png.png"),
   },
   {
     name: "Ganesh Bhel and Chaat",
     category: "Sponsor",
-    description: "Adding flavour to the Punarutthan experience with their support.",
+    description:
+      "Adding flavour to the Punarutthan experience with their support.",
     website: "#",
     logo: require("../assets/sponsors/ganeshbhel.png"),
   },
   {
     name: "Elite Enterprises",
     category: "Sponsor",
-    description: "Supporting the event and helping us create a memorable experience.",
+    description:
+      "Supporting the event and helping us create a memorable experience.",
     website: "#",
     logo: require("../assets/sponsors/eliteenterprisies.png"),
   },
   {
     name: "Delval",
     category: "Sponsor",
-    description: "Proudly supporting TEDxPVGCOET and the Punarutthan initiative.",
+    description:
+      "Proudly supporting TEDxPVGCOET and the Punarutthan initiative.",
     website: "#",
     logo: require("../assets/sponsors/Delval LOGO.png"),
   },
@@ -45,7 +49,8 @@ const punarutthanSponsors = [
   {
     name: "Colombian Brew",
     category: "Sponsor",
-    description: "Brewing support for an inspiring and engaging TEDx experience.",
+    description:
+      "Brewing support for an inspiring and engaging TEDx experience.",
     website: "#",
     logo: require("../assets/sponsors/colombianbrew.png"),
   },
@@ -59,7 +64,8 @@ const punarutthanSponsors = [
   {
     name: "Amhi Pohekar",
     category: "Sponsor",
-    description: "Supporting TEDxPVGCOET and celebrating ideas that inspire change.",
+    description:
+      "Supporting TEDxPVGCOET and celebrating ideas that inspire change.",
     website: "#",
     logo: require("../assets/sponsors/AmhiPohekar.png"),
   },
