@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#252525"/>
+      <stop offset="100%" stop-color="#121212"/>
+    </linearGradient>
+    <linearGradient id="userGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#b0b0b0"/>
+      <stop offset="100%" stop-color="#707070"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e62b1e" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#e62b1e" stop-opacity="0.05"/>
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="256" height="256" fill="url(#bgGrad)"/>
+  <!-- Subtle accent circle -->
+  <circle cx="128" cy="128" r="122" stroke="url(#accentGrad)" stroke-width="2" fill="none"/>
+  <!-- Head -->
+  <circle cx="128" cy="98" r="46" fill="url(#userGrad)"/>
+  <!-- Torso -->
+  <path d="M48 230 C 48 174, 82 154, 128 154 C 174 154, 208 174, 208 230 Z" fill="url(#userGrad)"/>
+</svg>

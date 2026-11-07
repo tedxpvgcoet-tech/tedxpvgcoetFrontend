@@ -66,6 +66,7 @@
   cursor: pointer;
   break-inside: avoid;
   vertical-align: top;
+  touch-action: pan-y;
   transition:
     transform 300ms ease,
     box-shadow 300ms ease,
@@ -129,6 +130,7 @@
   border-radius: inherit;
   background: linear-gradient(180deg, rgb(0 0 0 / 68%), rgb(0 0 0 / 78%));
   opacity: 0;
+  pointer-events: none;
   transition: opacity 350ms ease;
 }
 
@@ -136,7 +138,8 @@
   width: 100%;
   max-height: 100%;
   overflow-y: auto;
-  overscroll-behavior: contain;
+  overscroll-behavior-y: auto;
+  touch-action: pan-y;
   padding: 0 0.25rem 0.25rem 0;
   scrollbar-color: rgb(255 255 255 / 50%) transparent;
   scrollbar-width: thin;
@@ -172,6 +175,7 @@
 .theseus-illusions__card.is-open .theseus-illusions__overlay,
 .theseus-illusions__card:focus-visible .theseus-illusions__overlay {
   opacity: 1;
+  pointer-events: auto;
 }
 
 .theseus-illusions__card:focus-visible {
@@ -182,6 +186,7 @@
 @media (hover: hover) and (pointer: fine) {
   .theseus-illusions__card:hover .theseus-illusions__overlay {
     opacity: 1;
+    pointer-events: auto;
   }
 
   .theseus-illusions__card:hover .theseus-illusions__image {
