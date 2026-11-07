@@ -1,3 +1,4 @@
+import lifeGoesOnImg from "../assets/blogs/life-goes-on.webp";
 import spaceshipImg from "../assets/blogs/spaceship-of-theseus.webp";
 import paradoxImg from "../assets/blogs/birth-of-a-paradox.webp";
 import trafficImg from "../assets/blogs/traffic-lights.webp";
@@ -18,6 +19,16 @@ export const BLOG_CATEGORIES = [
 
 export const BLOGS_DATA = [
   // Ship of Theseus - Continuum
+
+  {
+    id: "life-goes-on",
+    title: "Life Goes On",
+    category: "Ship of Theseus - Continuum",
+    readTime: "3 min read",
+    description: "A reflection on the cruelty and kindness of continuation.",
+    url: "https://tedxpvgcoet.substack.com/p/life-goes-on",
+    thumbnail: lifeGoesOnImg,
+  },
 
   {
     id: "whats-in-a-name",
