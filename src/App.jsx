@@ -26,6 +26,7 @@ const ShipOfTheseusEvent = lazy(() => import("./pages/ShipOfTheseusEvent"));
 
 const NewTeam = lazy(() => import("./pages/NewTeam"));
 const PastTalks = lazy(() => import("./pages/PastTalks"));
+const Blogs = lazy(() => import("./pages/Blogs"));
 
 inject();
 
@@ -130,6 +131,7 @@ function App() {
               <Route path="/tickets" element={<TicketRedirect />} />
 
               <Route path="/past-talks" element={<PastTalks />} />
+              <Route path="/blogs" element={<Blogs />} />
 
               {/* 404 - catch all unknown routes */}
               <Route path="*" element={<NotFound />} />
