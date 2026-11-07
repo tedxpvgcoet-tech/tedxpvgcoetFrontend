@@ -6,7 +6,11 @@
   color: #f8f6f2;
   background-color: #0c0d0f;
   background-image:
-    radial-gradient(ellipse at 50% 100%, rgb(225 6 0 / 12%) 0%, transparent 65%),
+    radial-gradient(
+      ellipse at 50% 100%,
+      rgb(225 6 0 / 12%) 0%,
+      transparent 65%
+    ),
     radial-gradient(circle at 12% 8%, rgb(131 20 24 / 22%), transparent 32rem),
     radial-gradient(circle at 88% 45%, rgb(225 6 0 / 8%), transparent 28rem);
 }
@@ -62,13 +66,18 @@
   cursor: pointer;
   break-inside: avoid;
   vertical-align: top;
-  transition: transform 300ms ease, box-shadow 300ms ease, border-color 300ms ease;
+  transition:
+    transform 300ms ease,
+    box-shadow 300ms ease,
+    border-color 300ms ease;
 }
 
 .theseus-illusions__card:hover {
   transform: translateY(-4px);
   border-color: rgba(225, 6, 0, 0.35);
-  box-shadow: 0 20px 45px rgb(0 0 0 / 65%), 0 0 25px rgba(225, 6, 0, 0.15);
+  box-shadow:
+    0 20px 45px rgb(0 0 0 / 65%),
+    0 0 25px rgba(225, 6, 0, 0.15);
 }
 
 .theseus-illusions__card--1 {

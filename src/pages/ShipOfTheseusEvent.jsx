@@ -182,7 +182,8 @@ const ShipOfTheseusEvent = () => {
             account sparked a famous debate among the ancient philosophers –
           </p>
           <blockquote className="theseus-event-content__quote">
-            “If no pieces of the original remained in the current ship, was it still the Ship of Theseus?”
+            “If no pieces of the original remained in the current ship, was it
+            still the Ship of Theseus?”
           </blockquote>
 
           <h3 className="theseus-event-content__subheading">The Paradox</h3>
@@ -203,7 +204,8 @@ const ShipOfTheseusEvent = () => {
             This eponymous vessel is not simply a story, for this ship explores
             further than lands and seas. It navigates the change within oneself,
             and the questions that arise with it. If a ship undergoes a
-            transformation through time, what changes and what does not? And why?
+            transformation through time, what changes and what does not? And
+            why?
           </p>
         </div>
         <span className="theseus-event-content__corner-label theseus-event-content__corner-label--bottom">
