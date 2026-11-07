@@ -25,8 +25,7 @@ export const BLOGS_DATA = [
     title: "Life Goes On",
     category: "Ship of Theseus - Continuum",
     readTime: "3 min read",
-    description:
-      "A reflection on the cruelty and kindness of continuation.",
+    description: "A reflection on the cruelty and kindness of continuation.",
     url: "https://tedxpvgcoet.substack.com/p/life-goes-on",
     thumbnail: lifeGoesOnImg,
   },
