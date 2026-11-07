@@ -133,6 +133,13 @@ const Navbar = () => {
           Past Talks
         </Link>
         <Link
+          to="/blogs"
+          className="nav-dropdown-item"
+          onClick={() => setMenuOpen(false)}
+        >
+          Blogs
+        </Link>
+        <Link
           to="/speaker"
           className="nav-dropdown-item"
           onClick={() => setMenuOpen(false)}

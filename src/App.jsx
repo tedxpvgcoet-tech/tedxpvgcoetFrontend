@@ -26,6 +26,7 @@ const ShipOfTheseusEvent = lazy(() => import("./pages/ShipOfTheseusEvent"));
 
 const NewTeam = lazy(() => import("./pages/NewTeam"));
 const PastTalks = lazy(() => import("./pages/PastTalks"));
+const Blogs = lazy(() => import("./pages/Blogs"));
 
 inject();
 
@@ -80,7 +81,7 @@ function App() {
               <Route path="/events/avant-garde" element={<AvantGarde />} />
               <Route path="/events/take-the-leap" element={<TakeTheLeap />} />
 
-              <Route path="/team" element={<Team />} />
+              <Route path="/team" element={<NewTeam />} />
               <Route path="/team-2025" element={<Team />} />
               <Route
                 path="/curation-team"
@@ -115,8 +116,6 @@ function App() {
                 element={<TeamGrid teamKey="organizers-team" />}
               />
 
-              <Route path="/new-committee" element={<NewTeam />} />
-
               <Route path="/bills" element={<InternalBillsPage />} />
               <Route path="/bridgekeeper" element={<InternalBillsPage />} />
               <Route path="/qr" element={<InternalBillsPage />} />
@@ -132,6 +131,7 @@ function App() {
               <Route path="/tickets" element={<TicketRedirect />} />
 
               <Route path="/past-talks" element={<PastTalks />} />
+              <Route path="/blogs" element={<Blogs />} />
 
               {/* 404 - catch all unknown routes */}
               <Route path="*" element={<NotFound />} />
