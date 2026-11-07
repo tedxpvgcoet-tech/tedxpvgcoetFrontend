@@ -32,7 +32,8 @@ inject();
 function App() {
   const location = useLocation();
   const isShipRoute = location.pathname === "/ship";
-  const isTicketRoute = location.pathname === "/ticket" || location.pathname === "/tickets";
+  const isTicketRoute =
+    location.pathname === "/ticket" || location.pathname === "/tickets";
   const [showIntro, setShowIntro] = useState(() => {
     return sessionStorage.getItem("tedxIntroShown") !== "true";
   });
@@ -79,7 +80,7 @@ function App() {
               <Route path="/events/avant-garde" element={<AvantGarde />} />
               <Route path="/events/take-the-leap" element={<TakeTheLeap />} />
 
-              <Route path="/team" element={<Team />} />
+              <Route path="/team" element={<NewTeam />} />
               <Route path="/team-2025" element={<Team />} />
               <Route
                 path="/curation-team"
@@ -113,8 +114,6 @@ function App() {
                 path="/organizers-team"
                 element={<TeamGrid teamKey="organizers-team" />}
               />
-
-              <Route path="/new-committee" element={<NewTeam />} />
 
               <Route path="/bills" element={<InternalBillsPage />} />
               <Route path="/bridgekeeper" element={<InternalBillsPage />} />
