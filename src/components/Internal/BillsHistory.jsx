@@ -470,10 +470,15 @@ export default function BillsHistory({
   const [reimbursingId, setReimbursingId] = useState("");
   const [notice, setNotice] = useState("");
 
+  // Treasurer Query Modal state
+  const [queryModalBill, setQueryModalBill] = useState(null);
+  const [queryInput, setQueryInput] = useState("");
+  const [sendingQuery, setSendingQuery] = useState(false);
+
   // Treasurer Filters
   const [filterMember, setFilterMember] = useState("");
   const [filterTeam, setFilterTeam] = useState("");
-  const [filterStatus, setFilterStatus] = useState("pending"); // "pending" | "reimbursed" | "all"
+  const [filterStatus, setFilterStatus] = useState("pending"); // "pending" | "reimbursed" | "queried" | "all"
   const [searchQuery, setSearchQuery] = useState("");
 
   // Normalizes bill object from API
@@ -490,6 +495,7 @@ export default function BillsHistory({
       ...b,
       isReimbursed,
       amountNum: parseFloat(b.amount) || 0,
+      query: (b.query || b.treasurerQuery || "").trim(),
     };
   };
 
@@ -675,6 +681,54 @@ export default function BillsHistory({
     }
   };
 
+  // Send Query to Member (Treasurer Action)
+  const handleSendQuery = async (e) => {
+    if (e) e.preventDefault();
+    if (!queryModalBill || !queryInput.trim()) return;
+
+    setSendingQuery(true);
+    setError("");
+    setNotice("");
+    try {
+      const response = await fetch(
+        `${getApiUrl()}/bills/${encodeURIComponent(queryModalBill.id)}/query`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${authToken}`,
+          },
+          body: JSON.stringify({
+            message: queryInput.trim(),
+            memberName: queryModalBill.name,
+          }),
+        },
+      );
+      const result = await response.json();
+      if (!response.ok || !result.success) {
+        throw new Error(result.error || "Could not send query to member.");
+      }
+
+      const updatedMsg = queryInput.trim();
+      const updater = (list) =>
+        list.map((b) =>
+          b.id === queryModalBill.id ? { ...b, query: updatedMsg } : b,
+        );
+      setAllBills(updater);
+      setBills(updater);
+
+      setNotice(
+        `Query emailed to ${queryModalBill.name} and logged in Google Sheets!`,
+      );
+      setQueryModalBill(null);
+      setQueryInput("");
+    } catch (queryErr) {
+      setError(queryErr.message || "Failed to send query.");
+    } finally {
+      setSendingQuery(false);
+    }
+  };
+
   // Calculations for Personal Bills
   const userPendingBills = useMemo(
     () => bills.filter((b) => !b.isReimbursed),
@@ -750,6 +804,7 @@ export default function BillsHistory({
     () => [
       { value: "pending", label: "⏳ Pending Only (Default)" },
       { value: "reimbursed", label: "✓ Reimbursed Only" },
+      { value: "queried", label: "❓ Queried Bills" },
       { value: "all", label: "Show All" },
     ],
     [],
@@ -759,6 +814,7 @@ export default function BillsHistory({
     return allBills.filter((b) => {
       if (filterStatus === "pending" && b.isReimbursed) return false;
       if (filterStatus === "reimbursed" && !b.isReimbursed) return false;
+      if (filterStatus === "queried" && !b.query) return false;
       if (filterMember && b.name !== filterMember) return false;
       if (filterTeam && b.team !== filterTeam) return false;
       if (searchQuery.trim()) {
@@ -1189,6 +1245,43 @@ export default function BillsHistory({
                     >
                       {bill.reason || "No specific reason provided."}
                     </p>
+
+                    {bill.query && (
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "flex-start",
+                          gap: "8px",
+                          margin: "8px 0 6px",
+                          padding: "8px 12px",
+                          borderRadius: "8px",
+                          background: "rgba(245, 158, 11, 0.12)",
+                          border: "1px solid rgba(245, 158, 11, 0.35)",
+                          fontSize: "0.82rem",
+                          color: "#fbbf24",
+                        }}
+                      >
+                        <span style={{ fontSize: "0.95rem", flexShrink: 0 }}>
+                          ❓
+                        </span>
+                        <div style={{ flex: 1, wordBreak: "break-word" }}>
+                          <strong style={{ color: "#fef08a" }}>
+                            Treasurer Query:{" "}
+                          </strong>
+                          {bill.query}
+                          <div
+                            style={{
+                              fontSize: "0.72rem",
+                              color: "#ccc",
+                              marginTop: "3px",
+                            }}
+                          >
+                            Please check your inbox or reply to the email sent
+                            to resolve this.
+                          </div>
+                        </div>
+                      </div>
+                    )}
 
                     <p
                       style={{
@@ -1653,6 +1746,34 @@ export default function BillsHistory({
                       </span>
                     </div>
 
+                    {/* Query Banner if bill was queried */}
+                    {bill.query && (
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "flex-start",
+                          gap: "8px",
+                          marginTop: "8px",
+                          padding: "8px 12px",
+                          borderRadius: "8px",
+                          background: "rgba(245, 158, 11, 0.12)",
+                          border: "1px solid rgba(245, 158, 11, 0.35)",
+                          fontSize: "0.82rem",
+                          color: "#fbbf24",
+                        }}
+                      >
+                        <span style={{ fontSize: "0.95rem", flexShrink: 0 }}>
+                          ❓
+                        </span>
+                        <div style={{ flex: 1, wordBreak: "break-word" }}>
+                          <strong style={{ color: "#fef08a" }}>
+                            Treasurer Query:{" "}
+                          </strong>
+                          {bill.query}
+                        </div>
+                      </div>
+                    )}
+
                     <div
                       style={{
                         display: "flex",
@@ -1702,6 +1823,34 @@ export default function BillsHistory({
                             ↗ Bill Photo
                           </a>
                         )}
+
+                        {/* Query Member Action */}
+                        <button
+                          type="button"
+                          style={{
+                            ...styles.button,
+                            fontSize: "0.74rem",
+                            padding: "5px 10px",
+                            background: bill.query
+                              ? "rgba(245, 158, 11, 0.16)"
+                              : "rgba(255, 255, 255, 0.05)",
+                            borderColor: bill.query
+                              ? "rgba(245, 158, 11, 0.45)"
+                              : "rgba(255, 255, 255, 0.15)",
+                            color: bill.query ? "#fbbf24" : "#fff",
+                            cursor: "pointer",
+                          }}
+                          onClick={() => {
+                            setQueryModalBill(bill);
+                            setQueryInput(
+                              bill.query
+                                ? bill.query.replace(/^\[.*?\]\s*/, "")
+                                : "",
+                            );
+                          }}
+                        >
+                          {bill.query ? "💬 Queried ↺" : "💬 Query"}
+                        </button>
 
                         {/* Mark / Unmark Action */}
                         {!bill.isReimbursed ? (
@@ -1753,6 +1902,262 @@ export default function BillsHistory({
                   </article>
                 ))}
             </>
+          )}
+
+          {/* ─── Query Modal ────────────────────────────────────────────── */}
+          {queryModalBill && (
+            <div
+              style={{
+                position: "fixed",
+                inset: 0,
+                zIndex: 9999,
+                background: "rgba(0, 0, 0, 0.75)",
+                backdropFilter: "blur(8px)",
+                WebkitBackdropFilter: "blur(8px)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                padding: "16px",
+                animation: "fadeIn 0.2s ease",
+              }}
+              onClick={() => {
+                if (!sendingQuery) {
+                  setQueryModalBill(null);
+                  setQueryInput("");
+                }
+              }}
+            >
+              <div
+                style={{
+                  maxWidth: 500,
+                  width: "100%",
+                  background: "rgba(18, 19, 26, 0.98)",
+                  border: "1px solid rgba(255, 255, 255, 0.16)",
+                  borderRadius: 14,
+                  padding: "24px",
+                  boxShadow: "0 24px 60px rgba(0, 0, 0, 0.8)",
+                  boxSizing: "border-box",
+                  color: "#fff",
+                  position: "relative",
+                }}
+                onClick={(e) => e.stopPropagation()}
+              >
+                {/* Modal Header */}
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    marginBottom: "16px",
+                  }}
+                >
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "8px",
+                    }}
+                  >
+                    <span
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        width: 28,
+                        height: 28,
+                        borderRadius: "50%",
+                        background: "rgba(235, 0, 40, 0.18)",
+                        border: "1px solid rgba(235, 0, 40, 0.4)",
+                        color: "#ff4d4d",
+                        fontSize: "0.9rem",
+                      }}
+                    >
+                      💬
+                    </span>
+                    <h3
+                      style={{
+                        margin: 0,
+                        fontSize: "1.1rem",
+                        fontWeight: "700",
+                      }}
+                    >
+                      Query Member • Row #{queryModalBill.id}
+                    </h3>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setQueryModalBill(null);
+                      setQueryInput("");
+                    }}
+                    disabled={sendingQuery}
+                    style={{
+                      background: "transparent",
+                      border: "none",
+                      color: "#aaa",
+                      fontSize: "1.2rem",
+                      cursor: "pointer",
+                      padding: "4px 8px",
+                    }}
+                  >
+                    ✕
+                  </button>
+                </div>
+
+                {/* Bill Info Card */}
+                <div
+                  style={{
+                    background: "rgba(255, 255, 255, 0.04)",
+                    border: "1px solid rgba(255, 255, 255, 0.08)",
+                    borderRadius: 8,
+                    padding: "10px 14px",
+                    marginBottom: "16px",
+                    fontSize: "0.85rem",
+                  }}
+                >
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                      marginBottom: "4px",
+                    }}
+                  >
+                    <strong>
+                      {queryModalBill.name}{" "}
+                      <span
+                        style={{
+                          fontSize: "0.74rem",
+                          color: "#888",
+                          fontWeight: "normal",
+                        }}
+                      >
+                        ({queryModalBill.team})
+                      </span>
+                    </strong>
+                    <span
+                      style={{
+                        fontSize: "1.05rem",
+                        fontWeight: "800",
+                        color: "#ff4d4d",
+                      }}
+                    >
+                      ₹{queryModalBill.amount}
+                    </span>
+                  </div>
+                  <div style={{ color: "#aaa", fontSize: "0.82rem" }}>
+                    {queryModalBill.reason}
+                  </div>
+                </div>
+
+                {queryModalBill.query && (
+                  <div
+                    style={{
+                      background: "rgba(245, 158, 11, 0.1)",
+                      border: "1px solid rgba(245, 158, 11, 0.3)",
+                      borderRadius: 8,
+                      padding: "8px 12px",
+                      marginBottom: "14px",
+                      fontSize: "0.78rem",
+                      color: "#fde68a",
+                    }}
+                  >
+                    <strong>Existing query: </strong>
+                    {queryModalBill.query}
+                  </div>
+                )}
+
+                {/* Textarea Form */}
+                <form onSubmit={handleSendQuery}>
+                  <label
+                    style={{
+                      display: "block",
+                      fontSize: "0.75rem",
+                      textTransform: "uppercase",
+                      fontWeight: "600",
+                      color: "#aaa",
+                      marginBottom: "6px",
+                    }}
+                  >
+                    Query / Message to Member:
+                  </label>
+                  <textarea
+                    rows={4}
+                    value={queryInput}
+                    onChange={(e) => setQueryInput(e.target.value)}
+                    placeholder="e.g. Please share the GST invoice, or who was this taxi ride for?"
+                    required
+                    style={{
+                      width: "100%",
+                      boxSizing: "border-box",
+                      background: "rgba(255, 255, 255, 0.06)",
+                      border: "1px solid rgba(255, 255, 255, 0.18)",
+                      borderRadius: 8,
+                      padding: "10px 12px",
+                      color: "#fff",
+                      fontSize: "0.88rem",
+                      fontFamily: '"Inter", sans-serif',
+                      outline: "none",
+                      resize: "vertical",
+                      marginBottom: "12px",
+                    }}
+                  />
+
+                  <div
+                    style={{
+                      fontSize: "0.73rem",
+                      color: "#888",
+                      marginBottom: "16px",
+                      lineHeight: 1.4,
+                    }}
+                  >
+                    ⚡ An email alert will be sent to{" "}
+                    <strong>{queryModalBill.name}</strong> with this note and
+                    bill details. A copy is CC&apos;d to Jagdish, Afaan, and
+                    Ritika, and logged to Column K in Google Sheets.
+                  </div>
+
+                  {/* Action Buttons */}
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "flex-end",
+                      gap: "10px",
+                    }}
+                  >
+                    <button
+                      type="button"
+                      style={styles.button}
+                      disabled={sendingQuery}
+                      onClick={() => {
+                        setQueryModalBill(null);
+                        setQueryInput("");
+                      }}
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      type="submit"
+                      disabled={sendingQuery || !queryInput.trim()}
+                      style={{
+                        ...styles.button,
+                        background:
+                          "linear-gradient(135deg, #e81b2a 0%, #a80000 100%)",
+                        border: "none",
+                        fontWeight: "700",
+                        cursor:
+                          sendingQuery || !queryInput.trim()
+                            ? "not-allowed"
+                            : "pointer",
+                        opacity: sendingQuery || !queryInput.trim() ? 0.6 : 1,
+                      }}
+                    >
+                      {sendingQuery ? "Sending Query…" : "💬 Send Email Alert"}
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
           )}
         </section>
       </main>
