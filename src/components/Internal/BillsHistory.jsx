@@ -1,4 +1,10 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { Helmet } from "react-helmet";
 import bgVideo from "../../assets/backgrounds/background.mp4";
 
@@ -125,6 +131,320 @@ const styles = {
   },
 };
 
+function CustomSelect({
+  value,
+  onChange,
+  options = [],
+  placeholder = "Select...",
+  searchable = false,
+  searchPlaceholder = "Search...",
+}) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const dropdownRef = useRef(null);
+  const searchInputRef = useRef(null);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    }
+    function handleKeyDown(event) {
+      if (event.key === "Escape") {
+        setIsOpen(false);
+      }
+    }
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+      document.addEventListener("touchstart", handleClickOutside);
+      document.addEventListener("keydown", handleKeyDown);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isOpen]);
+
+  useEffect(() => {
+    if (isOpen && searchable && searchInputRef.current) {
+      setTimeout(() => {
+        searchInputRef.current?.focus();
+      }, 50);
+    }
+    if (!isOpen) {
+      setSearchTerm("");
+    }
+  }, [isOpen, searchable]);
+
+  const selectedOption = options.find((opt) => opt.value === value);
+
+  const filteredOptions = useMemo(() => {
+    if (!searchable || !searchTerm.trim()) return options;
+    const term = searchTerm.toLowerCase();
+    return options.filter(
+      (opt) =>
+        opt.label.toLowerCase().includes(term) ||
+        (opt.subLabel && opt.subLabel.toLowerCase().includes(term)),
+    );
+  }, [options, searchable, searchTerm]);
+
+  return (
+    <div
+      ref={dropdownRef}
+      style={{
+        position: "relative",
+        width: "100%",
+        zIndex: isOpen ? 60 : 1,
+        userSelect: "none",
+      }}
+    >
+      <button
+        type="button"
+        onClick={() => setIsOpen((prev) => !prev)}
+        style={{
+          width: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          gap: "8px",
+          background: isOpen
+            ? "rgba(255, 255, 255, 0.09)"
+            : "rgba(255, 255, 255, 0.05)",
+          border: isOpen
+            ? "1px solid #eb0028"
+            : "1px solid rgba(255, 255, 255, 0.18)",
+          boxShadow: isOpen ? "0 0 0 2px rgba(235, 0, 40, 0.25)" : "none",
+          borderRadius: 8,
+          padding: "8px 12px",
+          color: "#fff",
+          fontSize: "0.85rem",
+          cursor: "pointer",
+          outline: "none",
+          transition: "all 0.2s ease",
+          boxSizing: "border-box",
+          textAlign: "left",
+          fontFamily: '"Inter", sans-serif',
+        }}
+      >
+        <span
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "8px",
+            overflow: "hidden",
+            flex: 1,
+          }}
+        >
+          <span
+            style={{
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              whiteSpace: "nowrap",
+              color: selectedOption ? "#fff" : "rgba(255, 255, 255, 0.5)",
+              fontWeight: selectedOption ? 500 : 400,
+            }}
+          >
+            {selectedOption ? selectedOption.label : placeholder}
+          </span>
+          {selectedOption?.subLabel && (
+            <span
+              style={{
+                fontSize: "0.68rem",
+                fontWeight: 600,
+                padding: "2px 6px",
+                borderRadius: 4,
+                flexShrink: 0,
+                background: selectedOption.isPending
+                  ? "rgba(245, 158, 11, 0.18)"
+                  : "rgba(46, 204, 113, 0.18)",
+                color: selectedOption.isPending ? "#fbbf24" : "#4ade80",
+                border: selectedOption.isPending
+                  ? "1px solid rgba(245, 158, 11, 0.35)"
+                  : "1px solid rgba(46, 204, 113, 0.35)",
+              }}
+            >
+              {selectedOption.subLabel}
+            </span>
+          )}
+        </span>
+        <svg
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          style={{
+            flexShrink: 0,
+            transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
+            transition: "transform 0.2s ease",
+            opacity: 0.7,
+            color: "#fff",
+          }}
+        >
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
+      </button>
+
+      {isOpen && (
+        <div
+          style={{
+            position: "absolute",
+            top: "calc(100% + 6px)",
+            left: 0,
+            right: 0,
+            zIndex: 100,
+            background: "rgba(18, 19, 26, 0.98)",
+            border: "1px solid rgba(255, 255, 255, 0.16)",
+            borderRadius: 10,
+            boxShadow:
+              "0 18px 40px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(255, 255, 255, 0.05)",
+            backdropFilter: "blur(20px)",
+            WebkitBackdropFilter: "blur(20px)",
+            maxHeight: "300px",
+            display: "flex",
+            flexDirection: "column",
+            overflow: "hidden",
+          }}
+        >
+          {searchable && (
+            <div
+              style={{
+                padding: "8px 10px",
+                borderBottom: "1px solid rgba(255, 255, 255, 0.08)",
+                background: "rgba(255, 255, 255, 0.02)",
+              }}
+            >
+              <input
+                ref={searchInputRef}
+                type="text"
+                placeholder={searchPlaceholder}
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                onClick={(e) => e.stopPropagation()}
+                style={{
+                  width: "100%",
+                  background: "rgba(255, 255, 255, 0.08)",
+                  border: "1px solid rgba(255, 255, 255, 0.16)",
+                  borderRadius: 6,
+                  padding: "6px 10px",
+                  color: "#fff",
+                  fontSize: "0.8rem",
+                  outline: "none",
+                  boxSizing: "border-box",
+                  fontFamily: '"Inter", sans-serif',
+                }}
+              />
+            </div>
+          )}
+
+          <div
+            style={{
+              overflowY: "auto",
+              maxHeight: searchable ? "240px" : "280px",
+              padding: "4px",
+            }}
+          >
+            {filteredOptions.length === 0 ? (
+              <div
+                style={{
+                  padding: "12px 14px",
+                  fontSize: "0.82rem",
+                  color: "#888",
+                  textAlign: "center",
+                }}
+              >
+                No options found
+              </div>
+            ) : (
+              filteredOptions.map((opt) => {
+                const isSelected = opt.value === value;
+                return (
+                  <div
+                    key={opt.value}
+                    onClick={() => {
+                      onChange(opt.value);
+                      setIsOpen(false);
+                    }}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      gap: "8px",
+                      padding: "8px 10px",
+                      borderRadius: 6,
+                      fontSize: "0.83rem",
+                      cursor: "pointer",
+                      color: isSelected ? "#fff" : "rgba(255, 255, 255, 0.88)",
+                      background: isSelected
+                        ? "rgba(235, 0, 40, 0.22)"
+                        : "transparent",
+                      borderLeft: isSelected
+                        ? "3px solid #eb0028"
+                        : "3px solid transparent",
+                      transition: "background 0.15s ease",
+                    }}
+                    onMouseEnter={(e) => {
+                      if (!isSelected) {
+                        e.currentTarget.style.background =
+                          "rgba(255, 255, 255, 0.08)";
+                        e.currentTarget.style.color = "#ffffff";
+                      }
+                    }}
+                    onMouseLeave={(e) => {
+                      if (!isSelected) {
+                        e.currentTarget.style.background = "transparent";
+                        e.currentTarget.style.color =
+                          "rgba(255, 255, 255, 0.88)";
+                      }
+                    }}
+                  >
+                    <span
+                      style={{
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        whiteSpace: "nowrap",
+                        fontWeight: isSelected ? 600 : 400,
+                      }}
+                    >
+                      {opt.label}
+                    </span>
+
+                    {opt.subLabel && (
+                      <span
+                        style={{
+                          fontSize: "0.7rem",
+                          fontWeight: 600,
+                          padding: "2px 6px",
+                          borderRadius: 4,
+                          flexShrink: 0,
+                          background: opt.isPending
+                            ? "rgba(245, 158, 11, 0.18)"
+                            : "rgba(46, 204, 113, 0.18)",
+                          color: opt.isPending ? "#fbbf24" : "#4ade80",
+                          border: opt.isPending
+                            ? "1px solid rgba(245, 158, 11, 0.35)"
+                            : "1px solid rgba(46, 204, 113, 0.35)",
+                        }}
+                      >
+                        {opt.subLabel}
+                      </span>
+                    )}
+                  </div>
+                );
+              })
+            )}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function BillsHistory({
   authToken,
   userEmail,
@@ -137,7 +457,9 @@ export default function BillsHistory({
   const [allBills, setAllBills] = useState([]);
   const [activeTab, setActiveTab] = useState("my"); // "my" | "treasurer"
   const [isTreasurer, setIsTreasurer] = useState(() => {
-    const email = (userEmail || localStorage.getItem("BRIDGE_EMAIL") || "").toLowerCase().trim();
+    const email = (userEmail || localStorage.getItem("BRIDGE_EMAIL") || "")
+      .toLowerCase()
+      .trim();
     return TREASURER_EMAILS.includes(email);
   });
   const [loading, setLoading] = useState(true);
@@ -190,7 +512,9 @@ export default function BillsHistory({
       if (result.isTreasurer !== undefined) {
         setIsTreasurer(Boolean(result.isTreasurer));
       }
-      const parsed = Array.isArray(result.bills) ? result.bills.map(parseBill) : [];
+      const parsed = Array.isArray(result.bills)
+        ? result.bills.map(parseBill)
+        : [];
       setBills(parsed);
     } catch (loadError) {
       setError(loadError.message || "Could not load uploaded bills.");
@@ -213,9 +537,13 @@ export default function BillsHistory({
         return;
       }
       if (!response.ok || !result.success) {
-        throw new Error(result.error || "Could not load all bills for treasurer.");
+        throw new Error(
+          result.error || "Could not load all bills for treasurer.",
+        );
       }
-      const parsed = Array.isArray(result.bills) ? result.bills.map(parseBill) : [];
+      const parsed = Array.isArray(result.bills)
+        ? result.bills.map(parseBill)
+        : [];
       setAllBills(parsed);
     } catch (loadError) {
       setError(loadError.message || "Could not load team bills.");
@@ -249,23 +577,27 @@ export default function BillsHistory({
             Authorization: `Bearer ${authToken}`,
           },
           body: JSON.stringify({ reimbursed: targetState ? 1 : 0 }),
-        }
+        },
       );
       const result = await response.json();
       if (!response.ok || !result.success) {
-        throw new Error(result.error || "Could not update reimbursement status.");
+        throw new Error(
+          result.error || "Could not update reimbursement status.",
+        );
       }
 
       // Update state in allBills and bills locally
       const updater = (list) =>
-        list.map((b) => (b.id === billId ? { ...b, isReimbursed: targetState } : b));
+        list.map((b) =>
+          b.id === billId ? { ...b, isReimbursed: targetState } : b,
+        );
       setAllBills(updater);
       setBills(updater);
 
       setNotice(
         targetState
           ? `Bill #${billId} marked as Reimbursed (1) in Google Sheets.`
-          : `Bill #${billId} reverted to Pending.`
+          : `Bill #${billId} reverted to Pending.`,
       );
     } catch (toggleErr) {
       setError(toggleErr.message || "Failed to update reimbursement status.");
@@ -300,7 +632,7 @@ export default function BillsHistory({
       setNotice(
         onlyPending
           ? "Summary of your PENDING bills and receipts has been emailed to you!"
-          : "Complete record of ALL your submitted bills has been emailed to you!"
+          : "Complete record of ALL your submitted bills has been emailed to you!",
       );
     } catch (requestError) {
       setError(requestError.message || "Could not send bill summary.");
@@ -323,7 +655,7 @@ export default function BillsHistory({
             "Content-Type": "application/json",
             Authorization: `Bearer ${authToken}`,
           },
-        }
+        },
       );
       const result = await response.json();
       if (response.status === 401) {
@@ -333,7 +665,9 @@ export default function BillsHistory({
       if (!response.ok || !result.success) {
         throw new Error(result.error || "Could not send bill details.");
       }
-      setNotice(`Details and receipt for bill (₹${bill.amount}) sent to your email!`);
+      setNotice(
+        `Details and receipt for bill (₹${bill.amount}) sent to your email!`,
+      );
     } catch (requestError) {
       setError(requestError.message || "Could not send bill details.");
     } finally {
@@ -344,18 +678,18 @@ export default function BillsHistory({
   // Calculations for Personal Bills
   const userPendingBills = useMemo(
     () => bills.filter((b) => !b.isReimbursed),
-    [bills]
+    [bills],
   );
   const userPendingAmount = useMemo(
     () => userPendingBills.reduce((acc, b) => acc + b.amountNum, 0),
-    [userPendingBills]
+    [userPendingBills],
   );
   const userReimbursedAmount = useMemo(
     () =>
       bills
         .filter((b) => b.isReimbursed)
         .reduce((acc, b) => acc + b.amountNum, 0),
-    [bills]
+    [bills],
   );
   const userTotalAmount = userPendingAmount + userReimbursedAmount;
 
@@ -377,7 +711,9 @@ export default function BillsHistory({
         map.get(name).pendingCount += 1;
       }
     });
-    return Array.from(map.values()).sort((a, b) => b.totalPending - a.totalPending);
+    return Array.from(map.values()).sort(
+      (a, b) => b.totalPending - a.totalPending,
+    );
   }, [allBills]);
 
   const uniqueTeams = useMemo(() => {
@@ -387,6 +723,37 @@ export default function BillsHistory({
     });
     return Array.from(set).sort();
   }, [allBills]);
+
+  const memberOptions = useMemo(() => {
+    return [
+      { value: "", label: `All Members (${uniqueMembers.length})` },
+      ...uniqueMembers.map((m) => ({
+        value: m.name,
+        label: m.name,
+        subLabel:
+          m.totalPending > 0
+            ? `₹${m.totalPending.toLocaleString("en-IN")}`
+            : "Settled",
+        isPending: m.totalPending > 0,
+      })),
+    ];
+  }, [uniqueMembers]);
+
+  const teamOptions = useMemo(() => {
+    return [
+      { value: "", label: `All Teams (${uniqueTeams.length})` },
+      ...uniqueTeams.map((t) => ({ value: t, label: t })),
+    ];
+  }, [uniqueTeams]);
+
+  const statusOptions = useMemo(
+    () => [
+      { value: "pending", label: "⏳ Pending Only (Default)" },
+      { value: "reimbursed", label: "✓ Reimbursed Only" },
+      { value: "all", label: "Show All" },
+    ],
+    [],
+  );
 
   const filteredTreasurerBills = useMemo(() => {
     return allBills.filter((b) => {
@@ -410,18 +777,20 @@ export default function BillsHistory({
       allBills
         .filter((b) => !b.isReimbursed)
         .reduce((acc, b) => acc + b.amountNum, 0),
-    [allBills]
+    [allBills],
   );
   const treasurerTotalReimbursed = useMemo(
     () =>
       allBills
         .filter((b) => b.isReimbursed)
         .reduce((acc, b) => acc + b.amountNum, 0),
-    [allBills]
+    [allBills],
   );
 
   return (
-    <div style={{ minHeight: "100vh", position: "relative", overflowX: "hidden" }}>
+    <div
+      style={{ minHeight: "100vh", position: "relative", overflowX: "hidden" }}
+    >
       <Helmet defer={false}>
         <title>Uploaded Bills | TEDxPVGCOETM</title>
       </Helmet>
@@ -625,7 +994,13 @@ export default function BillsHistory({
                       >
                         ₹{userPendingAmount.toLocaleString("en-IN")}
                       </div>
-                      <div style={{ fontSize: "0.82rem", color: "#888", marginTop: "4px" }}>
+                      <div
+                        style={{
+                          fontSize: "0.82rem",
+                          color: "#888",
+                          marginTop: "4px",
+                        }}
+                      >
                         {userPendingBills.length} pending bill
                         {userPendingBills.length === 1 ? "" : "s"}
                       </div>
@@ -638,8 +1013,15 @@ export default function BillsHistory({
                           ₹{userReimbursedAmount.toLocaleString("en-IN")}
                         </strong>
                       </div>
-                      <div style={{ fontSize: "0.78rem", color: "#666", marginTop: "2px" }}>
-                        Total Ever Submitted: ₹{userTotalAmount.toLocaleString("en-IN")} (
+                      <div
+                        style={{
+                          fontSize: "0.78rem",
+                          color: "#666",
+                          marginTop: "2px",
+                        }}
+                      >
+                        Total Ever Submitted: ₹
+                        {userTotalAmount.toLocaleString("en-IN")} (
                         {bills.length} bills)
                       </div>
                     </div>
@@ -677,13 +1059,15 @@ export default function BillsHistory({
                             : "pointer",
                         opacity: userPendingAmount === 0 ? 0.5 : 1,
                       }}
-                      disabled={Boolean(sendingEmailType) || userPendingAmount === 0}
+                      disabled={
+                        Boolean(sendingEmailType) || userPendingAmount === 0
+                      }
                       onClick={() => requestSummaryEmail(true)}
                     >
                       {sendingEmailType === "pending"
                         ? "Sending Pending Summary…"
                         : `✉️ Email Pending Bills (₹${userPendingAmount.toLocaleString(
-                            "en-IN"
+                            "en-IN",
                           )})`}
                     </button>
 
@@ -707,14 +1091,18 @@ export default function BillsHistory({
                       {sendingEmailType === "all"
                         ? "Sending All Summary…"
                         : `✉️ Email All Bills (₹${userTotalAmount.toLocaleString(
-                            "en-IN"
+                            "en-IN",
                           )})`}
                     </button>
                   </div>
                 </div>
               )}
 
-              {loading && <p style={{ color: "#ccc", margin: "30px 0" }}>Loading your bills…</p>}
+              {loading && (
+                <p style={{ color: "#ccc", margin: "30px 0" }}>
+                  Loading your bills…
+                </p>
+              )}
               {!loading && !error && bills.length === 0 && (
                 <p style={{ color: "#ccc", margin: "30px 0" }}>
                   No uploaded bills found for your account.
@@ -739,12 +1127,20 @@ export default function BillsHistory({
                         alignItems: "center",
                       }}
                     >
-                      <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: "10px",
+                        }}
+                      >
                         <strong
                           style={{
                             fontSize: "clamp(1.1rem, 3.5vw, 1.3rem)",
                             color: bill.isReimbursed ? "#8ee6a0" : "#ff3b30",
-                            textDecoration: bill.isReimbursed ? "line-through" : "none",
+                            textDecoration: bill.isReimbursed
+                              ? "line-through"
+                              : "none",
                           }}
                         >
                           ₹{bill.amount || "—"}
@@ -768,13 +1164,16 @@ export default function BillsHistory({
                         }}
                       >
                         {bill.timestamp
-                          ? new Date(bill.timestamp).toLocaleDateString("en-GB", {
-                              day: "2-digit",
-                              month: "short",
-                              year: "numeric",
-                              hour: "2-digit",
-                              minute: "2-digit",
-                            })
+                          ? new Date(bill.timestamp).toLocaleDateString(
+                              "en-GB",
+                              {
+                                day: "2-digit",
+                                month: "short",
+                                year: "numeric",
+                                hour: "2-digit",
+                                minute: "2-digit",
+                              },
+                            )
                           : "Date unavailable"}
                       </span>
                     </div>
@@ -799,7 +1198,8 @@ export default function BillsHistory({
                         wordBreak: "break-word",
                       }}
                     >
-                      {bill.team || "Team unavailable"} · {bill.gstCategory || "Non-GST"}
+                      {bill.team || "Team unavailable"} ·{" "}
+                      {bill.gstCategory || "Non-GST"}
                       {bill.reimbursementNote && (
                         <span style={{ color: "#aaa", marginLeft: "8px" }}>
                           · Note: <i>{bill.reimbursementNote}</i>
@@ -825,12 +1225,17 @@ export default function BillsHistory({
                           borderColor: "rgba(232,27,42,0.4)",
                           background: "rgba(232,27,42,0.08)",
                           color: "#fff",
-                          cursor: requestingId === bill.id ? "not-allowed" : "pointer",
+                          cursor:
+                            requestingId === bill.id
+                              ? "not-allowed"
+                              : "pointer",
                         }}
                         disabled={requestingId === bill.id}
                         onClick={() => requestSingleBill(bill)}
                       >
-                        {requestingId === bill.id ? "Sending…" : "✉️ Email Receipt"}
+                        {requestingId === bill.id
+                          ? "Sending…"
+                          : "✉️ Email Receipt"}
                       </button>
 
                       {bill.fileUrl && bill.fileUrl.startsWith("http") && (
@@ -898,7 +1303,13 @@ export default function BillsHistory({
                   >
                     ₹{treasurerTotalPending.toLocaleString("en-IN")}
                   </div>
-                  <div style={{ fontSize: "0.75rem", color: "#999", marginTop: "2px" }}>
+                  <div
+                    style={{
+                      fontSize: "0.75rem",
+                      color: "#999",
+                      marginTop: "2px",
+                    }}
+                  >
                     To be paid to members
                   </div>
                 </div>
@@ -932,7 +1343,13 @@ export default function BillsHistory({
                   >
                     ₹{treasurerTotalReimbursed.toLocaleString("en-IN")}
                   </div>
-                  <div style={{ fontSize: "0.75rem", color: "#999", marginTop: "2px" }}>
+                  <div
+                    style={{
+                      fontSize: "0.75rem",
+                      color: "#999",
+                      marginTop: "2px",
+                    }}
+                  >
                     Settled expenses
                   </div>
                 </div>
@@ -969,7 +1386,13 @@ export default function BillsHistory({
                       treasurerTotalPending + treasurerTotalReimbursed
                     ).toLocaleString("en-IN")}
                   </div>
-                  <div style={{ fontSize: "0.75rem", color: "#999", marginTop: "2px" }}>
+                  <div
+                    style={{
+                      fontSize: "0.75rem",
+                      color: "#999",
+                      marginTop: "2px",
+                    }}
+                  >
                     {allBills.length} total entries
                   </div>
                 </div>
@@ -990,7 +1413,7 @@ export default function BillsHistory({
               >
                 <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
                   {/* Member Selector */}
-                  <div style={{ flex: "1 1 220px" }}>
+                  <div style={{ flex: "1 1 220px", minWidth: 200 }}>
                     <label
                       style={{
                         display: "block",
@@ -1003,25 +1426,18 @@ export default function BillsHistory({
                     >
                       Select Person
                     </label>
-                    <select
-                      style={{ ...styles.select, width: "100%" }}
+                    <CustomSelect
                       value={filterMember}
-                      onChange={(e) => setFilterMember(e.target.value)}
-                    >
-                      <option value="">All Members ({uniqueMembers.length})</option>
-                      {uniqueMembers.map((m) => (
-                        <option key={m.name} value={m.name}>
-                          {m.name} —{" "}
-                          {m.totalPending > 0
-                            ? `Pending: ₹${m.totalPending.toLocaleString("en-IN")}`
-                            : "Settled"}
-                        </option>
-                      ))}
-                    </select>
+                      onChange={setFilterMember}
+                      options={memberOptions}
+                      placeholder="Select Person"
+                      searchable={true}
+                      searchPlaceholder="Search member..."
+                    />
                   </div>
 
                   {/* Team Filter */}
-                  <div style={{ flex: "1 1 180px" }}>
+                  <div style={{ flex: "1 1 180px", minWidth: 160 }}>
                     <label
                       style={{
                         display: "block",
@@ -1034,22 +1450,16 @@ export default function BillsHistory({
                     >
                       Filter Team
                     </label>
-                    <select
-                      style={{ ...styles.select, width: "100%" }}
+                    <CustomSelect
                       value={filterTeam}
-                      onChange={(e) => setFilterTeam(e.target.value)}
-                    >
-                      <option value="">All Teams ({uniqueTeams.length})</option>
-                      {uniqueTeams.map((t) => (
-                        <option key={t} value={t}>
-                          {t}
-                        </option>
-                      ))}
-                    </select>
+                      onChange={setFilterTeam}
+                      options={teamOptions}
+                      placeholder="Filter Team"
+                    />
                   </div>
 
                   {/* Status Filter */}
-                  <div style={{ flex: "1 1 150px" }}>
+                  <div style={{ flex: "1 1 150px", minWidth: 150 }}>
                     <label
                       style={{
                         display: "block",
@@ -1062,15 +1472,12 @@ export default function BillsHistory({
                     >
                       Status
                     </label>
-                    <select
-                      style={{ ...styles.select, width: "100%" }}
+                    <CustomSelect
                       value={filterStatus}
-                      onChange={(e) => setFilterStatus(e.target.value)}
-                    >
-                      <option value="pending">⏳ Pending Only (Default)</option>
-                      <option value="reimbursed">✓ Reimbursed Only</option>
-                      <option value="all">Show All</option>
-                    </select>
+                      onChange={setFilterStatus}
+                      options={statusOptions}
+                      placeholder="Select Status"
+                    />
                   </div>
                 </div>
 
@@ -1098,9 +1505,13 @@ export default function BillsHistory({
                 }}
               >
                 <span>
-                  Showing {filteredTreasurerBills.length} of {allBills.length} bill(s)
+                  Showing {filteredTreasurerBills.length} of {allBills.length}{" "}
+                  bill(s)
                 </span>
-                {(filterMember || filterTeam || filterStatus !== "pending" || searchQuery) && (
+                {(filterMember ||
+                  filterTeam ||
+                  filterStatus !== "pending" ||
+                  searchQuery) && (
                   <button
                     type="button"
                     style={{
@@ -1124,10 +1535,18 @@ export default function BillsHistory({
               </div>
 
               {loadingAll && (
-                <p style={{ color: "#ccc", margin: "30px 0" }}>Loading all bills data…</p>
+                <p style={{ color: "#ccc", margin: "30px 0" }}>
+                  Loading all bills data…
+                </p>
               )}
               {!loadingAll && filteredTreasurerBills.length === 0 && (
-                <p style={{ color: "#888", margin: "30px 0", textAlign: "center" }}>
+                <p
+                  style={{
+                    color: "#888",
+                    margin: "30px 0",
+                    textAlign: "center",
+                  }}
+                >
                   No bills matched the selected filters.
                 </p>
               )}
@@ -1142,70 +1561,96 @@ export default function BillsHistory({
                       ...(bill.isReimbursed ? styles.billCardReimbursed : {}),
                     }}
                   >
+                    {/* Header Row: Member Name + Team on Left, Amount on Right */}
                     <div
                       style={{
                         display: "flex",
                         justifyContent: "space-between",
                         alignItems: "flex-start",
-                        gap: "10px",
-                        flexWrap: "wrap",
+                        gap: "12px",
                       }}
                     >
-                      <div>
-                        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                          <span
-                            style={{
-                              fontSize: "1rem",
-                              fontWeight: "700",
-                              color: "#fff",
-                            }}
-                          >
-                            {bill.name}
-                          </span>
-                          <span
-                            style={{
-                              fontSize: "0.72rem",
-                              background: "rgba(255,255,255,0.08)",
-                              padding: "2px 8px",
-                              borderRadius: "4px",
-                              color: "#bbb",
-                            }}
-                          >
-                            {bill.team}
-                          </span>
-                        </div>
-                        <p
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: "8px",
+                          flexWrap: "wrap",
+                          minWidth: 0,
+                          flex: 1,
+                        }}
+                      >
+                        <span
                           style={{
-                            margin: "6px 0 2px",
-                            fontSize: "0.92rem",
-                            color: "#ddd",
+                            fontSize: "1.05rem",
+                            fontWeight: "700",
+                            color: "#fff",
                             wordBreak: "break-word",
                           }}
                         >
-                          {bill.reason}
-                        </p>
-                      </div>
-
-                      <div style={{ textAlign: "right" }}>
-                        <div
+                          {bill.name}
+                        </span>
+                        <span
                           style={{
-                            fontSize: "1.3rem",
-                            fontWeight: "800",
-                            color: bill.isReimbursed ? "#2ecc71" : "#ff3b30",
+                            fontSize: "0.72rem",
+                            background: "rgba(255,255,255,0.08)",
+                            padding: "2px 8px",
+                            borderRadius: "4px",
+                            color: "#bbb",
+                            flexShrink: 0,
                           }}
                         >
-                          ₹{bill.amount}
-                        </div>
-                        <span
-                          style={
-                            bill.isReimbursed
-                              ? styles.badgeReimbursed
-                              : styles.badgePending
-                          }
-                        >
-                          {bill.isReimbursed ? "✓ Reimbursed" : "⏳ Pending"}
+                          {bill.team}
                         </span>
                       </div>
+
+                      <div
+                        style={{
+                          fontSize: "1.35rem",
+                          fontWeight: "800",
+                          color: bill.isReimbursed ? "#2ecc71" : "#ff3b30",
+                          flexShrink: 0,
+                          textAlign: "right",
+                          lineHeight: 1.1,
+                          letterSpacing: "0.3px",
+                        }}
+                      >
+                        ₹{bill.amount}
+                      </div>
+                    </div>
+
+                    {/* Sub-row: Reason on Left, Status Badge on Right */}
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                        gap: "10px",
+                        marginTop: "8px",
+                      }}
+                    >
+                      <p
+                        style={{
+                          margin: 0,
+                          fontSize: "0.92rem",
+                          color: "#ddd",
+                          wordBreak: "break-word",
+                          flex: 1,
+                        }}
+                      >
+                        {bill.reason || "No description provided"}
+                      </p>
+
+                      <span
+                        style={{
+                          ...(bill.isReimbursed
+                            ? styles.badgeReimbursed
+                            : styles.badgePending),
+                          flexShrink: 0,
+                        }}
+                      >
+                        {bill.isReimbursed ? "✓ Reimbursed" : "⏳ Pending"}
+                      </span>
                     </div>
 
                     <div
@@ -1222,17 +1667,26 @@ export default function BillsHistory({
                     >
                       <span style={{ fontSize: "0.76rem", color: "#777" }}>
                         {bill.timestamp
-                          ? new Date(bill.timestamp).toLocaleDateString("en-GB", {
-                              day: "2-digit",
-                              month: "short",
-                              year: "numeric",
-                            })
+                          ? new Date(bill.timestamp).toLocaleDateString(
+                              "en-GB",
+                              {
+                                day: "2-digit",
+                                month: "short",
+                                year: "numeric",
+                              },
+                            )
                           : ""}
                         {bill.gstCategory ? ` · ${bill.gstCategory}` : ""}
                         {bill.id ? ` · Row #${bill.id}` : ""}
                       </span>
 
-                      <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
+                      <div
+                        style={{
+                          display: "flex",
+                          gap: "8px",
+                          alignItems: "center",
+                        }}
+                      >
                         {bill.fileUrl && bill.fileUrl.startsWith("http") && (
                           <a
                             href={bill.fileUrl}

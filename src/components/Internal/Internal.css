@@ -83,3 +83,10 @@
   color: #eb0028;
   font-weight: 700;
 }
+
+/* Fallback styling for select & options across Internal portal */
+select,
+select option {
+  background-color: #12131a !important;
+  color: #ffffff !important;
+}
