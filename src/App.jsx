@@ -18,6 +18,7 @@ const AvantGarde = lazy(() => import("./pages/AvantGarde"));
 const Team = lazy(() => import("./pages/Team"));
 const TeamGrid = lazy(() => import("./sections/Team/TeamGrid"));
 const TakeTheLeap = lazy(() => import("./pages/TakeTheLeap"));
+const Partners = lazy(() => import("./pages/Partners"));
 const Drishti = lazy(() => import("./pages/Drishti"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const InternalBillsPage = lazy(() => import("./pages/InternalBillsPage"));
@@ -80,6 +81,7 @@ function App() {
               <Route path="/events/punarutthan" element={<Punarutthan />} />
               <Route path="/events/avant-garde" element={<AvantGarde />} />
               <Route path="/events/take-the-leap" element={<TakeTheLeap />} />
+              <Route path="/partners" element={<Partners />} />
 
               <Route path="/team" element={<NewTeam />} />
               <Route path="/team-2025" element={<Team />} />

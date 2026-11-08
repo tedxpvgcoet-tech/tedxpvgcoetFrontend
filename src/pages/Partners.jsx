@@ -20,7 +20,7 @@ const currentSponsors = [
   { name: "Elite Enterprises", logo: eliteLogo },
   { name: "Delval", logo: delvalLogo },
   { name: "Nikol EV", logo: nikolEVLogo },
-  { name: "Colombian Brew", logo: colombianBrewLogo },
+  { name: "Colombian Brew Coffee", logo: colombianBrewLogo },
   { name: "Guru Krupa Budhani Bros. Wafers", logo: budhaniLogo },
   { name: "Amhi Pohekar", logo: amhiPohekarLogo },
 ];
@@ -35,7 +35,7 @@ const previousSponsors = [
     logo: require("../assets/sponsors/malpanis.webp"),
   },
   {
-    name: "Domino's",
+    name: "Domino's Pizza",
     logo: require("../assets/sponsors/dominos.webp"),
   },
 ];
@@ -107,7 +107,7 @@ const Partners = () => {
       </div>
 
       <div id="previous-sponsor-feedback">
-        <SponsorFeedbackSection />
+        <SponsorFeedbackSection variant="partners" />
       </div>
 
       <FooterSection />

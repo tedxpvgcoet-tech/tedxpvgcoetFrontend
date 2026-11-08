@@ -34,7 +34,7 @@ const sponsorFeedback = [
       "Our products received good visibility during the event, helping us reach a young and engaged audience.",
   },
   {
-    name: "Domino's",
+    name: "Domino's Pizza",
     logo: dominosLogo,
     feedback:
       "A smooth association with clear communication and well-coordinated execution throughout the event.",
@@ -53,9 +53,14 @@ const sponsorFeedback = [
   },
 ];
 
-const SponsorFeedbackSection = () => {
+const SponsorFeedbackSection = ({ variant }) => {
+  const sectionClassName =
+    variant === "partners"
+      ? "sponsor-feedback-section sponsor-feedback-section--partners"
+      : "sponsor-feedback-section";
+
   return (
-    <section className="sponsor-feedback-section">
+    <section className={sectionClassName}>
       <div className="ui-glass-card sponsor-feedback-card">
         <div className="ui-header-row">
           <div className="ui-header-title-group">
@@ -85,7 +90,6 @@ const SponsorFeedbackSection = () => {
                 <blockquote className="sponsor-feedback-quote">
                   <span className="sponsor-feedback-quote-mark">“</span>
                   <p>{sponsor.feedback}</p>
-                  <span className="sponsor-feedback-quote-mark closing">”</span>
                 </blockquote>
               </div>
             </article>

@@ -98,11 +98,11 @@
 .partners-content {
   max-width: 1240px;
   margin: 0 auto;
-  padding: 20px 24px 80px;
+  padding: 20px 24px 0;
 }
 
 .partners-sponsor-section {
-  padding: 60px 0;
+  padding: 60px 0 28px;
   scroll-margin-top: 90px;
 }
 
@@ -115,11 +115,12 @@
 
 .partners-sponsor-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 22px;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: clamp(16px, 2vw, 24px);
 }
 
 .partners-sponsor-card {
+  grid-column: span 2;
   min-width: 0;
   padding: 22px 18px;
   display: flex;
@@ -169,8 +170,22 @@
   overflow-wrap: anywhere;
 }
 
+/* Place the last three cards in the gaps between the four cards above. */
+.partners-sponsor-card:nth-child(9) {
+  grid-column: 2 / span 2;
+}
+
+.partners-sponsor-card:nth-child(10) {
+  grid-column: 4 / span 2;
+}
+
+.partners-sponsor-card:nth-child(11) {
+  grid-column: 6 / span 2;
+}
+
 #previous-sponsor-feedback {
   scroll-margin-top: 90px;
+  padding-top: clamp(28px, 4vw, 52px);
 }
 
 #previous-sponsor-feedback .sponsor-feedback-section {
@@ -180,7 +195,19 @@
 
 @media (max-width: 1000px) {
   .partners-sponsor-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .partners-sponsor-card:nth-child(n) {
+    grid-column: span 2;
+  }
+
+  .partners-sponsor-card:nth-child(10) {
+    grid-column: 2 / span 2;
+  }
+
+  .partners-sponsor-card:nth-child(11) {
+    grid-column: 4 / span 2;
   }
 }
 
@@ -202,16 +229,24 @@
   }
 
   .partners-content {
-    padding: 10px 18px 50px;
+    padding: 10px 18px 0;
   }
 
   .partners-sponsor-section {
-    padding: 42px 0;
+    padding: 42px 0 24px;
   }
 
   .partners-sponsor-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 14px;
+  }
+
+  .partners-sponsor-card:nth-child(n) {
+    grid-column: span 2;
+  }
+
+  .partners-sponsor-card:nth-child(11) {
+    grid-column: 2 / span 2;
   }
 
   .partners-sponsor-card {
@@ -232,6 +267,10 @@
 @media (max-width: 380px) {
   .partners-sponsor-grid {
     grid-template-columns: 1fr;
+  }
+
+  .partners-sponsor-card:nth-child(n) {
+    grid-column: auto;
   }
 
   .partners-logo-wrap {

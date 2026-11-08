@@ -126,6 +126,13 @@ const Navbar = () => {
           Events
         </Link>
         <Link
+          to="/partners"
+          className="nav-dropdown-item"
+          onClick={() => setMenuOpen(false)}
+        >
+          Partners
+        </Link>
+        <Link
           to="/past-talks"
           className="nav-dropdown-item"
           onClick={() => setMenuOpen(false)}

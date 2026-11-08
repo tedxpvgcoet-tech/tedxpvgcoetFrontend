@@ -83,6 +83,7 @@ const Punarutthan = () => {
       <SponsorsSection
         className="punarutthan-sponsors"
         sponsors={punarutthanSponsors}
+        compact
       />
       <PunarutthanTeamSection />
     </>

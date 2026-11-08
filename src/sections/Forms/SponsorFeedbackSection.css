@@ -135,10 +135,101 @@
   margin-right: 3px;
 }
 
-.sponsor-feedback-quote-mark.closing {
-  margin-left: 3px;
-  margin-right: 0;
-  vertical-align: -0.55rem;
+/* Partners page: a restrained editorial frame with horizontal logo-and-quote cards. */
+.sponsor-feedback-section--partners {
+  padding: 0 20px clamp(64px, 8vw, 96px);
+}
+
+.sponsor-feedback-section--partners .sponsor-feedback-card {
+  max-width: 1240px;
+  padding: clamp(28px, 4vw, 52px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 24px;
+  background:
+    radial-gradient(
+      ellipse at 12% 0%,
+      rgba(232, 27, 42, 0.12),
+      transparent 42%
+    ),
+    linear-gradient(145deg, rgba(24, 24, 27, 0.97), rgba(10, 10, 12, 0.98));
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.36),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.sponsor-feedback-section--partners .ui-header-row {
+  margin-bottom: clamp(28px, 4vw, 42px);
+}
+
+.sponsor-feedback-section--partners .ui-gradient-title {
+  margin-bottom: 12px;
+}
+
+.sponsor-feedback-section--partners .ui-subtitle {
+  max-width: 560px;
+}
+
+.sponsor-feedback-section--partners .sponsor-feedback-list {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  gap: clamp(14px, 1.8vw, 22px);
+}
+
+.sponsor-feedback-section--partners .sponsor-feedback-item:nth-child(n) {
+  grid-column: auto;
+}
+
+.sponsor-feedback-section--partners .sponsor-feedback-item {
+  display: flex;
+  align-items: center;
+  min-height: 176px;
+  margin: 0;
+  padding: clamp(14px, 1.7vw, 20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  background: linear-gradient(
+    150deg,
+    rgba(255, 255, 255, 0.045),
+    rgba(255, 255, 255, 0.015)
+  );
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.2);
+}
+
+.sponsor-feedback-section--partners .sponsor-feedback-item:nth-child(7) {
+  grid-column: 2;
+}
+
+.sponsor-feedback-section--partners .sponsor-feedback-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: clamp(12px, 1.5vw, 18px);
+  height: auto;
+}
+
+.sponsor-feedback-section--partners .sponsor-feedback-logo-wrapper {
+  flex: 0 0 clamp(82px, 8vw, 104px);
+  width: clamp(82px, 8vw, 104px);
+  height: 76px;
+  padding: 8px;
+}
+
+.sponsor-feedback-section--partners .sponsor-feedback-quote {
+  min-width: 0;
+  padding: 8px 0 8px 14px;
+}
+
+.sponsor-feedback-section--partners .sponsor-feedback-quote-mark {
+  display: block;
+  margin: 0 0 8px;
+  font-size: 1.7rem;
+  line-height: 0.8;
+  vertical-align: baseline;
+}
+
+.sponsor-feedback-section--partners .sponsor-feedback-quote p {
+  font-size: clamp(0.8rem, 0.9vw, 0.9rem);
+  line-height: 1.55;
 }
 
 /* Tablet */
@@ -155,6 +246,20 @@
   .sponsor-feedback-item:nth-child(n) {
     grid-column: auto;
   }
+
+  .sponsor-feedback-section--partners .sponsor-feedback-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .sponsor-feedback-section--partners .sponsor-feedback-item:nth-child(n) {
+    grid-column: auto;
+  }
+
+  .sponsor-feedback-section--partners .sponsor-feedback-item:nth-child(7) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: calc((100% - 18px) / 2);
+  }
 }
 
 /* Mobile */
@@ -167,6 +272,11 @@
     padding: 28px 18px;
   }
 
+  .sponsor-feedback-section--partners .sponsor-feedback-card {
+    padding: 28px 18px;
+    border-radius: 18px;
+  }
+
   .sponsor-feedback-list {
     grid-template-columns: 1fr;
     gap: 16px;
@@ -174,6 +284,12 @@
 
   .sponsor-feedback-item:nth-child(n) {
     grid-column: auto;
+  }
+
+  .sponsor-feedback-section--partners .sponsor-feedback-item:nth-child(7) {
+    grid-column: auto;
+    justify-self: stretch;
+    width: auto;
   }
 
   .sponsor-feedback-item {
@@ -187,5 +303,18 @@
   .sponsor-feedback-quote p {
     font-size: 0.88rem;
     line-height: 1.5;
+  }
+}
+
+@media (max-width: 480px) {
+  .sponsor-feedback-section--partners .sponsor-feedback-content {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .sponsor-feedback-section--partners .sponsor-feedback-logo-wrapper {
+    flex-basis: auto;
+    width: 100%;
+    height: 68px;
   }
 }
