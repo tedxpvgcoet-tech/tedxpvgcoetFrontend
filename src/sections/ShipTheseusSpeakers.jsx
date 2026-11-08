@@ -1,7 +1,6 @@
 import React, {
   useCallback,
   useEffect,
-  useLayoutEffect,
   useRef,
   useState,
 } from "react";
@@ -165,103 +164,42 @@ const speakers = [
 
 const ShipTheseusSpeakers = () => {
   const [activeSpeaker, setActiveSpeaker] = useState(null);
-  const [isModal, setIsModal] = useState(false);
-  const [panelPosition, setPanelPosition] = useState({ left: 12, top: 12 });
   const triggerRefs = useRef([]);
-  const panelRef = useRef(null);
   const closeButtonRef = useRef(null);
 
   const closeProfile = useCallback(() => {
     setActiveSpeaker(null);
-    setIsModal(false);
   }, []);
 
   const openProfile = (index) => {
-    const useModal = window.matchMedia(
-      "(hover: none), (pointer: coarse)",
-    ).matches;
     setActiveSpeaker(index);
-    setIsModal(useModal);
   };
 
   useEffect(() => {
     if (activeSpeaker === null) return undefined;
-    if (isModal) closeButtonRef.current?.focus();
+
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const focusTimeout = setTimeout(() => {
+      closeButtonRef.current?.focus();
+    }, 50);
+
     const handleKeyDown = (event) => {
       if (event.key === "Escape") {
         event.preventDefault();
         closeProfile();
         triggerRefs.current[activeSpeaker]?.focus();
-        return;
       }
-
-      if (!isModal || event.key !== "Tab" || !panelRef.current) return;
-      const focusable = panelRef.current.querySelectorAll(
-        "a[href], button:not([disabled])",
-      );
-      if (!focusable.length) return;
-      const first = focusable[0];
-      const last = focusable[focusable.length - 1];
-
-      if (event.shiftKey && document.activeElement === first) {
-        event.preventDefault();
-        last.focus();
-      } else if (!event.shiftKey && document.activeElement === last) {
-        event.preventDefault();
-        first.focus();
-      }
-    };
-
-    const handlePointerDown = (event) => {
-      if (
-        isModal ||
-        panelRef.current?.contains(event.target) ||
-        triggerRefs.current.some((trigger) => trigger?.contains(event.target))
-      ) {
-        return;
-      }
-      closeProfile();
     };
 
     document.addEventListener("keydown", handleKeyDown);
-    document.addEventListener("pointerdown", handlePointerDown);
     return () => {
+      clearTimeout(focusTimeout);
+      document.body.style.overflow = originalOverflow;
       document.removeEventListener("keydown", handleKeyDown);
-      document.removeEventListener("pointerdown", handlePointerDown);
     };
-  }, [activeSpeaker, closeProfile, isModal]);
-
-  useLayoutEffect(() => {
-    if (activeSpeaker === null || isModal) return undefined;
-    const updatePosition = () => {
-      const trigger = triggerRefs.current[activeSpeaker];
-      const panel = panelRef.current;
-      if (!trigger || !panel) return;
-
-      const rect = trigger.getBoundingClientRect();
-      const panelRect = panel.getBoundingClientRect();
-      const margin = 12;
-      const left = Math.max(
-        margin,
-        Math.min(rect.left, window.innerWidth - panelRect.width - margin),
-      );
-      const below = rect.bottom + 12;
-      const top =
-        below + panelRect.height <= window.innerHeight - margin
-          ? below
-          : Math.max(margin, rect.top - panelRect.height - 12);
-
-      setPanelPosition({ left, top });
-    };
-
-    updatePosition();
-    window.addEventListener("resize", updatePosition);
-    window.addEventListener("scroll", updatePosition, true);
-    return () => {
-      window.removeEventListener("resize", updatePosition);
-      window.removeEventListener("scroll", updatePosition, true);
-    };
-  }, [activeSpeaker, isModal]);
+  }, [activeSpeaker, closeProfile]);
 
   const active = activeSpeaker === null ? null : speakers[activeSpeaker];
 
@@ -279,7 +217,19 @@ const ShipTheseusSpeakers = () => {
       <div className="theseus-speakers__grid">
         {speakers.map((speaker, index) => (
           <article className="theseus-speakers__card" key={speaker.name}>
-            <div className="theseus-speakers__card-poster">
+            <div
+              className="theseus-speakers__card-poster"
+              onClick={() => openProfile(index)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  openProfile(index);
+                }
+              }}
+              aria-label={`View profile for ${speaker.name}`}
+            >
               <span className="theseus-speakers__category">
                 {speaker.title}
               </span>
@@ -320,30 +270,25 @@ const ShipTheseusSpeakers = () => {
 
       {active &&
         createPortal(
-          <>
-            {isModal && (
-              <button
-                type="button"
-                className="theseus-speakers__backdrop"
-                aria-label="Close speaker profile"
-                onClick={() => {
-                  closeProfile();
-                  triggerRefs.current[activeSpeaker]?.focus();
-                }}
-              />
-            )}
+          <div
+            className="theseus-speakers__modal-overlay"
+            onClick={() => {
+              closeProfile();
+              triggerRefs.current[activeSpeaker]?.focus();
+            }}
+            role="presentation"
+          >
             <section
-              ref={panelRef}
-              className={`theseus-speakers__profile${isModal ? " theseus-speakers__profile--modal" : ""}`}
-              style={isModal ? undefined : panelPosition}
+              className="theseus-speakers__modal-card"
               role="dialog"
-              aria-modal={isModal || undefined}
-              aria-labelledby={`theseus-speaker-name-${activeSpeaker}`}
+              aria-modal="true"
+              aria-labelledby="theseus-speaker-name"
+              onClick={(e) => e.stopPropagation()}
             >
               <button
                 ref={closeButtonRef}
                 type="button"
-                className="theseus-speakers__profile-close"
+                className="theseus-speakers__modal-close"
                 aria-label={`Close ${active.name} profile`}
                 onClick={() => {
                   closeProfile();
@@ -352,48 +297,63 @@ const ShipTheseusSpeakers = () => {
               >
                 <FaTimes aria-hidden="true" focusable="false" />
               </button>
-              <div className="theseus-speakers__profile-image-wrap">
-                <img
-                  className="theseus-speakers__profile-image"
-                  src={active.image}
-                  alt=""
-                  decoding="async"
-                />
+
+              <div className="theseus-speakers__modal-image-pane">
+                <div
+                  className={`theseus-speakers__modal-image-frame${
+                    active.trimSideBars
+                      ? " theseus-speakers__modal-image-frame--trimmed"
+                      : ""
+                  }`}
+                >
+                  <img
+                    src={active.image}
+                    alt={active.name}
+                    className="theseus-speakers__modal-image"
+                    decoding="async"
+                  />
+                </div>
               </div>
-              <div className="theseus-speakers__profile-content">
-                <p className="theseus-speakers__profile-eyebrow">
+
+              <div className="theseus-speakers__modal-content">
+                <div className="theseus-speakers__modal-tag">
                   {active.title}
-                </p>
+                </div>
                 <h3
-                  className="theseus-speakers__profile-name"
-                  id={`theseus-speaker-name-${activeSpeaker}`}
+                  className="theseus-speakers__modal-name"
+                  id="theseus-speaker-name"
                 >
                   {active.name}
                 </h3>
-                <p className="theseus-speakers__profile-biography">
-                  {active.biography}
-                </p>
-                <nav
-                  className="theseus-speakers__profile-links"
-                  aria-label={`${active.name} social and professional links`}
-                >
-                  {active.links.map(({ label, href, icon: Icon }) => (
-                    <a
-                      key={label}
-                      href={href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`${active.name} — ${label}`}
-                      title={label}
-                      onClick={(event) => event.stopPropagation()}
-                    >
-                      <Icon aria-hidden="true" focusable="false" />
-                    </a>
-                  ))}
-                </nav>
+                <div className="theseus-speakers__modal-divider" />
+                <div className="theseus-speakers__modal-bio">
+                  <p>{active.biography}</p>
+                </div>
+                {active.links && active.links.length > 0 && (
+                  <div className="theseus-speakers__modal-links">
+                    <span className="theseus-speakers__modal-links-label">
+                      Connect
+                    </span>
+                    <div className="theseus-speakers__modal-links-group">
+                      {active.links.map(({ label, href, icon: Icon }) => (
+                        <a
+                          key={label}
+                          href={href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="theseus-speakers__modal-link"
+                          aria-label={`${active.name} — ${label}`}
+                        >
+                          <Icon aria-hidden="true" focusable="false" />
+                          <span>{label}</span>
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             </section>
-          </>,
+          </div>,
           document.body,
         )}
     </section>
