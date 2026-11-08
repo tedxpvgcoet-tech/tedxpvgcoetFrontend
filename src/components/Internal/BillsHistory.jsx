@@ -5,6 +5,7 @@ import React, {
   useRef,
   useState,
 } from "react";
+import { createPortal } from "react-dom";
 import { Helmet } from "react-helmet";
 import bgVideo from "../../assets/backgrounds/background.mp4";
 
@@ -475,6 +476,26 @@ export default function BillsHistory({
   const [queryInput, setQueryInput] = useState("");
   const [sendingQuery, setSendingQuery] = useState(false);
 
+  // Photo Proxy Modal state
+  const [photoModal, setPhotoModal] = useState({
+    isOpen: false,
+    bill: null,
+    loading: false,
+    data: null,
+    error: "",
+  });
+
+  // Lock background scroll when any modal is open
+  useEffect(() => {
+    if (queryModalBill || photoModal.isOpen) {
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = originalOverflow;
+      };
+    }
+  }, [queryModalBill, photoModal.isOpen]);
+
   // Treasurer Filters
   const [filterMember, setFilterMember] = useState("");
   const [filterTeam, setFilterTeam] = useState("");
@@ -727,6 +748,58 @@ export default function BillsHistory({
     } finally {
       setSendingQuery(false);
     }
+  };
+
+  // Open & Load Receipt Photo via Backend Proxy (On Demand)
+  const openPhotoModal = async (bill) => {
+    if (!bill || !bill.fileUrl) return;
+    setPhotoModal({
+      isOpen: true,
+      bill,
+      loading: true,
+      data: null,
+      error: "",
+    });
+
+    try {
+      const response = await fetch(`${getApiUrl()}/bills/photo-proxy`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${authToken}`,
+        },
+        body: JSON.stringify({ fileUrl: bill.fileUrl }),
+      });
+      const result = await response.json();
+      if (!response.ok || !result.success) {
+        throw new Error(result.error || "Could not load receipt photo.");
+      }
+      setPhotoModal({
+        isOpen: true,
+        bill,
+        loading: false,
+        data: result,
+        error: "",
+      });
+    } catch (photoErr) {
+      setPhotoModal({
+        isOpen: true,
+        bill,
+        loading: false,
+        data: null,
+        error: photoErr.message || "Failed to load receipt photo.",
+      });
+    }
+  };
+
+  const closePhotoModal = () => {
+    setPhotoModal({
+      isOpen: false,
+      bill: null,
+      loading: false,
+      data: null,
+      error: "",
+    });
   };
 
   // Calculations for Personal Bills
@@ -1332,20 +1405,22 @@ export default function BillsHistory({
                       </button>
 
                       {bill.fileUrl && bill.fileUrl.startsWith("http") && (
-                        <a
-                          href={bill.fileUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
+                        <button
+                          type="button"
+                          onClick={() => openPhotoModal(bill)}
                           style={{
                             ...styles.button,
                             fontSize: "0.78rem",
                             padding: "6px 12px",
-                            textDecoration: "none",
-                            color: "#ccc",
+                            cursor: "pointer",
+                            color: "#eee",
+                            display: "inline-flex",
+                            alignItems: "center",
+                            gap: "5px",
                           }}
                         >
-                          ↗ View Bill Image
-                        </a>
+                          👁️ View Photo
+                        </button>
                       )}
                     </div>
                   </article>
@@ -1809,19 +1884,21 @@ export default function BillsHistory({
                         }}
                       >
                         {bill.fileUrl && bill.fileUrl.startsWith("http") && (
-                          <a
-                            href={bill.fileUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
+                          <button
+                            type="button"
+                            onClick={() => openPhotoModal(bill)}
                             style={{
                               ...styles.button,
                               fontSize: "0.74rem",
                               padding: "5px 10px",
-                              textDecoration: "none",
+                              cursor: "pointer",
+                              display: "inline-flex",
+                              alignItems: "center",
+                              gap: "4px",
                             }}
                           >
-                            ↗ Bill Photo
-                          </a>
+                            👁️ View Photo
+                          </button>
                         )}
 
                         {/* Query Member Action */}
@@ -1905,260 +1982,546 @@ export default function BillsHistory({
           )}
 
           {/* ─── Query Modal ────────────────────────────────────────────── */}
-          {queryModalBill && (
-            <div
-              style={{
-                position: "fixed",
-                inset: 0,
-                zIndex: 9999,
-                background: "rgba(0, 0, 0, 0.75)",
-                backdropFilter: "blur(8px)",
-                WebkitBackdropFilter: "blur(8px)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                padding: "16px",
-                animation: "fadeIn 0.2s ease",
-              }}
-              onClick={() => {
-                if (!sendingQuery) {
-                  setQueryModalBill(null);
-                  setQueryInput("");
-                }
-              }}
-            >
+          {queryModalBill &&
+            createPortal(
               <div
                 style={{
-                  maxWidth: 500,
-                  width: "100%",
-                  background: "rgba(18, 19, 26, 0.98)",
-                  border: "1px solid rgba(255, 255, 255, 0.16)",
-                  borderRadius: 14,
-                  padding: "24px",
-                  boxShadow: "0 24px 60px rgba(0, 0, 0, 0.8)",
-                  boxSizing: "border-box",
-                  color: "#fff",
-                  position: "relative",
+                  position: "fixed",
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  width: "100vw",
+                  height: "100vh",
+                  zIndex: 999999,
+                  background: "rgba(0, 0, 0, 0.75)",
+                  backdropFilter: "blur(8px)",
+                  WebkitBackdropFilter: "blur(8px)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  padding: "16px",
+                  animation: "fadeIn 0.2s ease",
                 }}
-                onClick={(e) => e.stopPropagation()}
+                onClick={() => {
+                  if (!sendingQuery) {
+                    setQueryModalBill(null);
+                    setQueryInput("");
+                  }
+                }}
               >
-                {/* Modal Header */}
                 <div
                   style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    marginBottom: "16px",
+                    maxWidth: 500,
+                    width: "100%",
+                    background: "rgba(18, 19, 26, 0.98)",
+                    border: "1px solid rgba(255, 255, 255, 0.16)",
+                    borderRadius: 14,
+                    padding: "24px",
+                    boxShadow: "0 24px 60px rgba(0, 0, 0, 0.8)",
+                    boxSizing: "border-box",
+                    color: "#fff",
+                    position: "relative",
                   }}
+                  onClick={(e) => e.stopPropagation()}
                 >
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "8px",
-                    }}
-                  >
-                    <span
-                      style={{
-                        display: "inline-flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        width: 28,
-                        height: 28,
-                        borderRadius: "50%",
-                        background: "rgba(235, 0, 40, 0.18)",
-                        border: "1px solid rgba(235, 0, 40, 0.4)",
-                        color: "#ff4d4d",
-                        fontSize: "0.9rem",
-                      }}
-                    >
-                      💬
-                    </span>
-                    <h3
-                      style={{
-                        margin: 0,
-                        fontSize: "1.1rem",
-                        fontWeight: "700",
-                      }}
-                    >
-                      Query Member • Row #{queryModalBill.id}
-                    </h3>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setQueryModalBill(null);
-                      setQueryInput("");
-                    }}
-                    disabled={sendingQuery}
-                    style={{
-                      background: "transparent",
-                      border: "none",
-                      color: "#aaa",
-                      fontSize: "1.2rem",
-                      cursor: "pointer",
-                      padding: "4px 8px",
-                    }}
-                  >
-                    ✕
-                  </button>
-                </div>
-
-                {/* Bill Info Card */}
-                <div
-                  style={{
-                    background: "rgba(255, 255, 255, 0.04)",
-                    border: "1px solid rgba(255, 255, 255, 0.08)",
-                    borderRadius: 8,
-                    padding: "10px 14px",
-                    marginBottom: "16px",
-                    fontSize: "0.85rem",
-                  }}
-                >
+                  {/* Modal Header */}
                   <div
                     style={{
                       display: "flex",
                       justifyContent: "space-between",
                       alignItems: "center",
-                      marginBottom: "4px",
+                      marginBottom: "16px",
                     }}
                   >
-                    <strong>
-                      {queryModalBill.name}{" "}
-                      <span
-                        style={{
-                          fontSize: "0.74rem",
-                          color: "#888",
-                          fontWeight: "normal",
-                        }}
-                      >
-                        ({queryModalBill.team})
-                      </span>
-                    </strong>
-                    <span
+                    <div
                       style={{
-                        fontSize: "1.05rem",
-                        fontWeight: "800",
-                        color: "#ff4d4d",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "8px",
                       }}
                     >
-                      ₹{queryModalBill.amount}
-                    </span>
-                  </div>
-                  <div style={{ color: "#aaa", fontSize: "0.82rem" }}>
-                    {queryModalBill.reason}
-                  </div>
-                </div>
-
-                {queryModalBill.query && (
-                  <div
-                    style={{
-                      background: "rgba(245, 158, 11, 0.1)",
-                      border: "1px solid rgba(245, 158, 11, 0.3)",
-                      borderRadius: 8,
-                      padding: "8px 12px",
-                      marginBottom: "14px",
-                      fontSize: "0.78rem",
-                      color: "#fde68a",
-                    }}
-                  >
-                    <strong>Existing query: </strong>
-                    {queryModalBill.query}
-                  </div>
-                )}
-
-                {/* Textarea Form */}
-                <form onSubmit={handleSendQuery}>
-                  <label
-                    style={{
-                      display: "block",
-                      fontSize: "0.75rem",
-                      textTransform: "uppercase",
-                      fontWeight: "600",
-                      color: "#aaa",
-                      marginBottom: "6px",
-                    }}
-                  >
-                    Query / Message to Member:
-                  </label>
-                  <textarea
-                    rows={4}
-                    value={queryInput}
-                    onChange={(e) => setQueryInput(e.target.value)}
-                    placeholder="e.g. Please share the GST invoice, or who was this taxi ride for?"
-                    required
-                    style={{
-                      width: "100%",
-                      boxSizing: "border-box",
-                      background: "rgba(255, 255, 255, 0.06)",
-                      border: "1px solid rgba(255, 255, 255, 0.18)",
-                      borderRadius: 8,
-                      padding: "10px 12px",
-                      color: "#fff",
-                      fontSize: "0.88rem",
-                      fontFamily: '"Inter", sans-serif',
-                      outline: "none",
-                      resize: "vertical",
-                      marginBottom: "12px",
-                    }}
-                  />
-
-                  <div
-                    style={{
-                      fontSize: "0.73rem",
-                      color: "#888",
-                      marginBottom: "16px",
-                      lineHeight: 1.4,
-                    }}
-                  >
-                    ⚡ An email alert will be sent to{" "}
-                    <strong>{queryModalBill.name}</strong> with this note and
-                    bill details. A copy is CC&apos;d to Jagdish, Afaan, and
-                    Ritika, and logged to Column K in Google Sheets.
-                  </div>
-
-                  {/* Action Buttons */}
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "flex-end",
-                      gap: "10px",
-                    }}
-                  >
+                      <span
+                        style={{
+                          display: "inline-flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          width: 28,
+                          height: 28,
+                          borderRadius: "50%",
+                          background: "rgba(235, 0, 40, 0.18)",
+                          border: "1px solid rgba(235, 0, 40, 0.4)",
+                          color: "#ff4d4d",
+                          fontSize: "0.9rem",
+                        }}
+                      >
+                        💬
+                      </span>
+                      <h3
+                        style={{
+                          margin: 0,
+                          fontSize: "1.1rem",
+                          fontWeight: "700",
+                        }}
+                      >
+                        Query Member • Row #{queryModalBill.id}
+                      </h3>
+                    </div>
                     <button
                       type="button"
-                      style={styles.button}
-                      disabled={sendingQuery}
                       onClick={() => {
                         setQueryModalBill(null);
                         setQueryInput("");
                       }}
-                    >
-                      Cancel
-                    </button>
-                    <button
-                      type="submit"
-                      disabled={sendingQuery || !queryInput.trim()}
+                      disabled={sendingQuery}
                       style={{
-                        ...styles.button,
-                        background:
-                          "linear-gradient(135deg, #e81b2a 0%, #a80000 100%)",
+                        background: "transparent",
                         border: "none",
-                        fontWeight: "700",
-                        cursor:
-                          sendingQuery || !queryInput.trim()
-                            ? "not-allowed"
-                            : "pointer",
-                        opacity: sendingQuery || !queryInput.trim() ? 0.6 : 1,
+                        color: "#aaa",
+                        fontSize: "1.2rem",
+                        cursor: "pointer",
+                        padding: "4px 8px",
                       }}
                     >
-                      {sendingQuery ? "Sending Query…" : "💬 Send Email Alert"}
+                      ✕
                     </button>
                   </div>
-                </form>
-              </div>
-            </div>
-          )}
+
+                  {/* Bill Info Card */}
+                  <div
+                    style={{
+                      background: "rgba(255, 255, 255, 0.04)",
+                      border: "1px solid rgba(255, 255, 255, 0.08)",
+                      borderRadius: 8,
+                      padding: "10px 14px",
+                      marginBottom: "16px",
+                      fontSize: "0.85rem",
+                    }}
+                  >
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                        marginBottom: "4px",
+                      }}
+                    >
+                      <strong>
+                        {queryModalBill.name}{" "}
+                        <span
+                          style={{
+                            fontSize: "0.74rem",
+                            color: "#888",
+                            fontWeight: "normal",
+                          }}
+                        >
+                          ({queryModalBill.team})
+                        </span>
+                      </strong>
+                      <span
+                        style={{
+                          fontSize: "1.05rem",
+                          fontWeight: "800",
+                          color: "#ff4d4d",
+                        }}
+                      >
+                        ₹{queryModalBill.amount}
+                      </span>
+                    </div>
+                    <div style={{ color: "#aaa", fontSize: "0.82rem" }}>
+                      {queryModalBill.reason}
+                    </div>
+                  </div>
+
+                  {queryModalBill.query && (
+                    <div
+                      style={{
+                        background: "rgba(245, 158, 11, 0.1)",
+                        border: "1px solid rgba(245, 158, 11, 0.3)",
+                        borderRadius: 8,
+                        padding: "8px 12px",
+                        marginBottom: "14px",
+                        fontSize: "0.78rem",
+                        color: "#fde68a",
+                      }}
+                    >
+                      <strong>Existing query: </strong>
+                      {queryModalBill.query}
+                    </div>
+                  )}
+
+                  {/* Textarea Form */}
+                  <form onSubmit={handleSendQuery}>
+                    <label
+                      style={{
+                        display: "block",
+                        fontSize: "0.75rem",
+                        textTransform: "uppercase",
+                        fontWeight: "600",
+                        color: "#aaa",
+                        marginBottom: "6px",
+                      }}
+                    >
+                      Query / Message to Member:
+                    </label>
+                    <textarea
+                      rows={4}
+                      value={queryInput}
+                      onChange={(e) => setQueryInput(e.target.value)}
+                      placeholder="e.g. Please share the GST invoice, or who was this taxi ride for?"
+                      required
+                      style={{
+                        width: "100%",
+                        boxSizing: "border-box",
+                        background: "rgba(255, 255, 255, 0.06)",
+                        border: "1px solid rgba(255, 255, 255, 0.18)",
+                        borderRadius: 8,
+                        padding: "10px 12px",
+                        color: "#fff",
+                        fontSize: "0.88rem",
+                        fontFamily: '"Inter", sans-serif',
+                        outline: "none",
+                        resize: "vertical",
+                        marginBottom: "12px",
+                      }}
+                    />
+
+                    <div
+                      style={{
+                        fontSize: "0.73rem",
+                        color: "#888",
+                        marginBottom: "16px",
+                        lineHeight: 1.4,
+                      }}
+                    >
+                      ⚡ An email alert will be sent to{" "}
+                      <strong>{queryModalBill.name}</strong> with this note and
+                      bill details. A copy is CC&apos;d to Jagdish, Afaan, and
+                      Ritika, and logged to Column K in Google Sheets.
+                    </div>
+
+                    {/* Action Buttons */}
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "flex-end",
+                        gap: "10px",
+                      }}
+                    >
+                      <button
+                        type="button"
+                        style={styles.button}
+                        disabled={sendingQuery}
+                        onClick={() => {
+                          setQueryModalBill(null);
+                          setQueryInput("");
+                        }}
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        type="submit"
+                        disabled={sendingQuery || !queryInput.trim()}
+                        style={{
+                          ...styles.button,
+                          background:
+                            "linear-gradient(135deg, #e81b2a 0%, #a80000 100%)",
+                          border: "none",
+                          fontWeight: "700",
+                          cursor:
+                            sendingQuery || !queryInput.trim()
+                              ? "not-allowed"
+                              : "pointer",
+                          opacity: sendingQuery || !queryInput.trim() ? 0.6 : 1,
+                        }}
+                      >
+                        {sendingQuery
+                          ? "Sending Query…"
+                          : "💬 Send Email Alert"}
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>,
+              document.body,
+            )}
+
+          {/* PHOTO PROXY MODAL (VIEW RECEIPT) */}
+          {photoModal.isOpen &&
+            createPortal(
+              <div
+                style={{
+                  position: "fixed",
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  width: "100vw",
+                  height: "100vh",
+                  background: "rgba(0, 0, 0, 0.88)",
+                  backdropFilter: "blur(8px)",
+                  WebkitBackdropFilter: "blur(8px)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  zIndex: 100000,
+                  padding: "16px",
+                  boxSizing: "border-box",
+                }}
+                onClick={(e) => {
+                  if (e.target === e.currentTarget) closePhotoModal();
+                }}
+              >
+                <div
+                  style={{
+                    background: "#101116",
+                    border: "1px solid rgba(255, 255, 255, 0.15)",
+                    borderRadius: "16px",
+                    width: "100%",
+                    maxWidth: "760px",
+                    maxHeight: "92vh",
+                    display: "flex",
+                    flexDirection: "column",
+                    boxShadow: "0 24px 60px rgba(0, 0, 0, 0.9)",
+                    overflow: "hidden",
+                  }}
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  {/* Modal Header */}
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      padding: "16px 20px",
+                      borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
+                      background: "rgba(255, 255, 255, 0.03)",
+                    }}
+                  >
+                    <div>
+                      <h3
+                        style={{
+                          margin: 0,
+                          fontSize: "1.1rem",
+                          fontWeight: "700",
+                          color: "#fff",
+                        }}
+                      >
+                        🧾 Bill Receipt
+                      </h3>
+                      {photoModal.bill && (
+                        <p
+                          style={{
+                            margin: "4px 0 0",
+                            fontSize: "0.82rem",
+                            color: "#aaa",
+                          }}
+                        >
+                          {photoModal.bill.name} • {photoModal.bill.team} •{" "}
+                          <strong style={{ color: "#4ade80" }}>
+                            ₹{photoModal.bill.amount}
+                          </strong>
+                          {photoModal.bill.reason
+                            ? ` — "${photoModal.bill.reason}"`
+                            : ""}
+                        </p>
+                      )}
+                    </div>
+                    <button
+                      type="button"
+                      onClick={closePhotoModal}
+                      style={{
+                        background: "rgba(255, 255, 255, 0.1)",
+                        border: "none",
+                        color: "#fff",
+                        fontSize: "1.2rem",
+                        width: "36px",
+                        height: "36px",
+                        borderRadius: "50%",
+                        cursor: "pointer",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        lineHeight: 1,
+                      }}
+                      title="Close"
+                    >
+                      ✕
+                    </button>
+                  </div>
+
+                  {/* Modal Body */}
+                  <div
+                    style={{
+                      padding: "20px",
+                      overflowY: "auto",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      minHeight: "260px",
+                      background: "#08090c",
+                    }}
+                  >
+                    {photoModal.loading && (
+                      <div
+                        style={{
+                          textAlign: "center",
+                          padding: "40px 20px",
+                          color: "#bbb",
+                        }}
+                      >
+                        <div
+                          className="spin-loader"
+                          style={{
+                            width: "38px",
+                            height: "38px",
+                            border: "3px solid rgba(255, 255, 255, 0.15)",
+                            borderTopColor: "#e81b2a",
+                            borderRadius: "50%",
+                            margin: "0 auto 16px",
+                          }}
+                        />
+                        <div style={{ fontSize: "0.95rem", fontWeight: "600" }}>
+                          Loading Receipt Securely…
+                        </div>
+                        <div
+                          style={{
+                            fontSize: "0.78rem",
+                            color: "#777",
+                            marginTop: "6px",
+                          }}
+                        >
+                          Fetching image via backend proxy
+                        </div>
+                      </div>
+                    )}
+
+                    {photoModal.error && !photoModal.loading && (
+                      <div
+                        style={{
+                          background: "rgba(239, 68, 68, 0.12)",
+                          border: "1px solid rgba(239, 68, 68, 0.35)",
+                          color: "#fca5a5",
+                          padding: "16px 20px",
+                          borderRadius: "10px",
+                          fontSize: "0.88rem",
+                          textAlign: "center",
+                          maxWidth: "460px",
+                        }}
+                      >
+                        <div style={{ fontWeight: "700", marginBottom: "6px" }}>
+                          ⚠️ Unable to load image preview
+                        </div>
+                        <div style={{ fontSize: "0.82rem", color: "#f87171" }}>
+                          {photoModal.error}
+                        </div>
+                        {photoModal.bill?.fileUrl && (
+                          <a
+                            href={photoModal.bill.fileUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{
+                              ...styles.button,
+                              display: "inline-block",
+                              marginTop: "12px",
+                              fontSize: "0.78rem",
+                              padding: "6px 12px",
+                              textDecoration: "none",
+                            }}
+                          >
+                            ↗ Try Opening Drive Link
+                          </a>
+                        )}
+                      </div>
+                    )}
+
+                    {photoModal.data && !photoModal.loading && (
+                      <div
+                        style={{
+                          width: "100%",
+                          display: "flex",
+                          flexDirection: "column",
+                          alignItems: "center",
+                          gap: "14px",
+                        }}
+                      >
+                        {photoModal.data.mimeType === "application/pdf" ? (
+                          <iframe
+                            src={`data:application/pdf;base64,${photoModal.data.base64}`}
+                            title="Receipt PDF"
+                            style={{
+                              width: "100%",
+                              height: "60vh",
+                              border: "none",
+                              borderRadius: "8px",
+                              background: "#fff",
+                            }}
+                          />
+                        ) : (
+                          <img
+                            src={`data:${photoModal.data.mimeType || "image/jpeg"};base64,${photoModal.data.base64}`}
+                            alt="Receipt"
+                            style={{
+                              maxWidth: "100%",
+                              maxHeight: "68vh",
+                              objectFit: "contain",
+                              borderRadius: "8px",
+                              boxShadow: "0 8px 24px rgba(0, 0, 0, 0.5)",
+                            }}
+                          />
+                        )}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Modal Footer */}
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      padding: "12px 20px",
+                      borderTop: "1px solid rgba(255, 255, 255, 0.1)",
+                      background: "rgba(255, 255, 255, 0.02)",
+                    }}
+                  >
+                    {photoModal.data ? (
+                      <a
+                        href={`data:${photoModal.data.mimeType || "application/octet-stream"};base64,${photoModal.data.base64}`}
+                        download={photoModal.data.name || "receipt"}
+                        style={{
+                          ...styles.button,
+                          fontSize: "0.8rem",
+                          padding: "6px 14px",
+                          textDecoration: "none",
+                          display: "inline-flex",
+                          alignItems: "center",
+                          gap: "6px",
+                        }}
+                      >
+                        ⬇️ Download File
+                      </a>
+                    ) : (
+                      <div />
+                    )}
+
+                    <button
+                      type="button"
+                      onClick={closePhotoModal}
+                      style={{
+                        ...styles.button,
+                        fontSize: "0.8rem",
+                        padding: "6px 16px",
+                      }}
+                    >
+                      Close
+                    </button>
+                  </div>
+                </div>
+              </div>,
+              document.body,
+            )}
         </section>
       </main>
     </div>
