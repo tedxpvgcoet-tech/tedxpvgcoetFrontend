@@ -1,9 +1,4 @@
-import React, {
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { FaGlobe, FaInstagram, FaLinkedin, FaTimes } from "react-icons/fa";
 import "./ShipTheseusSpeakers.css";
