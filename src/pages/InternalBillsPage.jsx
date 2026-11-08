@@ -73,22 +73,29 @@ export default function InternalBillsPage() {
     token: "",
     name: "",
     team: "",
+    email: "",
   });
 
   useEffect(() => {
     const savedToken = localStorage.getItem("BRIDGE_TOKEN");
     const savedName = localStorage.getItem("BRIDGE_NAME");
     const savedTeam = localStorage.getItem("BRIDGE_TEAM");
+    const savedEmail = localStorage.getItem("BRIDGE_EMAIL") || "";
     if (savedToken && savedName && savedTeam) {
-      setSession({ token: savedToken, name: savedName, team: savedTeam });
+      setSession({
+        token: savedToken,
+        name: savedName,
+        team: savedTeam,
+        email: savedEmail,
+      });
       setView("dashboard");
     } else {
       setView("auth");
     }
   }, []);
 
-  const handleAuthorized = ({ token, name, team }) => {
-    setSession({ token, name, team });
+  const handleAuthorized = ({ token, name, team, email }) => {
+    setSession({ token, name, team, email: email || "" });
     setView("dashboard");
   };
 
@@ -96,11 +103,12 @@ export default function InternalBillsPage() {
     localStorage.removeItem("BRIDGE_TOKEN");
     localStorage.removeItem("BRIDGE_NAME");
     localStorage.removeItem("BRIDGE_TEAM");
+    localStorage.removeItem("BRIDGE_EMAIL");
     // Also clear old keys if present
     localStorage.removeItem("BRIDGE_KEY");
     localStorage.removeItem("bills_team");
     localStorage.removeItem("bills_name");
-    setSession({ token: "", name: "", team: "" });
+    setSession({ token: "", name: "", team: "", email: "" });
     setView("auth");
   };
 
@@ -242,6 +250,9 @@ export default function InternalBillsPage() {
     return (
       <BillsHistory
         authToken={session.token}
+        userEmail={session.email}
+        userName={session.name}
+        userTeam={session.team}
         onBack={() => setView("dashboard")}
         onLogout={handleLogout}
       />
