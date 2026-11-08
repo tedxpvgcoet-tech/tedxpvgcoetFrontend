@@ -1419,7 +1419,7 @@ export default function BillsHistory({
                             gap: "5px",
                           }}
                         >
-                          👁️ View Photo
+                          👁️ View Receipt
                         </button>
                       )}
                     </div>
@@ -1897,7 +1897,7 @@ export default function BillsHistory({
                               gap: "4px",
                             }}
                           >
-                            👁️ View Photo
+                            👁️ View Receipt
                           </button>
                         )}
 
