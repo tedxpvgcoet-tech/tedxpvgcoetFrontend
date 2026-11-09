@@ -980,8 +980,9 @@ const NewTeam = () => {
             <div
               key={team.id}
               data-team-id={team.id}
-              className={`new-committee-img-container ${isAnimated ? "animate-fade-in" : ""
-                } ${isExpanded ? "is-showcase-expanded" : ""}`}
+              className={`new-committee-img-container ${
+                isAnimated ? "animate-fade-in" : ""
+              } ${isExpanded ? "is-showcase-expanded" : ""}`}
               ref={(el) => (imageRefs.current[index] = el)}
             >
               {/* Image Frame Wrapper - Clickable for all teams */}
@@ -1003,8 +1004,9 @@ const NewTeam = () => {
                 <img
                   src={team.src}
                   alt={team.alt}
-                  className={`new-committee-img ${isExpanded ? "full-color-expanded" : ""
-                    }`}
+                  className={`new-committee-img ${
+                    isExpanded ? "full-color-expanded" : ""
+                  }`}
                   loading="lazy"
                 />
               </div>
@@ -1029,10 +1031,11 @@ const NewTeam = () => {
 
                   {/* Compact Info Cards (Small at first) with inline expandable row */}
                   <div
-                    className={`compact-members-grid ${currentTeamData.members.length <= 3
+                    className={`compact-members-grid ${
+                      currentTeamData.members.length <= 3
                         ? `members-grid-${currentTeamData.members.length}`
                         : ""
-                      }`}
+                    }`}
                     ref={membersGridRef}
                   >
                     {(() => {
@@ -1052,9 +1055,9 @@ const NewTeam = () => {
                       const insertionIndex =
                         activeMemberIndex >= 0
                           ? Math.min(
-                            (activeRow + 1) * cols - 1,
-                            currentTeamData.members.length - 1,
-                          )
+                              (activeRow + 1) * cols - 1,
+                              currentTeamData.members.length - 1,
+                            )
                           : -1;
                       const activeMember =
                         activeMemberIndex >= 0
@@ -1074,8 +1077,9 @@ const NewTeam = () => {
                           <React.Fragment key={member.name}>
                             <div
                               id={memberCardId}
-                              className={`member-card-compact ${isMemberExpanded ? "is-selected-card" : ""
-                                }`}
+                              className={`member-card-compact ${
+                                isMemberExpanded ? "is-selected-card" : ""
+                              }`}
                               onClick={() => handleSelectMember(memberKey)}
                               role="button"
                               tabIndex={0}
@@ -1142,9 +1146,9 @@ const NewTeam = () => {
                                         member.social.portfolio.startsWith(
                                           "http://",
                                         ) ||
-                                          member.social.portfolio.startsWith(
-                                            "https://",
-                                          )
+                                        member.social.portfolio.startsWith(
+                                          "https://",
+                                        )
                                           ? member.social.portfolio
                                           : `https://${member.social.portfolio}`
                                       }
@@ -1254,9 +1258,9 @@ const NewTeam = () => {
                                               activeMember.social.portfolio.startsWith(
                                                 "http://",
                                               ) ||
-                                                activeMember.social.portfolio.startsWith(
-                                                  "https://",
-                                                )
+                                              activeMember.social.portfolio.startsWith(
+                                                "https://",
+                                              )
                                                 ? activeMember.social.portfolio
                                                 : `https://${activeMember.social.portfolio}`
                                             }
