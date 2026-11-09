@@ -373,7 +373,7 @@ const committeeTeamsData = {
         image: renukaImg,
         social: {
           linkedin: "https://www.linkedin.com/in/renuka-joshi-430541290/",
-          instagram: "https://www.instagram.com/renuka__",
+          instagram: "https://www.instagram.com/renuka___.__",
         },
       },
       {
@@ -383,8 +383,8 @@ const committeeTeamsData = {
           "Curiosity is the compass that guides our pens to stories waiting in the quiet margins.",
         image: yashashriImg,
         social: {
-          linkedin: "https://www.linkedin.com/in/yashashri-rajput",
-          instagram: "https://instagram.com/whalin.52yr",
+          linkedin: "https://www.linkedin.com/in/yashashri-rajput-240519382",
+          instagram: "https://instagram.com/whalien.52yr",
         },
       },
       {
@@ -443,7 +443,7 @@ const committeeTeamsData = {
           "Building genuine relationships is the cornerstone of sustainable growth and enduring value.",
         image: durgaImg,
         social: {
-          instagram: "https://instagram.com/durga_gunjal",
+          instagram: "https://instagram.com/durga.gunjal",
         },
       },
       {
