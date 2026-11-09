@@ -774,7 +774,6 @@
   background: #0a66c2;
   border-color: #0a66c2;
   color: #ffffff;
-  transform: translateY(-2px) scale(1.15);
   box-shadow: 0 4px 14px rgba(10, 102, 194, 0.45);
 }
 
@@ -782,7 +781,6 @@
   background: linear-gradient(45deg, #f09433, #dc2743, #bc1888);
   border-color: transparent;
   color: #ffffff;
-  transform: translateY(-2px) scale(1.15);
   box-shadow: 0 4px 14px rgba(220, 39, 67, 0.45);
 }
 
@@ -790,7 +788,6 @@
   background: #eb0028;
   border-color: #eb0028;
   color: #ffffff;
-  transform: translateY(-2px) scale(1.15);
   box-shadow: 0 4px 14px rgba(235, 0, 40, 0.45);
 }
 
