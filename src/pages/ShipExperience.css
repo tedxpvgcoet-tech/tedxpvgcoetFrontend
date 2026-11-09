@@ -1,0 +1,610 @@
+.ship-experience-page {
+  position: relative;
+  min-height: 500svh;
+  overflow: clip;
+  color: #f1eee7;
+  background: #05090d;
+  font-family: "Inter", "Helvetica Neue", sans-serif;
+  isolation: isolate;
+}
+
+.ship-experience-canvas-shell,
+.ship-experience-canvas-shell canvas,
+.ship-experience-vignette {
+  position: fixed !important;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.ship-experience-canvas-shell {
+  z-index: -1;
+  overflow: hidden;
+  background: #05090d;
+  pointer-events: none;
+}
+
+.ship-experience-canvas-shell canvas {
+  display: block;
+}
+
+.ship-experience-vignette {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(3, 7, 10, 0.72) 0%,
+      rgba(3, 7, 10, 0.3) 36%,
+      transparent 70%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(3, 7, 10, 0.22) 0%,
+      transparent 27%,
+      transparent 63%,
+      rgba(3, 7, 10, 0.66) 100%
+    ),
+    radial-gradient(
+      ellipse at 52% 47%,
+      transparent 26%,
+      rgba(1, 4, 7, 0.38) 100%
+    );
+}
+
+.ship-experience-fallback {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  place-items: center;
+  padding: 10vw;
+  color: #dedbd3;
+  background: #080e14;
+  font:
+    15px/1.6 "Inter",
+    sans-serif;
+  text-align: center;
+}
+
+.ship-experience-status {
+  position: fixed;
+  z-index: 8;
+  top: 94px;
+  right: clamp(16px, 3vw, 42px);
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  max-width: min(350px, 55vw);
+  color: rgba(239, 235, 226, 0.68);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  pointer-events: none;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.status-dot {
+  width: 5px;
+  height: 5px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: #c79355;
+  box-shadow: 0 0 10px rgba(199, 147, 85, 0.75);
+}
+
+.status-dot.ready {
+  background: #9fac9e;
+  box-shadow: 0 0 9px rgba(159, 172, 158, 0.6);
+}
+
+.ship-experience-loading {
+  position: fixed;
+  z-index: 7;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(4, 10, 15, 0.52),
+    rgba(3, 7, 11, 0.78)
+  );
+  pointer-events: none;
+}
+
+.ship-experience-loading-panel {
+  width: min(430px, calc(100vw - 48px));
+  padding: 28px 30px;
+  border: 1px solid rgba(220, 202, 174, 0.18);
+  background: rgba(5, 10, 14, 0.76);
+  box-shadow: 0 24px 90px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.ship-experience-loading-panel p {
+  margin: 0 0 15px;
+  color: #d0a56f;
+  font-size: 8px;
+  letter-spacing: 0.24em;
+}
+
+.ship-experience-loading-panel h2 {
+  margin: 0 0 10px;
+  color: #f1eee7;
+  font:
+    400 clamp(24px, 4vw, 34px)/1.1 Georgia,
+    serif;
+}
+
+.ship-experience-loading-panel > span,
+.ship-experience-loading-panel small {
+  display: block;
+  color: rgba(237, 234, 226, 0.66);
+  font:
+    12px/1.55 Georgia,
+    serif;
+}
+
+.ship-experience-loading-track {
+  height: 2px;
+  margin: 20px 0 16px;
+  overflow: hidden;
+  background: rgba(237, 234, 226, 0.16);
+}
+
+.ship-experience-loading-track i {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #c99558;
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.ship-experience-loading-track i.indeterminate {
+  width: 36%;
+  animation: ship-load-progress 1.35s ease-in-out infinite alternate;
+}
+
+@keyframes ship-load-progress {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(280%);
+  }
+}
+
+.ship-story {
+  position: relative;
+  z-index: 2;
+}
+
+.ship-story-section {
+  position: relative;
+  display: flex;
+  min-height: 100svh;
+  align-items: center;
+  padding: 13vh clamp(24px, 10vw, 150px);
+  scroll-margin-top: 0;
+}
+
+.ship-story-cover {
+  align-items: flex-end;
+  padding-bottom: clamp(90px, 14vh, 150px);
+}
+
+.ship-story-cover-copy {
+  width: min(900px, 84vw);
+  margin-left: 1vw;
+}
+
+.ship-story-kicker {
+  margin: 0 0 22px;
+  color: #d0a56f;
+  font-size: clamp(11px, 0.8vw, 12px);
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  line-height: 1.6;
+  text-transform: uppercase;
+}
+
+.ship-story-title {
+  margin: 0;
+  color: #f4f0e9;
+  font-family: "Kantumruy Pro", Georgia, serif;
+  font-size: clamp(82px, 13.8vw, 208px);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 0.76;
+  text-shadow: 0 5px 48px rgba(0, 0, 0, 0.3);
+}
+
+.ship-story-title span {
+  color: #cda875;
+  font-family: Georgia, serif;
+  font-size: 0.38em;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  vertical-align: 0.22em;
+}
+
+.ship-story-intro {
+  max-width: 410px;
+  margin: 30px 0 0 5px;
+  color: rgba(237, 234, 226, 0.8);
+  font-family: Georgia, serif;
+  font-size: clamp(18px, 1.75vw, 23px);
+  line-height: 1.55;
+}
+
+.ship-story-scroll {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin: clamp(30px, 6vh, 64px) 0 0 5px;
+  padding: 0;
+  border: 0;
+  color: rgba(237, 234, 226, 0.68);
+  background: transparent;
+  font-size: clamp(11px, 0.75vw, 12px);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.scroll-mark {
+  width: 24px;
+  height: 1px;
+  background: #d0a56f;
+  box-shadow: 0 0 12px rgba(208, 165, 111, 0.6);
+}
+
+.ship-story-chapter {
+  justify-content: flex-start;
+}
+
+.chapter-change {
+  justify-content: flex-end;
+}
+
+.ship-story-copy {
+  width: min(440px, 43vw);
+  padding: 20px 24px 24px 0;
+  text-shadow: 0 2px 25px rgba(0, 0, 0, 0.82);
+}
+
+.chapter-change .ship-story-copy {
+  width: min(460px, 44vw);
+  padding: 20px 0 24px 26px;
+}
+
+.ship-story-copy h2,
+.ship-story-ending-copy h2 {
+  margin: 0 0 22px;
+  color: #f1eee7;
+  font-family: "Kantumruy Pro", Georgia, serif;
+  font-size: clamp(44px, 5.4vw, 78px);
+  font-weight: 500;
+  letter-spacing: -0.045em;
+  line-height: 0.99;
+}
+
+.ship-story-copy h2 em,
+.ship-story-ending-copy h2 em {
+  color: #d1aa77;
+  font-family: Georgia, serif;
+  font-size: 0.9em;
+  font-weight: 400;
+}
+
+.ship-story-copy > p:not(.ship-story-kicker) {
+  max-width: 390px;
+  margin: 0 0 15px;
+  color: rgba(234, 232, 225, 0.78);
+  font-family: Georgia, serif;
+  font-size: clamp(18px, 1.5vw, 22px);
+  line-height: 1.65;
+}
+
+.ship-story-copy .ship-story-question {
+  margin-top: 24px !important;
+  color: #e0c49d !important;
+  font-size: clamp(20px, 1.8vw, 26px) !important;
+  font-style: italic;
+}
+
+.ship-story-coordinate {
+  position: absolute;
+  right: clamp(24px, 5vw, 72px);
+  bottom: 66px;
+  color: rgba(228, 224, 214, 0.48);
+  font-family: Georgia, serif;
+  font-size: 12px;
+  font-style: italic;
+}
+
+.chapter-revelation .ship-story-coordinate {
+  font-size: clamp(14px, 1vw, 16px);
+}
+
+.ship-story-ending-copy > .ship-story-kicker {
+  font-size: clamp(11px, 0.9vw, 13px);
+}
+
+.ship-story-ending {
+  align-items: flex-end;
+  padding-bottom: clamp(110px, 16vh, 170px);
+}
+
+.ship-story-ending-copy {
+  width: min(900px, 88vw);
+  margin: 0 auto;
+  text-align: center;
+  text-shadow: 0 2px 25px rgba(0, 0, 0, 0.85);
+}
+
+.ship-story-ending-copy h2 {
+  font-size: clamp(52px, 7vw, 98px);
+}
+
+.ship-story-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 38px;
+}
+
+.ship-story-actions button,
+.ship-story-actions a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 22px;
+  padding: 0 18px;
+  border: 1px solid rgba(226, 204, 171, 0.42);
+  border-radius: 2px;
+  color: #f1eee7;
+  background: rgba(5, 9, 13, 0.36);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  transition:
+    background 180ms ease,
+    border-color 180ms ease;
+  cursor: pointer;
+}
+
+.ship-story-actions button:hover,
+.ship-story-actions a:hover {
+  border-color: #d0a56f;
+  background: rgba(208, 165, 111, 0.12);
+}
+
+.ship-story-actions span {
+  color: #d0a56f;
+  font-size: 15px;
+}
+
+.ship-story-signoff {
+  margin: 56px 0 0;
+  color: rgba(237, 234, 226, 0.42);
+  font-size: 8px;
+  letter-spacing: 0.22em;
+}
+
+.ship-experience-chapters {
+  position: fixed;
+  z-index: 8;
+  top: 50%;
+  right: clamp(14px, 3vw, 42px);
+  display: grid;
+  gap: 13px;
+  transform: translateY(-50%);
+}
+
+.ship-experience-chapters button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 0 5px 7px;
+  border: 0;
+  color: rgba(235, 230, 218, 0.42);
+  background: transparent;
+  font-size: 8px;
+  letter-spacing: 0.14em;
+  cursor: pointer;
+}
+
+.ship-experience-chapters button i {
+  width: 13px;
+  height: 1px;
+  background: rgba(235, 230, 218, 0.35);
+  transition:
+    width 200ms ease,
+    background 200ms ease;
+}
+
+.ship-experience-chapters button.active {
+  color: #e1c092;
+}
+
+.ship-experience-chapters button.active i {
+  width: 25px;
+  background: #d0a56f;
+}
+
+.ship-experience-replay {
+  position: fixed;
+  z-index: 8;
+  right: clamp(18px, 3vw, 42px);
+  bottom: 36px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 0;
+  border: 0;
+  color: rgba(235, 230, 218, 0.66);
+  background: transparent;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.ship-experience-replay span {
+  font-size: 8px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.ship-experience-progress {
+  position: fixed;
+  z-index: 9;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: rgba(235, 230, 218, 0.12);
+  pointer-events: none;
+}
+
+.ship-experience-progress span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #c99558;
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+@media (max-width: 720px) {
+  .ship-experience-status {
+    top: 82px;
+    right: 14px;
+    font-size: 7px;
+  }
+
+  .ship-story-section {
+    padding: 110px 25px 95px;
+  }
+
+  .ship-story-cover {
+    align-items: flex-end;
+    padding-bottom: 15vh;
+  }
+
+  .ship-story-cover-copy,
+  .ship-story-ending-copy {
+    width: 100%;
+  }
+
+  .ship-story-title {
+    font-size: clamp(68px, 17vw, 116px);
+  }
+
+  .ship-story-intro {
+    max-width: 310px;
+    margin-top: 24px;
+    font-size: 18px;
+  }
+
+  .ship-story-copy,
+  .chapter-change .ship-story-copy {
+    width: min(88%, 410px);
+    margin-top: 20vh;
+    padding: 15px 12px 18px 0;
+  }
+
+  .chapter-change {
+    justify-content: flex-start;
+  }
+
+  .chapter-change .ship-story-copy {
+    padding-left: 0;
+  }
+
+  .ship-story-copy h2 {
+    font-size: clamp(42px, 10vw, 64px);
+  }
+
+  .chapter-change .ship-story-copy h2,
+  .chapter-change .ship-story-copy > p:not(.ship-story-kicker) {
+    text-shadow: 0 2px 24px #030609;
+  }
+
+  .ship-story-coordinate {
+    right: 24px;
+    bottom: 48px;
+    font-size: 10px;
+  }
+
+  .ship-story-ending {
+    align-items: flex-end;
+    padding-bottom: 15vh;
+  }
+
+  .ship-story-ending-copy h2 {
+    font-size: clamp(48px, 11vw, 72px);
+  }
+
+  .chapter-revelation .ship-story-coordinate {
+    font-size: 14px;
+  }
+
+  .ship-story-actions {
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .ship-story-actions button,
+  .ship-story-actions a {
+    justify-content: space-between;
+    width: min(100%, 300px);
+  }
+
+  .ship-experience-chapters {
+    top: auto;
+    right: auto;
+    bottom: 30px;
+    left: 18px;
+    display: flex;
+    gap: 3px;
+    transform: none;
+  }
+
+  .ship-experience-chapters button {
+    gap: 5px;
+    padding: 8px 4px;
+    font-size: 7px;
+  }
+
+  .ship-experience-chapters button i {
+    width: 8px;
+  }
+
+  .ship-experience-chapters button.active i {
+    width: 14px;
+  }
+
+  .ship-experience-replay {
+    right: 18px;
+    bottom: 31px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ship-experience-loading-track i.indeterminate {
+    animation: none;
+    transform: scaleX(0.5);
+  }
+
+  .ship-story-title {
+    opacity: 1 !important;
+    transform: none !important;
+    letter-spacing: 0.04em !important;
+  }
+
+  .ship-story-actions button,
+  .ship-story-actions a,
+  .ship-experience-chapters button i {
+    transition: none;
+  }
+}

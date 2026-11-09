@@ -328,10 +328,13 @@ export default function BridgekeeperAuth({ onAuthorized }) {
         localStorage.setItem("BRIDGE_TOKEN", data.token);
         localStorage.setItem("BRIDGE_NAME", data.name);
         localStorage.setItem("BRIDGE_TEAM", data.team);
+        const resolvedEmail = data.email || email.trim();
+        localStorage.setItem("BRIDGE_EMAIL", resolvedEmail);
         onAuthorized({
           token: data.token,
           name: data.name,
           team: data.team,
+          email: resolvedEmail,
         });
       } else {
         setPopupMsg(data.error || "Incorrect OTP. Please try again.");

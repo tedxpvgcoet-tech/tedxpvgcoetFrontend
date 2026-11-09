@@ -9,6 +9,7 @@ import FooterSection from "../sections/Common/FooterSection";
 import leapImg from "../assets/Event/Take-the-leap-bg-1.webp";
 import avantGardeImg from "../assets/backgrounds/AvantGarde-bg.webp";
 import punarutthanImg from "../assets/backgrounds/Punarutthan-bg.webp";
+import drishtiImg from "../assets/Event/Drishti-bg.webp";
 
 const pastEvents = [
   {
@@ -17,7 +18,7 @@ const pastEvents = [
     year: "2020",
     desc: "Take The Leap! encourages us to unleash passion, challenge limits, and discover life's full potential.",
     image: leapImg,
-    link: "/events/TakeTheLeap",
+    link: "/events/take-the-leap",
     alt: "Take the Leap Event",
   },
   {
@@ -26,7 +27,7 @@ const pastEvents = [
     year: "2021",
     desc: '"Avant Garde" embraces bold, unconventional ideas and celebrates those ahead of their time. It invites us to think differently and challenge the norm.',
     image: avantGardeImg,
-    link: "/events/AvantGarde",
+    link: "/events/avant-garde",
     alt: "Avant Garde Event",
   },
   {
@@ -35,8 +36,17 @@ const pastEvents = [
     year: "2024",
     desc: "“Punarutthan” stands for revival and renewal, drawing from deep cultural roots. It invites us to rethink, rebuild, and reimagine a better future.",
     image: punarutthanImg,
-    link: "/events/Punarutthan",
+    link: "/events/punarutthan",
     alt: "Punarutthan Event",
+  },
+  {
+    id: "drishti",
+    title: "Drishti",
+    year: "2025",
+    desc: "“Drishti” symbolizes vision and perspective—a journey into awareness, perception, and the quiet clarity that emerges when we look beyond distractions and surface-level truths.",
+    image: drishtiImg,
+    link: "/events/drishti",
+    alt: "Drishti Event",
   },
 ];
 

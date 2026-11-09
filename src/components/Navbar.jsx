@@ -118,15 +118,6 @@ const Navbar = () => {
         >
           About
         </Link>
-
-        <Link
-          to="https://tedxpvgcoet.substack.com/"
-          className="nav-dropdown-item"
-          onClick={() => setMenuOpen(false)}
-        >
-          News letter
-        </Link>
-
         <Link
           to="/events"
           className="nav-dropdown-item"
@@ -135,11 +126,25 @@ const Navbar = () => {
           Events
         </Link>
         <Link
+          to="/partners"
+          className="nav-dropdown-item"
+          onClick={() => setMenuOpen(false)}
+        >
+          Partners
+        </Link>
+        <Link
           to="/past-talks"
           className="nav-dropdown-item"
           onClick={() => setMenuOpen(false)}
         >
           Past Talks
+        </Link>
+        <Link
+          to="/blogs"
+          className="nav-dropdown-item"
+          onClick={() => setMenuOpen(false)}
+        >
+          Blogs
         </Link>
         <Link
           to="/speaker"

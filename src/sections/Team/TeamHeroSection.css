@@ -9,7 +9,7 @@
 
 /* Center content on desktop only */
 @media (min-width: 993px) {
-  .team-hero-section {
+  .team-hero-section:not(.team-hero-section--event) {
     align-items: center;
     justify-content: center;
     width: 100%;
@@ -60,4 +60,181 @@
   background-color: red;
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
+}
+
+/* Modifier for when placed inside an event page (like Drishti) */
+.team-hero-section--event {
+  height: auto !important;
+  min-height: auto;
+  padding: 4.5rem 1.5rem 3.5rem;
+  background-color: black;
+  color: white;
+  align-items: center;
+  text-align: center;
+}
+
+.team-hero-section--event .team-hero-image {
+  padding-top: 0;
+  max-width: 1300px;
+  cursor: pointer;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(225, 6, 0, 0.25);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.team-hero-section--event .team-hero-image:hover {
+  transform: scale(1.01);
+  box-shadow: 0 0 28px rgba(225, 6, 0, 0.45);
+}
+
+.team-hero-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.team-hero-title {
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  color: white;
+  margin: 0 0 0.5rem;
+  font-family: "Inter", sans-serif;
+}
+
+.team-hero-subtitle {
+  color: #bbb;
+  font-size: clamp(1rem, 1.3vw, 1.15rem);
+  margin: 0;
+}
+
+.team-hero-image-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.team-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.75rem;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.team-see-image-btn {
+  background-color: #e10600;
+  color: white;
+  border: none;
+  padding: 0.7rem 1.8rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.team-see-image-btn:hover {
+  background-color: #b30500;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(225, 6, 0, 0.45);
+}
+
+.team-view-page-btn {
+  background-color: transparent;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 0.7rem 1.8rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.team-view-page-btn:hover {
+  border-color: #e10600;
+  color: #e10600;
+  transform: translateY(-2px);
+}
+
+/* Modal Lightbox Styling */
+.team-image-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background-color: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+  animation: teamFadeIn 0.2s ease-out;
+}
+
+.team-image-modal__content {
+  position: relative;
+  max-width: 95vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.team-image-modal__close {
+  position: absolute;
+  top: -45px;
+  right: 0;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 2.2rem;
+  cursor: pointer;
+  padding: 0.25rem 0.75rem;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.team-image-modal__close:hover {
+  color: #e10600;
+}
+
+.team-image-modal__img {
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.85);
+}
+
+.team-image-modal__footer {
+  margin-top: 1rem;
+}
+
+.team-image-modal__open-btn {
+  color: #ccc;
+  font-size: 0.95rem;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+.team-image-modal__open-btn:hover {
+  color: white;
+}
+
+@keyframes teamFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

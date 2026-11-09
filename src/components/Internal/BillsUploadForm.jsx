@@ -48,8 +48,8 @@ const styles = {
   },
   headerRow: {
     display: "flex",
-    justifyContent: "space-between",
-    alignItems: "flex-start",
+    flexDirection: "column",
+    gap: "16px",
     marginBottom: "32px",
   },
   title: {
@@ -336,11 +336,25 @@ export default function BillsUploadForm({
         });
       } else {
         const sizeMB = file.size / (1024 * 1024);
+        if (sizeMB > 15) {
+          setAutoStatus({
+            type: "error",
+            message:
+              "PDF file is too large. Please upload a file smaller than 15MB.",
+          });
+          e.target.value = "";
+          return;
+        }
+        const mimeType =
+          file.type ||
+          (file.name.toLowerCase().endsWith(".pdf")
+            ? "application/pdf"
+            : "application/octet-stream");
         const reader = new FileReader();
         reader.onloadend = () => {
           handleBillFieldChange(uid, "image", {
             fileName: file.name,
-            mimeType: file.type,
+            mimeType: mimeType,
             base64: reader.result,
             sizeMB: sizeMB,
           });
@@ -362,10 +376,17 @@ export default function BillsUploadForm({
         });
         return;
       }
+      if (!b.reason || !b.reason.trim()) {
+        setAutoStatus({
+          type: "error",
+          message: `Please enter the Reason / Description for Bill Item #${i + 1}.`,
+        });
+        return;
+      }
       if (!b.image) {
         setAutoStatus({
           type: "error",
-          message: `Please attach the photo receipt for Bill Item #${i + 1}.`,
+          message: `Please attach the receipt (photo or PDF) for Bill Item #${i + 1}.`,
         });
         return;
       }
@@ -413,7 +434,7 @@ export default function BillsUploadForm({
           team: team,
           name: name,
           amount: bill.amount,
-          reason: bill.reason || "No specific reason provided.",
+          reason: bill.reason.trim(),
           gstCategory: bill.gstCategory,
           imageFile: bill.image.base64,
           fileName: bill.image.fileName,
@@ -735,7 +756,8 @@ export default function BillsUploadForm({
 
                 <div style={{ marginBottom: "20px" }}>
                   <Textarea
-                    label="Reason / Description (Optional)"
+                    label="Reason / Description"
+                    required
                     value={bill.reason}
                     disabled={loading}
                     onChange={(e) =>
@@ -747,11 +769,11 @@ export default function BillsUploadForm({
                   />
                 </div>
 
-                <FormField label="Bill Receipt Photo" required>
+                <FormField label="Bill Receipt (Photo or PDF)" required>
                   <input
                     id={`file-${bill.uid}`}
                     type="file"
-                    accept="image/*"
+                    accept="image/*,.pdf"
                     disabled={loading}
                     onChange={(e) => handleFileChange(e, bill.uid)}
                     style={{ display: "none" }}
@@ -759,7 +781,7 @@ export default function BillsUploadForm({
                   <input
                     id={`file-cam-${bill.uid}`}
                     type="file"
-                    accept="image/*"
+                    accept="image/*,.pdf"
                     capture="environment"
                     disabled={loading}
                     onChange={(e) => handleFileChange(e, bill.uid)}
@@ -793,7 +815,7 @@ export default function BillsUploadForm({
                             background: loading ? "#666" : "#e81b2a",
                           }}
                         >
-                          Choose File
+                          Choose Photo or PDF
                         </span>
                         <span
                           style={{
@@ -836,7 +858,7 @@ export default function BillsUploadForm({
                               background: loading ? "#666" : "#444",
                             }}
                           >
-                            Gallery
+                            Files / PDF
                           </span>
                         </div>
 
@@ -882,11 +904,29 @@ export default function BillsUploadForm({
                         opacity: loading ? 0.5 : 1,
                       }}
                     >
-                      <img
-                        src={bill.image.base64}
-                        alt="preview"
-                        style={styles.imageThumb}
-                      />
+                      {bill.image.mimeType === "application/pdf" ? (
+                        <div
+                          style={{
+                            ...styles.imageThumb,
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            background: "rgba(232, 27, 42, 0.1)",
+                            fontSize: "0.7rem",
+                            fontWeight: "800",
+                            color: "#e81b2a",
+                            letterSpacing: "0.5px",
+                          }}
+                        >
+                          PDF
+                        </div>
+                      ) : (
+                        <img
+                          src={bill.image.base64}
+                          alt="preview"
+                          style={styles.imageThumb}
+                        />
+                      )}
                       <div style={{ flex: 1, overflow: "hidden" }}>
                         <div style={styles.imageThumbName}>
                           {bill.image.fileName}
@@ -913,7 +953,7 @@ export default function BillsUploadForm({
                                 .click()
                             }
                           >
-                            Change Photo
+                            Change File
                           </div>
 
                           <div
@@ -926,13 +966,17 @@ export default function BillsUploadForm({
                             onClick={() => {
                               const link = document.createElement("a");
                               link.href = bill.image.base64;
-                              link.download = `receipt_${Date.now()}.jpg`;
+                              link.download =
+                                bill.image.fileName ||
+                                (bill.image.mimeType === "application/pdf"
+                                  ? `receipt_${Date.now()}.pdf`
+                                  : `receipt_${Date.now()}.jpg`);
                               document.body.appendChild(link);
                               link.click();
                               document.body.removeChild(link);
                             }}
                           >
-                            Save Photo
+                            Save File
                           </div>
                           {bill.image.sizeMB > 5 && (
                             <span

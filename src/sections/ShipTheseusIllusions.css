@@ -1,0 +1,235 @@
+.theseus-illusions {
+  padding-top: clamp(3.5rem, 6vw, 5.5rem);
+  padding-right: clamp(1rem, 4vw, 3.5rem);
+  padding-bottom: clamp(1rem, 2.5vw, 2rem);
+  padding-left: clamp(1rem, 4vw, 3.5rem);
+  color: #f8f6f2;
+  background-color: #0c0d0f;
+  background-image:
+    radial-gradient(
+      ellipse at 50% 100%,
+      rgb(225 6 0 / 12%) 0%,
+      transparent 65%
+    ),
+    radial-gradient(circle at 12% 8%, rgb(131 20 24 / 22%), transparent 32rem),
+    radial-gradient(circle at 88% 45%, rgb(225 6 0 / 8%), transparent 28rem);
+}
+
+.theseus-illusions__header,
+.theseus-illusions__grid {
+  width: min(100%, 1500px);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.theseus-illusions__header {
+  margin-bottom: clamp(1.75rem, 3vw, 2.5rem);
+  text-align: left;
+}
+
+.theseus-illusions__header h2 {
+  margin: 0;
+  color: #fff;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.65rem, 3.4vw, 2.7rem);
+  font-weight: 500;
+  letter-spacing: 0.085em;
+  line-height: 1.15;
+}
+
+.theseus-illusions__subtitle {
+  margin: 0.65rem 0 0;
+  color: rgb(248 246 242 / 72%);
+  font-family: "Kantumruy Pro", sans-serif;
+  font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+  letter-spacing: 0.015em;
+  line-height: 1.55;
+}
+
+.theseus-illusions__grid {
+  column-count: 3;
+  column-gap: clamp(1.25rem, 2.2vw, 2rem);
+}
+
+.theseus-illusions__card {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  margin: 0 0 clamp(1.25rem, 2.2vw, 2rem);
+  overflow: hidden;
+  isolation: isolate;
+  aspect-ratio: var(--card-ratio);
+  border-radius: 10px;
+  background: #1c1d20;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 14px 34px rgb(0 0 0 / 45%);
+  cursor: pointer;
+  break-inside: avoid;
+  vertical-align: top;
+  touch-action: pan-y;
+  transition:
+    transform 300ms ease,
+    box-shadow 300ms ease,
+    border-color 300ms ease;
+}
+
+.theseus-illusions__card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(225, 6, 0, 0.35);
+  box-shadow:
+    0 20px 45px rgb(0 0 0 / 65%),
+    0 0 25px rgba(225, 6, 0, 0.15);
+}
+
+.theseus-illusions__card--1 {
+  --card-ratio: 454 / 626;
+}
+.theseus-illusions__card--2 {
+  --card-ratio: 736 / 914;
+}
+.theseus-illusions__card--3 {
+  --card-ratio: 735 / 817;
+}
+.theseus-illusions__card--4 {
+  --card-ratio: 1;
+}
+.theseus-illusions__card--5 {
+  --card-ratio: 1;
+}
+.theseus-illusions__card--6 {
+  --card-ratio: 450 / 640;
+}
+.theseus-illusions__card--7 {
+  --card-ratio: 736 / 589;
+}
+
+.theseus-illusions__image {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 500ms ease;
+}
+
+/* Keep the complete circular Ouroboros artwork inside its square card. */
+.theseus-illusions__card--4 .theseus-illusions__image {
+  object-fit: contain;
+  background: #fff;
+}
+
+.theseus-illusions__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: stretch;
+  padding: clamp(1rem, 2vw, 1.65rem);
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgb(0 0 0 / 68%), rgb(0 0 0 / 78%));
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 350ms ease;
+}
+
+.theseus-illusions__copy {
+  width: 100%;
+  max-height: 100%;
+  overflow-y: auto;
+  overscroll-behavior-y: auto;
+  touch-action: pan-y;
+  padding: 0 0.25rem 0.25rem 0;
+  scrollbar-color: rgb(255 255 255 / 50%) transparent;
+  scrollbar-width: thin;
+}
+
+.theseus-illusions__copy h3 {
+  margin: 0 0 0.9rem;
+  color: #fff;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.15rem, 1.7vw, 1.55rem);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.theseus-illusions__copy p {
+  margin: 0 0 0.85rem;
+  color: rgb(255 255 255 / 96%);
+  font-family: "Kantumruy Pro", sans-serif;
+  font-size: clamp(0.9rem, 1.05vw, 1rem);
+  line-height: 1.55;
+  white-space: pre-line;
+}
+
+.theseus-illusions__copy .theseus-illusions__author {
+  margin-top: 1.25rem;
+  color: #fff;
+  font-size: 0.9rem;
+  font-style: italic;
+  letter-spacing: 0.08em;
+  text-align: right;
+}
+
+.theseus-illusions__card.is-open .theseus-illusions__overlay,
+.theseus-illusions__card:focus-visible .theseus-illusions__overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.theseus-illusions__card:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 4px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .theseus-illusions__card:hover .theseus-illusions__overlay {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .theseus-illusions__card:hover .theseus-illusions__image {
+    transform: scale(1.02);
+  }
+}
+
+@media (max-width: 1050px) {
+  .theseus-illusions__grid {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 680px) {
+  .theseus-illusions {
+    padding: 3.5rem 1rem;
+  }
+
+  .theseus-illusions__header {
+    margin-bottom: 1.75rem;
+  }
+
+  .theseus-illusions__grid {
+    column-count: 1;
+  }
+
+  .theseus-illusions__card {
+    margin-bottom: 1.25rem;
+  }
+
+  .theseus-illusions__overlay {
+    padding: 1rem;
+  }
+
+  .theseus-illusions__copy p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theseus-illusions__image,
+  .theseus-illusions__overlay {
+    transition: none;
+  }
+}
