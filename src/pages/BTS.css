@@ -1,0 +1,373 @@
+.bts-page {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background-color: #070709;
+  color: #ffffff;
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+  overflow-x: hidden;
+  padding-top: 7.5rem; /* Clears the fixed floating navbar */
+  box-sizing: border-box;
+}
+
+/* Ambient glow accents */
+.bts-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.35;
+}
+
+.bts-glow-1 {
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(450px, 90vw);
+  height: 280px;
+  background: radial-gradient(
+    circle,
+    rgba(235, 0, 40, 0.45) 0%,
+    rgba(235, 0, 40, 0) 70%
+  );
+}
+
+.bts-glow-2 {
+  top: 55%;
+  right: -20%;
+  width: min(350px, 70vw);
+  height: 350px;
+  background: radial-gradient(
+    circle,
+    rgba(235, 0, 40, 0.18) 0%,
+    rgba(0, 0, 0, 0) 70%
+  );
+}
+
+/* Container */
+.bts-container {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem 1rem 3.5rem;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/* Top bar */
+.bts-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.bts-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: #c0c0c0;
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 500;
+  padding: 0.5rem 0.95rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: all 0.2s ease;
+  min-height: 40px;
+  box-sizing: border-box;
+}
+
+.bts-back-btn:hover,
+.bts-back-btn:active {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateX(-2px);
+}
+
+.bts-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+  color: #ff334b;
+  background: rgba(235, 0, 40, 0.14);
+  border: 1px solid rgba(235, 0, 40, 0.4);
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  min-height: 40px;
+  box-sizing: border-box;
+}
+
+.bts-badge-dot {
+  width: 7px;
+  height: 7px;
+  background-color: #eb0028;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #eb0028;
+  animation: btsPulse 2s infinite;
+}
+
+@keyframes btsPulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(0.85);
+  }
+}
+
+/* Header */
+.bts-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.bts-title {
+  font-size: clamp(2rem, 7vw, 3.4rem);
+  font-weight: 900;
+  letter-spacing: -0.8px;
+  line-height: 1.15;
+  margin-bottom: 0.75rem;
+}
+
+.highlight-red {
+  color: #eb0028;
+}
+
+.bts-subtitle {
+  font-size: clamp(0.9rem, 2.8vw, 1.05rem);
+  color: #b0b0b8;
+  max-width: 620px;
+  margin: 0 auto;
+  line-height: 1.55;
+  padding: 0 0.5rem;
+}
+
+/* Player section */
+.bts-player-section {
+  margin-bottom: 2.5rem;
+  width: 100%;
+}
+
+.bts-player-card {
+  background: #101014;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow:
+    0 15px 40px rgba(0, 0, 0, 0.75),
+    0 0 30px rgba(235, 0, 40, 0.18);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.bts-video-wrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 ratio */
+  background: #000000;
+}
+
+.bts-video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Action bar under video */
+.bts-action-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.85rem;
+  padding: 1rem 1.25rem;
+  background: #141419;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.bts-action-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+  color: #cfcfd6;
+}
+
+.bts-action-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #ff4d64;
+  font-weight: 700;
+}
+
+.bts-heart-icon {
+  font-size: 0.88rem;
+  color: #eb0028;
+}
+
+.bts-action-sep {
+  color: #555555;
+}
+
+.bts-action-author {
+  color: #8c8c96;
+}
+
+.bts-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.65rem 1.25rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  min-height: 44px; /* Touch-friendly tap target */
+  box-sizing: border-box;
+}
+
+.bts-btn-youtube {
+  background: #eb0028;
+  color: #ffffff;
+}
+
+.bts-btn-youtube:hover,
+.bts-btn-youtube:active {
+  background: #cf0023;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 18px rgba(235, 0, 40, 0.45);
+}
+
+.bts-icon-yt {
+  font-size: 1.2rem;
+}
+
+.bts-icon-external {
+  font-size: 0.72rem;
+  opacity: 0.85;
+}
+
+/* Team Note Card */
+.bts-team-note {
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.bts-note-card {
+  background: linear-gradient(
+    135deg,
+    rgba(235, 0, 40, 0.12) 0%,
+    rgba(18, 18, 24, 0.85) 100%
+  );
+  border: 1px solid rgba(235, 0, 40, 0.32);
+  border-radius: 16px;
+  padding: 1.75rem 1.5rem;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  box-sizing: border-box;
+}
+
+.bts-note-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: #ff4d64;
+  background: rgba(235, 0, 40, 0.16);
+  border: 1px solid rgba(235, 0, 40, 0.35);
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  margin-bottom: 1rem;
+}
+
+.bts-note-card h2 {
+  font-size: clamp(1.15rem, 4.2vw, 1.55rem);
+  font-weight: 800;
+  line-height: 1.3;
+  margin-bottom: 0.75rem;
+  color: #ffffff;
+}
+
+.bts-note-card p {
+  font-size: clamp(0.88rem, 2.7vw, 0.98rem);
+  color: #b8b8c2;
+  line-height: 1.6;
+  margin: 0 auto;
+  max-width: 640px;
+}
+
+/* Dedicated Mobile Breakpoint */
+@media (max-width: 640px) {
+  .bts-page {
+    padding-top: 7.5rem; /* Generous clearance for fixed floating navbar on phones */
+  }
+
+  .bts-container {
+    padding: 0.75rem 0.85rem 2.5rem;
+  }
+
+  .bts-top-bar {
+    margin-bottom: 1.25rem;
+  }
+
+  .bts-header {
+    margin-bottom: 1.5rem;
+  }
+
+  .bts-subtitle {
+    padding: 0;
+  }
+
+  .bts-player-card {
+    border-radius: 12px;
+  }
+
+  .bts-action-bar {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1rem;
+    gap: 0.85rem;
+  }
+
+  .bts-action-meta {
+    justify-content: center;
+    font-size: 0.82rem;
+  }
+
+  .bts-btn-youtube {
+    width: 100%;
+    font-size: 0.92rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .bts-note-card {
+    padding: 1.35rem 1.1rem;
+    border-radius: 12px;
+  }
+}
