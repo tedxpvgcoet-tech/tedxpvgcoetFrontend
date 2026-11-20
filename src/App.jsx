@@ -28,6 +28,7 @@ const ShipOfTheseusEvent = lazy(() => import("./pages/ShipOfTheseusEvent"));
 const NewTeam = lazy(() => import("./pages/NewTeam"));
 const PastTalks = lazy(() => import("./pages/PastTalks"));
 const Blogs = lazy(() => import("./pages/Blogs"));
+const BTS = lazy(() => import("./pages/BTS"));
 
 inject();
 
@@ -36,12 +37,14 @@ function App() {
   const isShipRoute = location.pathname === "/ship";
   const isTicketRoute =
     location.pathname === "/ticket" || location.pathname === "/tickets";
+  const isBtsRoute =
+    location.pathname === "/bts" || location.pathname === "/behind-the-scenes";
   const [showIntro, setShowIntro] = useState(() => {
     return sessionStorage.getItem("tedxIntroShown") !== "true";
   });
 
   useEffect(() => {
-    if (!showIntro || isShipRoute) {
+    if (!showIntro || isShipRoute || isBtsRoute) {
       return;
     }
 
@@ -51,7 +54,7 @@ function App() {
     }, 3500);
 
     return () => clearTimeout(timer);
-  }, [showIntro, isShipRoute]);
+  }, [showIntro, isShipRoute, isBtsRoute]);
 
   return (
     <>
@@ -64,7 +67,7 @@ function App() {
 
       <ScrollToTop />
 
-      {showIntro && !isShipRoute && !isTicketRoute ? (
+      {showIntro && !isShipRoute && !isTicketRoute && !isBtsRoute ? (
         <Loader forceFullIntro />
       ) : (
         <>
@@ -127,6 +130,8 @@ function App() {
               <Route path="/ship" element={<ShipExperience />} />
               <Route path="/ship-of-theseus" element={<ShipOfTheseusEvent />} />
               <Route path="/theme" element={<Drishti />} />
+              <Route path="/bts" element={<BTS />} />
+              <Route path="/behind-the-scenes" element={<BTS />} />
               <Route path="/feedback" element={<FeedbackRedirect />} />
               <Route path="/cam" element={<CamRedirect />} />
               <Route path="/ticket" element={<TicketRedirect />} />
